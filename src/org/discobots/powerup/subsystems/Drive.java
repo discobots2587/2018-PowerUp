@@ -20,7 +20,7 @@ public class Drive extends Subsystem {
 		Spark m_rearRight = new Spark(6);
 		SpeedControllerGroup right = new SpeedControllerGroup(m_frontRight, m_midRight, m_rearRight);
 		
-		DifferentialDrive drive = new DifferentialDrive(left, right);
+		drive = new DifferentialDrive(left, right);
 	}
 	
 	public void initDefaultCommand() {
@@ -30,6 +30,5 @@ public class Drive extends Subsystem {
 	
 	public void arcadeDrive(double x, double y) {
 		drive.arcadeDrive(x, y, true); //forward, cw = positive; decrease sensitivity at low speed is TRUE
-	}
 	}
 }
