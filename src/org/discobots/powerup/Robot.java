@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.discobots.powerup.commands.ExampleCommand;
-import org.discobots.powerup.subsystems.ExampleSubsystem;
+import org.discobots.powerup.commands.*;
+import org.discobots.powerup.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,8 +24,10 @@ import org.discobots.powerup.subsystems.ExampleSubsystem;
  */
 
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
+	public static final ExampleSubsystem kExampleSubsystem= new ExampleSubsystem();
+	
+	public static final DriveSubsystem kDriveSubsystem = new DriveSubsystem();
+			
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
