@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveSubsystem extends Subsystem {
+public class DriveTrain extends Subsystem {
 
 	public DifferentialDrive drive;
 	
-	public DriveSubsystem() {
+	public DriveTrain() {
 		Spark m_frontLeft = new Spark(HW.frontLeftDrive);  //set all three left ports to what is configured in the HW
 		Spark m_midLeft = new Spark(HW.midLeftDrive);
 		Spark m_rearLeft = new Spark(HW.backLeftDrive);
