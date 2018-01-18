@@ -19,7 +19,7 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	 Joystick stick = new Joystick(0);
+	//Joystick stick = new Joystick(0);
 	// Button button = new JoystickButton(stick, buttonNumber);
 
 	// There are a few additional built in buttons you can use. Additionally,
@@ -41,5 +41,13 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	 
+	 
+	 //pov = dpad
+	 //axis = joystick
+
+	public OI() {
+		
+	}
 	
 }
