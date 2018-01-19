@@ -6,6 +6,7 @@ public class Dashboard {
 	
 	public static void init() {
 		SmartDashboard.putNumber("TEST", 1);
+		SmartDashboard.putBoolean("dashboard-name", false);
 	}
 	
 	public static void update() {
