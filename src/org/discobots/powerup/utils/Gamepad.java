@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class Gamepad extends Joystick {
-	
+
 	public static int AXIS_LX = 0;
 	public static int AXIS_LY = 1;
 	public static int AXIS_RX = 2;
