@@ -81,35 +81,37 @@ public class OI {
 		
 	}
 	
+	//NOTE: Deadband functionality is currently commented out because Luke doesn't want it
+	
 	//returns the left analog stick x value if it is higher than the deadband value
 	public double getLX() {
-		if(Math.abs(gp1.getLX()) <= deadband)
+		/*if(Math.abs(gp1.getLX()) <= deadband)
 			return 0.0;
-		else
+		else*/
 			return gp1.getLX();
 	}
 	
 	//returns the left analog stick y value if it is higher than the deadband value
 	public double getLY() {
-		if(Math.abs(gp1.getLY()) <= deadband)
+		/*if(Math.abs(gp1.getLY()) <= deadband)
 			return 0.0;
-		else
+		else*/
 			return gp1.getLY();
 	}
 	
 	//returns the right analog stick x value if it is higher than the deadband value
 	public double getRX() {
-		if(Math.abs(gp1.getRX()) <= deadband)
+		/*if(Math.abs(gp1.getRX()) <= deadband)
 			return 0.0;
-		else
+		else*/
 			return gp1.getRX();
 	}
 	
 	//returns the right analog stick y value if it is higher than the deadband value
 	public double getRY() {
-		if(Math.abs(gp1.getRY()) <= deadband)
+		/*if(Math.abs(gp1.getRY()) <= deadband)
 			return 0.0;
-		else
+		else*/
 			return gp1.getRY();
 	}
 	

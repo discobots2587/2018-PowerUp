@@ -4,10 +4,10 @@ import org.discobots.powerup.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-//ArcadeDrive - drives the robot via a split arcade drive
-public class ArcadeDrive extends Command {
+//TankDrive - drives the robot via a classic tank drive
+public class TankDrive extends Command {
 	
-	public ArcadeDrive() {
+	public TankDrive() {
 		requires(Robot.Drive);
 	}
 	
@@ -19,7 +19,7 @@ public class ArcadeDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.Drive.arcadeDrive(Robot.oi.getLY(), Robot.oi.getRX());
+		Robot.Drive.tankDrive(Robot.oi.getLY(), Robot.oi.getRY());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -31,7 +31,7 @@ public class ArcadeDrive extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.Drive.arcadeDrive(0, 0);
+		Robot.Drive.tankDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
