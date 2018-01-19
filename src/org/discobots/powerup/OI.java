@@ -58,23 +58,59 @@ public class OI {
 	 //axis = joystick
 	Gamepad gp1 = new Gamepad(0);
 	
+	
+	//create all the buttons, except for d-pad, probably won't use them all
 	private Button button_bumpR = new JoystickButton(gp1, Gamepad.BTN_RB);
 	private Button button_bumpL = new JoystickButton(gp1, Gamepad.BTN_LB);
 	private Button button_trigR = new JoystickButton(gp1, Gamepad.BTN_RT);
 	private Button button_trigL = new JoystickButton(gp1, Gamepad.BTN_LT);
-	private Button button_sBack = new JoystickButton(gp1, Gamepad.BTN_BACK);
-	private Button button_sStar = new JoystickButton(gp1, Gamepad.BTN_START);
-	private Button button_btnA = new JoystickButton(gp1, Gamepad.BTN_A);
-	private Button button_btnX = new JoystickButton(gp1, Gamepad.BTN_X);
-	private Button button_btnB = new JoystickButton(gp1, Gamepad.BTN_B);
-	private Button button_btnY = new JoystickButton(gp1, Gamepad.BTN_Y);
+	private Button button_back = new JoystickButton(gp1, Gamepad.BTN_BACK);
+	private Button button_start = new JoystickButton(gp1, Gamepad.BTN_START);
+	private Button button_A = new JoystickButton(gp1, Gamepad.BTN_A);
+	private Button button_X = new JoystickButton(gp1, Gamepad.BTN_X);
+	private Button button_B = new JoystickButton(gp1, Gamepad.BTN_B);
+	private Button button_Y = new JoystickButton(gp1, Gamepad.BTN_Y);
 	private Button button_clicR = new JoystickButton(gp1, Gamepad.AXISBTN_R);
 	private Button button_clicL = new JoystickButton(gp1, Gamepad.AXISBTN_L);
+	
+	private double deadband = 0.0;
 
+	//in here, give the buttons commands
 	public OI() {
 		
 		
 	}
-
+	
+	//returns the left analog stick x value if it is higher than the deadband value
+	public double getLX() {
+		if(Math.abs(gp1.getLX()) <= deadband)
+			return 0.0;
+		else
+			return gp1.getLX();
+	}
+	
+	//returns the left analog stick y value if it is higher than the deadband value
+	public double getLY() {
+		if(Math.abs(gp1.getLY()) <= deadband)
+			return 0.0;
+		else
+			return gp1.getLY();
+	}
+	
+	//returns the right analog stick x value if it is higher than the deadband value
+	public double getRX() {
+		if(Math.abs(gp1.getRX()) <= deadband)
+			return 0.0;
+		else
+			return gp1.getRX();
+	}
+	
+	//returns the right analog stick y value if it is higher than the deadband value
+	public double getRY() {
+		if(Math.abs(gp1.getRY()) <= deadband)
+			return 0.0;
+		else
+			return gp1.getRY();
+	}
 	
 }

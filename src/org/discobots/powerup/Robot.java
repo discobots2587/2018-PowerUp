@@ -28,7 +28,7 @@ public class Robot extends TimedRobot {
 	
 	public static final Drivetrain Drive = new Drivetrain();
 			
-	public static OI m_oi;
+	public static OI oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
