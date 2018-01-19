@@ -26,7 +26,7 @@ import org.discobots.powerup.subsystems.*;
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem= new ExampleSubsystem();
 	
-	public static final DriveTrain Drive = new DriveTrain();
+	public static final Drivetrain Drive = new Drivetrain();
 			
 	public static OI m_oi;
 

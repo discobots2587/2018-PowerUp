@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveTrain extends Subsystem {
+public class Drivetrain extends Subsystem {
 
 	public DifferentialDrive drive;
 	
-	public DriveTrain() {
+	public Drivetrain() {
 		Spark m_frontLeft = new Spark(HW.frontLeftDrive);  //set all three left ports to what is configured in the HW
 		Spark m_midLeft = new Spark(HW.midLeftDrive);
 		Spark m_rearLeft = new Spark(HW.backLeftDrive);
@@ -32,6 +32,10 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void arcadeDrive(double x, double y) {
-		drive.arcadeDrive(x, y, true); //forward, cw = positive; decrease sensitivity at low speed is TRUE
+		drive.arcadeDrive(x, y, true); //forward, clockwise = positive; decrease sensitivity at low speed is TRUE
+	}
+	
+	public void tankDrive(double left, double right) {
+		drive.tankDrive(left, right, true); //forward = positive; decrease sensitivity at low speed is TRUE
 	}
 }

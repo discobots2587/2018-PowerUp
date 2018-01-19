@@ -8,6 +8,18 @@
 package org.discobots.powerup;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
+//importing all the commands
+import org.discobots.powerup.commands.*;
+
+//importing all the subsystems
+import org.discobots.powerup.subsystems.Drivetrain;
+
+//importing all of the utils (mainly gamepad)
+import org.discobots.powerup.utils.Gamepad;
+//import org.discobots.steamworks.utils.Gamepad.DPadButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -42,12 +54,30 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	 
-	 
 	 //pov = dpad
 	 //axis = joystick
 
 	public OI() {
-		
+		Gamepad gp1 = new Gamepad(0);
+		/*
+		private Button button_dpadU = new DPadButton(gp1, Gamepad.DPAD_Y, true);
+		private Button button_dpadD = new DPadButton(gp1, Gamepad.DPAD_Y, false);
+		private Button button_dpadR = new DPadButton(gp1, Gamepad.DPAD_X, true);
+		private Button button_dpadL = new DPadButton(gp1, Gamepad.DPAD_X, false);
+		private Button button_bumpR = new JoystickButton(gp1, Gamepad.BTN_RB);
+		private Button button_bumpL = new JoystickButton(gp1, Gamepad.BTN_LB);
+		private Button button_trigR = new JoystickButton(gp1, Gamepad.BTN_RT);
+		private Button button_trigL = new JoystickButton(gp1, Gamepad.BTN_LT);
+		private Button button_sBack = new JoystickButton(gp1, Gamepad.BTN_BACK);
+		private Button button_sStar = new JoystickButton(gp1, Gamepad.BTN_START);
+		private Button button_btnA = new JoystickButton(gp1, Gamepad.BTN_A);
+		private Button button_btnX = new JoystickButton(gp1, Gamepad.BTN_X);
+		private Button button_btnB = new JoystickButton(gp1, Gamepad.BTN_B);
+		private Button button_btnY = new JoystickButton(gp1, Gamepad.BTN_Y);
+		private Button button_clicR = new JoystickButton(gp1, Gamepad.AXISBTN_R);
+		private Button button_clicL = new JoystickButton(gp1, Gamepad.AXISBTN_L);
+		*/
 	}
+
 	
 }
