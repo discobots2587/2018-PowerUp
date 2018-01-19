@@ -63,4 +63,18 @@ public class Gamepad extends Joystick {
 	public double getDY() {
 		return this.getRawAxis(DPAD_Y) * -1;
 	}
+	
+	public double getDPAD() {
+		double val = this.getPOV();
+		if(45 <= val && val < 135) {
+			val = 90;
+		} else if(135 <= val && val < 225) {
+			val = 180;
+		} else if(225 <= val && val < 315) {
+			val = 270;
+		} else {
+			val = 0;
+		}
+		return val;
+	}
 }
