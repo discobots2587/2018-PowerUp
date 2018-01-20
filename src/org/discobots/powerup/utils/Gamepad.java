@@ -22,6 +22,7 @@ public class Gamepad extends Joystick {
 	
 	
 	
+	
 	private static final int DEFAULT_USB_PORT = 0;
 	
 	public Gamepad() {
