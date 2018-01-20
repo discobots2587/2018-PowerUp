@@ -28,7 +28,7 @@ public class Robot extends TimedRobot {
 	
 	public static Drivetrain drive;
 	
-	public static ArcadeDrive arcadeDrive;
+	public static ArcadeDrive driveCommand;
 			
 	public static OI oi;
 
@@ -111,7 +111,8 @@ public class Robot extends TimedRobot {
 			autonomousCommand.cancel();
 		}
 		
-		arcadeDrive = new ArcadeDrive();
+		driveCommand = new ArcadeDrive();
+		driveCommand.start();
 	}
 
 	/**

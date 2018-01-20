@@ -14,18 +14,13 @@ package org.discobots.powerup;
  * floating around.
  */
 public class HW {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
-	public static int frontLeftDrive = 1;
-	public static int backLeftDrive = 2;
+	//NOTE: commented out because 2017 bot has y-cables to just use 2 motor ports
 	
-	public static int frontRightDrive = 3;
-	public static int backRightDrive = 4;
+	public static int frontLeftDrive = 0;
+	//public static int backLeftDrive = 2;
+	
+	public static int frontRightDrive = 1;
+	//public static int backRightDrive = 3;
+	
+	
 }

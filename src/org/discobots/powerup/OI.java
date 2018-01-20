@@ -27,6 +27,8 @@ import org.discobots.powerup.utils.Constants;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+
+//NOTE: all button creation statements commented out
 public class OI {
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
@@ -62,7 +64,7 @@ public class OI {
 	
 	
 	//create all the buttons, except for d-pad, probably won't use them all
-	private Button button_bumpR = new JoystickButton(gp1, Gamepad.BTN_RB);
+	/*private Button button_bumpR = new JoystickButton(gp1, Gamepad.BTN_RB);
 	private Button button_bumpL = new JoystickButton(gp1, Gamepad.BTN_LB);
 	private Button button_trigR = new JoystickButton(gp1, Gamepad.BTN_RT);
 	private Button button_trigL = new JoystickButton(gp1, Gamepad.BTN_LT);
@@ -73,10 +75,9 @@ public class OI {
 	private Button button_B = new JoystickButton(gp1, Gamepad.BTN_B);
 	private Button button_Y = new JoystickButton(gp1, Gamepad.BTN_Y);
 	private Button button_clicR = new JoystickButton(gp1, Gamepad.AXISBTN_R);
-	private Button button_clicL = new JoystickButton(gp1, Gamepad.AXISBTN_L);
+	private Button button_clicL = new JoystickButton(gp1, Gamepad.AXISBTN_L);*/
 	
-	//comment
-
+	
 	//in here, give the buttons commands
 	public OI() {
 		
