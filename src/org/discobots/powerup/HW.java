@@ -24,10 +24,8 @@ public class HW {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	public static int frontLeftDrive = 1;
-	public static int midLeftDrive = 2;
-	public static int backLeftDrive = 3;
+	public static int backLeftDrive = 2;
 	
-	public static int frontRightDrive = 4;
-	public static int midRightDrive = 5;
-	public static int backRightDrive = 6;
+	public static int frontRightDrive = 3;
+	public static int backRightDrive = 4;
 }
