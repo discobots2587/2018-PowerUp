@@ -19,6 +19,8 @@ import org.discobots.powerup.subsystems.Drivetrain;
 
 //importing all of the utils (mainly gamepad)
 import org.discobots.powerup.utils.Gamepad;
+import org.discobots.powerup.utils.Constants;
+
 //import org.discobots.steamworks.utils.Gamepad.DPadButton;
 
 /**
@@ -73,7 +75,7 @@ public class OI {
 	private Button button_clicR = new JoystickButton(gp1, Gamepad.AXISBTN_R);
 	private Button button_clicL = new JoystickButton(gp1, Gamepad.AXISBTN_L);
 	
-	private double deadband = 0.0;
+	private double deadband = Constants.kDeadband;
 
 	//in here, give the buttons commands
 	public OI() {
