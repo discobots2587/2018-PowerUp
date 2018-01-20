@@ -20,7 +20,16 @@ public class Gamepad extends Joystick {
 	public static int AXIS_RX = 4;
 	public static int AXIS_RY = 5;
 	
-	
+	public static int BTN_A = 0;
+	public static int BTN_B = 1;
+	public static int BTN_X = 2;
+	public static int BTN_Y = 3;
+	public static int BTN_LB = 4;
+	public static int BTN_RB = 5;
+	public static int BTN_BACK = 6;
+	public static int BTN_START = 7;
+	public static int BTN_AXIS_L = 8;
+	public static int BTN_AXIS_R = 9;
 	
 	
 	private static final int DEFAULT_USB_PORT = 0;
@@ -64,7 +73,7 @@ public class Gamepad extends Joystick {
 	}
 
 	public double getRY() {
-		double val = this.getRawAxis(AXIS_RY);
+		double val = this.getRawAxis(AXIS_RY)* -1;
 		//return deadband(val);
 		return val;
 	}
