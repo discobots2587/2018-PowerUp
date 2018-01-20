@@ -49,35 +49,34 @@ public class Gamepad extends Joystick {
 		this.name = name;
 	}
 	
-	public double getLX() {
-		double val = this.getRawAxis(AXIS_LX);
+	private double deadband(double val) {
 		if(Math.abs(val) <= Constants.kDeadband) {
 			return 0.0;
 		}
+		return val;
+	}
+	
+	public double getLX() {
+		double val = this.getRawAxis(AXIS_LX);
+		//return deadband(val);
 		return val;
 	}
 
 	public double getLY() {
 		double val = this.getRawAxis(AXIS_LY) * -1;
-		if(Math.abs(val) <= Constants.kDeadband) {
-			return 0.0;
-		}
+		//return deadband(val);
 		return val;
 	}
 
 	public double getRX() {
 		double val = this.getRawAxis(AXIS_RX);
-		if(Math.abs(val) <= Constants.kDeadband) {
-			return 0.0;
-		}
+		//return deadband(val);
 		return val;
 	}
 
 	public double getRY() {
 		double val = this.getRawAxis(AXIS_RY) * -1;
-		if(Math.abs(val) <= Constants.kDeadband) {
-			return 0.0;
-		}
+		//return deadband(val);
 		return val;
 	}
 

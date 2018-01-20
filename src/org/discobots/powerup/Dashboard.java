@@ -11,10 +11,10 @@ public class Dashboard {
 	}
 	
 	public static void update() {
-		
+		SmartDashboard.putNumber("Test", 2);
 	}
 	
-	public static void updatePeriodic(double ms) {
+	public static void updatePeriodic(double ms, int thr) {
 		update();
 	}
 }

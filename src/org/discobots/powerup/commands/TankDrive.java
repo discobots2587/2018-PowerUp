@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TankDrive extends Command {
 	
 	public TankDrive() {
-		requires(Robot.Drive);
+		requires(Robot.drive);
 	}
 	
 	// Called just before this Command runs the first time
@@ -19,7 +19,7 @@ public class TankDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.Drive.tankDrive(Robot.oi.getLY(), Robot.oi.getRY());
+		Robot.drive.tankDrive(Robot.oi.getLY(), Robot.oi.getRY());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -31,7 +31,7 @@ public class TankDrive extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.Drive.tankDrive(0, 0);
+		Robot.drive.tankDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
