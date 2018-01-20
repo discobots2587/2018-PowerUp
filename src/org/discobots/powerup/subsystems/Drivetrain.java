@@ -32,10 +32,10 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void arcadeDrive(double x, double y) {
-		drive.arcadeDrive(x, y); //forward, clockwise = positive; decrease sensitivity at low speed is FALSE
+		drive.arcadeDrive(x, y, true); //forward, clockwise = positive; decrease sensitivity at low speed is FALSE
 	}
 	
 	public void tankDrive(double left, double right) {
-		drive.tankDrive(left, right); //forward = positive; decrease sensitivity at low speed is FALSE
+		drive.tankDrive(left, right, true); //forward = positive; decrease sensitivity at low speed is FALSE
 	}
 }
