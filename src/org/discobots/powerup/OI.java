@@ -28,7 +28,7 @@ import org.discobots.powerup.utils.Constants;
  * interface to the commands and command groups that allow control of the robot.
  */
 
-//NOTE: all button creation statements commented out
+
 public class OI {
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
@@ -64,18 +64,16 @@ public class OI {
 	
 	
 	//create all the buttons, except for d-pad, probably won't use them all
-	/*private Button button_bumpR = new JoystickButton(gp1, Gamepad.BTN_RB);
-	private Button button_bumpL = new JoystickButton(gp1, Gamepad.BTN_LB);
-	private Button button_trigR = new JoystickButton(gp1, Gamepad.BTN_RT);
-	private Button button_trigL = new JoystickButton(gp1, Gamepad.BTN_LT);
+	private Button button_RB = new JoystickButton(gp1, Gamepad.BTN_RB);
+	private Button button_LB = new JoystickButton(gp1, Gamepad.BTN_LB);
 	private Button button_back = new JoystickButton(gp1, Gamepad.BTN_BACK);
 	private Button button_start = new JoystickButton(gp1, Gamepad.BTN_START);
 	private Button button_A = new JoystickButton(gp1, Gamepad.BTN_A);
 	private Button button_X = new JoystickButton(gp1, Gamepad.BTN_X);
 	private Button button_B = new JoystickButton(gp1, Gamepad.BTN_B);
 	private Button button_Y = new JoystickButton(gp1, Gamepad.BTN_Y);
-	private Button button_clicR = new JoystickButton(gp1, Gamepad.AXISBTN_R);
-	private Button button_clicL = new JoystickButton(gp1, Gamepad.AXISBTN_L);*/
+	private Button button_clicR = new JoystickButton(gp1, Gamepad.BTN_AXIS_R);
+	private Button button_clicL = new JoystickButton(gp1, Gamepad.BTN_AXIS_L);
 	
 	
 	//in here, give the buttons commands
