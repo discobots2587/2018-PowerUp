@@ -26,7 +26,13 @@ import org.discobots.powerup.subsystems.*;
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem= new ExampleSubsystem();
 	
+<<<<<<< HEAD
 	public static Drivetrain drive;
+=======
+	public static Drivetrain Drive;
+	
+	public static ArcadeDrive arcadeDrive;
+>>>>>>> master
 			
 	public static OI oi;
 
@@ -108,6 +114,8 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+		
+		arcadeDrive = new ArcadeDrive();
 	}
 
 	/**
