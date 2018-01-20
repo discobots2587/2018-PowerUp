@@ -74,6 +74,8 @@ public class OI {
 	private Button button_Y = new JoystickButton(gp1, Gamepad.BTN_Y);
 	private Button button_clicR = new JoystickButton(gp1, Gamepad.AXISBTN_R);
 	private Button button_clicL = new JoystickButton(gp1, Gamepad.AXISBTN_L);
+	
+	//comment
 
 	//in here, give the buttons commands
 	public OI() {
