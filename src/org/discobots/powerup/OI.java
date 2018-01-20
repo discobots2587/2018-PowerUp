@@ -74,14 +74,6 @@ public class OI {
 	private Button button_Y = new JoystickButton(gp1, Gamepad.BTN_Y);
 	private Button button_clicR = new JoystickButton(gp1, Gamepad.AXISBTN_R);
 	private Button button_clicL = new JoystickButton(gp1, Gamepad.AXISBTN_L);
-<<<<<<< Updated upstream
-	
-	private double deadband = Constants.kDeadband;
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Stashed changes
->>>>>>> master
 
 	//in here, give the buttons commands
 	public OI() {
@@ -93,25 +85,16 @@ public class OI {
 	
 	//returns the left analog stick x value if it is higher than the deadband value
 	public double getLX() {
-		/*if(Math.abs(gp1.getLX()) <= deadband)
-			return 0.0;
-		else*/
 			return gp1.getLX();
 	}
 	
 	//returns the left analog stick y value if it is higher than the deadband value
 	public double getLY() {
-		/*if(Math.abs(gp1.getLY()) <= deadband)
-			return 0.0;
-		else*/
 			return gp1.getLY();
 	}
 	
 	//returns the right analog stick x value if it is higher than the deadband value
 	public double getRX() {
-		/*if(Math.abs(gp1.getRX()) <= deadband)
-			return 0.0;
-		else*/
 			return gp1.getRX();
 	}
 	
