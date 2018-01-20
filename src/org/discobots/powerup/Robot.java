@@ -27,6 +27,8 @@ public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem= new ExampleSubsystem();
 	
 	public static Drivetrain Drive;
+	
+	public static ArcadeDrive arcadeDrive;
 			
 	public static OI oi;
 
@@ -107,6 +109,8 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+		
+		arcadeDrive = new ArcadeDrive();
 	}
 
 	/**
