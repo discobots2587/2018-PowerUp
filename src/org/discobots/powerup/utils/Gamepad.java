@@ -4,8 +4,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.discobots.powerup.utils.Constants;
+
 public class Gamepad extends Joystick {
 
+	public static String name = "genericHID";
+	
 	public static int AXIS_LX = 0;
 	public static int AXIS_LY = 1;
 	public static int AXIS_RX = 2;
@@ -40,20 +44,41 @@ public class Gamepad extends Joystick {
 		super(port);
 	}
 	
+	public Gamepad(int port, String name) {
+		super(port);
+		this.name = name;
+	}
+	
 	public double getLX() {
-		return this.getRawAxis(AXIS_LX);
+		double val = this.getRawAxis(AXIS_LX);
+		if(Math.abs(val) <= Constants.kDeadband) {
+			return 0.0;
+		}
+		return val;
 	}
 
 	public double getLY() {
-		return this.getRawAxis(AXIS_LY) * -1;
+		double val = this.getRawAxis(AXIS_LY) * -1;
+		if(Math.abs(val) <= Constants.kDeadband) {
+			return 0.0;
+		}
+		return val;
 	}
 
 	public double getRX() {
-		return this.getRawAxis(AXIS_RX);
+		double val = this.getRawAxis(AXIS_RX);
+		if(Math.abs(val) <= Constants.kDeadband) {
+			return 0.0;
+		}
+		return val;
 	}
 
 	public double getRY() {
-		return this.getRawAxis(AXIS_RY) * -1;
+		double val = this.getRawAxis(AXIS_RY) * -1;
+		if(Math.abs(val) <= Constants.kDeadband) {
+			return 0.0;
+		}
+		return val;
 	}
 
 	public double getDX() {
