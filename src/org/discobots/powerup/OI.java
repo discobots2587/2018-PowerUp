@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 //importing all the commands
 import org.discobots.powerup.commands.*;
+import org.discobots.powerup.commands.autonomous.subcommands.*;
 
 //importing all the subsystems
 import org.discobots.powerup.subsystems.Drivetrain;
@@ -78,7 +79,7 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		
+		button_A.whenPressed(new AutonArcadeDrive(1.0,0.0,1000));
 		
 	}
 	
