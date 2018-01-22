@@ -3,6 +3,7 @@ package org.discobots.powerup.subsystems;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive; //west coast / tank
 
 import org.discobots.powerup.HW;
+import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -24,6 +25,8 @@ public class Drivetrain extends Subsystem {
 		SpeedControllerGroup right = new SpeedControllerGroup(m_frontRight);
 		
 		drive = new DifferentialDrive(left, right);
+		
+		drive.setDeadband(Constants.kDeadband);
 	}
 	
 	public void initDefaultCommand() {
