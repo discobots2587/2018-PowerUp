@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.discobots.powerup.utils.Constants;
 
-
 public class Gamepad extends Joystick {
 
 	public static String name = "genericHID";
@@ -47,34 +46,23 @@ public class Gamepad extends Joystick {
 		this.name = name;
 	}
 	
-	private double deadband(double val) {
-		if(Math.abs(val) <= Constants.kDeadband) {
-			return 0.0;
-		}
-		return val;
-	}
-	
 	public double getLX() {
 		double val = this.getRawAxis(AXIS_LX);
-		//return deadband(val);
 		return val;
 	}
 
 	public double getLY() {
 		double val = this.getRawAxis(AXIS_LY) * -1;
-		//return deadband(val);
 		return val;
 	}
 
 	public double getRX() {
 		double val = this.getRawAxis(AXIS_RX);
-		//return deadband(val);
 		return val;
 	}
 
 	public double getRY() {
 		double val = this.getRawAxis(AXIS_RY)* -1;
-		//return deadband(val);
 		return val;
 	}
 	
