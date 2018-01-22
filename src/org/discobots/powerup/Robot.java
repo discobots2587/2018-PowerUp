@@ -47,7 +47,6 @@ public class Robot extends TimedRobot {
 		drive = new Drivetrain();
 		
 		Dashboard.init();
-		SmartDashboard.putString("test", "test");
 	}
 
 	/**
@@ -120,8 +119,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		Dashboard.update();
 		Scheduler.getInstance().run();
-		
 	}
 
 	/**
