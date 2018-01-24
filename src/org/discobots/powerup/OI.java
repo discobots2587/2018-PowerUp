@@ -80,6 +80,9 @@ public class OI {
 	//in here, give the buttons commands
 	public OI() {
 		button_A.whenPressed(new AutonArcadeDrive(1.0,0.0,1000));
+		button_B.whenPressed(new AutonArcadeDrive(1.0,0.0,500));
+		button_X.whenPressed(new AutonArcadeDrive(1.0,0.0,1500));
+		button_Y.whenPressed(new AutonArcadeDrive(1.0,0.0,2000));
 		
 	}
 	

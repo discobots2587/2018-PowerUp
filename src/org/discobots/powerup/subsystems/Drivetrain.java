@@ -34,8 +34,8 @@ public class Drivetrain extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 	
-	public void arcadeDrive(double x, double y) {
-		drive.arcadeDrive(x, y, true); //forward, clockwise = positive; decrease sensitivity at low speed is FALSE
+	public void arcadeDrive(double xSpeed, double zRotation) { //contrary to the documentation, but that is ok
+		drive.arcadeDrive(zRotation, xSpeed, true); //forward, clockwise = positive; decrease sensitivity at low speed is FALSE
 	}
 	
 	public void tankDrive(double left, double right) {

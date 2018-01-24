@@ -22,7 +22,6 @@ import org.discobots.powerup.subsystems.*;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
-// test
 
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem= new ExampleSubsystem();
@@ -44,8 +43,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		
-		oi = new OI();
+		
 		drive = new Drivetrain();
+		oi = new OI();
 		
 		Dashboard.init();
 	}
