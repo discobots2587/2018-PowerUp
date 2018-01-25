@@ -79,11 +79,10 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		button_B.whenPressed(new AutonArcadeDrive(1.0,0.0,250));
-		button_A.whenPressed(new AutonArcadeDrive(1.0,0.0,500));
-		button_X.whenPressed(new AutonArcadeDrive(1.0,0.0,750));
-		button_Y.whenPressed(new AutonArcadeDrive(1.0,0.0,1000));
-		
+		button_B.whenPressed(new ActivateSolenoid(true));
+		button_A.whenPressed(new ActivateSolenoid(false));
+		button_X.whileHeld(new ActivateSolenoid(true));
+		button_X.whenReleased(new ActivateSolenoid(false));
 	}
 	
 	public double getLX() {

@@ -27,6 +27,7 @@ public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem= new ExampleSubsystem();
 	
 	public static Drivetrain drive;
+	public static Launcher launcher;
 	
 	public static ArcadeDrive driveCommand;
 			
@@ -43,7 +44,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		
-		
+		launcher = new Launcher();
 		drive = new Drivetrain();
 		oi = new OI();
 		

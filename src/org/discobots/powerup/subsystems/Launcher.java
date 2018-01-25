@@ -10,13 +10,26 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Launcher extends Subsystem {
 	
+	Solenoid solenoid1;
+	DoubleSolenoid dsolenoid1;
+	
 	public void initDefaultCommand() {
 	
 	}
 	
 	//test solenoids for the solenoid test
 	public Launcher() {
-		Solenoid solenoid1 = new Solenoid(HW.solenoid1);
-		DoubleSolenoid dsolenoid1 = new DoubleSolenoid(HW.dsolenoid1,HW.dsolenoid2);
+		solenoid1 = new Solenoid(HW.solenoid1);
+		dsolenoid1 = new DoubleSolenoid(HW.dsolenoid1,HW.dsolenoid2);
 	}
+	
+	public void setSolenoid(boolean state) {
+		solenoid1.set(state);
+	}
+	
+	public void setDSolenoid(DoubleSolenoid.Value state) {
+		dsolenoid1.set(state);
+	}
+	
+	
 }
