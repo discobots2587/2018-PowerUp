@@ -13,8 +13,6 @@ public class Drivetrain extends Subsystem {
 
 	public DifferentialDrive drive;
 	
-	
-	
 	public Drivetrain() {
 		Spark m_frontLeft = new Spark(HW.frontLeftDrive);  //set all three left ports to what is configured in the HW
 		//Spark m_rearLeft = new Spark(HW.backLeftDrive);
