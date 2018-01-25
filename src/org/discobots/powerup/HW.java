@@ -16,6 +16,8 @@ package org.discobots.powerup;
 public class HW {
 	//NOTE: commented out because 2017 bot has y-cables to just use 2 motor ports
 	
+	
+	//PWM ports
 	public static int frontLeftDrive = 0;
 	//public static int backLeftDrive = 2;
 	
@@ -23,4 +25,9 @@ public class HW {
 	//public static int backRightDrive = 3;
 	
 	
+	//PCM ports
+	public static int solenoid1 = 0;
+	
+	public static int dsolenoid1 = 1;
+	public static int dsolenoid2 = 2;
 }
