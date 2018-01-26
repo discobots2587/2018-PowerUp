@@ -6,8 +6,6 @@ import org.discobots.powerup.utils.Constants;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-//NOTE: some portions commented out to test Friday
-
 public class LaunchSwitch extends Command {
 	
 	//time = when the system reaches this time, it will set the solenoid back to 0 (in milliseconds)
@@ -23,17 +21,21 @@ public class LaunchSwitch extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.launcher.activateSwitch();
-		time = System.currentTimeMillis() + Constants.kLaunchwait;
-		//this.wait(Constants.kLaunchwait);
+		
+		//skip the whole command if the launcher is already activated (to avoid repeats)
+		if(!(Robot.launcher.anyActivated())) {
+			try {
+				Robot.launcher.activateSwitch();
+				this.wait(Constants.kLaunchwait);
+			} catch (InterruptedException e) {
+				System.out.println("Wait post-launch failed");
+			}
+		}
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		while(System.currentTimeMillis() < time) {
-		}
-		finished = true;
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
