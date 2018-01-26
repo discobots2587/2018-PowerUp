@@ -6,11 +6,13 @@ import org.discobots.powerup.Robot;
 
 public class AutonArcadeDrive extends Command {
 	
+	//time = drive duration in milliseconds
+	//endTime = when the system reaches this time, it will stop driving
+	//finished = will become true when the time is reached
 	private int time;
 	private long endTime;
 	private double speed, rotation;
 	private boolean finished=false;
-	public boolean end=false;
 	
 	//speed is forward speed, rotation is y rotation, time is in milliseconds
 	public AutonArcadeDrive(double speed, double rotation, int time) {
