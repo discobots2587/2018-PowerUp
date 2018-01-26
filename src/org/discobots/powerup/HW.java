@@ -27,7 +27,7 @@ public class HW {
 	
 	//PCM ports
 	public static int solenoid1 = 0;
-	
-	public static int dsolenoid1 = 1;
-	public static int dsolenoid2 = 2;
+	public static int solenoid2 = 1;
+	public static int solenoid3 = 2;
+	public static int solenoid4 = 3;
 }

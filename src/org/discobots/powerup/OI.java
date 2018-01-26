@@ -79,10 +79,10 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		button_B.whenPressed(new ActivateSolenoid(true));
-		button_A.whenPressed(new ActivateSolenoid(false));
-		button_X.whileHeld(new ActivateSolenoid(true));
-		button_X.whenReleased(new ActivateSolenoid(false));
+		button_B.whenPressed(new LaunchSwitch(true));
+		button_A.whenPressed(new LaunchSwitch(false));
+		button_X.whileHeld(new LaunchSwitch(true));
+		button_X.whenReleased(new LaunchSwitch(false));
 	}
 	
 	public double getLX() {
