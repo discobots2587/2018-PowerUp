@@ -1,6 +1,7 @@
 package org.discobots.powerup.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.discobots.powerup.HW;

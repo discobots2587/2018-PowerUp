@@ -112,8 +112,8 @@ public class Robot extends TimedRobot {
 			autonomousCommand.cancel();
 		}
 		
-		driveCommand = new ArcadeDrive();
-		driveCommand.start();
+		//driveCommand = new ArcadeDrive();
+		//driveCommand.start();
 	}
 
 	/**
