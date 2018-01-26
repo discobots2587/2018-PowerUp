@@ -12,6 +12,7 @@ public class Dashboard {
 	public static void update() {
 		SmartDashboard.putNumber("xSpeed", Robot.oi.getLY());
 		SmartDashboard.putNumber("zRotation", Robot.oi.getRX());
+		SmartDashboard.putNumber("Encoder", Robot.testEncoder.getRaw());
 	}
 	
 	public static void updatePeriodic(double ms, int thr) {

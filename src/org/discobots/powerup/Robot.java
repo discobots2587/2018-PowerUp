@@ -7,6 +7,7 @@
 
 package org.discobots.powerup;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -32,6 +33,8 @@ public class Robot extends TimedRobot {
 	public static ArcadeDrive driveCommand;
 			
 	public static OI oi;
+	
+	public static Encoder testEncoder;
 
 	Command autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -49,6 +52,8 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		
 		Dashboard.init();
+		
+		testEncoder = new Encoder(0, 1, false);
 	}
 
 	/**
