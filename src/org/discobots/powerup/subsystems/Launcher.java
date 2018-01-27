@@ -67,7 +67,7 @@ public class Launcher extends Subsystem {
 		scale1.set(false);
 		scale2.set(false);
 		
-		switch3.set(true);
+		switch3.set(false);
 	}
 	
 	//returns TRUE if any solenoid is activated (its state is TRUE)
