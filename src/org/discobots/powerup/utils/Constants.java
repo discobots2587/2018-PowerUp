@@ -5,9 +5,12 @@ public class Constants {
 	//kDeadband - driving ignores this value and lower for the controller inputs (0.1 covers most joystick "default" positions)
 	public static double kDeadband = 0.1;
 	
-	//kLaunchwait - waits this period of time (milliseconds) after a successful launch
+	//kLaunchwait - waits this period of time (milliseconds) to let the launching pistons extend
 	public static long kLaunchwait = 750;
 	
+	//kScaleCooldown - waits this period of time (milliseconds) after launching to the scale
 	public static long kScaleCooldown = 750;
+	
+	//kSwitchCooldown - waits this period of time (milliseconds) after launching to the switch
 	public static long kSwitchCooldown = 750;
 }
