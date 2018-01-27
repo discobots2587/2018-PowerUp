@@ -11,7 +11,6 @@ public class LaunchScale extends Command {
 	//time = when the system reaches this time, it will set the solenoid back to 0 (in milliseconds)
 		//finished = will become true when the time is reached
 		public long time;
-		public boolean finished;
 		
 		public LaunchScale() {
 			// Use requires() here to declare subsystem dependencies
@@ -23,12 +22,11 @@ public class LaunchScale extends Command {
 		protected void initialize() {
 			
 			//skip the whole command if the launcher is already activated (to avoid repeats)
-			if(!(Robot.launcher.anyActivated()) || Robot.launcher.checkOnCooldown()) {
+			if(!(Robot.launcher.anyActivated() || Robot.launcher.checkOnCooldown())) {
 				Robot.launcher.activateScale();
 				Timer.delay(Constants.kLaunchwait);
 				Robot.launcher.startCooldown(Constants.kScaleCooldown);
 			}
-			finished = true;
 		}
 
 		// Called repeatedly when this Command is scheduled to run
@@ -39,7 +37,6 @@ public class LaunchScale extends Command {
 		// Make this return true when this Command no longer needs to run execute()
 		@Override
 		protected boolean isFinished() {
-			//return finished;
 			return true;
 		}
 

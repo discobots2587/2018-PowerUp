@@ -24,7 +24,7 @@ public class Launcher extends Subsystem {
 	
 	}
 	
-	//test solenoids for the solenoid test
+	//launcher solenoids, and creates a timer for measuring the cooldown delay
 	public Launcher() {
 		switch1 = new Solenoid(HW.solenoid1);
 		switch2 = new Solenoid(HW.solenoid2);
@@ -67,8 +67,8 @@ public class Launcher extends Subsystem {
 	
 	public void startCooldown(long time) {
 		timer.reset();
-		timer.start();
 		targetTime = time;
+		timer.start();
 	}
 	
 	public boolean checkOnCooldown() {

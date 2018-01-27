@@ -7,6 +7,7 @@ public class Dashboard {
 	
 	public static void init() {
 		SmartDashboard.putNumber("Match Time", Timer.getMatchTime());
+		
 	}
 	
 	public static void update() {
