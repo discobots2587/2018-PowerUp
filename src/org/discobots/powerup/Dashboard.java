@@ -14,6 +14,7 @@ public class Dashboard {
 		SmartDashboard.putNumber("xSpeed", Robot.oi.getLY());
 		SmartDashboard.putNumber("zRotation", Robot.oi.getRX());
 		SmartDashboard.putNumber("Encoder", Robot.testEncoder.getRaw());
+		SmartDashboard.putBoolean("Launcher Ready?", Robot.launcher.checkOnCooldown());
 	}
 	
 	public static void updatePeriodic(double ms, int thr) {

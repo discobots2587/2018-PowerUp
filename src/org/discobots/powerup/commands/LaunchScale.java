@@ -21,7 +21,7 @@ public class LaunchScale extends Command {
 		@Override
 		protected void initialize() {
 			
-			//skip the whole command if the launcher is already activated (to avoid repeats)
+			//skip the whole command if the launcher is already activated or on cooldown (to avoid repeats)
 			if(!(Robot.launcher.anyActivated() || Robot.launcher.checkOnCooldown())) {
 				Robot.launcher.activateScale();
 				Timer.delay(Constants.kLaunchwait);
