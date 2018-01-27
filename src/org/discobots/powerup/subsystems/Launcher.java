@@ -16,7 +16,9 @@ public class Launcher extends Subsystem {
 	Solenoid scale1;
 	Solenoid scale2;
 	
-	private long targetTime;
+	Solenoid switch3;
+	
+	private double targetTime;
 	
 	private Timer timer;
 	
@@ -31,7 +33,11 @@ public class Launcher extends Subsystem {
 		scale1 = new Solenoid(HW.solenoid3);
 		scale2 = new Solenoid(HW.solenoid4);
 		
+		switch3 = new Solenoid(4);
+		
+		//initialize timer to make sure that it will be after the cooldown
 		timer = new Timer();
+		this.startCooldown(0);
 	}
 	
 	//activates the switch solenoids, only if all four are deactivated
@@ -39,6 +45,8 @@ public class Launcher extends Subsystem {
 		if(!(anyActivated())) {
 			switch1.set(true);
 			switch2.set(true);
+			
+			switch3.set(true);
 		}
 	}
 	
@@ -58,6 +66,8 @@ public class Launcher extends Subsystem {
 		switch2.set(false);
 		scale1.set(false);
 		scale2.set(false);
+		
+		switch3.set(true);
 	}
 	
 	//returns TRUE if any solenoid is activated (its state is TRUE)
@@ -67,7 +77,7 @@ public class Launcher extends Subsystem {
 	
 	public void startCooldown(long time) {
 		timer.reset();
-		targetTime = time;
+		targetTime = Constants.millisToSeconds(time);
 		timer.start();
 	}
 	
@@ -76,6 +86,7 @@ public class Launcher extends Subsystem {
 			timer.stop();
 			return false;
 		}
-		return true; 
+		return true;
+		//return false;
 	}
 }

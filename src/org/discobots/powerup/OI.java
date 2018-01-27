@@ -73,8 +73,8 @@ public class OI {
 	private Button button_X = new JoystickButton(gp1, Gamepad.BTN_X);
 	private Button button_B = new JoystickButton(gp1, Gamepad.BTN_B);
 	private Button button_Y = new JoystickButton(gp1, Gamepad.BTN_Y);
-	private Button button_clicR = new JoystickButton(gp1, Gamepad.BTN_AXIS_R);
-	private Button button_clicL = new JoystickButton(gp1, Gamepad.BTN_AXIS_L);
+	private Button button_RC = new JoystickButton(gp1, Gamepad.BTN_AXIS_R);
+	private Button button_LC = new JoystickButton(gp1, Gamepad.BTN_AXIS_L);
 	
 	
 	//in here, give the buttons commands
@@ -84,6 +84,11 @@ public class OI {
 		
 		button_B.whenPressed(new Activate());
 		button_B.whenReleased(new Deactivate());
+		
+		button_A.whenPressed(new LaunchSwitch());
+		
+		button_RB.whenPressed(new ExampleCommand(50));
+		button_LB.whenPressed(new ExampleCommand(-50));
 	}
 	
 	public double getLX() {

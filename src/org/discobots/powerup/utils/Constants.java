@@ -6,11 +6,16 @@ public class Constants {
 	public static double kDeadband = 0.1;
 	
 	//kLaunchwait - waits this period of time (milliseconds) to let the launching pistons extend
-	public static long kLaunchwait = 750;
+	public static long kLaunchwait = 250;
 	
 	//kScaleCooldown - waits this period of time (milliseconds) after launching to the scale
-	public static long kScaleCooldown = 750;
+	public static long kScaleCooldown = 0;
 	
 	//kSwitchCooldown - waits this period of time (milliseconds) after launching to the switch
-	public static long kSwitchCooldown = 750;
+	public static long kSwitchCooldown = 0;
+	
+	//millisToSeconds - converts milliseconds to seconds, method because this shows up everywhere
+	public static double millisToSeconds(long ms) {
+		return ((double)ms)/1000;
+	}
 }

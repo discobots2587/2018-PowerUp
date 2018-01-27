@@ -9,20 +9,25 @@ package org.discobots.powerup.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.discobots.powerup.Robot;
+import org.discobots.powerup.utils.Constants;
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class ExampleCommand extends Command {
-	public ExampleCommand() {
+	
+	private int difference;
+	
+	public ExampleCommand(int difference) {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.kExampleSubsystem);
+		requires(Robot.launcher);
+		this.difference = difference;
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		
+		Constants.kLaunchwait+=difference;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -33,7 +38,7 @@ public class ExampleCommand extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	// Called once after isFinished returns true
