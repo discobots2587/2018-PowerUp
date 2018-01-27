@@ -1,6 +1,7 @@
 package org.discobots.powerup.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.discobots.powerup.HW;
@@ -15,6 +16,10 @@ public class Launcher extends Subsystem {
 	Solenoid scale1;
 	Solenoid scale2;
 	
+	private long targetTime;
+	
+	private Timer timer;
+	
 	public void initDefaultCommand() {
 	
 	}
@@ -25,6 +30,8 @@ public class Launcher extends Subsystem {
 		switch2 = new Solenoid(HW.solenoid2);
 		scale1 = new Solenoid(HW.solenoid3);
 		scale2 = new Solenoid(HW.solenoid4);
+		
+		timer = new Timer();
 	}
 	
 	//activates the switch solenoids, only if all four are deactivated
@@ -56,5 +63,19 @@ public class Launcher extends Subsystem {
 	//returns TRUE if any solenoid is activated (its state is TRUE)
 	public boolean anyActivated() {
 		return (switch1.get())||(switch2.get())||(scale1.get())||(scale2.get());
+	}
+	
+	public void startCooldown(long time) {
+		timer.reset();
+		timer.start();
+		targetTime = time;
+	}
+	
+	public boolean checkOnCooldown() {
+		if(timer.get() > targetTime) {
+			timer.stop();
+			return false;
+		}
+		return true; 
 	}
 }

@@ -80,6 +80,7 @@ public class OI {
 	//in here, give the buttons commands
 	public OI() {
 		button_B.whenPressed(new LaunchSwitch());
+		button_A.whenPressed(new LaunchScale());
 	}
 	
 	public double getLX() {

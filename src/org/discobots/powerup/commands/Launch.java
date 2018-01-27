@@ -7,16 +7,24 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class LaunchSwitch extends Command {
+public class Launch extends Command {
 	
 	//time = when the system reaches this time, it will set the solenoid back to 0 (in milliseconds)
 	//finished = will become true when the time is reached
 	public long time;
 	public boolean finished;
 	
-	public LaunchSwitch() {
+	public enum type {
+			SCALE, SWITCH;
+	}
+	
+	private type lt;
+	
+	public Launch(type lt) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.launcher);
+		this.lt = lt;
+		
 	}
 
 	// Called just before this Command runs the first time
@@ -25,11 +33,19 @@ public class LaunchSwitch extends Command {
 		
 		//skip the whole command if the launcher is already activated (to avoid repeats)
 		if(!(Robot.launcher.anyActivated()) || Robot.launcher.checkOnCooldown()) {
-			Robot.launcher.activateSwitch();
+			if(lt.equals(type.SWITCH)) {
+				Robot.launcher.activateSwitch();
+			} else {
+				Robot.launcher.activateScale();
+			}
 			Timer.delay(Constants.kLaunchwait);
-			Robot.launcher.startCooldown(Constants.kSwitchCooldown);
+			if(lt.equals(type.SWITCH)) {
+				Robot.launcher.startCooldown(Constants.kSwitchCooldown);
+			} else {
+				Robot.launcher.startCooldown(Constants.kScaleCooldown);
+			}
+			finished = true;
 		}
-		finished = true;
 	}
 
 	// Called repeatedly when this Command is scheduled to run

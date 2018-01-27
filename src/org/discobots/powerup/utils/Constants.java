@@ -7,4 +7,7 @@ public class Constants {
 	
 	//kLaunchwait - waits this period of time (milliseconds) after a successful launch
 	public static long kLaunchwait = 750;
+	
+	public static long kScaleCooldown = 100;
+	public static long kSwitchCooldown = 100;
 }

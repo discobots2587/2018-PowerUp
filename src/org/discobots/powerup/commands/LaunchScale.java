@@ -3,6 +3,7 @@ package org.discobots.powerup.commands;
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.utils.Constants;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class LaunchScale extends Command {
@@ -22,14 +23,12 @@ public class LaunchScale extends Command {
 		protected void initialize() {
 			
 			//skip the whole command if the launcher is already activated (to avoid repeats)
-			if(!(Robot.launcher.anyActivated())) {
-				try {
-					Robot.launcher.activateScale();
-					this.wait(Constants.kLaunchwait);
-				} catch (InterruptedException e) {
-					System.out.println("Wait post-launch failed");
-				}
+			if(!(Robot.launcher.anyActivated()) || Robot.launcher.checkOnCooldown()) {
+				Robot.launcher.activateScale();
+				Timer.delay(Constants.kLaunchwait);
+				Robot.launcher.startCooldown(Constants.kScaleCooldown);
 			}
+			finished = true;
 		}
 
 		// Called repeatedly when this Command is scheduled to run
