@@ -89,6 +89,9 @@ public class OI {
 		
 		button_RB.whenPressed(new ExampleCommand(50));
 		button_LB.whenPressed(new ExampleCommand(-50));
+		
+		button_Y.whenReleased(new Launch(Launch.type.SCALE));
+		button_X.whenPressed(new Launch(Launch.type.SWITCH));
 	}
 	
 	public double getLX() {
