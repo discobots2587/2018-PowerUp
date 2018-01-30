@@ -16,18 +16,18 @@ import org.discobots.powerup.utils.Constants;
  */
 public class ExampleCommand extends Command {
 	
-	private int difference;
+	//private int difference;
 	
 	public ExampleCommand(int difference) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.launcher);
-		this.difference = difference;
+		//this.difference = difference;
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Constants.kLaunchwait+=difference;
+		//Constants.kLaunchwait+=difference;
 	}
 
 	// Called repeatedly when this Command is scheduled to run

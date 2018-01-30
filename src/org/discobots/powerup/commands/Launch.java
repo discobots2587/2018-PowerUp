@@ -35,15 +35,12 @@ public class Launch extends Command {
 		if(!(Robot.launcher.anyActivated()) || Robot.launcher.checkOnCooldown()) {
 			if(lt.equals(type.SWITCH)) {
 				Robot.launcher.activateSwitch();
+				Timer.delay(Constants.kSwitchWait);
 			} else {
 				Robot.launcher.activateScale();
+				Timer.delay(Constants.kScaleWait);
 			}
-			Timer.delay(Constants.kLaunchwait);
-			if(lt.equals(type.SWITCH)) {
-				Robot.launcher.startCooldown(Constants.kSwitchCooldown);
-			} else {
-				Robot.launcher.startCooldown(Constants.kScaleCooldown);
-			}
+			Robot.launcher.startCooldown(Constants.kLaunchCooldown);
 			finished = true;
 		}
 	}
