@@ -24,7 +24,7 @@ public class LaunchSwitch extends Command {
 		
 		//skip the whole command if the launcher is already activated or on cooldown time (to avoid repeats)
 		if(!(Robot.launcher.anyActivated() || Robot.launcher.checkOnCooldown())) {
-			Robot.launcher.activateSwitch();
+			Robot.launcher.activate();
 			//Timer.delay(Constants.millisToSeconds(Constants.kLaunchwait));
 			//Robot.launcher.startCooldown(Constants.kSwitchCooldown);
 		}

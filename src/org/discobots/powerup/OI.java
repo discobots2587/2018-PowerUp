@@ -79,19 +79,8 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		//button_B.whenPressed(new LaunchSwitch());
-		//button_A.whenPressed(new LaunchScale());
-		
-		button_B.whenPressed(new Activate());
-		button_B.whenReleased(new Deactivate());
-		
-		button_A.whenPressed(new LaunchSwitch());
-		
-		button_RB.whenPressed(new ExampleCommand(50));
-		button_LB.whenPressed(new ExampleCommand(-50));
-		
-		button_Y.whenReleased(new Launch(Launch.type.SCALE));
-		button_X.whenPressed(new Launch(Launch.type.SWITCH));
+		button_A.whenReleased(new Launch(Launch.type.SCALE));
+		button_B.whenPressed(new Launch(Launch.type.SWITCH));
 	}
 	
 	public double getLX() {

@@ -12,7 +12,6 @@ public class Launch extends Command {
 	//time = when the system reaches this time, it will set the solenoid back to 0 (in milliseconds)
 	//finished = will become true when the time is reached
 	public long time;
-	public boolean finished;
 	
 	public enum type {
 			SCALE, SWITCH;
@@ -33,15 +32,19 @@ public class Launch extends Command {
 		
 		//skip the whole command if the launcher is already activated (to avoid repeats)
 		if(!(Robot.launcher.anyActivated()) || Robot.launcher.checkOnCooldown()) {
+			//start cooldown
+			Robot.launcher.startCooldown(Constants.kLaunchCooldown);
+			
+			//if its a switch, then launch switch
 			if(lt.equals(type.SWITCH)) {
-				Robot.launcher.activateSwitch();
+				Robot.launcher.activate();
 				Timer.delay(Constants.kSwitchWait);
 			} else {
-				Robot.launcher.activateScale();
+				Robot.launcher.activate();
 				Timer.delay(Constants.kScaleWait);
 			}
-			Robot.launcher.startCooldown(Constants.kLaunchCooldown);
-			finished = true;
+			
+			Robot.launcher.deactivate();
 		}
 	}
 
@@ -53,14 +56,17 @@ public class Launch extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return finished;
-		//return true;
+		return true;
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.launcher.deactivate();
+		
+		//fix the launcher in the event it is up and stuck there
+		if(!(Robot.launcher.checkOnCooldown())) {
+			Robot.launcher.deactivate();
+		}
 	}
 
 	// Called when another command which requires one or more of the same

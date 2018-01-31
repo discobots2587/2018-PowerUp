@@ -31,8 +31,6 @@ public class Robot extends TimedRobot {
 	public static ArcadeDrive driveCommand;
 			
 	public static OI oi;
-	
-	public static Encoder testEncoder;
 
 	Command autonomousCommand;
 	SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -44,14 +42,13 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		
+		//subsystem initialization
 		launcher = new Launcher();
 		drive = new Drivetrain();
+		
+		//OI and dashboard initialization
 		oi = new OI();
-		
 		Dashboard.init();
-		
-		testEncoder = new Encoder(0, 1, false);
 	}
 
 	/**

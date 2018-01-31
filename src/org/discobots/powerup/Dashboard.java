@@ -8,16 +8,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Dashboard {
 	
 	public static void init() {
-		//SmartDashboard.putNumber("Match Time", Timer.getMatchTime());
+		
 		
 	}
 	
 	public static void update() {
-		/*SmartDashboard.putNumber("xSpeed", Robot.oi.getLY());
-		SmartDashboard.putNumber("zRotation", Robot.oi.getRX());
-		SmartDashboard.putNumber("Encoder", Robot.testEncoder.getRaw());*/
+		SmartDashboard.putNumber("Match Time", Timer.getMatchTime());
 		SmartDashboard.putBoolean("Launcher Ready?", !(Robot.launcher.checkOnCooldown()||Robot.launcher.anyActivated()));
-		SmartDashboard.putNumber("Launch Delay (ms)", Constants.kLaunchwait);
 	}
 	
 	public static void updatePeriodic(double ms, int thr) {
