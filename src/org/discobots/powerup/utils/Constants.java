@@ -6,8 +6,8 @@ public class Constants {
 	public static double kDeadband = 0.1;
 	
 	//kScaleWait and kLaunchWait - the delay for launching with the switch versus launching with the scale
-	public static long kScaleWait = 250;
-	public static long kSwitchWait = 250;
+	public static long kScaleWait = 50;
+	public static long kSwitchWait = 50;
 	
 	//kSwitchCooldown - waits this period of time (milliseconds) after launching 
 	public static long kLaunchCooldown = 0;
