@@ -38,12 +38,24 @@ public class Launch extends Command {
 			//if its a switch, then launch switch
 			if(lt.equals(type.SWITCH)) {
 				Robot.launcher.activate();
+				System.out.println("SWITCH!");
 				Timer.delay(Constants.kSwitchWait);
 			} else {
 				Robot.launcher.activate();
+				System.out.println("SCALE!");
 				Timer.delay(Constants.kScaleWait);
 			}
 			
+			switch(lt) {
+				case SWITCH:
+					System.out.println("Switch");
+					break;
+			case SCALE:
+					System.out.println("Scale");
+					break;
+			default:
+				break;
+			}
 			Robot.launcher.deactivate();
 		}
 	}
