@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.discobots.powerup.HW;
 import org.discobots.powerup.utils.Constants;
+import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -59,7 +60,7 @@ public class Launcher extends Subsystem {
 	//starts a cooldown (disables activating the launcher again) for time amount of milliseconds
 	public void startCooldown(long time) {
 		timer.reset();
-		targetTime = Constants.millisToSeconds(time);
+		targetTime = Utils.millisToSeconds(time);
 		timer.start();
 	}
 	

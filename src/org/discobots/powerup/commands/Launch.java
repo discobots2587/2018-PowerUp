@@ -2,6 +2,7 @@ package org.discobots.powerup.commands;
 
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.utils.Constants;
+import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -39,11 +40,11 @@ public class Launch extends Command {
 			if(lt.equals(type.SWITCH)) {
 				Robot.launcher.activate();
 				System.out.println("SWITCH!");
-				Timer.delay(Constants.kSwitchWait);
+				Timer.delay(Utils.millisToSeconds(Constants.kSwitchWait));
 			} else {
 				Robot.launcher.activate();
 				System.out.println("SCALE!");
-				Timer.delay(Constants.kScaleWait);
+				Timer.delay(Utils.millisToSeconds(Constants.kScaleWait));
 			}
 			
 			switch(lt) {
