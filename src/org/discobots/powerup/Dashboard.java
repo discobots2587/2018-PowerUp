@@ -60,5 +60,9 @@ public class Dashboard {
 	
 	public static void updateLong() {
 		SmartDashboard.putNumber("Match Time", Timer.getMatchTime());
+		
+		SmartDashboard.putNumber("Left Drive Encoder", Robot.drive.m_left_encoder.getRaw());
+		SmartDashboard.putNumber("Right Drive Encoder", Robot.drive.m_right_encoder.getRaw());
+		SmartDashboard.putNumber("Degrees", Robot.arm.armPot.get());
 	}
 }

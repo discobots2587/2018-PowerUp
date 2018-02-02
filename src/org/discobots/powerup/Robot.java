@@ -8,6 +8,7 @@
 package org.discobots.powerup;
 
 import org.discobots.powerup.commands.*;
+import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.subsystems.Intake;
 import org.discobots.powerup.subsystems.Launcher;
@@ -27,7 +28,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 public class Robot extends TimedRobot {
+	public static Arm arm;
 	public static Drivetrain drive;
+	public static Intake intake;
 	public static Launcher launcher;
 	
 	public static ArcadeDrive driveCommand;
@@ -47,8 +50,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		//subsystem initialization
-		launcher = new Launcher();
+		arm = new Arm();
 		drive = new Drivetrain();
+		intake = new Intake();
+		launcher = new Launcher();
 		
 		//OI and dashboard initialization
 		oi = new OI();

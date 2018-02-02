@@ -8,8 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm extends PIDSubsystem {
 	
-	AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer);
-	
+	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer);	
 	
 	public Arm() {
 		super("Arm",2,0,0);
