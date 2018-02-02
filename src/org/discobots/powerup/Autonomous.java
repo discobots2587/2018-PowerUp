@@ -21,6 +21,8 @@ public class Autonomous {
 		}
 
 		Dashboard.autoInit();
+		
+		Robot.autonChooser.getSelected().start();
 	}
 	
 }

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.discobots.powerup.commands.*;
+import org.discobots.powerup.commands.autonomous.TimedAuton;
 import org.discobots.powerup.subsystems.*;
 
 /**
@@ -32,7 +33,7 @@ public class Robot extends TimedRobot {
 			
 	public static OI oi;
 
-	SendableChooser<Command> autoChooser = new SendableChooser<>();
+	static SendableChooser<Command> autonChooser = new SendableChooser<>();
 	SendableChooser<Command> driveChoose = new SendableChooser<>();
 
 	/**
