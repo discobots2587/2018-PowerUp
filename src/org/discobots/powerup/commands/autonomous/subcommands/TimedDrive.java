@@ -1,4 +1,4 @@
-package org.discobots.powerup.commands.autonomous;
+package org.discobots.powerup.commands.autonomous.subcommands;
 
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.commands.Launch.type;
@@ -6,7 +6,7 @@ import org.discobots.powerup.commands.Launch.type;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TimedAuton extends Command {
+public class TimedDrive extends Command {
 
 	private direction dir;
 	private long time;
@@ -15,7 +15,7 @@ public class TimedAuton extends Command {
 		FORWARD, BACKWARD, LEFT, RIGHT
 	}
 	
-	public TimedAuton(direction dir, long t) {
+	public TimedDrive(direction dir, long t) {
 		requires(Robot.drive);
 		this.dir = dir;
 		this.time = t;

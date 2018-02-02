@@ -1,6 +1,8 @@
 package org.discobots.powerup;
 
-import org.discobots.powerup.commands.autonomous.TimedAuton;
+import org.discobots.powerup.commands.autonomous.DrivePastLine;
+import org.discobots.powerup.commands.autonomous.ScoreSwitch;
+import org.discobots.powerup.commands.autonomous.ScoreSwitchAndScale;
 import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -15,12 +17,12 @@ public class Dashboard {
 	private static double longTime = 0.0;
 	
 	public static void init() {
-		Robot.autonChooser.addObject("Drive Past Line (Timed)", new TimedAuton(TimedAuton.direction.FORWARD, 1));
-		Robot.autonChooser.addObject("Drive Past Line", new TimedAuton(TimedAuton.direction.FORWARD, 1));
-		Robot.autonChooser.addObject("Score Switch (Timed)", new TimedAuton(TimedAuton.direction.FORWARD, 1));
-		Robot.autonChooser.addObject("Score Switch", new TimedAuton(TimedAuton.direction.FORWARD, 1));
-		Robot.autonChooser.addObject("Score Switch & Scale (Timed)", new TimedAuton(TimedAuton.direction.FORWARD, 1));
-		Robot.autonChooser.addObject("Score Switch and Scale", new TimedAuton(TimedAuton.direction.FORWARD, 1));
+		Robot.autonChooser.addObject("Drive Past Line (Timed)", new DrivePastLine(true));
+		Robot.autonChooser.addObject("Drive Past Line", new DrivePastLine(false));
+		Robot.autonChooser.addObject("Score Switch (Timed)", new ScoreSwitch(true));
+		Robot.autonChooser.addObject("Score Switch", new ScoreSwitch(false));
+		Robot.autonChooser.addObject("Score Switch & Scale (Timed)", new ScoreSwitchAndScale(true));
+		Robot.autonChooser.addObject("Score Switch and Scale", new ScoreSwitchAndScale(false));
 		
 		SmartDashboard.putData("Auton Chooser", Robot.autonChooser);
 	}

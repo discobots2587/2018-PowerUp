@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.discobots.powerup.commands.*;
-import org.discobots.powerup.commands.autonomous.TimedAuton;
+import org.discobots.powerup.commands.autonomous.subcommands.TimedDrive;
 import org.discobots.powerup.subsystems.*;
 
 /**
