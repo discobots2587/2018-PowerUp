@@ -18,9 +18,17 @@ public class HW {
 	public static int leftDrive = 0;	
 	public static int rightDrive = 1;
 	
-	
 	//PCM ports
 	public static int solenoid1 = 0;
 	public static int solenoid2 = 1;
 	public static int solenoid3 = 2;
+	
+	//DIO ports
+	public static int left_encoder1 = 0;
+	public static int left_encoder2 = 1;
+	public static int right_encoder1 = 2;
+	public static int right_encoder2 = 3;
+	
+	//Analog ports
+	public static int potentiometer = 0;
 }

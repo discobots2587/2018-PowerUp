@@ -1,17 +1,20 @@
 package org.discobots.powerup.subsystems;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive; //west coast / tank
-
 import org.discobots.powerup.HW;
 import org.discobots.powerup.utils.Constants;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive; //west coast / tank
 
 public class Drivetrain extends Subsystem {
 
 	public DifferentialDrive drive;
+	
+	public Encoder m_left_encoder;
+	public Encoder m_right_encoder;
 	
 	public Drivetrain() {
 		Spark m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
@@ -23,6 +26,9 @@ public class Drivetrain extends Subsystem {
 		drive = new DifferentialDrive(left, right);
 		
 		drive.setDeadband(Constants.kDeadband);
+		
+		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2);
+		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2);
 	}
 	
 	public void initDefaultCommand() {
