@@ -1,6 +1,7 @@
 package org.discobots.powerup;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Autonomous {
@@ -22,7 +23,17 @@ public class Autonomous {
 
 		Dashboard.autoInit();
 		
-		//Robot.autonChooser.getSelected().start();
+		Robot.pos = Dashboard.positionChooser.getSelected();
+		//Dashboard.autonChooser.getSelected().start();
+	}
+	
+	public static void periodic() {
+		Scheduler.getInstance().run();
+		Dashboard.update();
+	}
+	
+	public void cancel() {
+		Scheduler.getInstance().removeAll();
 	}
 	
 }

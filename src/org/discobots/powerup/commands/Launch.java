@@ -7,7 +7,6 @@ import org.discobots.powerup.utils.Utils;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-
 public class Launch extends Command {
 	
 	//time = when the system reaches this time, it will set the solenoid back to 0 (in milliseconds)

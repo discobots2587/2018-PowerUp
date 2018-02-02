@@ -7,15 +7,16 @@
 
 package org.discobots.powerup;
 
+import org.discobots.powerup.commands.*;
+import org.discobots.powerup.subsystems.Drivetrain;
+import org.discobots.powerup.subsystems.Intake;
+import org.discobots.powerup.subsystems.Launcher;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.discobots.powerup.commands.*;
-import org.discobots.powerup.commands.autonomous.subcommands.TimedDrive;
-import org.discobots.powerup.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,9 +34,12 @@ public class Robot extends TimedRobot {
 			
 	public static OI oi;
 
-	static SendableChooser<Command> autonChooser = new SendableChooser<>();
-	SendableChooser<Command> driveChoose = new SendableChooser<>();
-
+	public static enum position {
+		LEFT, RIGHT, CENTER
+	}
+	
+	public static position pos;
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.

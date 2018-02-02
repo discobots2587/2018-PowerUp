@@ -6,6 +6,8 @@ import org.discobots.powerup.commands.autonomous.ScoreSwitchAndScale;
 import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Dashboard {
@@ -16,15 +18,23 @@ public class Dashboard {
 	private static double shortTime = 0.0;
 	private static double longTime = 0.0;
 	
+	static SendableChooser<Command> autonChooser = new SendableChooser<>();
+	static SendableChooser<Robot.position> positionChooser = new SendableChooser<>();
+	
 	public static void init() {
-		Robot.autonChooser.addObject("Drive Past Line (Timed)", new DrivePastLine(true));
-		Robot.autonChooser.addObject("Drive Past Line", new DrivePastLine(false));
-		Robot.autonChooser.addObject("Score Switch (Timed)", new ScoreSwitch(true));
-		Robot.autonChooser.addObject("Score Switch", new ScoreSwitch(false));
-		Robot.autonChooser.addObject("Score Switch & Scale (Timed)", new ScoreSwitchAndScale(true));
-		Robot.autonChooser.addObject("Score Switch and Scale", new ScoreSwitchAndScale(false));
+		autonChooser.addObject("Drive Past Line (Timed)", new DrivePastLine(true));
+		autonChooser.addDefault("Drive Past Line", new DrivePastLine(false));
+		autonChooser.addObject("Score Switch (Timed)", new ScoreSwitch(true));
+		autonChooser.addObject("Score Switch", new ScoreSwitch(false));
+		autonChooser.addObject("Score Switch & Scale (Timed)", new ScoreSwitchAndScale(true));
+		autonChooser.addObject("Score Switch and Scale", new ScoreSwitchAndScale(false));
 		
-		SmartDashboard.putData("Auton Chooser", Robot.autonChooser);
+		positionChooser.addDefault("Left", Robot.position.LEFT);
+		positionChooser.addObject("Center", Robot.position.CENTER);
+		positionChooser.addObject("Right", Robot.position.RIGHT);
+		
+		SmartDashboard.putData("Auton Chooser", autonChooser);
+		SmartDashboard.putData("Position", positionChooser);
 	}
 	
 	public static void autoInit() {
