@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Dashboard {
 	
-	private static final double SHORT_DELAY = 0.25;
+	private static final double SHORT_DELAY = 0.1;
 	private static final double LONG_DELAY = 0.5;
 	
 	private static double shortTime = 0.0;
@@ -34,11 +34,10 @@ public class Dashboard {
 	}
 	
 	public static void updateShort() {
-		SmartDashboard.putNumber("Match Time", Timer.getMatchTime());
 		SmartDashboard.putBoolean("Launcher Ready?", !(Robot.launcher.checkOnCooldown()||Robot.launcher.anyActivated()));
 	}
 	
 	public static void updateLong() {
-		
+		SmartDashboard.putNumber("Match Time", Timer.getMatchTime());
 	}
 }

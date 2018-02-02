@@ -11,7 +11,7 @@ public class Constants {
 	public static long kSwitchWait = 50;
 	
 	//kSwitchCooldown - waits this period of time (milliseconds) after launching 
-	public static long kLaunchCooldown = 0;
+	public static long kLaunchCooldown = 500;
 	
 	
 }
