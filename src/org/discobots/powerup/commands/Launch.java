@@ -32,30 +32,22 @@ public class Launch extends Command {
 	protected void initialize() {
 		
 		//skip the whole command if the launcher is already activated (to avoid repeats)
-		if(!(Robot.launcher.anyActivated()) || Robot.launcher.checkOnCooldown()) {
+		if(!(Robot.launcher.anyActivated() || Robot.launcher.checkOnCooldown())) {
 			//start cooldown
 			Robot.launcher.startCooldown(Constants.kLaunchCooldown);
 			
-			//if its a switch, then launch switch
-			if(lt.equals(type.SWITCH)) {
-				Robot.launcher.activate();
-				System.out.println("SWITCH!");
-				Timer.delay(Utils.millisToSeconds(Constants.kSwitchWait));
-			} else {
-				Robot.launcher.activate();
-				System.out.println("SCALE!");
-				Timer.delay(Utils.millisToSeconds(Constants.kScaleWait));
-			}
-			
+			//chooses which one to launch
 			switch(lt) {
 				case SWITCH:
-					System.out.println("Switch");
+					Robot.launcher.activate();
+					Timer.delay(Utils.millisToSeconds(Constants.kSwitchWait));
 					break;
-			case SCALE:
-					System.out.println("Scale");
+				case SCALE:
+					Robot.launcher.activate();
+					Timer.delay(Utils.millisToSeconds(Constants.kScaleWait));
 					break;
-			default:
-				break;
+				default:
+					break;
 			}
 			Robot.launcher.deactivate();
 		}
