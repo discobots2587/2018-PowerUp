@@ -15,7 +15,7 @@ public class Launch extends Command {
 	public long time;
 	
 	public enum type {
-			SCALE, SWITCH;
+		SCALE, SWITCH;
 	}
 	
 	private type lt;

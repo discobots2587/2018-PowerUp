@@ -22,7 +22,7 @@ public class Autonomous {
 
 		Dashboard.autoInit();
 		
-		Robot.autonChooser.getSelected().start();
+		//Robot.autonChooser.getSelected().start();
 	}
 	
 }

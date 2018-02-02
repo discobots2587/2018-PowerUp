@@ -15,12 +15,12 @@ public class Dashboard {
 	private static double longTime = 0.0;
 	
 	public static void init() {
-		Robot.autonChooser.addObject("Drive Past Line (Timed)", new TimedAuton(TimedAuton.type.FORWARD, 1));
-		Robot.autonChooser.addObject("Drive Past Line", new TimedAuton(TimedAuton.type.FORWARD, 1));
-		Robot.autonChooser.addObject("Score Switch (Timed)", new TimedAuton(TimedAuton.type.FORWARD, 1));
-		Robot.autonChooser.addObject("Score Switch", new TimedAuton(TimedAuton.type.FORWARD, 1));
-		Robot.autonChooser.addObject("Score Switch & Scale (Timed)", new TimedAuton(TimedAuton.type.FORWARD, 1));
-		Robot.autonChooser.addObject("Score Switch and Scale", new TimedAuton(TimedAuton.type.FORWARD, 1));
+		Robot.autonChooser.addObject("Drive Past Line (Timed)", new TimedAuton(TimedAuton.direction.FORWARD, 1));
+		Robot.autonChooser.addObject("Drive Past Line", new TimedAuton(TimedAuton.direction.FORWARD, 1));
+		Robot.autonChooser.addObject("Score Switch (Timed)", new TimedAuton(TimedAuton.direction.FORWARD, 1));
+		Robot.autonChooser.addObject("Score Switch", new TimedAuton(TimedAuton.direction.FORWARD, 1));
+		Robot.autonChooser.addObject("Score Switch & Scale (Timed)", new TimedAuton(TimedAuton.direction.FORWARD, 1));
+		Robot.autonChooser.addObject("Score Switch and Scale", new TimedAuton(TimedAuton.direction.FORWARD, 1));
 		
 		SmartDashboard.putData("Auton Chooser", Robot.autonChooser);
 	}
