@@ -64,5 +64,6 @@ public class Dashboard {
 		SmartDashboard.putNumber("Left Drive Encoder", Robot.drive.m_left_encoder.getRaw());
 		SmartDashboard.putNumber("Right Drive Encoder", Robot.drive.m_right_encoder.getRaw());
 		SmartDashboard.putNumber("Degrees", Robot.arm.armPot.get());
+		SmartDashboard.putBoolean("Limit Switch", Robot.arm.limSwitch1.get());
 	}
 }

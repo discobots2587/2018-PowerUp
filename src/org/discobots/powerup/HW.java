@@ -28,6 +28,8 @@ public class HW {
 	public static int left_encoder2 = 1;
 	public static int right_encoder1 = 2;
 	public static int right_encoder2 = 3;
+	public static int limSwitch1 = 4;
+	public static int limSwitch2 = 5;
 	
 	//Analog ports
 	public static int potentiometer = 0;
