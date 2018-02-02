@@ -16,6 +16,11 @@ public class Dashboard {
 	public static void init() {
 	}
 	
+	public static void autoInit() {
+		for(int k = 0; k < 6; k++)
+			SmartDashboard.putBoolean(k+"",Autonomous.scoreSide[k]);
+	}
+	
 	//Short & Long dashboard update based of off 3847's dashboard
 	public static void update() {
 		if((Timer.getFPGATimestamp() - shortTime) > SHORT_DELAY) {
