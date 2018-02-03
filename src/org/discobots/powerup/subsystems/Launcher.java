@@ -2,6 +2,8 @@ package org.discobots.powerup.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.discobots.powerup.HW;
@@ -17,6 +19,12 @@ public class Launcher extends Subsystem {
 	Solenoid sol2;
 	Solenoid sol3;
 	
+	//Compressor, so we can get readings off of it
+	Compressor compressor;
+	
+	//Analog input for pressure sensor
+	public AnalogInput pressureSensor;
+	
 	private double targetTime;
 	
 	private Timer timer;
@@ -30,6 +38,8 @@ public class Launcher extends Subsystem {
 		sol1 = new Solenoid(HW.solenoid1);
 		sol2 = new Solenoid(HW.solenoid2);
 		sol3 = new Solenoid(HW.solenoid3);
+		pressureSensor = new AnalogInput(HW.pressure);
+		compressor = new Compressor();
 		
 		//initialize timer to make sure that it will be false after the cooldown
 		timer = new Timer();
@@ -71,5 +81,10 @@ public class Launcher extends Subsystem {
 			return false;
 		}
 		return true;
+	}
+	
+	//returns pressure from voltage on analog pressure sensor
+	public double getPressure(AnalogInput pressureSensor) {
+		return 250*(pressureSensor.getVoltage()/5)+25;
 	}
 }

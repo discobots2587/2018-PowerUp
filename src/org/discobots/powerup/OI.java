@@ -99,4 +99,7 @@ public class OI {
 		return gp1.getRY();
 	}
 	
+	public double getDPad() {
+		return gp1.getDPAD();
+	}
 }

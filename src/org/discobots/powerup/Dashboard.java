@@ -60,6 +60,7 @@ public class Dashboard {
 	
 	public static void updateShort() {
 		SmartDashboard.putBoolean("Launcher Ready?", !(Robot.launcher.checkOnCooldown()||Robot.launcher.anyActivated()));
+		SmartDashboard.putNumber("Pressure", Robot.launcher.getPressure(Robot.launcher.pressureSensor));
 	}
 	
 	public static void updateLong() {
