@@ -33,5 +33,6 @@ public class HW {
 	
 	//Analog ports
 	public static int potentiometer = 0;
-	public static int pressure = 1;
+	public static int supplyPressure = 1;
+	public static int launcherPressure = 2;
 }

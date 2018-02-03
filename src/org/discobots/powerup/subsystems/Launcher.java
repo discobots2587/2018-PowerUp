@@ -23,7 +23,8 @@ public class Launcher extends Subsystem {
 	Compressor compressor;
 	
 	//Analog input for pressure sensor
-	public AnalogInput pressureSensor;
+	public AnalogInput launcherPressure;
+	public AnalogInput supplyPressure;
 	
 	private double targetTime;
 	
@@ -38,7 +39,8 @@ public class Launcher extends Subsystem {
 		sol1 = new Solenoid(HW.solenoid1);
 		sol2 = new Solenoid(HW.solenoid2);
 		sol3 = new Solenoid(HW.solenoid3);
-		pressureSensor = new AnalogInput(HW.pressure);
+		launcherPressure = new AnalogInput(HW.launcherPressure);
+		supplyPressure = new AnalogInput(HW.supplyPressure);
 		compressor = new Compressor();
 		
 		//initialize timer to make sure that it will be false after the cooldown
@@ -85,6 +87,6 @@ public class Launcher extends Subsystem {
 	
 	//returns pressure from voltage on analog pressure sensor
 	public double getPressure(AnalogInput pressureSensor) {
-		return 250*(pressureSensor.getVoltage()/5)+25;
+		return 250*(pressureSensor.getVoltage()/5)-25;
 	}
 }
