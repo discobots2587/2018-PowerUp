@@ -41,7 +41,13 @@ public class Robot extends TimedRobot {
 		LEFT, RIGHT, CENTER
 	}
 	
+	public static enum autonType {
+		TIMED, ENCODER, GYRO
+	}
+	
 	public static position pos;
+	
+	public static autonType aType;
 	
 	/**
 	 * This function is run when the robot is first started up and should be

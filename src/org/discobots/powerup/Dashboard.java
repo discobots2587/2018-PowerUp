@@ -22,12 +22,14 @@ public class Dashboard {
 	
 	static SendableChooser<Command> autonChooser = new SendableChooser<>();
 	static SendableChooser<Robot.position> positionChooser = new SendableChooser<>();
+	static SendableChooser<Robot.autonType> typeChooser = new SendableChooser<>();
 	
 	public static boolean test = false;
 	
 	public static void init() {
 		autonChooser.addObject("Drive Past Line (Timed)", new DrivePastLine(true));
 		autonChooser.addDefault("Drive Past Line", new DrivePastLine(false));
+		
 		autonChooser.addObject("Score Switch (Timed)", new ScoreSwitch(true));
 		autonChooser.addObject("Score Switch", new ScoreSwitch(false));
 		autonChooser.addObject("Score Switch & Scale (Timed)", new ScoreSwitchAndScale(true));
@@ -36,6 +38,26 @@ public class Dashboard {
 		positionChooser.addDefault("Left", Robot.position.LEFT);
 		positionChooser.addObject("Center", Robot.position.CENTER);
 		positionChooser.addObject("Right", Robot.position.RIGHT);
+		
+		typeChooser.addDefault("Timed", Robot.autonType.TIMED);
+		typeChooser.addObject("Encoder", Robot.autonType.ENCODER);
+		typeChooser.addObject("Gyro", Robot.autonType.GYRO);
+		
+		autonChooser.addDefault("Nothing", new DrivePastLine(true));
+		
+		switch(Robot.pos) {
+		case LEFT:
+			
+			break;
+		case CENTER:
+			
+			break;
+		case RIGHT:
+			
+			break;
+		default:
+			break;
+		}
 		
 		SmartDashboard.putData("Auton Chooser", autonChooser);
 		SmartDashboard.putData("Position", positionChooser);
@@ -60,8 +82,8 @@ public class Dashboard {
 	
 	public static void updateShort() {
 		SmartDashboard.putBoolean("Launcher Ready?", !(Robot.launcher.checkOnCooldown()||Robot.launcher.anyActivated()));
-		SmartDashboard.putNumber("Supply Pressure", Robot.launcher.getPressure(Robot.launcher.supplyPressure));
-		SmartDashboard.putNumber("Launcher Pressure", Robot.launcher.getPressure(Robot.launcher.launcherPressure));
+		SmartDashboard.putNumber("Supply PSI", Robot.launcher.getPressure(Robot.launcher.supplyPressure));
+		SmartDashboard.putNumber("Launcher PSI", Robot.launcher.getPressure(Robot.launcher.launcherPressure));
 	}
 	
 	public static void updateLong() {

@@ -24,6 +24,7 @@ public class Autonomous {
 		Dashboard.autoInit();
 		
 		Robot.pos = Dashboard.positionChooser.getSelected();
+		Robot.aType = Dashboard.typeChooser.getSelected();
 		//Dashboard.autonChooser.getSelected().start();
 	}
 	
