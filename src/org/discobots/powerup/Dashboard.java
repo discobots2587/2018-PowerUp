@@ -23,6 +23,8 @@ public class Dashboard {
 	static SendableChooser<Command> autonChooser = new SendableChooser<>();
 	static SendableChooser<Robot.position> positionChooser = new SendableChooser<>();
 	
+	public static boolean test = false;
+	
 	public static void init() {
 		autonChooser.addObject("Drive Past Line (Timed)", new DrivePastLine(true));
 		autonChooser.addDefault("Drive Past Line", new DrivePastLine(false));
@@ -58,13 +60,6 @@ public class Dashboard {
 	
 	public static void updateShort() {
 		SmartDashboard.putBoolean("Launcher Ready?", !(Robot.launcher.checkOnCooldown()||Robot.launcher.anyActivated()));
-		
-		SmartDashboard.putNumber("Left Drive Encoder", Robot.drive.m_left_encoder.getDistance());
-		SmartDashboard.putNumber("Left Drive Encoder 2", Robot.drive.m_left_encoder.getRate());
-		SmartDashboard.putNumber("Left Drive Encoder 3", Robot.drive.m_left_encoder.get());
-		SmartDashboard.putNumber("Right Drive Encoder", Robot.drive.m_right_encoder.getRaw());
-		SmartDashboard.putNumber("Degrees", Double.valueOf(new DecimalFormat("#.##").format(Robot.arm.armPot.get())));
-		SmartDashboard.putBoolean("Limit Switch", Robot.arm.limSwitch1.get());
 	}
 	
 	public static void updateLong() {

@@ -13,5 +13,6 @@ public class Constants {
 	//kSwitchCooldown - waits this period of time (milliseconds) after launching 
 	public static long kLaunchCooldown = 1000;
 	
-	
+	//kDistPerTick - the distance (in inches) per drive encoder tick
+	public static double kDistPerTick = 1.0;
 }

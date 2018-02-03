@@ -3,6 +3,8 @@ package org.discobots.powerup.subsystems;
 import org.discobots.powerup.HW;
 import org.discobots.powerup.utils.Constants;
 
+import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -27,8 +29,12 @@ public class Drivetrain extends Subsystem {
 		
 		drive.setDeadband(Constants.kDeadband);
 		
-		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2);
-		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2);
+		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2, false, CounterBase.EncodingType.k4X);
+		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, false, CounterBase.EncodingType.k4X);
+		
+		m_left_encoder.setDistancePerPulse(Constants.kDistPerTick);
+		m_right_encoder.setDistancePerPulse(Constants.kDistPerTick);
+		
 	}
 	
 	public void initDefaultCommand() {
@@ -37,10 +43,10 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void arcadeDrive(double xSpeed, double zRotation) { //contrary to the documentation, but that is ok
-		drive.arcadeDrive(zRotation, xSpeed, true); //forward, clockwise = positive; decrease sensitivity at low speed is FALSE
+		drive.arcadeDrive(zRotation, xSpeed, false); //forward, clockwise = positive; decrease sensitivity at low speed is FALSE
 	}
 	
 	public void tankDrive(double left, double right) {
-		drive.tankDrive(left, right, true); //forward = positive; decrease sensitivity at low speed is FALSE
+		drive.tankDrive(left, right, false); //forward = positive; decrease sensitivity at low speed is FALSE
 	}
 }
