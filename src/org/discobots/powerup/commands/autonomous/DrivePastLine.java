@@ -13,15 +13,19 @@ public class DrivePastLine extends CommandGroup {
 
 		this.timed = timed;
 		
-		switch(Robot.pos) {
+		/*switch(Robot.pos) {
 			case LEFT:
 				left();
 				break;
 			case CENTER:
 				center();
+				break;
 			case RIGHT:
 				right();
-		}
+				break;
+			default:
+				break;
+		}*/
 	}
 	
 	private void left() {

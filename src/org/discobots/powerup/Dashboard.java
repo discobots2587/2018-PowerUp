@@ -1,5 +1,7 @@
 package org.discobots.powerup;
 
+import java.text.DecimalFormat;
+
 import org.discobots.powerup.commands.autonomous.DrivePastLine;
 import org.discobots.powerup.commands.autonomous.ScoreSwitch;
 import org.discobots.powerup.commands.autonomous.ScoreSwitchAndScale;
@@ -56,14 +58,18 @@ public class Dashboard {
 	
 	public static void updateShort() {
 		SmartDashboard.putBoolean("Launcher Ready?", !(Robot.launcher.checkOnCooldown()||Robot.launcher.anyActivated()));
+		
+		SmartDashboard.putNumber("Left Drive Encoder", Robot.drive.m_left_encoder.getDistance());
+		SmartDashboard.putNumber("Left Drive Encoder 2", Robot.drive.m_left_encoder.getRate());
+		SmartDashboard.putNumber("Left Drive Encoder 3", Robot.drive.m_left_encoder.get());
+		SmartDashboard.putNumber("Right Drive Encoder", Robot.drive.m_right_encoder.getRaw());
+		SmartDashboard.putNumber("Degrees", Double.valueOf(new DecimalFormat("#.##").format(Robot.arm.armPot.get())));
+		SmartDashboard.putBoolean("Limit Switch", Robot.arm.limSwitch1.get());
 	}
 	
 	public static void updateLong() {
 		SmartDashboard.putNumber("Match Time", Timer.getMatchTime());
 		
-		SmartDashboard.putNumber("Left Drive Encoder", Robot.drive.m_left_encoder.getRaw());
-		SmartDashboard.putNumber("Right Drive Encoder", Robot.drive.m_right_encoder.getRaw());
-		SmartDashboard.putNumber("Degrees", Robot.arm.armPot.get());
-		SmartDashboard.putBoolean("Limit Switch", Robot.arm.limSwitch1.get());
+		
 	}
 }
