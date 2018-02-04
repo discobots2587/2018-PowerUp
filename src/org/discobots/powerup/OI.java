@@ -61,20 +61,21 @@ public class OI {
 	 
 	 //pov = dpad
 	 //axis = joystick
-	Gamepad gp1 = new Gamepad(0);
+	Gamepad p_gp = new Gamepad(0); //primary driver
+	Gamepad s_gp = new Gamepad(1); //secondary driver
 	
 	
 	//create all the buttons, except for d-pad, probably won't use them all
-	private Button button_RB = new JoystickButton(gp1, Gamepad.BTN_RB);
-	private Button button_LB = new JoystickButton(gp1, Gamepad.BTN_LB);
-	private Button button_back = new JoystickButton(gp1, Gamepad.BTN_BACK);
-	private Button button_start = new JoystickButton(gp1, Gamepad.BTN_START);
-	private Button button_A = new JoystickButton(gp1, Gamepad.BTN_A);
-	private Button button_X = new JoystickButton(gp1, Gamepad.BTN_X);
-	private Button button_B = new JoystickButton(gp1, Gamepad.BTN_B);
-	private Button button_Y = new JoystickButton(gp1, Gamepad.BTN_Y);
-	private Button button_RC = new JoystickButton(gp1, Gamepad.BTN_AXIS_R);
-	private Button button_LC = new JoystickButton(gp1, Gamepad.BTN_AXIS_L);
+	private Button button_RB = new JoystickButton(p_gp, Gamepad.BTN_RB);
+	private Button button_LB = new JoystickButton(p_gp, Gamepad.BTN_LB);
+	private Button button_back = new JoystickButton(p_gp, Gamepad.BTN_BACK);
+	private Button button_start = new JoystickButton(p_gp, Gamepad.BTN_START);
+	private Button button_A = new JoystickButton(p_gp, Gamepad.BTN_A);
+	private Button button_X = new JoystickButton(p_gp, Gamepad.BTN_X);
+	private Button button_B = new JoystickButton(p_gp, Gamepad.BTN_B);
+	private Button button_Y = new JoystickButton(p_gp, Gamepad.BTN_Y);
+	private Button button_RC = new JoystickButton(p_gp, Gamepad.BTN_AXIS_R);
+	private Button button_LC = new JoystickButton(p_gp, Gamepad.BTN_AXIS_L);
 	
 	
 	//in here, give the buttons commands
@@ -84,22 +85,22 @@ public class OI {
 	}
 	
 	public double getLX() {
-		return gp1.getLX();
+		return p_gp.getLX();
 	}
 	
 	public double getLY() {
-		return gp1.getLY();
+		return p_gp.getLY();
 	}
 	
 	public double getRX() {
-		return gp1.getRX();
+		return p_gp.getRX();
 	}
 	
 	public double getRY() {
-		return gp1.getRY();
+		return p_gp.getRY();
 	}
 	
 	public double getDPad() {
-		return gp1.getDPAD();
+		return p_gp.getDPAD();
 	}
 }
