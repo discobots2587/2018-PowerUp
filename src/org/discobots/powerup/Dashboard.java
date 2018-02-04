@@ -61,6 +61,7 @@ public class Dashboard {
 		
 		SmartDashboard.putData("Auton Chooser", autonChooser);
 		SmartDashboard.putData("Position", positionChooser);
+		SmartDashboard.putData("Auton Type",typeChooser);
 	}
 	
 	public static void autoInit() {
