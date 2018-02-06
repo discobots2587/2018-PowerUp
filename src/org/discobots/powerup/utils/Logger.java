@@ -99,6 +99,16 @@ public class Logger {
 		}
 	}
 	
+	public void log(String message) {
+		if(this.wantToLog()) {
+			try {
+				this.writer.write(message+"\n");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public boolean wantToLog() {
 		this.logging = SmartDashboard.getBoolean(this.loggerBoolean, false);
 		return this.logging;

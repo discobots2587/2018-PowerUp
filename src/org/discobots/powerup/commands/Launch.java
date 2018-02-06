@@ -3,6 +3,7 @@ package org.discobots.powerup.commands;
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.utils.Constants;
 import org.discobots.powerup.utils.Utils;
+import org.discobots.powerup.utils.Logger;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;

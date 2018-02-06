@@ -12,6 +12,7 @@ import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.subsystems.Intake;
 import org.discobots.powerup.subsystems.Launcher;
+import org.discobots.powerup.utils.Logger;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -48,6 +49,8 @@ public class Robot extends TimedRobot {
 	public static position pos;
 	
 	public static autonType aType;
+	
+	public static Logger logger = Logger.getInstance();
 	
 	/**
 	 * This function is run when the robot is first started up and should be
