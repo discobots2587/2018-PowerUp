@@ -9,36 +9,33 @@ import java.util.Date;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/* Based off of 1114's 2015 Logger */
+/* Based off of 1114's 2015 Logger & Debugger */
 
-public class Logger {
+public class Debugger {
 
-	private static Logger instance;
+	private static Debugger instance;
 	
 	private BufferedWriter writer;
-	private boolean logging = false;
-	private final String loggerBoolean = "Logging";
+	private boolean debugging = false;
+	private final String debuggerBoolean = "Debugging";
 	private String fileName = "";
-	private final String LoggerFileName = "Logger File Name: ";
-	DriverStation ds;
-	
+	private final String DebuggerFileName = "Debugger File Name: ";
 	private int max = 0;
 	
 	private String path;
 	
-	public static Logger getInstance() {
+	public static Debugger getInstance() {
 		if(instance == null) {
-			instance = new Logger();
+			instance = new Debugger();
 		}
 		return instance;
 	}
 	
-	private Logger() {
-		this.ds = DriverStation.getInstance();
-		SmartDashboard.putBoolean(this.loggerBoolean, this.logging);
-		this.logging = SmartDashboard.getBoolean(this.loggerBoolean, false);
-		SmartDashboard.putString(this.LoggerFileName, this.fileName);
-		this.fileName = SmartDashboard.getString(this.LoggerFileName, "");
+	private Debugger() {
+		SmartDashboard.putBoolean(this.debuggerBoolean, this.debugging);
+		this.debugging = SmartDashboard.getBoolean(this.debuggerBoolean, false);
+		SmartDashboard.putString(this.DebuggerFileName, this.fileName);
+		this.fileName = SmartDashboard.getString(this.DebuggerFileName, "");
 		File f = new File("/logs");
 		//File f = new File(System.getProperty("user.home"), "Desktop");
 		if(!f.exists()) {
@@ -66,7 +63,7 @@ public class Logger {
 	}
 	
 	public void openFile() {
-		if(this.wantToLog() || this.ds.isFMSAttached()) {
+		if(this.wantToLog()) {
 			try {
 				path = this.getPath();
 				this.writer = new BufferedWriter(new FileWriter(path));
@@ -79,10 +76,8 @@ public class Logger {
 	}
 	
 	private String getPath() {
-		this.fileName = SmartDashboard.getString(LoggerFileName, "");
-		if(this.ds.isFMSAttached()) {
-			return String.format("/logs/%d_%s_%d_log.txt", ++this.max, this.ds.getAlliance().name(), this.ds.getLocation());
-		} else if(this.fileName != null){ 
+		this.fileName = SmartDashboard.getString(DebuggerFileName, "");
+		if(this.fileName != null){ 
         	return String.format("/logs/%d_%s.txt",++this.max,this.fileName);
         } else {
             return String.format("/logs/%d_log.txt", ++this.max);
@@ -99,19 +94,64 @@ public class Logger {
 		}
 	}
 	
-	public void log(String message) {
+	public void log(String msg, String flag) {
 		if(this.wantToLog()) {
 			try {
-				this.writer.write(message+"\n");
+				this.writer.write("[" + flag + "] " + msg + "\n");
+				System.out.println("[" + flag + "] " + msg);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 	
+	public void log(String msg) {
+		log(msg, "DEBUG");
+	}
+	
+	public void log(int msg, String flag) {
+		log(""+msg, flag);
+	}
+	
+	public void log(int msg) {
+		log(""+msg);
+	}
+	
+	public void log(double msg, String flag) {
+		log(""+msg, flag);
+	}
+	
+	public void log(double msg) {
+		log(""+msg);
+	}
+	
+	public void log(float msg, String flag) {
+		log(""+msg, flag);
+	}
+	
+	public void log(float msg) {
+		log(""+msg);
+	}
+	
+	public void log(long msg, String flag) {
+		log(""+msg, flag);
+	}
+	
+	public void log(long msg) {
+		log(""+msg);
+	}
+	
+	public void log(boolean msg, String flag) {
+		log(""+msg, flag);
+	}
+	
+	public void log(boolean msg) {
+		log(""+msg);
+	}
+	
 	public boolean wantToLog() {
-		this.logging = SmartDashboard.getBoolean(this.loggerBoolean, false);
-		return this.logging;
+		this.debugging = SmartDashboard.getBoolean(this.debuggerBoolean, false);
+		return this.debugging;
 	}
 	
 	public void close() {
