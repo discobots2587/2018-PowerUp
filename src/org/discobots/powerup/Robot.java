@@ -49,8 +49,6 @@ public class Robot extends TimedRobot {
 	
 	public static position pos;
 	
-	public static autonType aType;
-	
 	public static Logger logger = Logger.getInstance();
 	
 	/**
@@ -84,7 +82,9 @@ public class Robot extends TimedRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		if(Timer.getMatchTime()<0)
+		{
 			Dashboard.updatePreMatch();
+		}	
 	}
 
 	/**

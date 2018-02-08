@@ -2,9 +2,7 @@ package org.discobots.powerup;
 
 import java.text.DecimalFormat;
 
-import org.discobots.powerup.commands.autonomous.DrivePastLine;
-import org.discobots.powerup.commands.autonomous.ScoreSwitch;
-import org.discobots.powerup.commands.autonomous.ScoreSwitchAndScale;
+import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.timed.TimedDrivePastLine;
 import org.discobots.powerup.utils.Constants;
 import org.discobots.powerup.utils.Utils;
@@ -26,7 +24,7 @@ public class Dashboard {
 	static SendableChooser<Robot.position> positionChooser = new SendableChooser<>();
 	static SendableChooser<Robot.autonType> typeChooser = new SendableChooser<>();
 	
-	public static boolean test = false;
+	public static Robot.autonType selectedType;
 	
 	public static void init() {
 		positionChooser.addDefault("Left", Robot.position.LEFT);
@@ -39,6 +37,7 @@ public class Dashboard {
 		
 		SmartDashboard.putData("Position", positionChooser);
 		SmartDashboard.putData("Auton Type",typeChooser);
+		
 	}
 	
 	public static void autoInit() {
@@ -60,31 +59,40 @@ public class Dashboard {
 	
 	//only gets called periodically before the match
 	public static void updatePreMatch() {
-		autonChooser.addDefault("Nothing", new DrivePastLine(true));
 		
-		switch(Robot.aType) {
-		case TIMED:
-			autonChooser.addObject("Drive Past Line", new TimedDrivePastLine(Robot.pos));
-			break;
-		case ENCODER:
-			encoderOptions();
-			break;
-		case GYRO:
-			gyroOptions();
-			break;
-		default:
-			break;
+		//check if selected type is null (will always run this on the first time) or check if it changes
+		if((!typeChooser.getSelected().equals(selectedType))||(selectedType == null))
+		{
+			selectedType = typeChooser.getSelected();
+			
+			autonChooser = new SendableChooser<>();
+			autonChooser.addDefault("Nothing", new Nothing());
+			
+			switch(typeChooser.getSelected()) {
+			case TIMED:
+				autonChooser.addObject("Drive Past Line", new TimedDrivePastLine());
+				break;
+			case ENCODER:
+				encoderOptions();
+				break;
+			case GYRO:
+				gyroOptions();
+				break;
+			default:
+				break;
+			}
+			SmartDashboard.putData("Auton Chooser", autonChooser);
 		}
-		SmartDashboard.putData("Auton Chooser", autonChooser);
 	}
 	
 	//encoderOptions, gyroOptions both list out options
 	public static void encoderOptions() {
-		//autonChooser.addObject("Drive Past Line", new EncoderDrivePastLine(Robot.pos));
+		//autonChooser.addObject("Drive Past Line", new EncoderDrivePastLine());
+		autonChooser.addObject("Test Encoder version", new TimedDrivePastLine());
 	}
 	
 	public static void gyroOptions() {
-		//autonChooser.addObject("Drive Past Line", new GyroDrivePastLine(Robot.pos));
+		//autonChooser.addObject("Drive Past Line", new GyroDrivePastLine());
 	}
 	
 	public static void updateShort() {
