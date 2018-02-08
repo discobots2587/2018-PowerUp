@@ -18,6 +18,9 @@ public class HW {
 	public static int leftDrive = 0;	
 	public static int rightDrive = 1;
 	
+	//CAN ports
+	public static int talonsrx_pigeon = 0;
+	
 	//PCM ports
 	public static int solenoid1 = 0;
 	public static int solenoid2 = 1;

@@ -3,6 +3,9 @@ package org.discobots.powerup.subsystems;
 import org.discobots.powerup.HW;
 import org.discobots.powerup.utils.Constants;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.sensors.PigeonIMU;
+
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -18,13 +21,15 @@ public class Drivetrain extends Subsystem {
 	public Encoder m_left_encoder;
 	public Encoder m_right_encoder;
 	
+	public PigeonIMU pigeon;
+	public TalonSRX talon_pigeon;
+	
 	public Drivetrain() {
 		Spark m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
 		SpeedControllerGroup left = new SpeedControllerGroup(m_left);
 
 		Spark m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
 		SpeedControllerGroup right = new SpeedControllerGroup(m_right);
-		
 		
 		drive = new DifferentialDrive(left, right);
 		
@@ -35,6 +40,9 @@ public class Drivetrain extends Subsystem {
 		
 		m_left_encoder.setDistancePerPulse(Constants.kDistPerTick);
 		m_right_encoder.setDistancePerPulse(Constants.kDistPerTick);
+		
+		talon_pigeon = new TalonSRX(HW.talonsrx_pigeon);
+		pigeon = new PigeonIMU(talon_pigeon);
 		
 	}
 	

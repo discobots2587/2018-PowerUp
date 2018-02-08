@@ -7,6 +7,7 @@ import org.discobots.powerup.commands.autonomous.ScoreSwitch;
 import org.discobots.powerup.commands.autonomous.ScoreSwitchAndScale;
 import org.discobots.powerup.commands.autonomous.timed.TimedDrivePastLine;
 import org.discobots.powerup.utils.Constants;
+import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -93,7 +94,7 @@ public class Dashboard {
 	}
 	
 	public static void updateLong() {
-		SmartDashboard.putNumber("Match Time", Timer.getMatchTime());
+		SmartDashboard.putString("Time Left", (Timer.getMatchTime() >= 0.0) ? Utils.secToMinSec(Timer.getMatchTime()) : "-1");
 		
 		
 	}
