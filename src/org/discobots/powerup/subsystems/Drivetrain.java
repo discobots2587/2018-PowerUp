@@ -27,6 +27,7 @@ public class Drivetrain extends Subsystem {
 	public Drivetrain() {
 		Spark m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
 		SpeedControllerGroup left = new SpeedControllerGroup(m_left);
+		left.setInverted(true);
 
 		Spark m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
 		SpeedControllerGroup right = new SpeedControllerGroup(m_right);

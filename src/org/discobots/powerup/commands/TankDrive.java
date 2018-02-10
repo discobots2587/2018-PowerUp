@@ -19,7 +19,7 @@ public class TankDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.tankDrive(Robot.oi.getLY(), Robot.oi.getRY());
+		Robot.drive.tankDrive(Robot.oi.getLY(), -1*Robot.oi.getRY());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
