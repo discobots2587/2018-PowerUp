@@ -80,7 +80,7 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		//button_A.whenReleased(new Launch(Launch.type.SCALE));
+		//button_A.whenPressed(new Launch(Launch.type.SCALE));
 		//button_B.whenPressed(new Launch(Launch.type.SWITCH));
 	}
 	

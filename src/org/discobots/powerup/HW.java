@@ -15,8 +15,8 @@ package org.discobots.powerup;
  */
 public class HW {
 	//PWM ports
-	public static int leftDrive = 0;	
-	public static int rightDrive = 1;
+	public static int leftDrive = 9;	
+	public static int rightDrive = 0;
 	
 	//CAN ports
 	public static int talonsrx_pigeon = 0;

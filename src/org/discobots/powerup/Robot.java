@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Launcher launcher;
 	
-	public static ArcadeDrive driveCommand;
+	public static Command driveCommand;
 			
 	public static OI oi;
 
@@ -115,7 +115,7 @@ public class Robot extends TimedRobot {
 	public void teleopInit() {
 		// Make sure to disable autonomous
 		
-		driveCommand = new ArcadeDrive();
+		driveCommand = Dashboard.driveChooser.getSelected();
 		driveCommand.start();
 	}
 

@@ -7,7 +7,7 @@ public class Nothing extends Command {
 	public Nothing() {
 		
 	}
-
+ 
 	
 	public boolean isFinished() {
 		return true;

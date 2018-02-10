@@ -88,6 +88,12 @@ public class Launcher extends Subsystem {
 	
 	//returns pressure from voltage on analog pressure sensor
 	public double getPressure(AnalogInput pressureSensor) {
+		try {
 		return 250*(pressureSensor.getVoltage()/5)-25;
+		}
+		catch (NullPointerException e){
+			System.out.println("Can't get sensor pressure");
+			return 0;
+		}
 	}
 }

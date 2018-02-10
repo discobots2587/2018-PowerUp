@@ -84,16 +84,6 @@ public class Debugger {
         }
 	}
 	
-	public void logAll() {
-		if(this.wantToLog()) {
-			try {
-				this.writer.write("");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
 	public void log(String msg, String flag) {
 		if(this.wantToLog()) {
 			try {
