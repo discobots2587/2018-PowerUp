@@ -1,8 +1,10 @@
 package org.discobots.powerup;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 public class Autonomous {
 
@@ -11,6 +13,9 @@ public class Autonomous {
 	
 	//scoreSide - 6 booleans, left side close-to-far, then right side close-to-far
 	public static boolean[] scoreSide = new boolean[6];
+	
+	//autonCommand, so we can acccess the selected autonomous command
+	public static Command autonCommand;
 	
 	public static void init() {
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
@@ -24,7 +29,8 @@ public class Autonomous {
 		Dashboard.autoInit();
 		
 		Robot.pos = Dashboard.positionChooser.getSelected();
-		//Dashboard.autonChooser.getSelected().start();
+		autonCommand = Dashboard.autonChooser.getSelected();
+		autonCommand.start();
 	}
 	
 	public static void periodic() {

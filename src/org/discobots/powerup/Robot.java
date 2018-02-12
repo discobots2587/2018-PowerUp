@@ -12,6 +12,7 @@ import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.subsystems.Intake;
 import org.discobots.powerup.subsystems.Launcher;
+import org.discobots.powerup.utils.Debugger;
 import org.discobots.powerup.utils.Logger;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -114,9 +115,20 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopInit() {
 		// Make sure to disable autonomous
+		if(Autonomous.autonCommand != null)
+			Autonomous.autonCommand.cancel();
 		
+		//choose the drive based off of the dashboard, almost always arcade drive
 		driveCommand = Dashboard.driveChooser.getSelected();
-		driveCommand.start();
+		
+		// Instead of a try/catch loop, we can just check if its null
+		if(driveCommand != null)
+			driveCommand.start();
+		else
+		{
+			Debugger.getInstance().log("Drive selector failed, using Arcade Drive","DASH");
+			new ArcadeDrive().start();
+		}
 	}
 
 	/**

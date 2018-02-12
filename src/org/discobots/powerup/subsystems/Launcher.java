@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.discobots.powerup.HW;
 import org.discobots.powerup.utils.Constants;
+import org.discobots.powerup.utils.Debugger;
 import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -71,7 +72,7 @@ public class Launcher extends Subsystem {
 		return (sol1.get())||(sol2.get())||(sol3.get());
 		}
 		catch (NullPointerException e) {
-			System.out.println("Can't get solenoids, is the PCM plugged in?");
+			Debugger.getInstance().log("Can't get solenoid values. Is the PCM plugged in?","PCM");
 			return true;
 		}
 	}
@@ -98,7 +99,7 @@ public class Launcher extends Subsystem {
 		return 250*(pressureSensor.getVoltage()/5)-25;
 		}
 		catch (NullPointerException e){
-			System.out.println("Can't get sensor pressure");
+			Debugger.getInstance().log("Can't get sensor pressure. Is the PCM plugged in?","PCM");
 			return -1;
 		}
 	}
