@@ -67,7 +67,13 @@ public class Launcher extends Subsystem {
 	
 	//returns TRUE if any solenoid is activated (its state is TRUE)
 	public boolean anyActivated() {
+		try {
 		return (sol1.get())||(sol2.get())||(sol3.get());
+		}
+		catch (NullPointerException e) {
+			System.out.println("Can't get solenoids, is the PCM plugged in?");
+			return true;
+		}
 	}
 	
 	//starts a cooldown (disables activating the launcher again) for time amount of milliseconds
@@ -93,7 +99,7 @@ public class Launcher extends Subsystem {
 		}
 		catch (NullPointerException e){
 			System.out.println("Can't get sensor pressure");
-			return 0;
+			return -1;
 		}
 	}
 }
