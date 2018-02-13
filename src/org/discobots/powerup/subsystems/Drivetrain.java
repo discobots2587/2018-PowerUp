@@ -31,6 +31,7 @@ public class Drivetrain extends Subsystem {
 
 		Spark m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
 		SpeedControllerGroup right = new SpeedControllerGroup(m_right);
+		right.setInverted(true);
 		
 		drive = new DifferentialDrive(left, right);
 		
