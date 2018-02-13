@@ -100,7 +100,9 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		p_btn_A.whenPressed(new Launch(Launch.type.SCALE));
 		p_btn_B.whenPressed(new Launch(Launch.type.SWITCH));
+		
+		p_btn_RB.whenPressed(new Test(5));
+		p_btn_LB.whenPressed(new Test(-5));
 	}
 }
