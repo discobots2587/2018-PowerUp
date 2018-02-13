@@ -92,6 +92,5 @@ public class OI {
 	public OI() {
 		p_btn_A.whenPressed(new Launch(Launch.type.SCALE));
 		p_btn_B.whenPressed(new Launch(Launch.type.SWITCH));
-		p_gp.getDPAD();
 	}
 }
