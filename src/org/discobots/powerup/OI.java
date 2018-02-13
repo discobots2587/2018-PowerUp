@@ -61,46 +61,37 @@ public class OI {
 	 
 	 //pov = dpad
 	 //axis = joystick
-	Gamepad p_gp = new Gamepad(0); //primary driver
-	Gamepad s_gp = new Gamepad(1); //secondary driver
+	public Gamepad p_gp = new Gamepad(0); //primary driver
+	public Gamepad s_gp = new Gamepad(1); //secondary driver
 	
+	//create all the buttons for primary controller
+	private Button p_btn_RB = new JoystickButton(p_gp, Gamepad.BTN_RB);
+	private Button p_btn_LB = new JoystickButton(p_gp, Gamepad.BTN_LB);
+	private Button p_btn_RT = new JoystickButton(p_gp, Gamepad.BTN_RT);
+	private Button p_btn_LT = new JoystickButton(p_gp, Gamepad.BTN_LT);
+	private Button p_btn_back = new JoystickButton(p_gp, Gamepad.BTN_BACK);
+	private Button p_btn_start = new JoystickButton(p_gp, Gamepad.BTN_START);
+	private Button p_btn_A = new JoystickButton(p_gp, Gamepad.BTN_A);
+	private Button p_btn_X = new JoystickButton(p_gp, Gamepad.BTN_X);
+	private Button p_btn_B = new JoystickButton(p_gp, Gamepad.BTN_B);
+	private Button p_btn_Y = new JoystickButton(p_gp, Gamepad.BTN_Y);
 	
-	//create all the buttons, except for d-pad, probably won't use them all
-	private Button button_RB = new JoystickButton(p_gp, Gamepad.BTN_RB);
-	private Button button_LB = new JoystickButton(p_gp, Gamepad.BTN_LB);
-	private Button button_back = new JoystickButton(p_gp, Gamepad.BTN_BACK);
-	private Button button_start = new JoystickButton(p_gp, Gamepad.BTN_START);
-	private Button button_A = new JoystickButton(p_gp, Gamepad.BTN_A);
-	private Button button_X = new JoystickButton(p_gp, Gamepad.BTN_X);
-	private Button button_B = new JoystickButton(p_gp, Gamepad.BTN_B);
-	private Button button_Y = new JoystickButton(p_gp, Gamepad.BTN_Y);
-	private Button button_RC = new JoystickButton(p_gp, Gamepad.BTN_AXIS_R);
-	private Button button_LC = new JoystickButton(p_gp, Gamepad.BTN_AXIS_L);
-	
+	//create all the buttons for secondary controller
+	private Button s_btn_RB = new JoystickButton(p_gp, Gamepad.BTN_RB);
+	private Button s_btn_LB = new JoystickButton(p_gp, Gamepad.BTN_LB);
+	private Button s_btn_RT = new JoystickButton(p_gp, Gamepad.BTN_RT);
+	private Button s_btn_LT = new JoystickButton(p_gp, Gamepad.BTN_LT);
+	private Button s_btn_back = new JoystickButton(p_gp, Gamepad.BTN_BACK);
+	private Button s_btn_start = new JoystickButton(p_gp, Gamepad.BTN_START);
+	private Button s_btn_A = new JoystickButton(p_gp, Gamepad.BTN_A);
+	private Button s_btn_X = new JoystickButton(p_gp, Gamepad.BTN_X);
+	private Button s_btn_B = new JoystickButton(p_gp, Gamepad.BTN_B);
+	private Button s_btn_Y = new JoystickButton(p_gp, Gamepad.BTN_Y);
 	
 	//in here, give the buttons commands
 	public OI() {
-		//button_A.whenPressed(new Launch(Launch.type.SCALE));
-		//button_B.whenPressed(new Launch(Launch.type.SWITCH));
-	}
-	
-	public double getLX() {
-		return p_gp.getLX();
-	}
-	
-	public double getLY() {
-		return p_gp.getLY();
-	}
-	
-	public double getRX() {
-		return p_gp.getRX();
-	}
-	
-	public double getRY() {
-		return p_gp.getRY();
-	}
-	
-	public double getDPad() {
-		return p_gp.getDPAD();
+		p_btn_A.whenPressed(new Launch(Launch.type.SCALE));
+		p_btn_B.whenPressed(new Launch(Launch.type.SWITCH));
+		p_gp.getDPAD();
 	}
 }
