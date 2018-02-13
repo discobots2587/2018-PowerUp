@@ -7,6 +7,7 @@ import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderDrivePastLine;
 import org.discobots.powerup.commands.autonomous.timed.TimedDrivePastLine;
+import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.utils.Constants;
 import org.discobots.powerup.utils.Utils;
 
@@ -117,5 +118,6 @@ public class Dashboard {
 		SmartDashboard.putString("Time Left", (Timer.getMatchTime() >= 0.0) ? Utils.secToMinAndSec(Timer.getMatchTime()) : "-1");
 		
 		SmartDashboard.putNumber("Launcher Delay", Constants.kSwitchWait);
+		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.armPot.get());
 	}
 }
