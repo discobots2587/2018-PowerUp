@@ -15,6 +15,8 @@ import org.discobots.powerup.subsystems.Launcher;
 import org.discobots.powerup.utils.Debugger;
 import org.discobots.powerup.utils.Logger;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -67,6 +69,13 @@ public class Robot extends TimedRobot {
 		//OI and dashboard initialization
 		oi = new OI();
 		Dashboard.init();
+		
+		Thread camthread = new Thread(() -> {
+			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
+            camera.setResolution(320, 240);
+            camera.setFPS(30);
+		});
+		camthread.start();
 	}
 
 	/**
@@ -82,8 +91,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		if(Timer.getMatchTime()<0)
-		{
+		if(Timer.getMatchTime() < 0) {
 			Dashboard.updatePreMatch();
 		}	
 	}
@@ -115,8 +123,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopInit() {
 		// Make sure to disable autonomous
-		if(Autonomous.autonCommand != null)
+		if(Autonomous.autonCommand != null) {
 			Autonomous.autonCommand.cancel();
+		}
 		
 		//choose the drive based off of the dashboard, almost always arcade drive
 		driveCommand = Dashboard.driveChooser.getSelected();
@@ -124,8 +133,7 @@ public class Robot extends TimedRobot {
 		// Instead of a try/catch loop, we can just check if its null
 		if(driveCommand != null) {
 			driveCommand.start();
-		}
-		else	{
+		} else {
 			Debugger.getInstance().log("Drive selector failed, using Arcade Drive","DASH");
 			new ArcadeDrive().start();
 		}
