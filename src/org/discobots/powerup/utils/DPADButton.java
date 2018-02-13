@@ -5,9 +5,19 @@ import edu.wpi.first.wpilibj.buttons.Button;
 public class DPADButton extends Button {
 
 	Gamepad gp;
-	double pov;
+	POV pov;
 	
-	public DPADButton(Gamepad gp, double pov) {
+	public enum POV {
+		UP(0), DOWN(180), RIGHT(90), LEFT(270);
+		
+		private final double val;
+		
+		private POV(double val) {
+			this.val = val;
+		}
+	}
+	
+	public DPADButton(Gamepad gp, POV pov) {
 		this.gp = gp;
 		this.pov = pov;
 	}
@@ -15,7 +25,7 @@ public class DPADButton extends Button {
 	@Override
 	public boolean get() {
 		double val = gp.getDPAD();
-		if(val == this.pov) {
+		if(val == this.pov.val) {
 			Debugger.getInstance().log("DPAD" + val);
 			return true;
 		}

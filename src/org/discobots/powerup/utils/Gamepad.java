@@ -8,6 +8,8 @@ import org.discobots.powerup.utils.Constants;
 
 public class Gamepad extends Joystick {
 
+	//Use 'D' not 'X'
+	
 	public static String name = "genericHID";
 	
 	public static int AXIS_LX = 0;

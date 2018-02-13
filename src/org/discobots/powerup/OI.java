@@ -22,6 +22,7 @@ import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.utils.Gamepad;
 import org.discobots.powerup.utils.Constants;
 import org.discobots.powerup.utils.DPADButton;
+import org.discobots.powerup.utils.DPADButton.POV;
 
 //import org.discobots.steamworks.utils.Gamepad.DPadButton;
 
@@ -76,10 +77,10 @@ public class OI {
 	private Button p_btn_X = new JoystickButton(p_gp, Gamepad.BTN_X);
 	private Button p_btn_B = new JoystickButton(p_gp, Gamepad.BTN_B);
 	private Button p_btn_Y = new JoystickButton(p_gp, Gamepad.BTN_Y);
-	private DPADButton p_dpad_up = new DPADButton(p_gp, 0);
-	private DPADButton p_dpad_down = new DPADButton(p_gp, 180);
-	private DPADButton p_dpad_right = new DPADButton(p_gp, 90);
-	private DPADButton p_dpad_left = new DPADButton(p_gp, 270);
+	private DPADButton p_dpad_up = new DPADButton(p_gp, POV.UP);
+	private DPADButton p_dpad_down = new DPADButton(p_gp, POV.DOWN);
+	private DPADButton p_dpad_right = new DPADButton(p_gp, POV.RIGHT);
+	private DPADButton p_dpad_left = new DPADButton(p_gp, POV.LEFT);
 	
 	//create all the buttons for secondary controller
 	private Button s_btn_RB = new JoystickButton(s_gp, Gamepad.BTN_RB);
@@ -92,10 +93,10 @@ public class OI {
 	private Button s_btn_X = new JoystickButton(s_gp, Gamepad.BTN_X);
 	private Button s_btn_B = new JoystickButton(s_gp, Gamepad.BTN_B);
 	private Button s_btn_Y = new JoystickButton(s_gp, Gamepad.BTN_Y);
-	private DPADButton s_dpad_up = new DPADButton(s_gp, 0);
-	private DPADButton s_dpad_down = new DPADButton(s_gp, 180);
-	private DPADButton s_dpad_right = new DPADButton(s_gp, 90);
-	private DPADButton s_dpad_left = new DPADButton(s_gp, 270);
+	private DPADButton s_dpad_up = new DPADButton(s_gp, POV.UP);
+	private DPADButton s_dpad_down = new DPADButton(s_gp, POV.DOWN);
+	private DPADButton s_dpad_right = new DPADButton(s_gp, POV.RIGHT);
+	private DPADButton s_dpad_left = new DPADButton(s_gp, POV.LEFT);
 	
 	//in here, give the buttons commands
 	public OI() {
