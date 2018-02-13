@@ -116,6 +116,6 @@ public class Dashboard {
 	public static void updateLong() {
 		SmartDashboard.putString("Time Left", (Timer.getMatchTime() >= 0.0) ? Utils.secToMinAndSec(Timer.getMatchTime()) : "-1");
 		
-		
+		SmartDashboard.putNumber("Launcher Delay", Constants.kSwitchWait);
 	}
 }

@@ -17,6 +17,8 @@ public class HW {
 	//PWM ports
 	public static int leftDrive = 9;	
 	public static int rightDrive = 0;
+	public static int leftArm = 8;
+	public static int rightArm = 7;
 	
 	//CAN ports
 	public static int talonsrx_pigeon = 0;

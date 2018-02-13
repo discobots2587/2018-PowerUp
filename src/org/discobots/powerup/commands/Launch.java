@@ -24,7 +24,6 @@ public class Launch extends Command {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.launcher);
 		this.lt = lt;
-		
 	}
 
 	// Called just before this Command runs the first time

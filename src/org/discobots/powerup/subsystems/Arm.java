@@ -4,6 +4,7 @@ import org.discobots.powerup.HW;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -13,6 +14,9 @@ public class Arm extends PIDSubsystem {
 	
 	public DigitalInput limSwitch1 = new DigitalInput(HW.limSwitch1);
 	public DigitalInput limSwitch2 = new DigitalInput(HW.limSwitch2);
+	
+	public Spark leftArm = new Spark(HW.leftArm);
+	public Spark rightArm = new Spark(HW.rightArm);
 	
 	public Arm() {
 		super("Arm",2,0,0);
