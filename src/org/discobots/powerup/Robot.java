@@ -122,10 +122,10 @@ public class Robot extends TimedRobot {
 		driveCommand = Dashboard.driveChooser.getSelected();
 		
 		// Instead of a try/catch loop, we can just check if its null
-		if(driveCommand != null)
+		if(driveCommand != null) {
 			driveCommand.start();
-		else
-		{
+		}
+		else	{
 			Debugger.getInstance().log("Drive selector failed, using Arcade Drive","DASH");
 			new ArcadeDrive().start();
 		}

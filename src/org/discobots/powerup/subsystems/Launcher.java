@@ -43,7 +43,6 @@ public class Launcher extends Subsystem {
 		launcherPressure = new AnalogInput(HW.launcherPressure);
 		supplyPressure = new AnalogInput(HW.supplyPressure);
 		compressor = new Compressor();
-		compressor.stop();
 		
 		//initialize timer to make sure that it will be false after the cooldown
 		timer = new Timer();
