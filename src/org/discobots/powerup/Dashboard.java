@@ -117,5 +117,10 @@ public class Dashboard {
 		SmartDashboard.putString("Time Left", (Timer.getMatchTime() >= 0.0) ? Utils.secToMinAndSec(Timer.getMatchTime()) : "-1");
 		
 		SmartDashboard.putNumber("Launcher Delay", Constants.kSwitchWait);
+		
+		SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
+		SmartDashboard.putNumber("GYRO Y", Robot.drive.gyro_xyz[1]);
+		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
+		
 	}
 }

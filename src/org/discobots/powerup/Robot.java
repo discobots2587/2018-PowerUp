@@ -117,6 +117,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		drive.pigeon.getRawGyro(drive.gyro_xyz);
 		Scheduler.getInstance().run();
 	}
 
@@ -144,6 +145,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		drive.pigeon.getRawGyro(drive.gyro_xyz);
 		Dashboard.update();
 		Scheduler.getInstance().run();
 	}

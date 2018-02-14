@@ -9,8 +9,7 @@ public class Nothing extends Command {
 	public Nothing() {
 		Debugger.getInstance().log("Nothing was done for autonomous.","AUTON");
 	}
- 
-	
+
 	public boolean isFinished() {
 		return true;
 	}

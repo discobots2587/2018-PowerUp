@@ -12,7 +12,6 @@ public class AutonArcadeDrive extends Command {
 	private int time;
 	private long endTime;
 	private double speed, rotation;
-	private boolean finished=false;
 	
 	//speed is forward speed, rotation is y rotation, time is in milliseconds
 	public AutonArcadeDrive(double speed, double rotation, int time) {
@@ -31,17 +30,15 @@ public class AutonArcadeDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		while(endTime >= System.currentTimeMillis())
-    	{
+		while(endTime >= System.currentTimeMillis()) {
 			Robot.drive.arcadeDrive(speed,rotation);
     	}
-    	finished=true;
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return finished;
+		return true;
 	}
 
 	// Called once after isFinished returns true

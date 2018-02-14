@@ -11,12 +11,15 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive; //west coast / tank
 
-public class Drivetrain extends Subsystem {
+public class Drivetrain extends PIDSubsystem {
 
 	public DifferentialDrive drive;
+	
+	public Spark m_left;
+	public Spark m_right;
 	
 	public Encoder m_left_encoder;
 	public Encoder m_right_encoder;
@@ -24,12 +27,21 @@ public class Drivetrain extends Subsystem {
 	public PigeonIMU pigeon;
 	public TalonSRX talon_pigeon;
 	
+	public static double kP = 0.1;
+	public static double kI = 0;
+	public static double kD = 0;
+	
+	double cp, ci, cd;
+	
+	public double[] gyro_xyz = new double[3];
+	
 	public Drivetrain() {
-		Spark m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
+		super(kP, kI, kD);
+		m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
 		SpeedControllerGroup left = new SpeedControllerGroup(m_left);
 		left.setInverted(true);
 
-		Spark m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
+		m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
 		SpeedControllerGroup right = new SpeedControllerGroup(m_right);
 		right.setInverted(true);
 		
@@ -59,5 +71,18 @@ public class Drivetrain extends Subsystem {
 	
 	public void tankDrive(double left, double right) {
 		drive.tankDrive(left, right, true); //forward = positive; decrease sensitivity at low speed is TRUE
+	}
+
+	@Override
+	protected double returnPIDInput() {
+		// TODO Auto-generated method stub
+		return gyro_xyz[2];
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		// TODO Auto-generated method stub
+		m_left.pidWrite(output);
+		m_right.pidWrite(output);
 	}
 }
