@@ -94,7 +94,20 @@ public class Drivetrain extends PIDSubsystem {
 		OFF,HIGH,LOW;
 	}
 	
-	public void shift() {
+	public void shift(Drivetrain.shift s) {
+		switch (s) {
+		case OFF:
+			this.gearShifter.set(DoubleSolenoid.Value.kOff);
+			break;
+		case HIGH:
+			this.gearShifter.set(DoubleSolenoid.Value.kForward);
+			break;
+		case LOW:
+			this.gearShifter.set(DoubleSolenoid.Value.kReverse);
+			break;
+		default:
+			break;
+		}
 		
 	}
 }
