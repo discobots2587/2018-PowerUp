@@ -11,8 +11,7 @@ public class Intake extends Subsystem {
 	Spark leftIntake;
 	Spark rightIntake;
 	
-	Solenoid leftClaw;
-	Solenoid rightClaw;
+	Solenoid claw;
 	
 	public void initDefaultCommand() {
 		
@@ -23,21 +22,18 @@ public class Intake extends Subsystem {
 		leftIntake = new Spark(HW.leftIntake);
 		rightIntake = new Spark(HW.rightIntake);
 		
-		leftClaw = new Solenoid(HW.leftClaw);
-		rightClaw = new Solenoid(HW.rightClaw);
+		claw = new Solenoid(HW.claw);
 	}
 	
 	//close - closes the claw
 	public void close() {
-		leftClaw.set(true);
-		rightClaw.set(true);
+		claw.set(true);
 	}
 	
 	//open - opens the claw
 	public void open() {
-		leftClaw.set(false);
-		rightClaw.set(false);
+		claw.set(false);
 	}
 	
-		
+	
 }
