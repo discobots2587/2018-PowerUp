@@ -1,14 +1,16 @@
 package org.discobots.powerup.commands;
 
 import org.discobots.powerup.Robot;
+import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.utils.*;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 
 public class Test extends Command {
 	
-	int num = 0;
+	int num;
 	
 	public Test(int input) {
 		num = input;
@@ -17,8 +19,13 @@ public class Test extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Constants.kSwitchWait+=num;
-		System.out.println(Constants.kSwitchWait);
+		if (num>0) {
+			Robot.drive.gearShifter.set(DoubleSolenoid.Value.kForward);
+		} else if(num<0) {
+			Robot.drive.gearShifter.set(DoubleSolenoid.Value.kReverse);
+		} else {
+			Robot.drive.gearShifter.set(DoubleSolenoid.Value.kOff);
+		}
 	}
 
 	// Called repeatedly when this Command is scheduled to run

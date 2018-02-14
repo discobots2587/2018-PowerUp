@@ -18,15 +18,18 @@ public class HW {
 	public static int leftDrive = 9;	
 	public static int rightDrive = 0;
 	public static int leftArm = 8;
-	public static int rightArm = 7;
+	public static int rightArm = 1;
+	public static int leftIntake = 7;
+	public static int rightIntake = 2;
 	
 	//CAN ports
 	public static int talonsrx_pigeon = 0;
 	
 	//PCM ports
-	public static int solenoid1 = 0;
-	public static int solenoid2 = 1;
-	public static int solenoid3 = 2;
+	public static int launcher1 = 0;
+	public static int launcher2 = 1;
+	public static int launcher3 = 2;
+	public static int claw = 3;
 	
 	//DIO ports
 	public static int left_encoder1 = 0;

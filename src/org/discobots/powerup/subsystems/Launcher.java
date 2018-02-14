@@ -37,9 +37,9 @@ public class Launcher extends Subsystem {
 	
 	//launcher solenoids, and creates a timer for measuring the cooldown delay
 	public Launcher() {
-		sol1 = new Solenoid(HW.solenoid1);
-		sol2 = new Solenoid(HW.solenoid2);
-		sol3 = new Solenoid(HW.solenoid3);
+		sol1 = new Solenoid(HW.launcher1);
+		sol2 = new Solenoid(HW.launcher2);
+		sol3 = new Solenoid(HW.launcher3);
 		launcherPressure = new AnalogInput(HW.launcherPressure);
 		supplyPressure = new AnalogInput(HW.supplyPressure);
 		compressor = new Compressor();

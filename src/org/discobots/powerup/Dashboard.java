@@ -7,6 +7,7 @@ import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderDrivePastLine;
 import org.discobots.powerup.commands.autonomous.timed.TimedDrivePastLine;
+import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.utils.Constants;
 import org.discobots.powerup.utils.Utils;
 
@@ -122,5 +123,6 @@ public class Dashboard {
 		SmartDashboard.putNumber("GYRO Y", Robot.drive.gyro_xyz[1]);
 		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
 		
+		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.armPot.get());
 	}
 }
