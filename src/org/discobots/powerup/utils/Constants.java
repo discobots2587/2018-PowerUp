@@ -8,7 +8,7 @@ public class Constants {
 	
 	//kScaleWait and kLaunchWait - the delay for launching with the switch versus launching with the scale
 	public static long kScaleWait = 250;
-	public static long kSwitchWait = 100;
+	public static long kSwitchWait = 55;
 	
 	//kLaunchCooldown - waits this period of time (milliseconds) after launching 
 	public static long kLaunchCooldown = 1000;

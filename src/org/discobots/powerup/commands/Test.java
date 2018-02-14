@@ -11,20 +11,25 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Test extends Command {
 	
 	int num;
+	boolean bool;
 	
-	public Test(int input) {
+	public Test(boolean inputb, int input) {
 		num = input;
+		bool = inputb;
 	}
 	
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		if (num>0) {
-			Robot.drive.gearShifter.set(DoubleSolenoid.Value.kForward);
-		} else if(num<0) {
-			Robot.drive.gearShifter.set(DoubleSolenoid.Value.kReverse);
-		} else {
-			Robot.drive.gearShifter.set(DoubleSolenoid.Value.kOff);
+		if(bool)
+		{
+			Constants.kScaleWait+=num;
+			System.out.println("Scale: "+Constants.kScaleWait);
+		}
+		else
+		{
+			Constants.kSwitchWait+=num;
+			System.out.println("Switch: "+Constants.kSwitchWait);
 		}
 	}
 

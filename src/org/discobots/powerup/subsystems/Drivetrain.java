@@ -20,7 +20,7 @@ public class Drivetrain extends PIDSubsystem {
 
 	public DifferentialDrive drive;
 	
-	public DoubleSolenoid gearShifter = new DoubleSolenoid(5,6);
+	public DoubleSolenoid gearShifter = new DoubleSolenoid(HW.shifter1,HW.shifter2);
 	
 	public Spark m_left;
 	public Spark m_right;
@@ -88,5 +88,13 @@ public class Drivetrain extends PIDSubsystem {
 		// TODO Auto-generated method stub
 		m_left.pidWrite(output);
 		m_right.pidWrite(output);
+	}
+	
+	public enum shift {
+		OFF,HIGH,LOW;
+	}
+	
+	public void shift() {
+		
 	}
 }

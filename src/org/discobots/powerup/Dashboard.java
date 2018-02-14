@@ -117,7 +117,8 @@ public class Dashboard {
 	public static void updateLong() {
 		SmartDashboard.putString("Time Left", (Timer.getMatchTime() >= 0.0) ? Utils.secToMinAndSec(Timer.getMatchTime()) : "-1");
 		
-		SmartDashboard.putNumber("Launcher Delay", Constants.kSwitchWait);
+		SmartDashboard.putNumber("Switch Delay", Constants.kSwitchWait);
+		SmartDashboard.putNumber("Scale Delay", Constants.kScaleWait);
 		
 		SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
 		SmartDashboard.putNumber("GYRO Y", Robot.drive.gyro_xyz[1]);

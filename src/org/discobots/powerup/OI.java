@@ -17,6 +17,7 @@ import org.discobots.powerup.commands.autonomous.subcommands.*;
 
 //importing all the subsystems
 import org.discobots.powerup.subsystems.Drivetrain;
+import org.discobots.powerup.commands.Launch.type;
 
 //importing all of the utils (mainly gamepad)
 import org.discobots.powerup.utils.Gamepad;
@@ -100,10 +101,13 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		p_btn_B.whenPressed(new Launch(Launch.type.SCALE));
+		p_btn_X.whenPressed(new Launch(Launch.type.SCALE));
+		p_btn_A.whenPressed(new Launch(Launch.type.SWITCH));
 		
-		//p_btn_B.whenPressed(new Test(0));
-		//p_btn_Y.whenPressed(new Test(1));
-		//p_btn_A.whenPressed(new Test(-1));
+		p_btn_RB.whenPressed(new Test(true, 10));
+		p_btn_RT.whenPressed(new Test(false, 5));
+		
+		p_btn_LB.whenPressed(new Test(true, -10));
+		p_btn_LT.whenPressed(new Test(false, -5));
 	}
 }
