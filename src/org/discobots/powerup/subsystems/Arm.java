@@ -14,6 +14,8 @@ public class Arm extends PIDSubsystem {
 	
 	public Spark armMotor = new Spark(HW.armMotor);
 	
+	private int index = 0;
+	
 	public Arm() {
 		super("Arm",2,0,0);
 		setAbsoluteTolerance(0.05);
@@ -23,6 +25,33 @@ public class Arm extends PIDSubsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	}
+	
+	public void setPos(int pos) {
+		switch(pos) {
+		case 0:
+			this.setSetpoint(0);
+			break;
+		case 1:
+			this.setSetpoint(60);
+			break;
+		case 2:
+			this.setSetpoint(180);
+			break;
+		default:
+			this.setSetpoint(0);
+			break;
+		}
+	}
+	
+	public void up() {
+		index = Math.min(++index, 2);
+		setPos(index);
+	}
+	
+	public void down() {
+		index = Math.max(--index, 0);
+		setPos(index);
 	}
 	
 	public double returnPIDInput() {
