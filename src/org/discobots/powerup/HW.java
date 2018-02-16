@@ -17,8 +17,7 @@ public class HW {
 	//PWM ports
 	public static int leftDrive = 9;	
 	public static int rightDrive = 0;
-	public static int leftArm = 8;
-	public static int rightArm = 1;
+	public static int armMotor = 8;
 	public static int leftIntake = 7;
 	public static int rightIntake = 2;
 	

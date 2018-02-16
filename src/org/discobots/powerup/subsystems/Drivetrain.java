@@ -2,6 +2,7 @@ package org.discobots.powerup.subsystems;
 
 import org.discobots.powerup.HW;
 import org.discobots.powerup.utils.Constants;
+import org.discobots.powerup.utils.RampedMotor;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.sensors.PigeonIMU;
@@ -25,6 +26,9 @@ public class Drivetrain extends PIDSubsystem {
 	public Spark m_left;
 	public Spark m_right;
 	
+	public RampedMotor leftDrive;
+	public RampedMotor rightDrive;
+	
 	public Encoder m_left_encoder;
 	public Encoder m_right_encoder;
 	
@@ -39,17 +43,28 @@ public class Drivetrain extends PIDSubsystem {
 	
 	public double[] gyro_xyz = new double[3];
 	
+	public enum shift {
+		OFF,HIGH,LOW;
+	}
+	
 	public Drivetrain() {
 		super(kP, kI, kD);
 		m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
+		
 		SpeedControllerGroup left = new SpeedControllerGroup(m_left);
 		left.setInverted(true);
+		//leftDrive = new RampedMotor(m_left,Constants.kRampband);
+		//leftDrive.setInverted(true);
 
 		m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
+		
 		SpeedControllerGroup right = new SpeedControllerGroup(m_right);
 		right.setInverted(true);
+		//rightDrive = new RampedMotor(m_right,Constants.kRampband);
+		//rightDrive.setInverted(true);
 		
 		drive = new DifferentialDrive(left, right);
+		//drive = new DifferentialDrive(leftDrive, rightDrive);
 		
 		drive.setDeadband(Constants.kDeadband);
 		
@@ -89,11 +104,7 @@ public class Drivetrain extends PIDSubsystem {
 		m_left.pidWrite(output);
 		m_right.pidWrite(output);
 	}
-	
-	public enum shift {
-		OFF,HIGH,LOW;
-	}
-	
+
 	public void shift(Drivetrain.shift s) {
 		switch (s) {
 		case OFF:

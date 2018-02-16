@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Launcher extends Subsystem {
 	
+	public boolean initSuccessful = true;
+	
 	//Solenoids - all three are used for both launching distances
 	Solenoid sol1;
 	Solenoid sol2;
@@ -37,32 +39,47 @@ public class Launcher extends Subsystem {
 	
 	//launcher solenoids, and creates a timer for measuring the cooldown delay
 	public Launcher() {
-		sol1 = new Solenoid(HW.launcher1);
-		sol2 = new Solenoid(HW.launcher2);
-		sol3 = new Solenoid(HW.launcher3);
-		launcherPressure = new AnalogInput(HW.launcherPressure);
-		supplyPressure = new AnalogInput(HW.supplyPressure);
-		compressor = new Compressor();
+		init();
 		
 		//initialize timer to make sure that it will be false after the cooldown
+		launcherPressure = new AnalogInput(HW.launcherPressure);
+		supplyPressure = new AnalogInput(HW.supplyPressure);
 		timer = new Timer();
 		this.startCooldown(0);
 	}
 	
+	public void init() {
+		try {
+			sol1 = new Solenoid(HW.launcher1);
+			sol2 = new Solenoid(HW.launcher2);
+			sol3 = new Solenoid(HW.launcher3);
+			compressor = new Compressor();
+			compressor.stop();
+		}
+		catch (Exception e) {
+			Debugger.getInstance().log("Init error. Is the PCM plugged in?","PCM");
+			initSuccessful = false;
+		}
+	}
+	
 	//activates the launcher
 	public void activate() {
-		if(!(anyActivated())) {
-			sol1.set(true);
-			sol2.set(true);
-			sol3.set(true);
+		if(initSuccessful) {
+			if(!(anyActivated())) {
+				sol1.set(true);
+				sol2.set(true);
+				sol3.set(true);
+			}
 		}
 	}
 	
 	//deactivates the launcher
 	public void deactivate() {
-		sol1.set(false);
-		sol2.set(false);
-		sol3.set(false);
+		if(initSuccessful) {
+			sol1.set(false);
+			sol2.set(false);
+			sol3.set(false);
+		}
 	}
 	
 	//returns TRUE if any solenoid is activated (its state is TRUE)

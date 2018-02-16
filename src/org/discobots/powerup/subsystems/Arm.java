@@ -15,11 +15,12 @@ public class Arm extends PIDSubsystem {
 	public DigitalInput limSwitch1 = new DigitalInput(HW.limSwitch1);
 	public DigitalInput limSwitch2 = new DigitalInput(HW.limSwitch2);
 	
-	public Spark leftArm = new Spark(HW.leftArm);
-	public Spark rightArm = new Spark(HW.rightArm);
+	public Spark armMotor = new Spark(HW.armMotor);
 	
 	public Arm() {
 		super("Arm",2,0,0);
+		setAbsoluteTolerance(0.05);
+		disable();
 	}
 	
 	public void initDefaultCommand() {
@@ -32,6 +33,10 @@ public class Arm extends PIDSubsystem {
 	}
 	
 	public void usePIDOutput(double output) {
-		
+		armMotor.pidWrite(output);
+	}
+	
+	public void set(double output) {
+		armMotor.set(output);
 	}
 }

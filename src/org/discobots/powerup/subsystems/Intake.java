@@ -11,7 +11,7 @@ public class Intake extends Subsystem {
 	Spark leftIntake;
 	Spark rightIntake;
 	
-	Solenoid claw;
+	public Solenoid claw;
 	
 	public void initDefaultCommand() {
 		
@@ -35,5 +35,17 @@ public class Intake extends Subsystem {
 		claw.set(false);
 	}
 	
+	//toggle - toggles the claw
+	public void toggle() {
+		if(claw.get())
+			claw.set(false);
+		else
+			claw.set(true);
+	}
 	
+	//set - drives in at a given speed
+	public void set(double speed) {
+		leftIntake.set(speed);
+		rightIntake.set(speed);
+	}
 }
