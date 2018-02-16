@@ -14,16 +14,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 //importing all the commands
 import org.discobots.powerup.commands.*;
 import org.discobots.powerup.commands.autonomous.subcommands.*;
-
+import org.discobots.powerup.lib.DPADButton;
+import org.discobots.powerup.lib.Gamepad;
+import org.discobots.powerup.lib.DPADButton.POV;
 //importing all the subsystems
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.commands.Launch.type;
-
-//importing all of the utils (mainly gamepad)
-import org.discobots.powerup.utils.Gamepad;
 import org.discobots.powerup.utils.Constants;
-import org.discobots.powerup.utils.DPADButton;
-import org.discobots.powerup.utils.DPADButton.POV;
 
 //import org.discobots.steamworks.utils.Gamepad.DPadButton;
 

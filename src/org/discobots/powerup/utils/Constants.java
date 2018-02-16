@@ -17,7 +17,7 @@ public class Constants {
 	public static long kLaunchCooldown = 1000;
 	
 	//kDistPerTick - the distance (in inches) per drive encoder tick
-	public static double kDistPerTick = 1.0;
+	public static double kDistPerTick = 6.0*Math.PI;
 	
 	//kIntakeSpeed - the speed that the intake motors operate at (both forward and backward)
 	public static double kIntakeSpeed = 0.5;

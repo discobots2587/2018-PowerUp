@@ -1,8 +1,8 @@
 package org.discobots.powerup.subsystems;
 
 import org.discobots.powerup.HW;
+import org.discobots.powerup.lib.RampedMotor;
 import org.discobots.powerup.utils.Constants;
-import org.discobots.powerup.utils.RampedMotor;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.sensors.PigeonIMU;

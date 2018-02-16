@@ -1,4 +1,4 @@
-package org.discobots.powerup.utils;
+package org.discobots.powerup.lib;
 
 import edu.wpi.first.wpilibj.PWMSpeedController;
 import edu.wpi.first.wpilibj.SpeedController;
