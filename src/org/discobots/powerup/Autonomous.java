@@ -27,7 +27,7 @@ public class Autonomous {
 		}
 
 		Dashboard.autoInit();
-		
+		Dashboard.gameData = gameData;
 		Robot.pos = Dashboard.positionChooser.getSelected();
 		autonCommand = Dashboard.autonChooser.getSelected();
 		autonCommand.start();
