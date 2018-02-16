@@ -6,8 +6,8 @@ public class Constants {
 	//kDeadband - driving ignores this value and lower for the controller inputs
 	public static double kDeadband = 0.05;
 	
-	//kRampband - used mainly in the drive, this is the most the drive motor can change by
-	public static double kRampband = 0.2;
+	//kRampband - used mainly in the drive, this is the most the drive motor can change by (2.0 or higher makes this negligible)
+	public static double kRampband = 0.05;
 	
 	//kScaleWait and kLaunchWait - the delay for launching with the switch versus launching with the scale
 	public static long kScaleWait = 85;

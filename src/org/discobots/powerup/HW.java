@@ -17,9 +17,9 @@ public class HW {
 	//PWM ports
 	public static int leftDrive = 9;	
 	public static int rightDrive = 0;
-	public static int armMotor = 8;
-	public static int leftIntake = 7;
-	public static int rightIntake = 2;
+	public static int armMotor = 4;
+	public static int leftIntake = 2;
+	public static int rightIntake = 1;
 	
 	//CAN ports
 	public static int talonsrx_pigeon = 0;
@@ -37,11 +37,10 @@ public class HW {
 	public static int left_encoder2 = 1;
 	public static int right_encoder1 = 2;
 	public static int right_encoder2 = 3;
-	public static int limSwitch1 = 4;
-	public static int limSwitch2 = 5;
 	
 	//Analog ports
-	public static int potentiometer = 0;
 	public static int supplyPressure = 1;
 	public static int launcherPressure = 2;
+	public static int potentiometer = 4;
+	public static int winchSwitch = 6;
 }

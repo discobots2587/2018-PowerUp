@@ -12,9 +12,6 @@ public class Arm extends PIDSubsystem {
 	
 	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer);
 	
-	public DigitalInput limSwitch1 = new DigitalInput(HW.limSwitch1);
-	public DigitalInput limSwitch2 = new DigitalInput(HW.limSwitch2);
-	
 	public Spark armMotor = new Spark(HW.armMotor);
 	
 	public Arm() {

@@ -20,6 +20,8 @@ public class Intake extends Subsystem {
 	//initialize, doesn't do anything special
 	public Intake() {
 		leftIntake = new Spark(HW.leftIntake);
+		leftIntake.setInverted(true);
+		
 		rightIntake = new Spark(HW.rightIntake);
 		
 		claw = new Solenoid(HW.claw);
