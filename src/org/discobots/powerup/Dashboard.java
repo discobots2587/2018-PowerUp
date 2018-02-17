@@ -125,5 +125,7 @@ public class Dashboard {
 		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
 		
 		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.armPot.get());
+		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.get());
+		SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.get());
 	}
 }
