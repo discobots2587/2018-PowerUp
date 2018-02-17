@@ -1,6 +1,7 @@
 package org.discobots.powerup;
 
 import org.discobots.powerup.commands.ArcadeDrive;
+import org.discobots.powerup.commands.ArmManual;
 import org.discobots.powerup.utils.Debugger;
 
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,6 +24,14 @@ public class Teleop {
 			Debugger.getInstance().log("Drive selector failed, using Arcade Drive","DASH");
 			new ArcadeDrive().start();
 		}
+		
+		//disable rampband
+		Robot.drive.leftDrive.setRampBand(2.0);
+		Robot.drive.rightDrive.setRampBand(2.0);
+		
+		//activate arm
+		ArmManual armManual = new ArmManual();
+		armManual.start();
 	}
 	
 	public static void periodic() {

@@ -28,8 +28,9 @@ public class RampedMotor implements SpeedController {
 	
 	public void set(double input) {		
 		double result = 0.0;
-		//if the change is larger than rampBand
-		if(Math.abs(input-previousOutput)>this.rampBand) {
+		
+		//if the change is larger than rampBand (also if the robot is speeding up and not slowing down)
+		if((Math.abs(input-previousOutput)>this.rampBand)&&!(Math.abs(input)<Math.abs(previousOutput))) {
 			//only change it by rampBand
 			result = previousOutput+(Math.copySign(rampBand, input-previousOutput));
 		} else {
