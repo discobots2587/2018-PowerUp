@@ -33,14 +33,14 @@ public class HW {
 	public static int shifter2 = 5;
 	
 	//DIO ports
-	public static int left_encoder1 = 0;
-	public static int left_encoder2 = 1;
-	public static int right_encoder1 = 2;
-	public static int right_encoder2 = 3;
+	public static int left_encoder1 = 2;
+	public static int left_encoder2 = 3;
+	public static int right_encoder1 = 0;
+	public static int right_encoder2 = 1;
 	
 	//Analog ports
+	public static int potentiometer = 0;
 	public static int supplyPressure = 1;
 	public static int launcherPressure = 2;
-	public static int potentiometer = 4;
 	public static int winchSwitch = 6;
 }
