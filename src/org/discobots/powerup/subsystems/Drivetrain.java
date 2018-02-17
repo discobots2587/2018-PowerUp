@@ -51,20 +51,20 @@ public class Drivetrain extends PIDSubsystem {
 		super(kP, kI, kD);
 		m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
 		
-		SpeedControllerGroup left = new SpeedControllerGroup(m_left);
-		left.setInverted(true);
-		//leftDrive = new RampedMotor(m_left,Constants.kRampband);
-		//leftDrive.setInverted(true);
+		//SpeedControllerGroup left = new SpeedControllerGroup(m_left);
+		//left.setInverted(true);
+		leftDrive = new RampedMotor(m_left,Constants.kRampband);
+		leftDrive.setInverted(true);
 
 		m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
 		
-		SpeedControllerGroup right = new SpeedControllerGroup(m_right);
-		right.setInverted(true);
-		//rightDrive = new RampedMotor(m_right,Constants.kRampband);
-		//rightDrive.setInverted(true);
+		//SpeedControllerGroup right = new SpeedControllerGroup(m_right);
+		//right.setInverted(true);
+		rightDrive = new RampedMotor(m_right,Constants.kRampband);
+		rightDrive.setInverted(true);
 		
-		drive = new DifferentialDrive(left, right);
-		//drive = new DifferentialDrive(leftDrive, rightDrive);
+		//drive = new DifferentialDrive(left, right);
+		drive = new DifferentialDrive(leftDrive, rightDrive);
 		
 		drive.setDeadband(Constants.kDeadband);
 		
