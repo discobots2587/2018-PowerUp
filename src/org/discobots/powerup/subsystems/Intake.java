@@ -47,6 +47,10 @@ public class Intake extends Subsystem {
 		}
 	}
 	
+	public boolean getState() {
+		return (claw.get().equals(DoubleSolenoid.Value.kForward));
+	}
+	
 	//set - drives in at a given speed
 	public void set(double speed) {
 		leftIntake.set(speed);

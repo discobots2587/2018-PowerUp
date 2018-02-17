@@ -1,7 +1,7 @@
 package org.discobots.powerup.commands.autonomous.timed;
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.Robot.position;
-import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDrive;
+import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.discobots.powerup.commands.Launch;
 import org.discobots.powerup.commands.Launch.type;;
@@ -11,8 +11,8 @@ public class TimedCrossLineShoot extends CommandGroup {
 	public TimedCrossLineShoot(String gameData, position pos){
 		
 		if(pos == Robot.position.LEFT || pos == Robot.position.RIGHT){
-			addSequential(new AutonArcadeDrive(0.5,0,4000));
-			addSequential(new AutonArcadeDrive(0,1,500));
+			addSequential(new AutonArcadeDriveTimed(0.5,0,4000));
+			addSequential(new AutonArcadeDriveTimed(0,1,500));
 			
 			addSequential(new Launch(Launch.type.SCALE));
 		}
@@ -22,14 +22,14 @@ public class TimedCrossLineShoot extends CommandGroup {
 			if(gameData.charAt(0) == 'L'){
 				//If gameData.charAt(0) == 'L' we want to go straight into the switch
 				//We will place our robot in front of the left switch always
-				addSequential(new AutonArcadeDrive(0.5,0,2000));
+				addSequential(new AutonArcadeDriveTimed(0.5,0,2000));
 				
 			}else{
 				//gameData.charAt(0) == 'R'
 				//We need to go forward a bit, turn to the right then go straight to cross the line,
-				addSequential(new AutonArcadeDrive(0.5,0,500));
-				addSequential(new AutonArcadeDrive(0,-0.5,500));
-				addSequential(new AutonArcadeDrive(0.5,0, 4000));
+				addSequential(new AutonArcadeDriveTimed(0.5,0,500));
+				addSequential(new AutonArcadeDriveTimed(0,-0.5,500));
+				addSequential(new AutonArcadeDriveTimed(0.5,0, 4000));
 			}
 		}
 		

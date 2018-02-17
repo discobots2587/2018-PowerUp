@@ -29,9 +29,14 @@ public class Launch extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		
 		//skip the whole command if the launcher is already activated (to avoid repeats)
 		if(!(Robot.launcher.anyActivated() || Robot.launcher.checkOnCooldown())) {
+			//if the claw is closed, open it and wait for a bit until launching
+			if(Robot.intake.getState()) {
+				Robot.intake.open();
+				Timer.delay(Utils.millisToSeconds(Constants.kIntakeWait));
+			}
+			
 			//start cooldown
 			Robot.launcher.startCooldown(Constants.kLaunchCooldown);
 			

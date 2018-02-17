@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.discobots.powerup.Robot;
 
 
-public class AutonArcadeDrive extends Command {
+public class AutonArcadeDriveTimed extends Command {
 	
 	//time = drive duration in milliseconds
 	//endTime = when the system reaches this time, it will stop driving
@@ -14,7 +14,7 @@ public class AutonArcadeDrive extends Command {
 	private double speed, rotation;
 	
 	//speed is forward speed, rotation is y rotation, time is in milliseconds
-	public AutonArcadeDrive(double speed, double rotation, int time) {
+	public AutonArcadeDriveTimed(double speed, double rotation, int time) {
 		requires(Robot.drive);
 		this.speed = speed;
 		this.rotation = rotation;
