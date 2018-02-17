@@ -1,4 +1,6 @@
-package org.discobots.powerup.utils;
+package org.discobots.powerup.lib;
+
+import org.discobots.powerup.utils.Debugger;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 

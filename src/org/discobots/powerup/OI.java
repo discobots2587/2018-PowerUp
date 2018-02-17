@@ -14,16 +14,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 //importing all the commands
 import org.discobots.powerup.commands.*;
 import org.discobots.powerup.commands.autonomous.subcommands.*;
-
+import org.discobots.powerup.lib.DPADButton;
+import org.discobots.powerup.lib.Gamepad;
+import org.discobots.powerup.lib.DPADButton.POV;
 //importing all the subsystems
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.commands.Launch.type;
-
-//importing all of the utils (mainly gamepad)
-import org.discobots.powerup.utils.Gamepad;
 import org.discobots.powerup.utils.Constants;
-import org.discobots.powerup.utils.DPADButton;
-import org.discobots.powerup.utils.DPADButton.POV;
 
 //import org.discobots.steamworks.utils.Gamepad.DPadButton;
 
@@ -110,7 +107,7 @@ public class OI {
 		p_btn_LB.whenPressed(new Test(true, -1));
 		p_btn_LT.whenPressed(new Test(false, -1));*/
 		
-		p_btn_RB.whenPressed(new IntakeSet(Constants.kIntakeSpeed));
+		/*p_btn_RB.whenPressed(new IntakeSet(Constants.kIntakeSpeed));
 		p_btn_RB.whenReleased(new IntakeSet(0));
 		
 		p_btn_RT.whenPressed(new IntakeSet(-Constants.kIntakeSpeed));
@@ -120,7 +117,7 @@ public class OI {
 		p_btn_LB.whenReleased(new ArmSet(0));
 		
 		p_btn_LT.whenPressed(new ArmSet(-0.5));
-		p_btn_LT.whenReleased(new ArmSet(0));
+		p_btn_LT.whenReleased(new ArmSet(0));*/
 		
 		/*p_btn_B.whenPressed(new IntakeState(true));
 		p_btn_A.whenPressed(new IntakeState(false));

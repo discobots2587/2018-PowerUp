@@ -2,13 +2,11 @@ package org.discobots.powerup;
 
 import java.text.DecimalFormat;
 
-import org.discobots.powerup.Robot.position;
 import org.discobots.powerup.commands.ArcadeDrive;
 import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderDrivePastLine;
-import org.discobots.powerup.commands.autonomous.timed.TimedCrossLineShoot;
-import org.discobots.powerup.commands.autonomous.timed.TimedCrossLine;
+import org.discobots.powerup.commands.autonomous.timed.TimedDrivePastLine;
 import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.utils.Constants;
 import org.discobots.powerup.utils.Utils;
@@ -33,7 +31,6 @@ public class Dashboard {
 	public static SendableChooser<Command> driveChooser = new SendableChooser<>();
 	
 	public static Robot.autonType selectedType;
-	public static String gameData;
 	
 	public static void init() {
 		positionChooser.addDefault("Left", Robot.position.LEFT);
@@ -70,11 +67,6 @@ public class Dashboard {
 		}
 	}
 	
-	//Set gameData
-	public void setGameData(String gameDataStr){
-		gameData = gameDataStr;
-	}
-	
 	//only gets called periodically before the match
 	public static void updatePreMatch() {
 		
@@ -90,8 +82,7 @@ public class Dashboard {
 			
 			switch(typeChooser.getSelected()) {
 			case TIMED:
-				position pos = positionChooser.getSelected();
-				autonChooser.addObject("[Timed] Drive Past Line", new TimedCrossLineShoot(gameData, pos));
+				autonChooser.addObject("[Timed] Drive Past Line", new TimedDrivePastLine());
 				break;
 			case ENCODER:
 				encoderOptions();
@@ -134,5 +125,8 @@ public class Dashboard {
 		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
 		
 		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.armPot.get());
+		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.get());
+		SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.get());
 	}
 }
+

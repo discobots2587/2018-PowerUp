@@ -1,8 +1,8 @@
 package org.discobots.powerup.subsystems;
 
 import org.discobots.powerup.HW;
+import org.discobots.powerup.lib.RampedMotor;
 import org.discobots.powerup.utils.Constants;
-import org.discobots.powerup.utils.RampedMotor;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.sensors.PigeonIMU;
@@ -51,25 +51,25 @@ public class Drivetrain extends PIDSubsystem {
 		super(kP, kI, kD);
 		m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
 		
-		SpeedControllerGroup left = new SpeedControllerGroup(m_left);
-		left.setInverted(true);
-		//leftDrive = new RampedMotor(m_left,Constants.kRampband);
-		//leftDrive.setInverted(true);
+		//SpeedControllerGroup left = new SpeedControllerGroup(m_left);
+		//left.setInverted(true);
+		leftDrive = new RampedMotor(m_left,Constants.kRampband);
+		leftDrive.setInverted(true);
 
 		m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
 		
-		SpeedControllerGroup right = new SpeedControllerGroup(m_right);
-		right.setInverted(true);
-		//rightDrive = new RampedMotor(m_right,Constants.kRampband);
-		//rightDrive.setInverted(true);
+		//SpeedControllerGroup right = new SpeedControllerGroup(m_right);
+		//right.setInverted(true);
+		rightDrive = new RampedMotor(m_right,Constants.kRampband);
+		rightDrive.setInverted(true);
 		
-		drive = new DifferentialDrive(left, right);
-		//drive = new DifferentialDrive(leftDrive, rightDrive);
+		//drive = new DifferentialDrive(left, right);
+		drive = new DifferentialDrive(leftDrive, rightDrive);
 		
 		drive.setDeadband(Constants.kDeadband);
 		
 		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2, false, CounterBase.EncodingType.k4X);
-		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, false, CounterBase.EncodingType.k4X);
+		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, true, CounterBase.EncodingType.k4X);
 		
 		m_left_encoder.setDistancePerPulse(Constants.kDistPerTick);
 		m_right_encoder.setDistancePerPulse(Constants.kDistPerTick);
@@ -80,8 +80,6 @@ public class Drivetrain extends PIDSubsystem {
 	}
 	
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
 	}
 	
 	public void arcadeDrive(double xSpeed, double zRotation) { //contrary to the documentation, but that is ok
@@ -94,13 +92,11 @@ public class Drivetrain extends PIDSubsystem {
 
 	@Override
 	protected double returnPIDInput() {
-		// TODO Auto-generated method stub
 		return gyro_xyz[2];
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		// TODO Auto-generated method stub
 		m_left.pidWrite(output);
 		m_right.pidWrite(output);
 	}

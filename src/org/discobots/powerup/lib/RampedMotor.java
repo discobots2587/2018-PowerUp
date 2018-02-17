@@ -1,4 +1,4 @@
-package org.discobots.powerup.utils;
+package org.discobots.powerup.lib;
 
 import edu.wpi.first.wpilibj.PWMSpeedController;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -27,25 +27,26 @@ public class RampedMotor implements SpeedController {
 	}
 	
 	public void set(double input) {		
+		double result = 0.0;
 		//if the change is larger than rampBand
 		if(Math.abs(input-previousOutput)>this.rampBand) {
 			//only change it by rampBand
-			motor.set(previousOutput+(Math.copySign(rampBand, input-previousOutput)));
+			result = previousOutput+(Math.copySign(rampBand, input-previousOutput));
 		} else {
 			//if not, just set it to the input
-			motor.set(input);
+			result = input;
 		}
+		motor.set(result);
+		this.previousOutput = result;
 	}
 
 	@Override
 	public double get() {
-		// TODO Auto-generated method stub
 		return this.motor.get();
 	}
 
 	@Override
 	public boolean getInverted() {
-		// TODO Auto-generated method stub
 		return this.motor.getInverted();
 	}
 	
@@ -56,13 +57,11 @@ public class RampedMotor implements SpeedController {
 
 	@Override
 	public void disable() {
-		// TODO Auto-generated method stub
 		this.motor.disable();
 	}
 
 	@Override
 	public void stopMotor() {
-		// TODO Auto-generated method stub
 		this.motor.stopMotor();
 	}
 }
