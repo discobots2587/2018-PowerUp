@@ -2,6 +2,7 @@ package org.discobots.powerup.subsystems;
 
 import org.discobots.powerup.HW;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -11,7 +12,7 @@ public class Intake extends Subsystem {
 	Spark leftIntake;
 	Spark rightIntake;
 	
-	public Solenoid claw;
+	public DoubleSolenoid claw;
 	
 	public void initDefaultCommand() {
 		
@@ -24,25 +25,25 @@ public class Intake extends Subsystem {
 		
 		rightIntake = new Spark(HW.rightIntake);
 		
-		claw = new Solenoid(HW.claw);
+		claw = new DoubleSolenoid(HW.claw1,HW.claw2);
 	}
 	
 	//close - closes the claw
 	public void close() {
-		claw.set(true);
+		claw.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	//open - opens the claw
 	public void open() {
-		claw.set(false);
+		claw.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	//toggle - toggles the claw
 	public void toggle() {
-		if(claw.get())
-			claw.set(false);
+		if(claw.get().equals(DoubleSolenoid.Value.kReverse))
+			claw.set(DoubleSolenoid.Value.kForward);
 		else
-			claw.set(true);
+			claw.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	//set - drives in at a given speed

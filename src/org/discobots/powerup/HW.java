@@ -28,9 +28,10 @@ public class HW {
 	public static int launcher1 = 0;
 	public static int launcher2 = 1;
 	public static int launcher3 = 2;
-	public static int claw = 3;
-	public static int shifter1 = 4;
-	public static int shifter2 = 5;
+	public static int claw1 = 3;
+	public static int claw2 = 4;
+	public static int shifter1 = 5;
+	public static int shifter2 = 6;
 	
 	//DIO ports
 	public static int left_encoder1 = 2;

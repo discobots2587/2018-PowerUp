@@ -107,7 +107,7 @@ public class OI {
 		p_btn_LB.whenPressed(new Test(true, -1));
 		p_btn_LT.whenPressed(new Test(false, -1));*/
 		
-		p_btn_RB.whenPressed(new IntakeSet(Constants.kIntakeSpeed));
+		/*p_btn_RB.whenPressed(new IntakeSet(Constants.kIntakeSpeed));
 		p_btn_RB.whenReleased(new IntakeSet(0));
 		
 		p_btn_RT.whenPressed(new IntakeSet(-Constants.kIntakeSpeed));
@@ -117,7 +117,7 @@ public class OI {
 		p_btn_LB.whenReleased(new ArmSet(0));
 		
 		p_btn_LT.whenPressed(new ArmSet(-0.5));
-		p_btn_LT.whenReleased(new ArmSet(0));
+		p_btn_LT.whenReleased(new ArmSet(0));*/
 		
 		/*p_btn_B.whenPressed(new IntakeState(true));
 		p_btn_A.whenPressed(new IntakeState(false));

@@ -69,7 +69,7 @@ public class Drivetrain extends PIDSubsystem {
 		drive.setDeadband(Constants.kDeadband);
 		
 		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2, false, CounterBase.EncodingType.k4X);
-		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, false, CounterBase.EncodingType.k4X);
+		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, true, CounterBase.EncodingType.k4X);
 		
 		m_left_encoder.setDistancePerPulse(Constants.kDistPerTick);
 		m_right_encoder.setDistancePerPulse(Constants.kDistPerTick);
