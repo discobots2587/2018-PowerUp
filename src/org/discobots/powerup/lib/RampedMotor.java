@@ -39,13 +39,11 @@ public class RampedMotor implements SpeedController {
 
 	@Override
 	public double get() {
-		// TODO Auto-generated method stub
 		return this.motor.get();
 	}
 
 	@Override
 	public boolean getInverted() {
-		// TODO Auto-generated method stub
 		return this.motor.getInverted();
 	}
 	
@@ -56,13 +54,11 @@ public class RampedMotor implements SpeedController {
 
 	@Override
 	public void disable() {
-		// TODO Auto-generated method stub
 		this.motor.disable();
 	}
 
 	@Override
 	public void stopMotor() {
-		// TODO Auto-generated method stub
 		this.motor.stopMotor();
 	}
 }
