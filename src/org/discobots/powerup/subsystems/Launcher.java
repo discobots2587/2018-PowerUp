@@ -23,7 +23,7 @@ public class Launcher extends Subsystem {
 	Solenoid sol3;
 	
 	//Compressor, so we can get readings off of it
-	Compressor compressor;
+	static Compressor compressor;
 	
 	//Analog input for pressure sensor
 	public AnalogInput launcherPressure;
@@ -46,17 +46,19 @@ public class Launcher extends Subsystem {
 		supplyPressure = new AnalogInput(HW.supplyPressure);
 		timer = new Timer();
 		this.startCooldown(0);
+		
 	}
 	
 	public void init() {
+		compressor = new Compressor(HW.pcm24v);
 		try {
-			sol1 = new Solenoid(HW.launcher1);
-			sol2 = new Solenoid(HW.launcher2);
-			sol3 = new Solenoid(HW.launcher3);
-			compressor = new Compressor();
+			Debugger.getInstance().log("\n\n\n Compressor starting \n\n\n");
+			compressor.start();
+			sol1 = new Solenoid(HW.pcm12v, HW.launcher1);
+			sol2 = new Solenoid(HW.pcm12v, HW.launcher2);
+			sol3 = new Solenoid(HW.pcm12v, HW.launcher3);
 			compressor.stop();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			Debugger.getInstance().log("Init error. Is the PCM plugged in?","PCM");
 			initSuccessful = false;
 		}
@@ -85,9 +87,8 @@ public class Launcher extends Subsystem {
 	//returns TRUE if any solenoid is activated (its state is TRUE)
 	public boolean anyActivated() {
 		try {
-		return (sol1.get())||(sol2.get())||(sol3.get());
-		}
-		catch (NullPointerException e) {
+			return (sol1.get())||(sol2.get())||(sol3.get());
+		} catch (NullPointerException e) {
 			Debugger.getInstance().log("Can't get solenoid values. Is the PCM plugged in?","PCM");
 			return true;
 		}
@@ -112,11 +113,17 @@ public class Launcher extends Subsystem {
 	//returns pressure from voltage on analog pressure sensor
 	public double getPressure(AnalogInput pressureSensor) {
 		try {
-		return 250*(pressureSensor.getVoltage()/5)-25;
-		}
-		catch (NullPointerException e){
+			return 250*(pressureSensor.getVoltage()/5)-25;
+		} catch (NullPointerException e){
 			Debugger.getInstance().log("Can't get sensor pressure. Is the PCM plugged in?","PCM");
 			return -1;
 		}
+	}
+	
+	public static Compressor getCompressorInstance() {
+		if(compressor == null) {
+			compressor = new Compressor(HW.pcm24v);
+		}
+		return compressor;
 	}
 }

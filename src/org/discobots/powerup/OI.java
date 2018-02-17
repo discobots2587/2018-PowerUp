@@ -10,6 +10,7 @@ package org.discobots.powerup;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 //importing all the commands
 import org.discobots.powerup.commands.*;
@@ -19,6 +20,7 @@ import org.discobots.powerup.lib.Gamepad;
 import org.discobots.powerup.lib.DPADButton.POV;
 //importing all the subsystems
 import org.discobots.powerup.subsystems.Drivetrain;
+import org.discobots.powerup.subsystems.Launcher;
 import org.discobots.powerup.commands.Launch.type;
 import org.discobots.powerup.utils.Constants;
 
@@ -107,7 +109,7 @@ public class OI {
 		p_btn_LB.whenPressed(new Test(true, -1));
 		p_btn_LT.whenPressed(new Test(false, -1));*/
 		
-		/*p_btn_RB.whenPressed(new IntakeSet(Constants.kIntakeSpeed));
+		p_btn_RB.whenPressed(new IntakeSet(Constants.kIntakeSpeed));
 		p_btn_RB.whenReleased(new IntakeSet(0));
 		
 		p_btn_RT.whenPressed(new IntakeSet(-Constants.kIntakeSpeed));
@@ -117,10 +119,51 @@ public class OI {
 		p_btn_LB.whenReleased(new ArmSet(0));
 		
 		p_btn_LT.whenPressed(new ArmSet(-0.5));
-		p_btn_LT.whenReleased(new ArmSet(0));*/
+		p_btn_LT.whenReleased(new ArmSet(0));
 		
-		/*p_btn_B.whenPressed(new IntakeState(true));
+		p_btn_B.whenPressed(new IntakeState(true));
 		p_btn_A.whenPressed(new IntakeState(false));
-		p_btn_X.whenPressed(new IntakeState(!(Robot.intake.claw.get())));*/
+		//p_btn_X.whenPressed(new IntakeState(!(Robot.intake.claw.get())));
+		
+		s_btn_B.whenPressed(new Command() {
+
+			@Override
+			public void initialize() {
+				Launcher.getCompressorInstance().start();
+			}
+			
+			@Override
+			protected boolean isFinished() {
+				// TODO Auto-generated method stub
+				return true;
+			}
+		});
+		s_btn_A.whenPressed(new Command() {
+
+			@Override
+			public void initialize() {
+				Launcher.getCompressorInstance().stop();
+			}
+			
+			@Override
+			protected boolean isFinished() {
+				// TODO Auto-generated method stub
+				return true;
+			}
+		});
+		
+		s_btn_X.whenPressed(new Command() {
+			@Override
+			public void initialize() {
+				Robot.drive.m_left_encoder.reset();
+				Robot.drive.m_right_encoder.reset();
+			}
+			
+			@Override
+			protected boolean isFinished() {
+				return true;
+			}
+		});
+		
 	}
 }

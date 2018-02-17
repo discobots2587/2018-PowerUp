@@ -15,33 +15,37 @@ package org.discobots.powerup;
  */
 public class HW {
 	//PWM ports
-	public static int leftDrive = 9;	
-	public static int rightDrive = 0;
-	public static int armMotor = 4;
-	public static int leftIntake = 2;
+	public static int rightDrive  = 0;
+	public static int leftDrive   = 9;
 	public static int rightIntake = 1;
+	public static int leftIntake  = 2;
+	public static int armMotor    = 3;
 	
 	//CAN ports
 	public static int talonsrx_pigeon = 0;
 	
-	//PCM ports
+	//PCM (12V) ports
+	public static int pcm12v    = 0; //CAN id
 	public static int launcher1 = 0;
 	public static int launcher2 = 1;
 	public static int launcher3 = 2;
-	public static int claw1 = 3;
-	public static int claw2 = 4;
+	
+	//PCM (24V) ports
+	public static int pcm24v   = 1; //CAN id
+	public static int claw1    = 3;
+	public static int claw2    = 4;
 	public static int shifter1 = 5;
 	public static int shifter2 = 6;
 	
 	//DIO ports
-	public static int left_encoder1 = 2;
-	public static int left_encoder2 = 3;
 	public static int right_encoder1 = 0;
 	public static int right_encoder2 = 1;
+	public static int left_encoder1  = 2;
+	public static int left_encoder2  = 3;
 	
 	//Analog ports
-	public static int potentiometer = 0;
-	public static int supplyPressure = 1;
+	public static int potentiometer    = 0;
+	public static int supplyPressure   = 1;
 	public static int launcherPressure = 2;
-	public static int winchSwitch = 6;
+	public static int winchSwitch      = 6;
 }

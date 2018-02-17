@@ -25,7 +25,7 @@ public class Intake extends Subsystem {
 		
 		rightIntake = new Spark(HW.rightIntake);
 		
-		claw = new DoubleSolenoid(HW.claw1,HW.claw2);
+		claw = new DoubleSolenoid(HW.pcm24v, HW.claw1, HW.claw2);
 	}
 	
 	//close - closes the claw
@@ -40,10 +40,11 @@ public class Intake extends Subsystem {
 	
 	//toggle - toggles the claw
 	public void toggle() {
-		if(claw.get().equals(DoubleSolenoid.Value.kReverse))
+		if(claw.get().equals(DoubleSolenoid.Value.kReverse)) {
 			claw.set(DoubleSolenoid.Value.kForward);
-		else
+		} else {
 			claw.set(DoubleSolenoid.Value.kReverse);
+		}
 	}
 	
 	//set - drives in at a given speed

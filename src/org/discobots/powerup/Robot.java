@@ -70,12 +70,12 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		Dashboard.init();
 		
-		Thread camthread = new Thread(() -> {
+		/*Thread camthread = new Thread(() -> {
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
             camera.setResolution(320, 240);
             camera.setFPS(30);
 		});
-		camthread.start();
+		camthread.start();*/
 	}
 
 	/**
@@ -117,27 +117,12 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		drive.pigeon.getRawGyro(drive.gyro_xyz);
-		Scheduler.getInstance().run();
+		Autonomous.periodic();
 	}
 
 	@Override
 	public void teleopInit() {
-		// Make sure to disable autonomous
-		if(Autonomous.autonCommand != null) {
-			Autonomous.autonCommand.cancel();
-		}
-		
-		//choose the drive based off of the dashboard, almost always arcade drive
-		driveCommand = Dashboard.driveChooser.getSelected();
-		
-		// Instead of a try/catch loop, we can just check if its null
-		if(driveCommand != null) {
-			driveCommand.start();
-		} else {
-			Debugger.getInstance().log("Drive selector failed, using Arcade Drive","DASH");
-			new ArcadeDrive().start();
-		}
+		Teleop.init();
 	}
 
 	/**
@@ -145,9 +130,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		//drive.pigeon.getRawGyro(drive.gyro_xyz);
-		Dashboard.update();
-		Scheduler.getInstance().run();
+		Teleop.periodic();
 	}
 
 	/**

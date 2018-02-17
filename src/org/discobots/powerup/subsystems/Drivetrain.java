@@ -21,7 +21,7 @@ public class Drivetrain extends PIDSubsystem {
 
 	public DifferentialDrive drive;
 	
-	public DoubleSolenoid gearShifter = new DoubleSolenoid(HW.shifter1,HW.shifter2);
+	public DoubleSolenoid gearShifter = new DoubleSolenoid(HW.shifter1, HW.shifter2);
 	
 	public Spark m_left;
 	public Spark m_right;
@@ -42,6 +42,7 @@ public class Drivetrain extends PIDSubsystem {
 	double cp, ci, cd;
 	
 	public double[] gyro_xyz = new double[3];
+	public double[] ypr      = new double[3];
 	
 	public enum shift {
 		OFF,HIGH,LOW;

@@ -5,8 +5,8 @@ import java.text.DecimalFormat;
 import org.discobots.powerup.commands.ArcadeDrive;
 import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderDrivePastLine;
-import org.discobots.powerup.commands.autonomous.timed.TimedDrivePastLine;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
+import org.discobots.powerup.commands.autonomous.timed.TimedCrossLine;
 import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.utils.Constants;
 import org.discobots.powerup.utils.Utils;
@@ -52,7 +52,7 @@ public class Dashboard {
 	
 	public static void autoInit() {
 		for(int k = 0; k < 6; k++)
-			SmartDashboard.putBoolean(k+"",Autonomous.scoreSide[k]);
+			SmartDashboard.putBoolean(k+"", Autonomous.scoreSide[k]);
 	}
 	
 	//Short & Long dashboard update based of off 3847's dashboard
@@ -71,8 +71,7 @@ public class Dashboard {
 	public static void updatePreMatch() {
 		
 		//check if selected type is null (will always run this on the first time) or check if it changes
-		if((!typeChooser.getSelected().equals(selectedType))||(selectedType == null))
-		{
+		if((!typeChooser.getSelected().equals(selectedType))||(selectedType == null)) {
 			selectedType = typeChooser.getSelected();
 			
 			SmartDashboard.delete("Auton Chooser");
@@ -82,7 +81,7 @@ public class Dashboard {
 			
 			switch(typeChooser.getSelected()) {
 			case TIMED:
-				autonChooser.addObject("[Timed] Drive Past Line", new TimedDrivePastLine());
+				//autonChooser.addObject("[Timed] Drive Past Line", new TimedCrossLine(Autonomous.gameData, Robot.pos));
 				break;
 			case ENCODER:
 				encoderOptions();
@@ -100,7 +99,7 @@ public class Dashboard {
 	//encoderOptions, gyroOptions both list out options
 	public static void encoderOptions() {
 		//autonChooser.addObject("Drive Past Line", new EncoderDrivePastLine());
-		autonChooser.addObject("[Enc] Drive Past Line", new EncoderDrivePastLine());
+		autonChooser.addObject("[Enc] Drive Past Line", new EncoderCrossLine());
 	}
 	
 	public static void gyroOptions() {
@@ -110,8 +109,8 @@ public class Dashboard {
 	
 	public static void updateShort() {
 		SmartDashboard.putBoolean("Launcher Ready?", !(Robot.launcher.checkOnCooldown()||Robot.launcher.anyActivated()));
-		SmartDashboard.putNumber("Supply PSI",Double.parseDouble(new DecimalFormat("###.##").format(Robot.launcher.getPressure(Robot.launcher.supplyPressure))));
-		SmartDashboard.putNumber("Launcher PSI",Double.parseDouble(new DecimalFormat("###.##").format(Robot.launcher.getPressure(Robot.launcher.launcherPressure))));
+		SmartDashboard.putNumber("Supply PSI", Double.parseDouble(new DecimalFormat("###.##").format(Robot.launcher.getPressure(Robot.launcher.supplyPressure))));
+		SmartDashboard.putNumber("Launcher PSI", Double.parseDouble(new DecimalFormat("###.##").format(Robot.launcher.getPressure(Robot.launcher.launcherPressure))));
 	}
 	
 	public static void updateLong() {
@@ -120,9 +119,13 @@ public class Dashboard {
 		SmartDashboard.putNumber("Switch Delay", Constants.kSwitchWait);
 		SmartDashboard.putNumber("Scale Delay", Constants.kScaleWait);
 		
-		SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
+		/*SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
 		SmartDashboard.putNumber("GYRO Y", Robot.drive.gyro_xyz[1]);
 		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
+		
+		SmartDashboard.putNumber("Yaw", Robot.drive.ypr[0]);
+		SmartDashboard.putNumber("Pitch", Robot.drive.ypr[1]);
+		SmartDashboard.putNumber("Roll", Robot.drive.ypr[2]);*/
 		
 		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.armPot.get());
 		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.get());

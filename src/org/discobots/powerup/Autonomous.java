@@ -27,13 +27,14 @@ public class Autonomous {
 		}
 
 		Dashboard.autoInit();
-		Dashboard.gameData = gameData;
 		Robot.pos = Dashboard.positionChooser.getSelected();
 		autonCommand = Dashboard.autonChooser.getSelected();
 		autonCommand.start();
 	}
 	
 	public static void periodic() {
+		//Robot.drive.pigeon.getRawGyro(Robot.drive.gyro_xyz);
+		//Robot.drive.pigeon.getYawPitchRoll(Robot.drive.ypr);
 		Scheduler.getInstance().run();
 		Dashboard.update();
 	}
