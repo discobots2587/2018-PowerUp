@@ -41,8 +41,9 @@ public class Drivetrain extends PIDSubsystem {
 	
 	double cp, ci, cd;
 	
-	public double[] gyro_xyz = new double[3];
-	public double[] ypr      = new double[3];
+	public double[] gyro_xyz  = new double[3];
+	public double[] ypr       = new double[3];
+	public double[] accel_xyz = new double[3];
 	
 	public enum shift {
 		OFF,HIGH,LOW;
