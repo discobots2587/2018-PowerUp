@@ -42,6 +42,7 @@ public class HW {
 	public static int right_encoder2 = 1;
 	public static int left_encoder1  = 2;
 	public static int left_encoder2  = 3;
+	public static int arm_switch_bottom = 9; //temp
 	
 	//Analog ports
 	public static int supplyPressure   = 1;

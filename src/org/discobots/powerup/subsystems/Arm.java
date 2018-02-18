@@ -14,6 +14,8 @@ public class Arm extends PIDSubsystem {
 	
 	public Spark armMotor = new Spark(HW.armMotor);
 	
+	public DigitalInput switch_bottom = new DigitalInput(HW.arm_switch_bottom);
+	
 	private int index = 0;
 	
 	public Arm() {
@@ -63,6 +65,10 @@ public class Arm extends PIDSubsystem {
 	}
 	
 	public void set(double output) {
-		armMotor.set(output);
+		if(switch_bottom.get()) {
+			armMotor.set(0.0);
+		} else {
+			armMotor.set(output);
+		}
 	}
 }
