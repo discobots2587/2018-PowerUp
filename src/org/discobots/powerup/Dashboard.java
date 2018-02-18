@@ -81,7 +81,7 @@ public class Dashboard {
 			
 			switch(typeChooser.getSelected()) {
 			case TIMED:
-				//autonChooser.addObject("[Timed] Drive Past Line", new TimedCrossLine(Autonomous.gameData, Robot.pos));
+				autonChooser.addObject("[Timed] Drive Past Line", new TimedCrossLine(Autonomous.gameData, Robot.pos));
 				break;
 			case ENCODER:
 				encoderOptions();
@@ -98,7 +98,6 @@ public class Dashboard {
 	
 	//encoderOptions, gyroOptions both list out options
 	public static void encoderOptions() {
-		//autonChooser.addObject("Drive Past Line", new EncoderDrivePastLine());
 		autonChooser.addObject("[Enc] Drive Past Line", new EncoderCrossLine());
 	}
 	

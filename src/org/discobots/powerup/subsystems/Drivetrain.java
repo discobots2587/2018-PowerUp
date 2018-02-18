@@ -84,7 +84,7 @@ public class Drivetrain extends PIDSubsystem {
 	}
 	
 	public void arcadeDrive(double xSpeed, double zRotation) { //contrary to the documentation, but that is ok
-		drive.arcadeDrive(zRotation, xSpeed, true); //forward, clockwise = positive; decrease sensitivity at low speed is TRUE
+		drive.arcadeDrive(xSpeed, zRotation, true); //forward, clockwise = positive; decrease sensitivity at low speed is TRUE
 	}
 	
 	public void tankDrive(double left, double right) {

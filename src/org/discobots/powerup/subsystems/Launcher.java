@@ -50,14 +50,13 @@ public class Launcher extends Subsystem {
 	}
 	
 	public void init() {
-		compressor = new Compressor(HW.pcm24v);
+		compressor = new Compressor(HW.pcm12v);
 		try {
 			Debugger.getInstance().log("\n\n\n Compressor starting \n\n\n");
 			compressor.start();
 			sol1 = new Solenoid(HW.pcm12v, HW.launcher1);
 			sol2 = new Solenoid(HW.pcm12v, HW.launcher2);
 			sol3 = new Solenoid(HW.pcm12v, HW.launcher3);
-			compressor.stop();
 		} catch (Exception e) {
 			Debugger.getInstance().log("Init error. Is the PCM plugged in?","PCM");
 			initSuccessful = false;
@@ -122,7 +121,7 @@ public class Launcher extends Subsystem {
 	
 	public static Compressor getCompressorInstance() {
 		if(compressor == null) {
-			compressor = new Compressor(HW.pcm24v);
+			compressor = new Compressor(HW.pcm12v);
 		}
 		return compressor;
 	}

@@ -41,7 +41,6 @@ public class ArcadeDrive extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Debugger.getInstance().log("Arcade Drive interrupted", "DRIVE");
 		end();
 	}
 }

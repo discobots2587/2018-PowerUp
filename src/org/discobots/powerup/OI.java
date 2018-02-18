@@ -100,10 +100,10 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		/*p_btn_X.whenPressed(new Launch(Launch.type.SCALE));
+		p_btn_X.whenPressed(new Launch(Launch.type.SCALE));
 		p_btn_A.whenPressed(new Launch(Launch.type.SWITCH));
 		
-		p_btn_RB.whenPressed(new Test(true, 1));
+		/*p_btn_RB.whenPressed(new Test(true, 1));
 		p_btn_RT.whenPressed(new Test(false, 1));
 		
 		p_btn_LB.whenPressed(new Test(true, -1));
@@ -122,35 +122,8 @@ public class OI {
 		p_btn_LT.whenReleased(new ArmSet(0));
 		
 		p_btn_B.whenPressed(new IntakeState(true));
-		p_btn_A.whenPressed(new IntakeState(false));
+		p_btn_Y.whenPressed(new IntakeState(false));
 		//p_btn_X.whenPressed(new IntakeState(!(Robot.intake.claw.get())));
-		
-		s_btn_B.whenPressed(new Command() {
-
-			@Override
-			public void initialize() {
-				Launcher.getCompressorInstance().start();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				// TODO Auto-generated method stub
-				return true;
-			}
-		});
-		s_btn_A.whenPressed(new Command() {
-
-			@Override
-			public void initialize() {
-				Launcher.getCompressorInstance().stop();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				// TODO Auto-generated method stub
-				return true;
-			}
-		});
 		
 		s_btn_X.whenPressed(new Command() {
 			@Override

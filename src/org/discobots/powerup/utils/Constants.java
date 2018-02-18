@@ -10,8 +10,8 @@ public class Constants {
 	public static double kRampband = 0.05;
 	
 	//kScaleWait and kLaunchWait - the delay for launching with the switch versus launching with the scale
-	public static long kScaleWait = 85;
-	public static long kSwitchWait = 43;
+	public static long kScaleWait = 80;
+	public static long kSwitchWait = 46;
 	
 	//kIntakeWait - the delay between setting the intake to open and launching the cube
 	public static long kIntakeWait = 250;

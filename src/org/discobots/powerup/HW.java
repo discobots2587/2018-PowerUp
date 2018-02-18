@@ -32,10 +32,10 @@ public class HW {
 	
 	//PCM (24V) ports
 	public static int pcm24v   = 1; //CAN id
-	public static int claw1    = 3;
-	public static int claw2    = 4;
-	public static int shifter1 = 5;
-	public static int shifter2 = 6;
+	public static int claw1    = 0;
+	public static int claw2    = 1;
+	public static int shifter1 = 6;
+	public static int shifter2 = 7;
 	
 	//DIO ports
 	public static int right_encoder1 = 0;
