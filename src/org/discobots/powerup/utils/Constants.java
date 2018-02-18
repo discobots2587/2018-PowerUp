@@ -11,10 +11,10 @@ public class Constants {
 	
 	//kScaleWait and kLaunchWait - the delay for launching with the switch versus launching with the scale
 	public static long kScaleWait = 80;
-	public static long kSwitchWait = 46;
+	public static long kSwitchWait = 45;
 	
 	//kIntakeWait - the delay between setting the intake to open and launching the cube
-	public static long kIntakeWait = 250;
+	public static long kIntakeWait = 150;
 	
 	//kLaunchCooldown - waits this period of time (milliseconds) after launching 
 	public static long kLaunchCooldown = 1000;

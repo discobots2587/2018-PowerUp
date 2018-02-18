@@ -44,8 +44,7 @@ public class HW {
 	public static int left_encoder2  = 3;
 	
 	//Analog ports
-	public static int potentiometer    = 0;
 	public static int supplyPressure   = 1;
 	public static int launcherPressure = 2;
-	public static int winchSwitch      = 6;
+	public static int potentiometer    = 3;
 }

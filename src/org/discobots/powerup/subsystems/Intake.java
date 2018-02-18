@@ -30,12 +30,12 @@ public class Intake extends Subsystem {
 	
 	//close - closes the claw
 	public void close() {
-		claw.set(DoubleSolenoid.Value.kForward);
+		claw.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	//open - opens the claw
 	public void open() {
-		claw.set(DoubleSolenoid.Value.kReverse);
+		claw.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	//toggle - toggles the claw
@@ -47,8 +47,9 @@ public class Intake extends Subsystem {
 		}
 	}
 	
+	//getState (returns TRUE if closed)
 	public boolean getState() {
-		return (claw.get().equals(DoubleSolenoid.Value.kForward));
+		return (claw.get().equals(DoubleSolenoid.Value.kReverse));
 	}
 	
 	//set - drives in at a given speed

@@ -16,9 +16,9 @@ public class IntakeState extends Command {
 	@Override
 	public void initialize() {
 		if(state)
-			Robot.intake.open();
-		else
 			Robot.intake.close();
+		else
+			Robot.intake.open();
 	}
 	
 	@Override

@@ -69,7 +69,7 @@ public class Dashboard {
 	
 	//only gets called periodically before the match
 	public static void updatePreMatch() {
-		
+		/*
 		//check if selected type is null (will always run this on the first time) or check if it changes
 		if((!typeChooser.getSelected().equals(selectedType))||(selectedType == null)) {
 			selectedType = typeChooser.getSelected();
@@ -93,7 +93,7 @@ public class Dashboard {
 				break;
 			}
 			SmartDashboard.putData("Auton Chooser", autonChooser);
-		}
+		}*/
 	}
 	
 	//encoderOptions, gyroOptions both list out options
