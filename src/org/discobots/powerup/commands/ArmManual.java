@@ -18,7 +18,10 @@ public class ArmManual extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.arm.set(Robot.oi.s_gp.getLY());
+		//don't set it when the joystick is low, so we won't freeze the arm
+		if(Math.abs(Robot.oi.s_gp.getLY())>0.1) {
+			Robot.arm.set(Robot.oi.s_gp.getLY());
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -37,7 +40,6 @@ public class ArmManual extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		end();
 	}
 
 }

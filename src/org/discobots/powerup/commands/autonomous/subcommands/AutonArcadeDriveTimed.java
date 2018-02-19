@@ -9,8 +9,8 @@ public class AutonArcadeDriveTimed extends Command {
 	//time = drive duration in milliseconds
 	//endTime = when the system reaches this time, it will stop driving
 	//finished = will become true when the time is reached
-	private int time;
-	private long endTime;
+	private double time;
+	private double endTime;
 	private double speed, rotation;
 	
 	//speed is forward speed, rotation is y rotation, time is in milliseconds
@@ -30,15 +30,13 @@ public class AutonArcadeDriveTimed extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		while(endTime >= System.currentTimeMillis()) {
-			Robot.drive.arcadeDrive(speed,rotation);
-    	}
+		Robot.drive.arcadeDrive(speed,rotation);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return true;
+		return (endTime<=System.currentTimeMillis());
 	}
 
 	// Called once after isFinished returns true

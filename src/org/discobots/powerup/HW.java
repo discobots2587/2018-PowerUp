@@ -20,6 +20,7 @@ public class HW {
 	public static int rightIntake = 1;
 	public static int leftIntake  = 2;
 	public static int armMotor    = 3;
+	public static int winch		  = 4;
 	
 	//CAN ports
 	public static int talonsrx_pigeon = 0;

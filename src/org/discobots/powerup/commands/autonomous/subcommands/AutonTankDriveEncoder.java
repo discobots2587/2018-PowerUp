@@ -1,6 +1,7 @@
 package org.discobots.powerup.commands.autonomous.subcommands;
 
 import org.discobots.powerup.Robot;
+import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,6 +12,8 @@ public class AutonTankDriveEncoder extends Command {
 	private double leftDistance,rightDistance;
 	private double leftDistanceEnd,rightDistanceEnd;
 	private double speed;
+	private boolean leftComplete,rightComplete;
+	private double maxDistance;
 	
 	//speed is forward speed, rotation is y rotation, distance is in ticks(?)
 	public AutonTankDriveEncoder(double speed, double leftDistance, double rightDistance) {
@@ -25,18 +28,35 @@ public class AutonTankDriveEncoder extends Command {
 	protected void initialize() {
 		leftDistanceEnd = Robot.drive.m_left_encoder.getDistance()+leftDistance;
 		rightDistanceEnd = Robot.drive.m_right_encoder.getDistance()+rightDistance;
+		leftComplete = rightComplete = false;
+		maxDistance = Math.max(leftDistance, rightDistance);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		//scale each side's speed and set the drive to it
+		double leftSpeed = this.speed*(leftDistance/maxDistance);
+		double rightSpeed = this.speed*(rightDistance/maxDistance);
+		Robot.drive.tankDrive(leftSpeed,rightSpeed);
 		
+		if(leftDistance<=0) {
+			leftComplete = (Robot.drive.m_left_encoder.getDistance()<=leftDistanceEnd);
+		} else {
+			leftComplete = (Robot.drive.m_left_encoder.getDistance()>=leftDistanceEnd);
+		}
+		
+		if(rightDistance<=0) {
+			rightComplete = (Robot.drive.m_right_encoder.getDistance()<=rightDistanceEnd);
+		} else {
+			rightComplete = (Robot.drive.m_right_encoder.getDistance()>=rightDistanceEnd);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return true;
+		return leftComplete && rightComplete;
 	}
 
 	// Called once after isFinished returns true

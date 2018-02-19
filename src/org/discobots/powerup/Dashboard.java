@@ -6,6 +6,7 @@ import org.discobots.powerup.commands.ArcadeDrive;
 import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
 import org.discobots.powerup.commands.autonomous.timed.TimedCrossLine;
 import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.utils.Constants;
@@ -69,7 +70,10 @@ public class Dashboard {
 	
 	//only gets called periodically before the match
 	public static void updatePreMatch() {
-		/*
+		/*if(Robot.pos == null) {
+			Robot.pos = Robot.position.CENTER;
+		}
+		
 		//check if selected type is null (will always run this on the first time) or check if it changes
 		if((!typeChooser.getSelected().equals(selectedType))||(selectedType == null)) {
 			selectedType = typeChooser.getSelected();
@@ -99,6 +103,7 @@ public class Dashboard {
 	//encoderOptions, gyroOptions both list out options
 	public static void encoderOptions() {
 		autonChooser.addObject("[Enc] Drive Past Line", new EncoderCrossLine());
+		autonChooser.addObject("[Enc] Scale", new EncoderCrossLineScale());
 	}
 	
 	public static void gyroOptions() {

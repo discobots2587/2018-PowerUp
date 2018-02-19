@@ -1,5 +1,9 @@
 package org.discobots.powerup;
 
+import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
+import org.discobots.powerup.commands.autonomous.subcommands.TimedTest;
+import org.discobots.powerup.commands.autonomous.subcommands.TimedTestSwitch;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -28,7 +32,7 @@ public class Autonomous {
 
 		Dashboard.autoInit();
 		Robot.pos = Dashboard.positionChooser.getSelected();
-		autonCommand = Dashboard.autonChooser.getSelected();
+		autonCommand = new TimedTestSwitch();
 		autonCommand.start();
 	}
 	

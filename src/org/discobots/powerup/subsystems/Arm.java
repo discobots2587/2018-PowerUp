@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm extends PIDSubsystem {
 	
-	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer);
+	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer,360,-156);
 	
 	public Spark armMotor = new Spark(HW.armMotor);
 	
@@ -32,13 +32,16 @@ public class Arm extends PIDSubsystem {
 	public void setPos(int pos) {
 		switch(pos) {
 		case 0:
-			this.setSetpoint(0);
+			//intake parallel to ground
+			this.setSetpoint(80);
 			break;
 		case 1:
+			//intake ready to unload to switch
 			this.setSetpoint(60);
 			break;
 		case 2:
-			this.setSetpoint(180);
+			//intake holding cube above catapult
+			this.setSetpoint(0);
 			break;
 		default:
 			this.setSetpoint(0);
@@ -61,14 +64,15 @@ public class Arm extends PIDSubsystem {
 	}
 	
 	public void usePIDOutput(double output) {
-		armMotor.pidWrite(output);
+		this.set(output);
 	}
 	
 	public void set(double output) {
-		if(switch_bottom.get()) {
+		/*if(switch_bottom.get()) {
 			armMotor.set(0.0);
 		} else {
 			armMotor.set(output);
-		}
+		}*/
+		armMotor.set(output);
 	}
 }

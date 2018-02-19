@@ -12,6 +12,7 @@ import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.subsystems.Intake;
 import org.discobots.powerup.subsystems.Launcher;
+import org.discobots.powerup.subsystems.Winch;
 import org.discobots.powerup.utils.Debugger;
 import org.discobots.powerup.utils.Logger;
 
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
 	public static Drivetrain drive;
 	public static Intake intake;
 	public static Launcher launcher;
+	public static Winch winch;
 	
 	public static Command driveCommand;
 			
@@ -65,6 +67,7 @@ public class Robot extends TimedRobot {
 		drive = new Drivetrain();
 		intake = new Intake();
 		launcher = new Launcher();
+		winch = new Winch();
 		
 		//OI and dashboard initialization
 		oi = new OI();
@@ -91,9 +94,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		if(Timer.getMatchTime() < 0) {
+		/*if(Timer.getMatchTime() < 0) {
 			Dashboard.updatePreMatch();
-		}	
+		}*/
+		Dashboard.updatePreMatch();
 	}
 
 	/**
