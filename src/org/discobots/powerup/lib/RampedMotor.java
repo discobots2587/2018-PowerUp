@@ -8,18 +8,32 @@ public class RampedMotor implements SpeedController {
 	private PWMSpeedController motor;
 	private double previousOutput = 0;
 	private double rampBand;
+	private double scaleConstant;
 	
 	public RampedMotor(PWMSpeedController m, double rb) {
-		motor = m;
-		rampBand = rb;
+		this(m,rb,1);
 	}
 	
-	public double getRampBand() {
+	public RampedMotor(PWMSpeedController m, double rb, double sc) {
+		motor = m;
+		rampBand = rb;
+		scaleConstant = sc;
+	}
+	
+	public double getRampband() {
 		return this.rampBand;
 	}
 	
-	public void setRampBand(double rb) {
+	public void setRampband(double rb) {
 		this.rampBand = rb;
+	}
+	
+	public double getScaleConstant() {
+		return this.scaleConstant;
+	}
+	
+	public void getScaleConstant(double sc) {
+		this.scaleConstant = sc;
 	}
 	
 	public void pidWrite(double input) {
@@ -37,8 +51,8 @@ public class RampedMotor implements SpeedController {
 			//if not, just set it to the input
 			result = input;
 		}
-		motor.set(result);
-		this.previousOutput = result;
+		motor.set(result*this.scaleConstant);
+		this.previousOutput = result*this.scaleConstant;
 	}
 
 	@Override

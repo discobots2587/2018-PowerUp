@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm extends PIDSubsystem {
 	
-	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer,360,-156);
+	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer,-360,236);
 	
 	public Spark armMotor = new Spark(HW.armMotor);
 	
