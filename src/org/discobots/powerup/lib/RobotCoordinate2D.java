@@ -19,15 +19,17 @@ public class RobotCoordinate2D extends Coordinate2D {
 	private double y; //y position of gyro
 	
 	/*
-	 * Speed, Velocity, Acceleration, Rotation
+	 * Speed, Acceleration, Rotation
 	 */
 	private double xSpd;
 	private double ySpd;
-	private double xVelo;
-	private double yVelo;
-	private double xAcel;
-	private double yAcel;
+	private double xAccel;
+	private double yAccel;
 	private double zRot;
+	
+	private double[] g_xyz;
+	private double[] a_xyz;
+	private double[] ypr;
 	
 	public RobotCoordinate2D(position pos) {
 		switch(pos) {
@@ -51,9 +53,13 @@ public class RobotCoordinate2D extends Coordinate2D {
 	}
 	
 	public void updatePosition() {
-		//Robot.drive.gyro_xyz;
-		//Robot.drive.accel_xyz;
-		//Robot.drive.ypr;
+		this.g_xyz = Robot.drive.gyro_xyz;
+		this.a_xyz = Robot.drive.accel_xyz;
+		this.ypr   = Robot.drive.ypr;
+		
+		xAccel = a_xyz[0];
+		yAccel = a_xyz[1];
+		zRot   = g_xyz[2];
 	}
 	
 	public boolean isPartiallyInNullZone() {

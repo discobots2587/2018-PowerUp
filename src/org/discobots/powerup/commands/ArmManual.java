@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmManual extends Command {
 
 	public ArmManual() {
-		//requires(Robot.arm);
+		requires(Robot.arm);
 	}
 	
 	// Called just before this Command runs the first time

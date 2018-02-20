@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ArmSet extends Command {
 
-
 	double value;
 	
 	public ArmSet(double inputVal) {
@@ -27,7 +26,7 @@ public class ArmSet extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-			
+		
 	}
 	
 	// Called when another command which requires one or more of the same
