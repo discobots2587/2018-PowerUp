@@ -26,9 +26,10 @@ public class DPADButton extends Button {
 	
 	@Override
 	public boolean get() {
-		double val = gp.getDPAD();
-		if(val == this.pov.val) {
-			Debugger.getInstance().log("DPAD" + val);
+		double val = this.pov.val;
+		double currentVal = gp.getDPAD();
+		if(currentVal == val) {
+			Debugger.getInstance().log("POV Current Value: )" + currentVal + " value: " + val, "Gamepad");
 			return true;
 		}
 		return false;
