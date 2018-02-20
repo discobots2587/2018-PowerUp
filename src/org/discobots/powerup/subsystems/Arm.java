@@ -10,7 +10,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm extends PIDSubsystem {
 	
-	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer,10);
+	//scale factor for everything in the PID - higher values make for faster and less accurate
+	public double scaleFactor = 50;
+	
+	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer,scaleFactor);
 	
 	public double zeroPoint = 0;
 	
@@ -26,8 +29,8 @@ public class Arm extends PIDSubsystem {
 	
 	public Arm() {
 		super("Arm",1,0,0);
-		this.getPIDController().setOutputRange(-0.7,0.7);
-		setAbsoluteTolerance(0.05);
+		this.getPIDController().setOutputRange(-1,1);
+		setAbsoluteTolerance(0.01);
 		armMotor.setInverted(true);
 		
 		this.index = 0;
@@ -56,18 +59,18 @@ public class Arm extends PIDSubsystem {
 		switch(pos) {
 		case 0:
 			//intake parallel to ground
-			this.setSetpoint(zeroPoint);
-			this.target = (zeroPoint);
+			this.setSetpoint(zeroPoint+0.228*scaleFactor);
+			this.target = (zeroPoint+0.228*scaleFactor);
 			break;
 		case 1:
 			//intake ready to unload to switch
-			this.setSetpoint(zeroPoint-.57);
-			this.target = (zeroPoint-.57);
+			this.setSetpoint(zeroPoint+.075*scaleFactor);
+			this.target = (zeroPoint+.075*scaleFactor);
 			break;
 		case 2:
 			//intake holding cube above catapult
-			this.setSetpoint(zeroPoint-2.45);
-			this.target = (zeroPoint-2.45);
+			this.setSetpoint(zeroPoint);
+			this.target = (zeroPoint);
 			break;
 		default:
 			this.setSetpoint(0);
