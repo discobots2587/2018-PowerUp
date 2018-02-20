@@ -135,7 +135,8 @@ public class OI {
 			}
 		});
 		
-		s_btn_B.toggleWhenPressed(new WinchSet(1));		
+		s_btn_B.toggleWhenPressed(new WinchSet(1));
+		
 		s_btn_X.whenPressed(new Command() {
 			@Override
 			public void initialize() {

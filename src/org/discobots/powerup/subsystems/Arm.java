@@ -33,7 +33,7 @@ public class Arm extends PIDSubsystem {
 		setAbsoluteTolerance(0.01);
 		armMotor.setInverted(true);
 		
-		this.index = 0;
+		this.index = 2;
 		zeroPoint = armPot.get();
 		this.setPos(index);
 		this.enable();
