@@ -4,6 +4,7 @@ import org.discobots.powerup.Robot;
 import org.discobots.powerup.lib.AverageEncoderPIDSource;
 import org.discobots.powerup.lib.DummyPIDOutput;
 import org.discobots.powerup.lib.TurningEncoderPIDSource;
+import org.discobots.powerup.utils.Debugger;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
@@ -56,6 +57,8 @@ public class EncoderDriveDistanceTurningComp extends Command {
 	protected void initialize() {
 		left.reset();
 		right.reset();
+		distanceEncoderPID.setSetpoint(encoderSetpoint);
+		turningEncoderPID.setSetpoint(0.0);
 		distanceEncoderPID.enable();
 		turningEncoderPID.enable();
 		
@@ -72,11 +75,11 @@ public class EncoderDriveDistanceTurningComp extends Command {
 			new AutonArcadeDriveTimed(turningEncoderPIDOutput.getOutput(), distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
 			distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
 			turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
-			/*Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
+			Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 			Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 			Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
-			Debugger.getInstance().log( "Error: " + encoderError, "PID-ERROR");
-			Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");*/
+			Debugger.getInstance().log( "Error: " + distanceEncoderError, "PID-ERROR");
+			Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
 		} else {
 			isFinished();
 		}

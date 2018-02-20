@@ -46,6 +46,7 @@ public class EncoderDriveDistance extends Command {
 	protected void initialize() {
 		left.reset();
 		right.reset();
+		distanceEncoderPID.setSetpoint(encoderSetpoint);
 		distanceEncoderPID.enable();
 		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
 	}
