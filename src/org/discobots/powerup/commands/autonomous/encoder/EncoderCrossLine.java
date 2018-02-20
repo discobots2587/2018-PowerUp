@@ -29,7 +29,7 @@ public class EncoderCrossLine extends CommandGroup {
 	}
 	
 	public void right() {
-		addSequential(new EncoderDriveDistance(150, 5));
+		addSequential(new EncoderDriveDistance(150.0, 5.0, 1.0, 0.0, 0.0));
 	}
 	
 	public void center() {

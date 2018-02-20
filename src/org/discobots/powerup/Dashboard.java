@@ -132,15 +132,14 @@ public class Dashboard {
 		SmartDashboard.putNumber("Roll", Robot.drive.ypr[2]);*/
 		
 		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
-		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.get());
-		SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.get());
+		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.getDistance());
+		SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.getDistance());
 		SmartDashboard.putNumber("PID arm",Robot.arm.output);
 		SmartDashboard.putNumber("Zeropoint", Robot.arm.zeroPoint);
 		SmartDashboard.putNumber("Potentiometer TRUE value", Robot.arm.armPot.get());
 		SmartDashboard.putNumber("Target", Robot.arm.target);
 		
 		SmartDashboard.putNumber("test",Constants.kInchPerTick);
-		SmartDashboard.putNumber("Right Encoder (adjusted)", Robot.drive.m_right_encoder.getDistance());
 	}
 }
 

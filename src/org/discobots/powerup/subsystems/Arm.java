@@ -90,8 +90,8 @@ public class Arm extends PIDSubsystem {
 	}
 	
 	public void usePIDOutput(double output) {
-		//this.set(output);
-		this.output = output;
+		this.set(output);
+		//this.output = output;
 	}
 	
 	public void set(double output) {

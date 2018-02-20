@@ -34,16 +34,16 @@ public class RobotCoordinate2D extends Coordinate2D {
 	public RobotCoordinate2D(position pos) {
 		switch(pos) {
 			case LEFT:
-				this.x = 1;
-				this.y = 1;
+				this.x = 1.0;
+				this.y = 1.0;
 				break;
 			case CENTER:
-				this.x = 1;
-				this.y = 1;
+				this.x = 1.0;
+				this.y = 1.0;
 				break;
 			case RIGHT:
-				this.x = 1;
-				this.y = 1;
+				this.x = 1.0;
+				this.y = 1.0;
 				break;
 		}
 		this.setX(x);

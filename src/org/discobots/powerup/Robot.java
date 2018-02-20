@@ -79,6 +79,9 @@ public class Robot extends TimedRobot {
             camera.setFPS(30);
 		});
 		camthread.start();*/
+		
+		System.out.println("TEST PRINT");
+		Debugger.getInstance().log("A");
 	}
 
 	/**

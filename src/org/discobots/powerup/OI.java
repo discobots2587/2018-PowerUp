@@ -149,5 +149,7 @@ public class OI {
 			}
 		});
 		
+		//p_btn_Y.whenPressed(new EncoderDriveDistance(150.0, 5.0, 1.0, 0.0, 0.0));
+		p_btn_Y.whenPressed(new TestCommand());
 	}
 }
