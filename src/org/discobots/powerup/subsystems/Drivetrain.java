@@ -78,10 +78,14 @@ public class Drivetrain extends PIDSubsystem {
 		
 		talon_pigeon = new TalonSRX(HW.talonsrx_pigeon);
 		pigeon = new PigeonIMU(talon_pigeon);
-		
 	}
 	
 	public void initDefaultCommand() {
+	}
+	
+	public void teleopInit() {
+		m_left_encoder.reset();
+		m_right_encoder.reset();
 	}
 	
 	public void arcadeDrive(double xSpeed, double zRotation) { //contrary to the documentation, but that is ok

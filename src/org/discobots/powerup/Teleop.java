@@ -34,6 +34,9 @@ public class Teleop {
 		//activate arm
 		ArmManual armManual = new ArmManual();
 		armManual.start();
+		
+		Robot.drive.teleopInit();
+		Robot.arm.teleopInit();
 	}
 	
 	public static void periodic() {

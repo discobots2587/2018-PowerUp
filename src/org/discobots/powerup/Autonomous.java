@@ -32,7 +32,7 @@ public class Autonomous {
 
 		Dashboard.autoInit();
 		Robot.pos = Dashboard.positionChooser.getSelected();
-		autonCommand = new TimedTestSwitch();
+		autonCommand = new EncoderCrossLineScale();
 		autonCommand.start();
 	}
 	

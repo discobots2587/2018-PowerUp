@@ -14,6 +14,9 @@ public class EncoderCrossLineScale extends CommandGroup {
 	
 	public EncoderCrossLineScale() {
 		this.scoreSide = Autonomous.scoreSide;
+		
+		addSequential(new AutonTankDriveEncoder(0.7,20,20));
+		
 		switch(Robot.pos) {
 		case RIGHT:
 			right();
@@ -32,9 +35,9 @@ public class EncoderCrossLineScale extends CommandGroup {
 	public void right() {
 		//check if the right scale is ours
 		if(!scoreSide[1]) {
-			addSequential(new AutonTankDriveEncoder(0.7,254,254));
-			addSequential(new AutonArcadeDriveTimed(0,1,500));
-			addSequential(new Launch(Launch.type.SCALE));
+			//addSequential(new AutonTankDriveEncoder(0.7,254,254));
+			//addSequential(new AutonArcadeDriveTimed(0,1,500));
+			//addSequential(new Launch(Launch.type.SCALE));
 		} else if(!scoreSide[0]){
 			
 		} else {
