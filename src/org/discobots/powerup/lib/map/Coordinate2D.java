@@ -1,4 +1,4 @@
-package org.discobots.powerup.lib;
+package org.discobots.powerup.lib.map;
 
 public class Coordinate2D {
 
@@ -26,6 +26,13 @@ public class Coordinate2D {
 	private double yMax = 324.0;
 	
 	private double startingLine = -204.0;
+	
+	private double switch_xStart = -77.61;
+	private double switch_xEnd   = 77.61;
+	private double nearSwitch_yStart = -184;
+	private double nearSwitch_yEnd   = -128;
+	private double farSwitch_yStart  = 128;
+	private double farSwitch_yEnd    = 184;
 	
 	private double nullZone_yStart = -36.0;
 	private double nullZone_yEnd   = 36.0; 
@@ -64,6 +71,28 @@ public class Coordinate2D {
 	
 	public void setY(double y) {
 		this.y = y;
+	}
+	
+	public boolean isInNearSwitch() {
+		if(y >= nearSwitch_yStart && y <= nearSwitch_yEnd) {
+			if(y >= switch_xStart && x <= switch_xEnd) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isInFarSwitch() {
+		if(y >= farSwitch_yStart && y <= farSwitch_yEnd) {
+			if(y >= switch_xStart && x <= switch_xEnd) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isInAnySwitch() {
+		return isInNearSwitch() || isInFarSwitch();
 	}
 	
 	public boolean isInNullZone() {
@@ -105,6 +134,5 @@ public class Coordinate2D {
 		}
 		return false;
 	}
-	
 	
 }

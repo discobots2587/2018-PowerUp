@@ -1,4 +1,4 @@
-package org.discobots.powerup.lib;
+package org.discobots.powerup.lib.map;
 
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.Robot.position;

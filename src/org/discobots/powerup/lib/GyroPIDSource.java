@@ -1,17 +1,16 @@
 package org.discobots.powerup.lib;
 
+import org.discobots.powerup.Robot;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
-public class TurningEncoderPIDSource implements PIDSource {
+public class GyroPIDSource implements PIDSource {
 
-	private Encoder left;
-	private Encoder right;
 	
-	public TurningEncoderPIDSource(Encoder left, Encoder right) {
-		this.left = left;
-		this.right = right;
+	public GyroPIDSource() {
+
 	}
 	
 	@Override
@@ -28,8 +27,7 @@ public class TurningEncoderPIDSource implements PIDSource {
 
 	@Override
 	public double pidGet() {
-		// TODO Auto-generated method stub
-		return (right.getDistance() - left.getDistance()) / 31;
+		return Robot.drive.ypr[0];
 	}
 
 }
