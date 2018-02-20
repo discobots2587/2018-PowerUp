@@ -5,16 +5,12 @@ package org.discobots.powerup.utils;
 public class Debugger {
 
 	private static Debugger instance;
-	private int max = 0;
 	
 	public static Debugger getInstance() {
 		if(instance == null) {
 			instance = new Debugger();
 		}
 		return instance;
-	}
-	
-	private Debugger() {
 	}
 	
 	public void log(String msg, String flag) {

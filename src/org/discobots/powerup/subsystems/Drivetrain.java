@@ -120,7 +120,11 @@ public class Drivetrain extends PIDSubsystem {
 			break;
 		default:
 			break;
-		}
-		
+		}	
 	}
+	
+	public double getYaw() {
+        pigeon.getYawPitchRoll(ypr);
+        return ypr[0];
+    }
 }

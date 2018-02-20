@@ -70,7 +70,7 @@ public class Dashboard {
 	
 	//only gets called periodically before the match
 	public static void updatePreMatch() {
-		/*if(Robot.pos == null) {
+		if(Robot.pos == null) {
 			Robot.pos = Robot.position.CENTER;
 		}
 		
@@ -97,7 +97,7 @@ public class Dashboard {
 				break;
 			}
 			SmartDashboard.putData("Auton Chooser", autonChooser);
-		}*/
+		}
 	}
 	
 	//encoderOptions, gyroOptions both list out options
@@ -123,13 +123,11 @@ public class Dashboard {
 		SmartDashboard.putNumber("Switch Delay", Constants.kSwitchWait);
 		SmartDashboard.putNumber("Scale Delay", Constants.kScaleWait);
 		
-		/*SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
+		SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
 		SmartDashboard.putNumber("GYRO Y", Robot.drive.gyro_xyz[1]);
 		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
 		
-		SmartDashboard.putNumber("Yaw", Robot.drive.ypr[0]);
-		SmartDashboard.putNumber("Pitch", Robot.drive.ypr[1]);
-		SmartDashboard.putNumber("Roll", Robot.drive.ypr[2]);*/
+		SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
 		
 		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
 		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.getDistance());

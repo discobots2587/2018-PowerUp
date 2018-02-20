@@ -1,12 +1,13 @@
-package org.discobots.powerup.commands.autonomous.subcommands;
+package org.discobots.powerup.commands.autonomous.timed;
 
 import org.discobots.powerup.commands.Launch;
+import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class TimedTest extends CommandGroup {
-	public TimedTest() {
+public class TimedScale extends CommandGroup {
+	public TimedScale() {
 		addSequential(new AutonArcadeDriveTimed(0.7,0,3700));
 		addSequential(new AutonArcadeDriveTimed(0,-0.5,300));
 		addSequential(new AutonArcadeDriveTimed(0,0,400));

@@ -29,7 +29,7 @@ public class TurningEncoderPIDSource implements PIDSource {
 	@Override
 	public double pidGet() {
 		// TODO Auto-generated method stub
-		return (right.getDistance() - left.getDistance()) / 31;
+		return (right.getDistance() - left.getDistance()) / 31.0;
 	}
 
 }

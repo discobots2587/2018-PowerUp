@@ -1,8 +1,8 @@
 package org.discobots.powerup;
 
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
-import org.discobots.powerup.commands.autonomous.subcommands.TimedTest;
-import org.discobots.powerup.commands.autonomous.subcommands.TimedTestSwitch;
+import org.discobots.powerup.commands.autonomous.timed.TimedScale;
+import org.discobots.powerup.commands.autonomous.timed.TimedSwitch;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;

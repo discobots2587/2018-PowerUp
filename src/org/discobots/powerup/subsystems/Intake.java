@@ -5,6 +5,7 @@ import org.discobots.powerup.HW;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Intake extends Subsystem {
@@ -13,6 +14,8 @@ public class Intake extends Subsystem {
 	Spark rightIntake;
 	
 	public DoubleSolenoid claw;
+	
+	Ultrasonic ultrasonic;
 	
 	public void initDefaultCommand() {
 		
