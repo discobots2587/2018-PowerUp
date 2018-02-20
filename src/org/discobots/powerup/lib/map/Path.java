@@ -6,7 +6,7 @@ public class Path {
 	private Coordinate2D end;
 	private double rotation;
 	
-	public Path(Coordinate2D start, Coordinate2D end, double zRotation) {
+	public Path(Coordinate2D start, Coordinate2D end, double zRotation, double[][] waypoints) {
 		this.start = start;
 		this.end = end;
 		this.rotation = zRotation;
