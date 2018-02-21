@@ -7,6 +7,8 @@ import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
+import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
+import org.discobots.powerup.commands.autonomous.subcommands.GyroEncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.timed.TimedCrossLine;
 import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.utils.Constants;
@@ -48,6 +50,9 @@ public class Dashboard {
 		SmartDashboard.putData("Position", positionChooser);
 		SmartDashboard.putData("Auton Type",typeChooser);
 		SmartDashboard.putData("Drive",driveChooser);
+		
+		SmartDashboard.putData("ENCODER DRIVE DISTANCE", new EncoderDriveDistance(50.0, 5.0, 1.0, 0.0, 0.0));
+		SmartDashboard.putData("GYRO ENCODER", new GyroEncoderDriveDistance(50.0, 5.0, 1.0, 0.0, 0.0, 5.0, 1.0, 0.0, 0.0));
 		
 	}
 	
@@ -123,9 +128,9 @@ public class Dashboard {
 		SmartDashboard.putNumber("Switch Delay", Constants.kSwitchWait);
 		SmartDashboard.putNumber("Scale Delay", Constants.kScaleWait);
 		
-		SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
-		SmartDashboard.putNumber("GYRO Y", Robot.drive.gyro_xyz[1]);
-		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
+//		SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
+//		SmartDashboard.putNumber("GYRO Y", Robot.drive.gyro_xyz[1]);
+//		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
 		
 		SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
 		

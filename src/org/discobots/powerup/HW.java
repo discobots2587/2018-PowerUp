@@ -46,6 +46,7 @@ public class HW {
 	
 	public static int ultrasonic1       = 4;
 	public static int utlrasonic2       = 5;
+	public static int arm_switch_top    = 8; //temp
 	public static int arm_switch_bottom = 9; //temp
 	
 	//Analog ports
