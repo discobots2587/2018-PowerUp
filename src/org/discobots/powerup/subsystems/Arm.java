@@ -32,18 +32,14 @@ public class Arm extends PIDSubsystem {
 		this.getPIDController().setOutputRange(-1,1);
 		setAbsoluteTolerance(0.01);
 		armMotor.setInverted(true);
-		
-		this.index = 0;
-		zeroPoint = armPot.get();
-		this.setPos(index);
-		this.enable();
 	}
 	
 	public void teleopInit() {
-		this.index = 0;
+		this.index = 2;
 		zeroPoint = armPot.get();
 		this.setPos(index);
 		this.enable();
+		//this.disable();
 	}
 
 	public double getPos() {

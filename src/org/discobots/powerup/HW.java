@@ -23,7 +23,7 @@ public class HW {
 	public static int winch		  = 4;
 	
 	//CAN ports
-	public static int talonsrx_pigeon = 0;
+	public static int talonsrx_pigeon = 35; //CAN id
 	
 	//PCM (12V) ports
 	public static int pcm12v    = 0; //CAN id
@@ -43,6 +43,7 @@ public class HW {
 	public static int right_encoder2    = 1;
 	public static int left_encoder1     = 2;
 	public static int left_encoder2     = 3;
+	
 	public static int ultrasonic1       = 4;
 	public static int utlrasonic2       = 5;
 	public static int arm_switch_bottom = 9; //temp

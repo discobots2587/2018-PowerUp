@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 //importing all the commands
 import org.discobots.powerup.commands.*;
 import org.discobots.powerup.commands.autonomous.subcommands.*;
+import org.discobots.powerup.lib.AverageEncoderPIDSource;
 import org.discobots.powerup.lib.DPADButton;
 import org.discobots.powerup.lib.Gamepad;
 import org.discobots.powerup.lib.DPADButton.POV;
@@ -63,8 +64,8 @@ public class OI {
 	 
 	 //pov = dpad
 	 //axis = joystick
-	public Gamepad p_gp = new Gamepad(0); //primary driver
-	public Gamepad s_gp = new Gamepad(1); //secondary driver
+	public Gamepad p_gp = new Gamepad(0, "Primary"); //primary driver
+	public Gamepad s_gp = new Gamepad(1, "Secondary"); //secondary driver
 	
 	//create all the buttons for primary controller
 	private Button p_btn_RB = new JoystickButton(p_gp, Gamepad.BTN_RB);
@@ -149,7 +150,21 @@ public class OI {
 			}
 		});
 		
-		//p_btn_Y.whenPressed(new EncoderDriveDistance(150.0, 5.0, 1.0, 0.0, 0.0));
-		p_btn_Y.whenPressed(new TestCommand());
+		p_btn_Y.whenPressed(new EncoderDriveDistance(50.0, 5.0, 1.0, 0.0, 0.0));
+		//p_btn_Y.whenPressed(new TestCommand());
+//		p_btn_Y.whenPressed(new Command() {
+//			@Override
+//			public void initialize() {
+//
+//				Robot.drive.m_right_encoder.reset();
+//				AverageEncoderPIDSource avgEncoderPIDSource = new AverageEncoderPIDSource();
+//				System.out.println(avgEncoderPIDSource.pidGet());
+//			}
+//			
+//			@Override
+//			protected boolean isFinished() {
+//				return true;
+//			}
+//		});
 	}
 }
