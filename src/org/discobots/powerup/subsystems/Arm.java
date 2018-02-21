@@ -18,7 +18,8 @@ public class Arm extends PIDSubsystem {
 	public double zeroPoint = 0;
 	
 	public Spark armMotor = new Spark(HW.armMotor);
-	
+
+	public DigitalInput switch_top    = new DigitalInput(HW.arm_switch_top);
 	public DigitalInput switch_bottom = new DigitalInput(HW.arm_switch_bottom);
 	
 	private int index = 0;

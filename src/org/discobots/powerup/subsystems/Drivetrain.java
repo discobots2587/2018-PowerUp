@@ -3,6 +3,7 @@ package org.discobots.powerup.subsystems;
 import org.discobots.powerup.HW;
 import org.discobots.powerup.lib.RampedMotor;
 import org.discobots.powerup.utils.Constants;
+import org.discobots.powerup.utils.Debugger;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.sensors.PigeonIMU;
@@ -14,10 +15,10 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive; //west coast / tank
 
-public class Drivetrain extends PIDSubsystem {
+public class Drivetrain extends Subsystem {
 
 	public DifferentialDrive drive;
 	
@@ -34,13 +35,7 @@ public class Drivetrain extends PIDSubsystem {
 	
 	public PigeonIMU pigeon;
 	public TalonSRX talon_pigeon;
-	
-	public static double kP = 0.1;
-	public static double kI = 0;
-	public static double kD = 0;
-	
-	double cp, ci, cd;
-	
+
 	public double[] gyro_xyz  = new double[3];
 	public double[] ypr       = new double[3];
 	public double[] accel_xyz = new double[3];
@@ -50,7 +45,6 @@ public class Drivetrain extends PIDSubsystem {
 	}
 	
 	public Drivetrain() {
-		super(kP, kI, kD);
 		m_left = new Spark(HW.leftDrive);  //set all three left ports to what is configured in the HW
 		
 		//SpeedControllerGroup left = new SpeedControllerGroup(m_left);
@@ -78,6 +72,10 @@ public class Drivetrain extends PIDSubsystem {
 		
 		talon_pigeon = new TalonSRX(HW.talonsrx_pigeon);
 		pigeon = new PigeonIMU(talon_pigeon);
+		
+		PigeonIMU.GeneralStatus genStatus = new PigeonIMU.GeneralStatus();
+		pigeon.getGeneralStatus(genStatus);
+		Debugger.getInstance().log(genStatus.toString(), "Pigeon IMU");
 	}
 	
 	public void initDefaultCommand() {
@@ -94,17 +92,6 @@ public class Drivetrain extends PIDSubsystem {
 	
 	public void tankDrive(double left, double right) {
 		drive.tankDrive(left, right, true); //forward = positive; decrease sensitivity at low speed is TRUE
-	}
-
-	@Override
-	protected double returnPIDInput() {
-		return gyro_xyz[2];
-	}
-
-	@Override
-	protected void usePIDOutput(double output) {
-		m_left.pidWrite(output);
-		m_right.pidWrite(output);
 	}
 
 	public void shift(Drivetrain.shift s) {
