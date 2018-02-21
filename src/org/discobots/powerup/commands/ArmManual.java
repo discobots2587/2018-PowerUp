@@ -23,6 +23,9 @@ public class ArmManual extends Command {
 			Robot.arm.getPIDController().disable();
 			Robot.arm.set(Robot.oi.s_gp.getLY());
 		} else {
+			if(!Robot.arm.getPIDController().isEnabled()) {
+				Robot.arm.getPIDController().setSetpoint(Robot.arm.armPot.get());
+			}
 			Robot.arm.getPIDController().enable();
 		}
 	}
