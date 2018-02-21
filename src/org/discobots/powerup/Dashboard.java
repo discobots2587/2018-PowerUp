@@ -70,7 +70,7 @@ public class Dashboard {
 	
 	//only gets called periodically before the match
 	public static void updatePreMatch() {
-		if(Robot.pos == null) {
+		/*if(Robot.pos == null) {
 			Robot.pos = Robot.position.CENTER;
 		}
 		
@@ -97,7 +97,7 @@ public class Dashboard {
 				break;
 			}
 			SmartDashboard.putData("Auton Chooser", autonChooser);
-		}
+		}*/
 	}
 	
 	//encoderOptions, gyroOptions both list out options

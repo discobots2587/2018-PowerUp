@@ -30,7 +30,7 @@ public class Arm extends PIDSubsystem {
 	public Arm() {
 		super("Arm",1,0,0);
 		this.getPIDController().setOutputRange(-1,1);
-		setAbsoluteTolerance(0.01);
+		setAbsoluteTolerance(0.01*scaleFactor);
 		armMotor.setInverted(true);
 	}
 	
@@ -60,13 +60,13 @@ public class Arm extends PIDSubsystem {
 			break;
 		case 1:
 			//intake ready to unload to switch
-			this.setSetpoint(zeroPoint+.075*scaleFactor);
-			this.target = (zeroPoint+.075*scaleFactor);
+			this.setSetpoint(zeroPoint+.085*scaleFactor);
+			this.target = (zeroPoint+.085*scaleFactor);
 			break;
 		case 2:
 			//intake holding cube above catapult
-			this.setSetpoint(zeroPoint);
-			this.target = (zeroPoint);
+			this.setSetpoint(zeroPoint+0.03*scaleFactor);
+			this.target = (zeroPoint+0.03*scaleFactor);
 			break;
 		default:
 			this.setSetpoint(0);
