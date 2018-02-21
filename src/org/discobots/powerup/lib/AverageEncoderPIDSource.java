@@ -1,5 +1,7 @@
 package org.discobots.powerup.lib;
 
+import org.discobots.powerup.Robot;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
@@ -7,8 +9,14 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 public class AverageEncoderPIDSource implements PIDSource {
 
 	private Encoder left, right;
+	private PIDSourceType pidSource;
+	
+	public AverageEncoderPIDSource() {
+		
+	}
 	
 	public AverageEncoderPIDSource(Encoder left, Encoder right) {
+		System.out.println("AverageEncoderPIDSource");
 		this.left = left;
 		this.right = right;
 	}
@@ -16,19 +24,20 @@ public class AverageEncoderPIDSource implements PIDSource {
 	@Override
 	public void setPIDSourceType(PIDSourceType pidSource) {
 		// TODO Auto-generated method stub
-		
+		this.pidSource = pidSource; 
 	}
 
 	@Override
 	public PIDSourceType getPIDSourceType() {
 		// TODO Auto-generated method stub
-		return null;
+		return pidSource;
 	}
 
 	@Override
 	public double pidGet() {
 		// TODO Auto-generated method stub
-		return right.getDistance();
+		//System.out.println("right get distance " + right.getDistance());
+		return Robot.drive.m_right_encoder.getDistance();
 		//return (left.getDistance() + right.getDistance()) / 2;
 	}
 

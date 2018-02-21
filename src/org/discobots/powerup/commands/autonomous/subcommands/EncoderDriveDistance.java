@@ -37,8 +37,8 @@ public class EncoderDriveDistance extends Command {
 		
 		distanceEncoderPIDOutput = new DummyPIDOutput();
 		
-		avgEncoderPIDSource = new AverageEncoderPIDSource(left, right);
-		distanceEncoderPID = new PIDController(kP, kI, kD, avgEncoderPIDSource, distanceEncoderPIDOutput);
+		//avgEncoderPIDSource = new AverageEncoderPIDSource(left, right);
+		distanceEncoderPID = new PIDController(kP, kI, kD, Robot.drive.m_right_encoder, distanceEncoderPIDOutput);
 		distanceEncoderPID.setOutputRange(-0.3,0.3);
 	}
 	
