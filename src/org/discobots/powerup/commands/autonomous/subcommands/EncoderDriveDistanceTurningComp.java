@@ -62,7 +62,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 		distanceEncoderPID.enable();
 		turningEncoderPID.enable();
 		
-		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
+		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance()/2);
 		turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
 	}
 	

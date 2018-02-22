@@ -66,28 +66,20 @@ public class GyroEncoderDriveDistance extends Command{
 	
 	@Override
 	protected void execute() {
-		if(!distanceEncoderPID.isEnabled()) {
-			distanceEncoderPID.enable();
-		}
-		if(distanceEncoderError > threshold && turningEncoderError > turningThreshold) {
-			
-			new AutonArcadeDriveTimed(turningGyroPIDOutput.getOutput(), distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
-			distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
-			turningEncoderError = Math.abs(0 - turningGyroPIDOutput.getOutput());
-			System.out.println("Left: " + left.getDistance());
-			System.out.println("Right: " + right.getDistance());
-			System.out.println("PID output: " + distanceEncoderPIDOutput.getOutput());
-			System.out.println("Error: " + distanceEncoderError);
-			System.out.println("Setpoint: "  + encoderSetpoint);
-		} else {
-			isFinished();
-		}
+		new AutonArcadeDriveTimed(turningGyroPIDOutput.getOutput(), distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
+		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
+		turningEncoderError = Math.abs(0 - turningGyroPIDOutput.getOutput());
+		System.out.println("Left: " + left.getDistance());
+		System.out.println("Right: " + right.getDistance());
+		System.out.println("PID output: " + distanceEncoderPIDOutput.getOutput());
+		System.out.println("Error: " + distanceEncoderError);
+		System.out.println("Setpoint: "  + encoderSetpoint);
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return true;
+		return (distanceEncoderError > threshold && turningEncoderError > turningThreshold);
 	}
 	
 	// Called once after isFinished returns true

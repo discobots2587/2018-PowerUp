@@ -54,25 +54,17 @@ public class GyroTurn extends Command{
 	
 	@Override
 	protected void execute() {
-		if(!turningGyroPID.isEnabled()) {
-			turningGyroPID.enable();
-		}
-		if(turningEncoderError > turningThreshold) {
-			
-			new AutonArcadeDriveTimed(turningGyroPIDOutput.getOutput(), 0.0, 10); //small amount of time
-			turningEncoderError = Math.abs(turningSetPoint - turningGyroPIDOutput.getOutput());
-			System.out.println("GyroTurn PID output: " + turningGyroPIDOutput.getOutput());
-			System.out.println("GyroTurn Error: " + distanceEncoderError);
-			System.out.println("GyroTurn Setpoint: "  + turningSetPoint);
-		} else {
-			isFinished();
-		}
+		new AutonArcadeDriveTimed(turningGyroPIDOutput.getOutput(), 0.0, 10); //small amount of time
+		turningEncoderError = Math.abs(turningSetPoint - turningGyroPIDOutput.getOutput());
+		System.out.println("GyroTurn PID output: " + turningGyroPIDOutput.getOutput());
+		System.out.println("GyroTurn Error: " + distanceEncoderError);
+		System.out.println("GyroTurn Setpoint: "  + turningSetPoint);
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return true;
+		return 	(turningEncoderError > turningThreshold);
 	}
 	
 	// Called once after isFinished returns true
