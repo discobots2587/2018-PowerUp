@@ -71,24 +71,22 @@ public class EncoderDriveDistanceTurningComp extends Command {
 		if(!distanceEncoderPID.isEnabled()) {
 			distanceEncoderPID.enable();
 		}
-		if(distanceEncoderError > threshold && turningEncoderError > threshold) {
-			new AutonArcadeDriveTimed(turningEncoderPIDOutput.getOutput(), distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
-			distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
-			turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
-			Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
-			Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
-			Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
-			Debugger.getInstance().log( "Error: " + distanceEncoderError, "PID-ERROR");
-			Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
-		} else {
-			isFinished();
-		}
+	
+		new AutonArcadeDriveTimed(turningEncoderPIDOutput.getOutput(), distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
+		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
+		turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
+		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
+		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
+		Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
+		Debugger.getInstance().log( "Error: " + distanceEncoderError, "PID-ERROR");
+		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
+		
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return true;
+		return (distanceEncoderError > threshold && turningEncoderError > threshold);
 	}
 	
 	// Called once after isFinished returns true
