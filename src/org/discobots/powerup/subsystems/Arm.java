@@ -42,7 +42,7 @@ public class Arm extends PIDSubsystem {
 		this.enable();
 		//this.disable();
 	}
-
+	
 	public double getPos() {
 		return armPot.get()-zeroPoint;
 	}
@@ -66,13 +66,14 @@ public class Arm extends PIDSubsystem {
 			break;
 		case 2:
 			//intake holding cube above catapult
-			this.setSetpoint(zeroPoint+0.03*scaleFactor);
-			this.target = (zeroPoint+0.03*scaleFactor);
+			this.setSetpoint(zeroPoint+0.02*scaleFactor);
+			this.target = (zeroPoint+0.02*scaleFactor);
 			break;
 		default:
 			this.setSetpoint(0);
 			break;
 		}
+		this.index = pos;
 	}
 	
 	public void up() {
