@@ -112,21 +112,21 @@ public class OI {
 		p_btn_RT.whenPressed(new IntakeSet(-Constants.kIntakeSpeed));
 		p_btn_RT.whenReleased(new IntakeSet(0));
 		
-		p_btn_LB.whenPressed(new Command() {
+		p_btn_LB.whenPressed(new ArmSet(1));
+		p_btn_LB.whenReleased(new ArmSet(0));
+		
+		p_btn_LT.whenPressed(new ArmSet(-1));
+		p_btn_LT.whenReleased(new ArmSet(0));
+		
+		/*p_btn_LB.whenPressed(new Command() {
 			@Override
 			public void initialize() {
 				//Robot.arm.up();
-				Robot.arm.set(1.0);
 			}
 			
 			@Override
 			protected boolean isFinished() {
 				return true;
-			}
-			
-			@Override
-			protected void end() {
-				Robot.arm.set(0.0);
 			}
 		});
 		
@@ -134,19 +134,13 @@ public class OI {
 			@Override
 			public void initialize() {
 				//Robot.arm.down();
-				Robot.arm.set(-1.0);
 			}
 			
 			@Override
 			protected boolean isFinished() {
 				return true;
 			}
-			
-			@Override
-			protected void end() {
-				Robot.arm.set(0.0); 
-			}
-		});
+		});*/
 		
 		s_btn_B.toggleWhenPressed(new WinchSet(1));
 		
