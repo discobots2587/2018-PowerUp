@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.Joystick;
 //Fightstick is the controller with a lot of buttons that looks like an arcade game, uses the DPAD mode
 public class Fightstick extends Joystick {
 	
-	public static final int DEFAULT_USB_PORT = 0;
-	
+	public static final int DEFAULT_USB_PORT = 1;
+
 	public String name = "Fightstick";
 
 	public static int AXIS_LX = 0;
