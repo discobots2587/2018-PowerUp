@@ -115,24 +115,36 @@ public class OI {
 		p_btn_LB.whenPressed(new Command() {
 			@Override
 			public void initialize() {
-				Robot.arm.up();
+				//Robot.arm.up();
+				Robot.arm.set(1.0);
 			}
 			
 			@Override
 			protected boolean isFinished() {
 				return true;
+			}
+			
+			@Override
+			protected void end() {
+				Robot.arm.set(0.0);
 			}
 		});
 		
 		p_btn_LT.whenPressed(new Command() {
 			@Override
 			public void initialize() {
-				Robot.arm.down();
+				//Robot.arm.down();
+				Robot.arm.set(-1.0);
 			}
 			
 			@Override
 			protected boolean isFinished() {
 				return true;
+			}
+			
+			@Override
+			protected void end() {
+				Robot.arm.set(0.0); 
 			}
 		});
 		

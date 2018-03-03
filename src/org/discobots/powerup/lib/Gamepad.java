@@ -9,8 +9,8 @@ import org.discobots.powerup.utils.Constants;
 public class Gamepad extends Joystick {
 
 	//Use 'D' not 'X'
-	
-	public static String name = "genericHID";
+	private static final int DEFAULT_USB_PORT = 0;
+	public String name = "Gamepad";
 	
 	public static int AXIS_LX = 0;
 	public static int AXIS_LY = 1;
@@ -30,8 +30,6 @@ public class Gamepad extends Joystick {
 	public static int BTN_BACK = 9;
 	public static int BTN_START = 10;
 	
-	private static final int DEFAULT_USB_PORT = 0;
-	
 	public Gamepad() {
 		super(DEFAULT_USB_PORT);
 	}
@@ -43,6 +41,11 @@ public class Gamepad extends Joystick {
 	public Gamepad(int port, String name) {
 		super(port);
 		this.name = name;
+	}
+	
+	@Override
+	public String getName() {
+		return this.name;
 	}
 	
 	public double getLX() {
@@ -66,16 +69,19 @@ public class Gamepad extends Joystick {
 	}
 	
 	public double getDPAD() {
-		double val = this.getPOV();
-		if(45 <= val && val < 135) {
-			val = 90;
-		} else if(135 <= val && val < 225) {
-			val = 180;
-		} else if(225 <= val && val < 315) {
-			val = 270;
+		return getDPADfromPOV(this.getPOV());
+	}
+	
+	public static double getDPADfromPOV(double pov) {
+		if(45 <= pov && pov < 135) {
+			pov = 90;
+		} else if(135 <= pov && pov < 225) {
+			pov = 180;
+		} else if(225 <= pov && pov < 315) {
+			pov = 270;
 		} else {
-			val = 0;
+			pov = 0;
 		}
-		return val;
+		return pov;
 	}
 }
