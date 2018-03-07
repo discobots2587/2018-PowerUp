@@ -1,9 +1,13 @@
 package org.discobots.powerup.commands.autonomous.gyro;
 
-import org.discobots.powerup.Robot;
+import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GyroMiddleSwitch extends CommandGroup 
 {
-	addSequential(new EncoderDriveDistance()); 
+	public GyroMiddleSwitch()
+	{
+		addSequential(new EncoderDriveDistance(61.068, 0.5)); // Go forward for a little turning
+	} 
 }

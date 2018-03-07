@@ -9,7 +9,7 @@ public class ArmSet extends Command {
 	double value;
 	
 	public ArmSet(double inputVal) {
-		value = inputVal;
+		value = 0.75*inputVal;
 	}
 	
 	@Override
