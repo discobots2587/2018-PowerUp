@@ -112,10 +112,10 @@ public class OI {
 		p_btn_RT.whenPressed(new IntakeSet(-Constants.kIntakeSpeed));
 		p_btn_RT.whenReleased(new IntakeSet(0));
 		
-		p_btn_LB.whenPressed(new ArmSet(1));
+		p_btn_LB.whenPressed(new ArmSet(0.85));
 		p_btn_LB.whenReleased(new ArmSet(0));
 		
-		p_btn_LT.whenPressed(new ArmSet(-1));
+		p_btn_LT.whenPressed(new ArmSet(-0.85));
 		p_btn_LT.whenReleased(new ArmSet(0));
 		
 		/*p_btn_LB.whenPressed(new Command() {
