@@ -1,6 +1,7 @@
 package org.discobots.powerup;
 
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
+import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
 import org.discobots.powerup.commands.autonomous.timed.TimedScale;
 import org.discobots.powerup.commands.autonomous.timed.TimedSwitch;
 
@@ -18,7 +19,7 @@ public class Autonomous {
 	//scoreSide - 6 booleans, left side close-to-far, then right side close-to-far
 	public static boolean[] scoreSide = new boolean[6];
 	
-	//autonCommand, so we can acccess the selected autonomous command
+	//autonCommand, so we can access the selected autonomous command
 	public static Command autonCommand;
 	
 	public static void init() {
@@ -32,7 +33,7 @@ public class Autonomous {
 
 		Dashboard.autoInit();
 		Robot.pos = Dashboard.positionChooser.getSelected();
-		autonCommand = new EncoderCrossLineScale();
+		autonCommand = new AutonArcadeDriveTimed(0.25,0,500);
 		autonCommand.start();
 	}
 	
