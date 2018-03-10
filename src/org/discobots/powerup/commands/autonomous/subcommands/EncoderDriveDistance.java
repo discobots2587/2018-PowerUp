@@ -53,15 +53,12 @@ public class EncoderDriveDistance extends Command {
 	
 	@Override
 	protected void execute() {
-		if(!distanceEncoderPID.isEnabled()) {
-			distanceEncoderPID.enable();
-		}
-		Robot.drive.arcadeDrive(distanceEncoderPIDOutput.getOutput(), 0);
+		Robot.drive.arcadeDrive(distanceEncoderPID.get(), 0);
 		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
-		Debugger.getInstance().log( "Error: " + encoderError, "PID-ERROR");
+		Debugger.getInstance().log( "Error Encoder Drive Distance: " + encoderError, "PID-ERROR");
 		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
 	
 	}
