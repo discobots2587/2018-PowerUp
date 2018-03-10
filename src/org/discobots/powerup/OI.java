@@ -14,15 +14,19 @@ import edu.wpi.first.wpilibj.command.Command;
 
 //importing all the commands
 import org.discobots.powerup.commands.*;
-import org.discobots.powerup.commands.autonomous.subcommands.*;
+//import org.discobots.powerup.commands.autonomous.subcommands.*;555'''''?
+import org.discobots.powerup.lib.AXISButton;
 import org.discobots.powerup.lib.AverageEncoderPIDSource;
 import org.discobots.powerup.lib.DPADButton;
 import org.discobots.powerup.lib.Gamepad;
 import org.discobots.powerup.lib.DPADButton.POV;
+import org.discobots.powerup.lib.Fightstick;
 //importing all the subsystems
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.subsystems.Launcher;
 import org.discobots.powerup.commands.Launch.type;
+import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
+import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
 import org.discobots.powerup.utils.Constants;
 
 //import org.discobots.steamworks.utils.Gamepad.DPadButton;
@@ -65,7 +69,7 @@ public class OI {
 	 //pov = dpad
 	 //axis = joystick
 	public Gamepad p_gp = new Gamepad(0, "Primary"); //primary driver
-	public Gamepad s_gp = new Gamepad(1, "Secondary"); //secondary driver
+	public Fightstick s_fs = new Fightstick(1, "Secondary"); //secondary driver
 	
 	//create all the buttons for primary controller
 	private Button p_btn_RB = new JoystickButton(p_gp, Gamepad.BTN_RB);
@@ -84,20 +88,22 @@ public class OI {
 	private DPADButton p_dpad_left = new DPADButton(p_gp, POV.LEFT);
 	
 	//create all the buttons for secondary controller
-	private Button s_btn_RB = new JoystickButton(s_gp, Gamepad.BTN_RB);
-	private Button s_btn_LB = new JoystickButton(s_gp, Gamepad.BTN_LB);
-	private Button s_btn_RT = new JoystickButton(s_gp, Gamepad.BTN_RT);
-	private Button s_btn_LT = new JoystickButton(s_gp, Gamepad.BTN_LT);
-	private Button s_btn_back = new JoystickButton(s_gp, Gamepad.BTN_BACK);
-	private Button s_btn_start = new JoystickButton(s_gp, Gamepad.BTN_START);
-	private Button s_btn_A = new JoystickButton(s_gp, Gamepad.BTN_A);
-	private Button s_btn_X = new JoystickButton(s_gp, Gamepad.BTN_X);
-	private Button s_btn_B = new JoystickButton(s_gp, Gamepad.BTN_B);
-	private Button s_btn_Y = new JoystickButton(s_gp, Gamepad.BTN_Y);
-	private DPADButton s_dpad_up = new DPADButton(s_gp, POV.UP);
-	private DPADButton s_dpad_down = new DPADButton(s_gp, POV.DOWN);
-	private DPADButton s_dpad_right = new DPADButton(s_gp, POV.RIGHT);
-	private DPADButton s_dpad_left = new DPADButton(s_gp, POV.LEFT);
+	private Button s_btn_R1 = new JoystickButton(s_fs, Fightstick.BTN_R1);
+	private Button s_btn_L1 = new JoystickButton(s_fs, Fightstick.BTN_L1);
+	private Button s_btn_R3 = new JoystickButton(s_fs, Fightstick.BTN_R3);
+	private Button s_btn_L3 = new JoystickButton(s_fs, Fightstick.BTN_L3);
+	private Button s_btn_share = new JoystickButton(s_fs, Fightstick.BTN_SHARE);
+	private Button s_btn_options = new JoystickButton(s_fs, Fightstick.BTN_OPTIONS);
+	private Button s_btn_A = new JoystickButton(s_fs, Fightstick.BTN_A);
+	private Button s_btn_X = new JoystickButton(s_fs, Fightstick.BTN_X);
+	private Button s_btn_B = new JoystickButton(s_fs, Fightstick.BTN_B);
+	private Button s_btn_Y = new JoystickButton(s_fs, Fightstick.BTN_Y);
+	private DPADButton s_dpad_up = new DPADButton(s_fs, POV.UP);
+	private DPADButton s_dpad_down = new DPADButton(s_fs, POV.DOWN);
+	private DPADButton s_dpad_right = new DPADButton(s_fs, POV.RIGHT);
+	private DPADButton s_dpad_left = new DPADButton(s_fs, POV.LEFT);
+	private AXISButton s_btn_L2 = new AXISButton(s_fs, Fightstick.AXIS_L2);
+	private AXISButton s_btn_R2 = new AXISButton(s_fs, Fightstick.AXIS_R2);
 	
 	//in here, give the buttons commands
 	public OI() {
@@ -157,7 +163,8 @@ public class OI {
 			}
 		});
 		
-		p_btn_Y.whenPressed(new EncoderDriveDistance(50.0, 5.0, 1.0, 0.0, 0.0));
+		//s_btn_Y.whenPressed(new EncoderDriveDistance(20.0, 5.0, 1.0, 0.0, 0.0));
+		//s_btn_Y.whenPressed(new AutonArcadeDriveTimed(0.5,0,500));
 		//p_btn_Y.whenPressed(new TestCommand());
 //		p_btn_Y.whenPressed(new Command() {
 //			@Override

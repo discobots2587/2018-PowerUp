@@ -2,6 +2,8 @@ package org.discobots.powerup;
 
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
 import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
+import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
+import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistanceTurningComp;
 import org.discobots.powerup.commands.autonomous.timed.TimedScale;
 import org.discobots.powerup.commands.autonomous.timed.TimedSwitch;
 
@@ -33,7 +35,7 @@ public class Autonomous {
 
 		Dashboard.autoInit();
 		Robot.pos = Dashboard.positionChooser.getSelected();
-		autonCommand = new AutonArcadeDriveTimed(0.25,0,500);
+		autonCommand = new EncoderDriveDistance(50,1);
 		autonCommand.start();
 	}
 	

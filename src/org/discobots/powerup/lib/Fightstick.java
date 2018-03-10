@@ -26,7 +26,7 @@ public class Fightstick extends Joystick {
 	public static int BTN_SHARE = 7;
 	public static int BTN_OPTIONS = 8;
 	public static int BTN_L3 = 9;
-	public static int BTN_R2 = 10;
+	public static int BTN_R3 = 10;
 	
 
 	public Fightstick(int port) {

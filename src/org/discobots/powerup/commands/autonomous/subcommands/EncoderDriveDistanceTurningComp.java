@@ -8,6 +8,7 @@ import org.discobots.powerup.utils.Debugger;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class EncoderDriveDistanceTurningComp extends Command {
@@ -62,7 +63,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 		distanceEncoderPID.enable();
 		turningEncoderPID.enable();
 		
-		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance()/2);
+		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
 		turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
 	}
 	
@@ -79,6 +80,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 		Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
 		Debugger.getInstance().log( "Error: " + distanceEncoderError, "PID-ERROR");
 		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
+		Timer.delay(0.004);
 		
 	}
 	

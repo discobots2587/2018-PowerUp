@@ -43,7 +43,7 @@ public class HW {
 	public static int shifter1 = 6;
 	public static int shifter2 = 7;*/
 	
-	public static int pcm24v = 0; //CAN id (same as pcm12v)
+	public static int pcm24v = 1; //CAN id (same as pcm12v)
 	
 	//DIO ports
 	public static int right_encoder1    = 0;

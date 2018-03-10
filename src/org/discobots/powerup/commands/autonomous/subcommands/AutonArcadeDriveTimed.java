@@ -15,7 +15,7 @@ public class AutonArcadeDriveTimed extends Command {
 	
 	//speed is forward speed, rotation is y rotation, time is in milliseconds
 	public AutonArcadeDriveTimed(double speed, double rotation, int time) {
-		requires(Robot.drive);
+		//requires(Robot.drive);
 		this.speed = speed;
 		this.rotation = rotation;
 		this.time = time;
@@ -25,6 +25,7 @@ public class AutonArcadeDriveTimed extends Command {
 	@Override
 	protected void initialize() {
 		endTime =  System.currentTimeMillis() + time;
+		System.out.println("Auton Activated");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
