@@ -1,5 +1,7 @@
 package org.discobots.powerup.lib;
 
+import org.discobots.powerup.utils.Debugger;
+
 import edu.wpi.first.wpilibj.PIDOutput;
 
 /** 

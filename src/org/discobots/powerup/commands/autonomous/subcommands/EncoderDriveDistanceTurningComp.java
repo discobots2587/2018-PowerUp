@@ -71,13 +71,13 @@ public class EncoderDriveDistanceTurningComp extends Command {
 		if(!distanceEncoderPID.isEnabled()) {
 			distanceEncoderPID.enable();
 		}
-		Robot.drive.arcadeDrive(distanceEncoderPIDOutput.getOutput(), turningEncoderPIDOutput.getOutput());
+		Robot.drive.arcadeDrive(distanceEncoderPID.get(), turningEncoderPID.get());
 		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
 		turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
-		Debugger.getInstance().log( "Error: " + distanceEncoderError, "PID-ERROR");
+		Debugger.getInstance().log("Error Turning Comp: " + distanceEncoderError, "PID-ERROR");
 		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
 		
 	}
