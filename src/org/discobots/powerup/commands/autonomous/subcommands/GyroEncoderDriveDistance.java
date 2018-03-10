@@ -66,7 +66,7 @@ public class GyroEncoderDriveDistance extends Command{
 	
 	@Override
 	protected void execute() {
-		new AutonArcadeDriveTimed(turningGyroPIDOutput.getOutput(), distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
+		Robot.drive.arcadeDrive(distanceEncoderPIDOutput.getOutput(), turningGyroPIDOutput.getOutput());
 		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
 		turningEncoderError = Math.abs(0 - turningGyroPIDOutput.getOutput());
 		System.out.println("Left: " + left.getDistance());
@@ -86,6 +86,7 @@ public class GyroEncoderDriveDistance extends Command{
 	@Override
 	protected void end() {
 		distanceEncoderPID.disable();
+		turningGyroPID.disable();
 		Robot.drive.arcadeDrive(0, 0);
 	}
 		

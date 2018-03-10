@@ -56,8 +56,7 @@ public class EncoderDriveDistance extends Command {
 		if(!distanceEncoderPID.isEnabled()) {
 			distanceEncoderPID.enable();
 		}
-
-		new AutonArcadeDriveTimed(0, distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
+		Robot.drive.arcadeDrive(distanceEncoderPIDOutput.getOutput(), 0);
 		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");

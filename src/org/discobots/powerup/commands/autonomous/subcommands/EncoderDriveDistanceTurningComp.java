@@ -71,8 +71,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 		if(!distanceEncoderPID.isEnabled()) {
 			distanceEncoderPID.enable();
 		}
-	
-		new AutonArcadeDriveTimed(turningEncoderPIDOutput.getOutput(), distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
+		Robot.drive.arcadeDrive(distanceEncoderPIDOutput.getOutput(), turningEncoderPIDOutput.getOutput());
 		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
 		turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
@@ -93,6 +92,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 	@Override
 	protected void end() {
 		distanceEncoderPID.disable();
+		turningEncoderPID.disable();
 		Robot.drive.arcadeDrive(0, 0);
 	}
 		
