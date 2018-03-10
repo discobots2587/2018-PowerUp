@@ -24,5 +24,5 @@ public class Constants {
 	public static double kTickPerInch = 1.0/(kInchPerTick);
 	
 	//kIntakeSpeed - the speed that the intake motors operate at (both forward and backward)
-	public static double kIntakeSpeed = 1;
+	public static double kIntakeSpeed = 0.75;
  }

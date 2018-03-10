@@ -54,7 +54,7 @@ public class EncoderDriveDistance extends Command {
 	@Override
 	protected void execute() {
 		Robot.drive.arcadeDrive(distanceEncoderPID.get(), 0);
-		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
+		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
@@ -66,7 +66,7 @@ public class EncoderDriveDistance extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (encoderError > threshold);
+		return (encoderError < threshold);
 	}
 	
 	// Called once after isFinished returns true

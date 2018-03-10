@@ -112,10 +112,10 @@ public class OI {
 		
 		p_dpad_right.whenPressed(new IntakeToggle());
 		
-		p_btn_RB.whenPressed(new IntakeSet(Constants.kIntakeSpeed));
+		p_btn_RB.whenPressed(new IntakeSet(-Constants.kIntakeSpeed));
 		p_btn_RB.whenReleased(new IntakeSet(0));
 		
-		p_btn_RT.whenPressed(new IntakeSet(-Constants.kIntakeSpeed));
+		p_btn_RT.whenPressed(new IntakeSet(1));
 		p_btn_RT.whenReleased(new IntakeSet(0));
 		
 		p_btn_LB.whenPressed(new ArmSet(0.75));
@@ -126,6 +126,7 @@ public class OI {
 		
 		/*p_btn_LB.whenPressed(new Command() {
 			@Override
+			
 			public void initialize() {
 				//Robot.arm.up();
 			}
