@@ -3,6 +3,7 @@ package org.discobots.powerup;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitchScorePosition1and3;
 import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistanceTurningComp;
@@ -31,6 +32,8 @@ public class Autonomous {
 	public static void init() {
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
+	
+		
 		//set up scoreSide array
 		for(int k = 0; k < 3; k++) {
 			scoreSide[k] = (gameData.charAt(k) == 'L');
@@ -40,8 +43,14 @@ public class Autonomous {
 		Dashboard.autoInit();
 		Robot.pos = Dashboard.positionChooser.getSelected();
 		
-		///IF we are in the middle..
+		
+		//int position =  DriverStation.getInstance().getLocation();
+		// if (position == 2)
 		cmdGroup = new EncoderDumbMiddle();
+		// else 
+		// cmdGroup = new EncoderSwitchScorePosition1and3(position);
+		
+		
 		cmdGroup.start();
 	}
 	

@@ -10,7 +10,7 @@ import org.discobots.powerup.commands.autonomous.subcommands.EncoderTurn;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class EncoderDumbMiddle extends CommandGroup {
-	public static void EncoderDumbMiddle() {
+	public void EncoderDumbMiddle() {
 
 	}
 	
