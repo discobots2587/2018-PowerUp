@@ -2,6 +2,7 @@ package org.discobots.powerup;
 
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
 import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistanceTurningComp;
@@ -10,6 +11,7 @@ import org.discobots.powerup.commands.autonomous.timed.TimedSwitch;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -24,6 +26,7 @@ public class Autonomous {
 	
 	//autonCommand, so we can access the selected autonomous command
 	public static Command autonCommand;
+	public static CommandGroup cmdGroup;
 	
 	public static void init() {
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
@@ -36,8 +39,10 @@ public class Autonomous {
 
 		Dashboard.autoInit();
 		Robot.pos = Dashboard.positionChooser.getSelected();
-		autonCommand = new EncoderCrossLine();
-		autonCommand.start();
+		
+		///IF we are in the middle..
+		cmdGroup = new EncoderDumbMiddle();
+		cmdGroup.start();
 	}
 	
 	public static void periodic() {
