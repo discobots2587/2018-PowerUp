@@ -111,7 +111,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (distanceEncoderError < 1 && turningEncoderError < 0.1);
+		return (distanceEncoderError < threshold && turningEncoderError < 0.1);
 	}
 	
 	// Called once after isFinished returns true
