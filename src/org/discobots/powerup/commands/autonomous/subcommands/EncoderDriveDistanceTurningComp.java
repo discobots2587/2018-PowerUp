@@ -22,12 +22,19 @@ public class EncoderDriveDistanceTurningComp extends Command {
 	private double distanceEncoderError;
 	private double turningEncoderError;
 	
-	private DummyPIDOutput distanceEncoderPIDOutput;
-	private PIDController distanceEncoderPID;
-	private DummyPIDOutput turningEncoderPIDOutput;
-	private PIDController turningEncoderPID;
-	private AverageEncoderPIDSource avgEncoderPIDSource;
-	private TurningEncoderPIDSource turningEncoderPIDSource;
+//	private DummyPIDOutput distanceEncoderPIDOutput;
+//	private PIDController distanceEncoderPID;
+//	private DummyPIDOutput turningEncoderPIDOutput;
+//	private PIDController turningEncoderPID;
+//	private AverageEncoderPIDSource avgEncoderPIDSource;
+//	private TurningEncoderPIDSource turningEncoderPIDSource;
+	
+	private double kP;
+	private double kI;
+	private double kD;
+	private double preError;
+	
+	double integral;
 	
 	public EncoderDriveDistanceTurningComp(double encoderSetpoint, double threshold) {
 		this(encoderSetpoint, threshold, 1, 0, 0);
@@ -42,42 +49,59 @@ public class EncoderDriveDistanceTurningComp extends Command {
 		this.encoderSetpoint = encoderSetpoint;
 		this.threshold = threshold;
 		
-		distanceEncoderPIDOutput = new DummyPIDOutput();
-		turningEncoderPIDOutput = new DummyPIDOutput();
+		this.kP = kP;
+		this.kI = kI;
+		this.kD = kD;
+		this.integral = 0;
+		this.preError = 0;
 		
-		avgEncoderPIDSource = new AverageEncoderPIDSource(left, right);
-		distanceEncoderPID = new PIDController(kP, kI, kD, avgEncoderPIDSource, distanceEncoderPIDOutput);
-		distanceEncoderPID.setOutputRange(-0.3,0.3);
-		
-		turningEncoderPIDSource =  new TurningEncoderPIDSource(left, right);
-		turningEncoderPID = new PIDController(kP, kI, kD, turningEncoderPIDSource, turningEncoderPIDOutput);
-		turningEncoderPID.setOutputRange(-0.3, 0.3);
+//		distanceEncoderPIDOutput = new DummyPIDOutput();
+//		turningEncoderPIDOutput = new DummyPIDOutput();
+//		
+//		avgEncoderPIDSource = new AverageEncoderPIDSource(left, right);
+//		distanceEncoderPID = new PIDController(kP, kI, kD, avgEncoderPIDSource, distanceEncoderPIDOutput);
+//		distanceEncoderPID.setOutputRange(-0.3,0.3);
+//		
+//		turningEncoderPIDSource =  new TurningEncoderPIDSource(left, right);
+//		turningEncoderPID = new PIDController(kP, kI, kD, turningEncoderPIDSource, turningEncoderPIDOutput);
+//		turningEncoderPID.setOutputRange(-0.3, 0.3);
 	}
 	
 	@Override
 	protected void initialize() {
 		left.reset();
 		right.reset();
-		distanceEncoderPID.setSetpoint(encoderSetpoint);
-		turningEncoderPID.setSetpoint(0.0);
-		distanceEncoderPID.enable();
-		turningEncoderPID.enable();
+//		distanceEncoderPID.setSetpoint(encoderSetpoint);
+//		turningEncoderPID.setSetpoint(0.0);
+//		distanceEncoderPID.enable();
+//		turningEncoderPID.enable();
 		
 		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
-		turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
+		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 31.0);
 	}
 	
 	@Override
 	protected void execute() {
-		if(!distanceEncoderPID.isEnabled()) {
-			distanceEncoderPID.enable();
-		}
-		Robot.drive.arcadeDrive(distanceEncoderPID.get(), turningEncoderPID.get());
-		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
-		turningEncoderError = Math.abs(0 - turningEncoderPIDOutput.getOutput());
+		this.integral = this.integral + (turningEncoderError * 0.004);
+		   // determine the amount of change from the last time checked
+	    double derivative = (turningEncoderError - preError) / 0.004; 
+		   // calculate how much to drive the output in order to get to the 
+		   // desired setpoint. 
+		double output = (this.kP * turningEncoderError) + (this.kI * integral) + (this.kD * derivative);
+		   // remember the error for the next time around.
+		preError = turningEncoderError; 
+		
+		if(output > 0.2)
+			output = 0.2;
+		if(output < -0.2)
+			output = -0.2;
+		Robot.drive.arcadeDrive(0.7, output);
+		
+		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
+		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 31.0);
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
-		Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
+		Debugger.getInstance().log("PID turning output: " + output, "PID-OUTPUT");
 		Debugger.getInstance().log("Error Turning Comp: " + distanceEncoderError, "PID-ERROR");
 		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
 		Timer.delay(0.004);
@@ -87,14 +111,14 @@ public class EncoderDriveDistanceTurningComp extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (distanceEncoderError < threshold && turningEncoderError < threshold);
+		return (distanceEncoderError < 1 && turningEncoderError < 0.1);
 	}
 	
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		distanceEncoderPID.disable();
-		turningEncoderPID.disable();
+//		distanceEncoderPID.disable();
+//		turningEncoderPID.disable();
 		Robot.drive.arcadeDrive(0, 0);
 	}
 		
