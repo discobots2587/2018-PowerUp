@@ -7,6 +7,7 @@ import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitchScorePosition1and3;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.subcommands.GyroEncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.timed.TimedCrossLine;
@@ -44,15 +45,22 @@ public class Dashboard {
 		typeChooser.addObject("Encoder", Robot.autonType.ENCODER);
 		typeChooser.addObject("Gyro", Robot.autonType.GYRO);	
 		
+		
+		autonChooser.addDefault("Nothing", new Nothing());
+		autonChooser.addObject("Cross Line Only", new EncoderCrossLine(Robot.pos));
+		autonChooser.addObject("Cross Line or Switch (1/3 Only)", new EncoderSwitchScorePosition1and3(Robot.pos));
+		
+		
 		driveChooser.addDefault("Arcade Drive", new ArcadeDrive());
 		driveChooser.addObject("Tank Drive", new TankDrive());
 		
 		SmartDashboard.putData("Position", positionChooser);
-		SmartDashboard.putData("Auton Type",typeChooser);
+		//SmartDashboard.putData("Auton Type",typeChooser);
+		SmartDashboard.putData("Autonomous",autonChooser);
 		SmartDashboard.putData("Drive",driveChooser);
 		
-		SmartDashboard.putData("ENCODER DRIVE DISTANCE", new EncoderDriveDistance(50.0, 5.0, 1.0, 0.0, 0.0));
-		SmartDashboard.putData("GYRO ENCODER", new GyroEncoderDriveDistance(50.0, 5.0, 1.0, 0.0, 0.0, 5.0, 1.0, 0.0, 0.0));
+		//SmartDashboard.putData("ENCODER DRIVE DISTANCE", new EncoderDriveDistance(50.0, 5.0, 1.0, 0.0, 0.0));
+		//SmartDashboard.putData("GYRO ENCODER", new GyroEncoderDriveDistance(50.0, 5.0, 1.0, 0.0, 0.0, 5.0, 1.0, 0.0, 0.0));
 		
 	}
 	
@@ -73,53 +81,11 @@ public class Dashboard {
 		}
 	}
 	
-	//only gets called periodically before the match
-	public static void updatePreMatch() {
-		/*if(Robot.pos == null) {
-			Robot.pos = Robot.position.CENTER;
-		}
-		
-		//check if selected type is null (will always run this on the first time) or check if it changes
-		if((!typeChooser.getSelected().equals(selectedType))||(selectedType == null)) {
-			selectedType = typeChooser.getSelected();
-			
-			SmartDashboard.delete("Auton Chooser");
-			
-			autonChooser = new SendableChooser<>();
-			autonChooser.addDefault("Nothing", new Nothing());
-			
-			switch(typeChooser.getSelected()) {
-			case TIMED:
-				autonChooser.addObject("[Timed] Drive Past Line", new TimedCrossLine(Autonomous.gameData, Robot.pos));
-				break;
-			case ENCODER:
-				encoderOptions();
-				break;
-			case GYRO:
-				gyroOptions();
-				break;
-			default:
-				break;
-			}
-			SmartDashboard.putData("Auton Chooser", autonChooser);
-		}*/
-	}
-	
-	//encoderOptions, gyroOptions both list out options
-	public static void encoderOptions() {
-		autonChooser.addObject("[Enc] Drive Past Line", new EncoderCrossLine());
-		autonChooser.addObject("[Enc] Scale", new EncoderCrossLineScale());
-	}
-	
-	public static void gyroOptions() {
-		//autonChooser.addObject("Drive Past Line", new GyroDrivePastLine());
-	}
-	
 	
 	public static void updateShort() {
 		SmartDashboard.putBoolean("Launcher Ready?", !(Robot.launcher.checkOnCooldown()||Robot.launcher.anyActivated()));
-		SmartDashboard.putNumber("Supply PSI", Double.parseDouble(new DecimalFormat("###.##").format(Robot.launcher.getPressure(Robot.launcher.supplyPressure))));
-		SmartDashboard.putNumber("Launcher PSI", Double.parseDouble(new DecimalFormat("###.##").format(Robot.launcher.getPressure(Robot.launcher.launcherPressure))));
+		//SmartDashboard.putNumber("Supply PSI", Double.parseDouble(new DecimalFormat("###.##").format(Robot.launcher.getPressure(Robot.launcher.supplyPressure))));
+		//SmartDashboard.putNumber("Launcher PSI", Double.parseDouble(new DecimalFormat("###.##").format(Robot.launcher.getPressure(Robot.launcher.launcherPressure))));
 	}
 	
 	public static void updateLong() {
@@ -128,21 +94,17 @@ public class Dashboard {
 		SmartDashboard.putNumber("Switch Delay", Constants.kSwitchWait);
 		SmartDashboard.putNumber("Scale Delay", Constants.kScaleWait);
 		
-//		SmartDashboard.putNumber("GYRO X", Robot.drive.gyro_xyz[0]);
-//		SmartDashboard.putNumber("GYRO Y", Robot.drive.gyro_xyz[1]);
-//		SmartDashboard.putNumber("GYRO Z", Robot.drive.gyro_xyz[2]);
+		//SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
 		
-		SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
+		//SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
+		//SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.getDistance());
+		//SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.getDistance());
+		//SmartDashboard.putNumber("PID arm",Robot.arm.output);
+		//SmartDashboard.putNumber("Zeropoint", Robot.arm.zeroPoint);
+		//SmartDashboard.putNumber("Potentiometer TRUE value", Robot.arm.armPot.get());
+		//SmartDashboard.putNumber("Target", Robot.arm.target);
 		
-		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
-		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.getDistance());
-		SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.getDistance());
-		SmartDashboard.putNumber("PID arm",Robot.arm.output);
-		SmartDashboard.putNumber("Zeropoint", Robot.arm.zeroPoint);
-		SmartDashboard.putNumber("Potentiometer TRUE value", Robot.arm.armPot.get());
-		SmartDashboard.putNumber("Target", Robot.arm.target);
-		
-		SmartDashboard.putNumber("test",Constants.kInchPerTick);
+		//SmartDashboard.putNumber("test",Constants.kInchPerTick);
 	}
 }
 

@@ -5,6 +5,7 @@ import org.discobots.powerup.lib.AverageEncoderPIDSource;
 import org.discobots.powerup.lib.DummyPIDOutput;
 import org.discobots.powerup.lib.TurningEncoderPIDSource;
 import org.discobots.powerup.utils.Debugger;
+import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
@@ -76,7 +77,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 //		distanceEncoderPID.enable();
 //		turningEncoderPID.enable();
 		
-		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
+		distanceEncoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
 		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 31.0);
 	}
 	
@@ -97,7 +98,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 			output = -0.2;
 		Robot.drive.arcadeDrive(0.7, output);
 		
-		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
+		distanceEncoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
 		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 31.0);
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");

@@ -4,6 +4,7 @@ import org.discobots.powerup.Robot;
 import org.discobots.powerup.lib.AverageEncoderPIDSource;
 import org.discobots.powerup.lib.DummyPIDOutput;
 import org.discobots.powerup.utils.Debugger;
+import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
@@ -48,13 +49,13 @@ public class EncoderDriveDistance extends Command {
 		right.reset();
 		distanceEncoderPID.setSetpoint(encoderSetpoint);
 		distanceEncoderPID.enable();
-		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
+		encoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
 	}
 	
 	@Override
 	protected void execute() {
-		Robot.drive.arcadeDrive(0.7, 0);
-		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
+		Robot.drive.arcadeDrive(0.6, 0);
+		encoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");

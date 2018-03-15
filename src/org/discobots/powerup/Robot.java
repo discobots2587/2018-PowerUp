@@ -94,10 +94,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		/*if(Timer.getMatchTime() < 0) {
-			Dashboard.updatePreMatch();
-		}*/
-		Dashboard.updatePreMatch();
 	}
 
 	/**

@@ -11,6 +11,7 @@ import org.discobots.powerup.commands.autonomous.timed.TimedScale;
 import org.discobots.powerup.commands.autonomous.timed.TimedSwitch;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -20,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Autonomous {
 
 	//gameData - FMS game data input
-	public static String gameData;
+	public static String gameData = "";
 	
 	//scoreSide - 6 booleans, left side close-to-far, then right side close-to-far
 	public static boolean[] scoreSide = new boolean[6];
@@ -30,9 +31,10 @@ public class Autonomous {
 	public static CommandGroup cmdGroup;
 	
 	public static void init() {
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		while(gameData.length() < 1 && Timer.getMatchTime() >= 10) {
+			gameData = DriverStation.getInstance().getGameSpecificMessage();
+		}
 		
-	
 		
 		//set up scoreSide array
 		for(int k = 0; k < 3; k++) {
@@ -46,12 +48,14 @@ public class Autonomous {
 		
 		//int position =  DriverStation.getInstance().getLocation();
 		// if (position == 2)
-		cmdGroup = new EncoderDumbMiddle();
+		//cmdGroup = new EncoderDumbMiddle();
 		// else 
 		// cmdGroup = new EncoderSwitchScorePosition1and3(position);
 		
+		//cmdGroup.start();
 		
-		cmdGroup.start();
+		autonCommand = new EncoderDriveDistance(140,2,1,.01,.01);
+		autonCommand.start();
 	}
 	
 	public static void periodic() {
