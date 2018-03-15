@@ -47,8 +47,8 @@ public class Dashboard {
 		
 		
 		autonChooser.addDefault("Nothing", new Nothing());
-		autonChooser.addObject("Cross Line Only", new EncoderCrossLine(Robot.pos));
-		autonChooser.addObject("Cross Line or Switch (1/3 Only)", new EncoderSwitchScorePosition1and3(Robot.pos));
+		//autonChooser.addObject("Cross Line Only", new EncoderCrossLine(Robot.pos));
+		//autonChooser.addObject("Cross Line or Switch (1/3 Only)", new EncoderSwitchScorePosition1and3(Robot.pos));
 		
 		
 		driveChooser.addDefault("Arcade Drive", new ArcadeDrive());

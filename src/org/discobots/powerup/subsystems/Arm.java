@@ -61,8 +61,8 @@ public class Arm extends PIDSubsystem {
 			break;
 		case 1:
 			//intake ready to unload to switch
-			this.setSetpoint(zeroPoint+.085*scaleFactor);
-			this.target = (zeroPoint+.085*scaleFactor);
+			this.setSetpoint(zeroPoint+.015*scaleFactor);
+			this.target = (zeroPoint+.015*scaleFactor);
 			break;
 		case 2:
 			//intake holding cube above catapult
@@ -97,7 +97,9 @@ public class Arm extends PIDSubsystem {
 	
 	public void set(double output) {
 		/*if(switch_bottom.get()) {
-			armMotor.set(0.0);
+			armMotor.set(Math.max(output, 0));
+		} else if(switch_top.get()) {
+			armMotor.set(Math.min(output, 0));
 		} else {
 			armMotor.set(output);
 		}*/

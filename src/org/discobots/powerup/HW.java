@@ -31,29 +31,27 @@ public class HW {
 	public static int launcher2 = 1;
 	public static int launcher3 = 2;
 	
-	public static int claw1 = 3;
+	/*public static int claw1 = 3;
 	public static int claw2 = 4;
 	public static int shifter1 = 6;
-	public static int shifter2 = 7;
+	public static int shifter2 = 7;*/
 	
-	/*//PCM (24V) ports
+	//PCM (24V) ports
 	public static int pcm24v   = 1; //CAN id
 	public static int claw1    = 0;
 	public static int claw2    = 1;
 	public static int shifter1 = 6;
-	public static int shifter2 = 7;*/
-	
-	public static int pcm24v = 1; //CAN id (same as pcm12v)
+	public static int shifter2 = 7;
 	
 	//DIO ports
-	public static int right_encoder1    = 0;
-	public static int right_encoder2    = 1;
-	public static int left_encoder1     = 2;
-	public static int left_encoder2     = 3;
+	public static int right_encoder1    = 0; //a
+	public static int right_encoder2    = 1; //b
+	public static int left_encoder1     = 2; //a
+	public static int left_encoder2     = 3; //b
 	
 	public static int ultrasonic1       = 4;
 	public static int utlrasonic2       = 5;
-	public static int arm_switch_top    = 8; //temp
+	public static int arm_switch_top    = 8;
 	public static int arm_switch_bottom = 9; //temp
 	
 	//Analog ports

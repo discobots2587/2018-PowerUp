@@ -118,17 +118,17 @@ public class OI {
 		p_btn_RT.whenPressed(new IntakeSet(1));
 		p_btn_RT.whenReleased(new IntakeSet(0));
 		
-		p_btn_LB.whenPressed(new ArmSet(0.75));
+		/*p_btn_LB.whenPressed(new ArmSet(0.75));
 		p_btn_LB.whenReleased(new ArmSet(0));
 		
 		p_btn_LT.whenPressed(new ArmSet(-0.75));
-		p_btn_LT.whenReleased(new ArmSet(0));
+		p_btn_LT.whenReleased(new ArmSet(0));*/
 		
-		/*p_btn_LB.whenPressed(new Command() {
+		p_btn_LB.whenPressed(new Command() {
 			@Override
 			
 			public void initialize() {
-				//Robot.arm.up();
+				Robot.arm.up();
 			}
 			
 			@Override
@@ -140,22 +140,7 @@ public class OI {
 		p_btn_LT.whenPressed(new Command() {
 			@Override
 			public void initialize() {
-				//Robot.arm.down();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-		});*/
-		
-		s_btn_B.toggleWhenPressed(new WinchSet(1));
-		
-		s_btn_X.whenPressed(new Command() {
-			@Override
-			public void initialize() {
-				Robot.drive.m_left_encoder.reset();
-				Robot.drive.m_right_encoder.reset();
+				Robot.arm.down();
 			}
 			
 			@Override
@@ -163,6 +148,8 @@ public class OI {
 				return true;
 			}
 		});
+		
+		//s_btn_B.toggleWhenPressed(new WinchSet(1)); WINCH
 		
 		//s_btn_Y.whenPressed(new EncoderDriveDistance(20.0, 5.0, 1.0, 0.0, 0.0));
 		//s_btn_Y.whenPressed(new AutonArcadeDriveTimed(0.5,0,500));
@@ -181,5 +168,8 @@ public class OI {
 //				return true;
 //			}
 //		});
+		
+		s_btn_L1.whenPressed(new Test(true, 5));
+		s_btn_L2.whenPressed(new Test(true, -5));
 	}
 }
