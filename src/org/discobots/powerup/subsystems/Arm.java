@@ -61,8 +61,8 @@ public class Arm extends PIDSubsystem {
 			break;
 		case 1:
 			//intake ready to unload to switch
-			this.setSetpoint(zeroPoint+.085*scaleFactor);
-			this.target = (zeroPoint+.085*scaleFactor);
+			this.setSetpoint(zeroPoint+.015*scaleFactor);
+			this.target = (zeroPoint+.015*scaleFactor);
 			break;
 		case 2:
 			//intake holding cube above catapult
