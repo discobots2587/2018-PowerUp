@@ -54,7 +54,7 @@ public class Autonomous {
 		
 		//cmdGroup.start();
 		
-		autonCommand = new EncoderDriveDistance(140,2,1,.01,.01);
+		autonCommand = Dashboard.autonChooser.getSelected();
 		autonCommand.start();
 	}
 	
