@@ -7,6 +7,7 @@ import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitchScorePosition1and3;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.subcommands.GyroEncoderDriveDistance;
@@ -48,9 +49,10 @@ public class Dashboard {
 		
 		
 		autonChooser.addDefault("Nothing", new Nothing());
-		//autonChooser.addObject("Cross Line Only", new EncoderCrossLine(Robot.pos));
-		//autonChooser.addObject("Cross Line or Switch (1/3 Only)", new EncoderSwitchScorePosition1and3(Robot.pos));
-		
+		autonChooser.addObject("Cross Line Only", new EncoderCrossLine());
+		autonChooser.addObject("Cross Line or Switch (1/3 Only)", new EncoderSwitchScorePosition1and3());
+		autonChooser.addObject("Cross Line & Scale", new EncoderCrossLineScale());
+		autonChooser.addObject("Middle", new EncoderDumbMiddle());
 		
 		driveChooser.addDefault("Arcade Drive", new ArcadeDrive());
 		driveChooser.addObject("Tank Drive", new TankDrive());

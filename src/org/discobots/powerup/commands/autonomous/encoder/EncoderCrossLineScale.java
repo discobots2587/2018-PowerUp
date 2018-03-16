@@ -1,6 +1,7 @@
 package org.discobots.powerup.commands.autonomous.encoder;
 
 import org.discobots.powerup.Autonomous;
+import org.discobots.powerup.Dashboard;
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.Robot.position;
 import org.discobots.powerup.commands.Launch;
@@ -18,19 +19,22 @@ public class EncoderCrossLineScale extends CommandGroup {
 		this.scoreSide = Autonomous.scoreSide;
 		
 		addSequential(new AutonTankDriveEncoder(0.7,20,20));
-		
+	}
+	
+	public void initialize() {
+		Robot.pos = Dashboard.positionChooser.getSelected();
 		switch(Robot.pos) {
-		case RIGHT:
-			right();
-			break;
-		case LEFT:
-			left();
-			break;
-		case CENTER:
-			center();
-			break;
-		default:
-			break;
+			case RIGHT:
+				right();
+				break;
+			case LEFT:
+				left();
+				break;
+			case CENTER:
+				center();
+				break;
+			default:
+				break;
 		}
 	}
 	

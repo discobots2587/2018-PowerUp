@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class EncoderSwitchScorePosition1and3 extends CommandGroup{
 	int position;
-	public EncoderSwitchScorePosition1and3(Robot.position pos) {
-		switch(pos) {
+	public EncoderSwitchScorePosition1and3() {
+		switch(Robot.pos) {
 		case LEFT:
 			this.position = 1;
 			break;
