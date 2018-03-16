@@ -57,6 +57,10 @@ public class TimedChooser extends Command {
 		}
 	}
 	
+	protected void center() {
+		autonCommand = new TimedSwitch(Robot.position.CENTER);
+	}
+	
 	@Override
 	protected boolean isFinished() {
 		return true;

@@ -1,5 +1,6 @@
 package org.discobots.powerup.commands.autonomous.timed;
 
+import org.discobots.powerup.Autonomous;
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.commands.Launch;
 import org.discobots.powerup.commands.autonomous.Nothing;
@@ -22,7 +23,20 @@ public class TimedSwitch extends CommandGroup {
 			addSequential(new AutonArcadeDriveTimed(0.7,0,1000));
 			addSequential(new Launch(Launch.type.SWITCH));
 		} else if(pos.equals(Robot.position.CENTER)) {
-			addSequential(new Nothing());
+			addSequential(new AutonArcadeDriveTimed(0.7, 0, 100));
+			if(Autonomous.scoreSide[0]) {
+				addSequential(new AutonArcadeDriveTimed(0, -0.5, 300));
+			} else {
+				addSequential(new AutonArcadeDriveTimed(0, 0.5, 300));
+			}
+			addSequential(new AutonArcadeDriveTimed(0.7, 0, 1000));
+			if(Autonomous.scoreSide[0]) {
+				addSequential(new AutonArcadeDriveTimed(0, 0.5, 300));
+			} else {
+				addSequential(new AutonArcadeDriveTimed(0, -0.5, 300));
+			}
+			addSequential(new AutonArcadeDriveTimed(0.7, 0, 100));
+			//addSequential(new Launch(Launch.type.SWITCH));
 		}
 	}
 }
