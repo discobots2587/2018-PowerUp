@@ -11,6 +11,7 @@ import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitchScorePosition1and3;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.subcommands.GyroEncoderDriveDistance;
+import org.discobots.powerup.commands.autonomous.timed.TimedChooser;
 import org.discobots.powerup.commands.autonomous.timed.TimedCrossLine;
 import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.utils.Constants;
@@ -49,10 +50,12 @@ public class Dashboard {
 		
 		
 		autonChooser.addDefault("Nothing", new Nothing());
+		autonChooser.addObject("Dead Reckoning", new TimedChooser());
+		
 		autonChooser.addObject("Cross Line Only", new EncoderCrossLine());
-		autonChooser.addObject("Cross Line or Switch (1/3 Only)", new EncoderSwitchScorePosition1and3());
-		autonChooser.addObject("Cross Line & Scale", new EncoderCrossLineScale());
-		autonChooser.addObject("Middle", new EncoderDumbMiddle());
+		//autonChooser.addObject("Cross Line or Switch (1/3 Only)", new EncoderSwitchScorePosition1and3());
+		//autonChooser.addObject("Cross Line & Scale", new EncoderCrossLineScale());
+		//autonChooser.addObject("Middle", new EncoderDumbMiddle());
 		
 		driveChooser.addDefault("Arcade Drive", new ArcadeDrive());
 		driveChooser.addObject("Tank Drive", new TankDrive());
@@ -69,10 +72,10 @@ public class Dashboard {
 	
 	public static void autoInit() {
 		DriverStation.Alliance color = DriverStation.getInstance().getAlliance();
-		
+		for(int k = 0; k < 6; k++)
+			SmartDashboard.putBoolean(k+"", Autonomous.scoreSide[k]);
 		if(color.equals(DriverStation.Alliance.Blue)) {
-			for(int k = 0; k < 6; k++)
-				SmartDashboard.putBoolean(k+"", Autonomous.scoreSide[k]);
+			
 		} else if(color.equals(DriverStation.Alliance.Blue)) {
 			for(int k = 0; k < 6; k++)
 				SmartDashboard.putBoolean(k+"", !Autonomous.scoreSide[k]);
@@ -106,7 +109,7 @@ public class Dashboard {
 		
 		//SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
 		
-		//SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
+		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
 		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.getDistance());
 		SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.getDistance());
 		
@@ -114,7 +117,7 @@ public class Dashboard {
 		SmartDashboard.putBoolean("ArmPos 0", (Robot.arm.index() == 0));
 		SmartDashboard.putBoolean("ArmPos 1", (Robot.arm.index() == 1));
 		SmartDashboard.putBoolean("ArmPos 2", (Robot.arm.index() == 2));
-		//SmartDashboard.putNumber("PID arm",Robot.arm.output);
+		SmartDashboard.putNumber("PID arm",Robot.arm.output);
 		//SmartDashboard.putNumber("Zeropoint", Robot.arm.zeroPoint);
 		//SmartDashboard.putNumber("Potentiometer TRUE value", Robot.arm.armPot.get());
 		//SmartDashboard.putNumber("Target", Robot.arm.target);

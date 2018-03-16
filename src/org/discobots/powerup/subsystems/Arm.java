@@ -39,8 +39,8 @@ public class Arm extends PIDSubsystem {
 		this.index = 2;
 		zeroPoint = armPot.get();
 		this.setPos(index);
-		//this.enable();
-		this.disable();
+		this.enable();
+		//this.disable();
 	}
 	
 	public double getPos() {
@@ -96,11 +96,12 @@ public class Arm extends PIDSubsystem {
 	}
 	
 	public void set(double output) {
-		if(!switch_top.get()) {
+		/*if(!switch_top.get()) {
 			armMotor.set(Math.min(output, 0));
 		} else {
 			armMotor.set(output);
-		}
+		}*/
+		armMotor.set(output);
 		this.output = output;
 	}
 	

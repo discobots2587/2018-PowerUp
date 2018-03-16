@@ -11,6 +11,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class EncoderSwitchScorePosition1and3 extends CommandGroup{
 	int position;
 	public EncoderSwitchScorePosition1and3() {
+		
+	}
+	
+	@Override
+	protected void initialize() {
+		
 		switch(Robot.pos) {
 		case LEFT:
 			this.position = 1;
@@ -24,10 +30,6 @@ public class EncoderSwitchScorePosition1and3 extends CommandGroup{
 		default:
 			break;
 		}
-	}
-	
-	@Override
-	protected void initialize() {
 		
 		//positon 1 and we can score switch
 		if( position == 1 && Autonomous.gameData.charAt(0) == 'L') {
