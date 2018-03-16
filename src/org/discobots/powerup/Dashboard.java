@@ -104,10 +104,12 @@ public class Dashboard {
 	public static void updateLong() {
 		//SmartDashboard.putString("Time Left", (Timer.getMatchTime() >= 0.0) ? Utils.secToMinAndSec(Timer.getMatchTime()) : "-1");
 		
+		SmartDashboard.putNumber("Seconds Left", Timer.getMatchTime());
+		
 		SmartDashboard.putNumber("Switch Delay", Constants.kSwitchWait);
 		SmartDashboard.putNumber("Scale Delay", Constants.kScaleWait);
 		
-		//SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
+		SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
 		
 		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
 		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.getDistance());
