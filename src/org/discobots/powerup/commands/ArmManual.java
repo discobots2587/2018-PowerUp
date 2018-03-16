@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmManual extends Command {
 
 	public ArmManual() {
-		requires(Robot.arm);
 	}
 	
 	// Called just before this Command runs the first time
@@ -19,15 +18,15 @@ public class ArmManual extends Command {
 	@Override
 	protected void execute() {
 		//don't set it when the joystick is low, so we won't freeze the arm
-		/*if(Math.abs(Robot.oi.s_gp.getLY())>0.1) {
+		if(Math.abs(Robot.oi.s_fs.getLY())>0.1) {
 			Robot.arm.getPIDController().disable();
-			Robot.arm.set(Robot.oi.s_gp.getLY());
+			Robot.arm.set(Robot.oi.s_fs.getLY()*0.5);
 		} else {
 			if(!Robot.arm.getPIDController().isEnabled()) {
 				Robot.arm.getPIDController().setSetpoint(Robot.arm.armPot.get());
 			}
 			Robot.arm.getPIDController().enable();
-		}*/
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

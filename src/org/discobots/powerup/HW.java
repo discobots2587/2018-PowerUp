@@ -52,10 +52,9 @@ public class HW {
 	public static int ultrasonic1       = 4;
 	public static int utlrasonic2       = 5;
 	public static int arm_switch_top    = 8;
-	public static int arm_switch_bottom = 9; //temp
+	public static int arm_switch_bottom = 9;
 	
 	//Analog ports
-	public static int supplyPressure   = 1;
-	public static int launcherPressure = 2;
-	public static int potentiometer    = 3;
+	public static int pressureSensor	 = 2;
+	public static int potentiometer  	 = 3;
 }

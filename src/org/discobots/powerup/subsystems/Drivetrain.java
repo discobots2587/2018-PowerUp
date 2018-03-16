@@ -65,7 +65,7 @@ public class Drivetrain extends Subsystem {
 		drive.setDeadband(Constants.kDeadband);
 		
 		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2, true, CounterBase.EncodingType.k4X);
-		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, false, CounterBase.EncodingType.k4X);
+		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, true, CounterBase.EncodingType.k4X);
 		
 		m_left_encoder.setDistancePerPulse(Constants.kInchPerTick);
 		m_right_encoder.setDistancePerPulse(Constants.kInchPerTick);
@@ -76,6 +76,8 @@ public class Drivetrain extends Subsystem {
 		PigeonIMU.GeneralStatus genStatus = new PigeonIMU.GeneralStatus();
 		pigeon.getGeneralStatus(genStatus);
 		Debugger.getInstance().log(genStatus.toString(), "Pigeon IMU");
+		
+		drive.setSafetyEnabled(false);
 	}
 	
 	public void initDefaultCommand() {
@@ -87,7 +89,7 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void arcadeDrive(double xSpeed, double zRotation) { //contrary to the documentation, but that is ok
-		drive.arcadeDrive(xSpeed, zRotation, true); //forward, clockwise = positive; decrease sensitivity at low speed is TRUE
+		drive.arcadeDrive(xSpeed, zRotation, false); //forward, clockwise = positive; decrease sensitivity at low speed is TRUE
 	}
 	
 	public void tankDrive(double left, double right) {

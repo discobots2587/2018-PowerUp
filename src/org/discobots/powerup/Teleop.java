@@ -22,7 +22,7 @@ public class Teleop {
 		if(Robot.driveCommand != null) {
 			Robot.driveCommand.start();
 		} else {
-			Debugger.getInstance().log("Drive selector failed, using Arcade Drive","DASH");
+			//Debugger.getInstance().log("Drive selector failed, using Arcade Drive","DASH");
 			new ArcadeDrive().start();
 		}
 		
@@ -32,9 +32,9 @@ public class Teleop {
 			Robot.drive.rightDrive.setRampband(2.0);
 		}
 		
-		//activate arm
-		/*ArmManual armManual = new ArmManual();
-		armManual.start();*/
+		//activate manual arm
+		ArmManual armManual = new ArmManual();
+		armManual.start();
 		
 		Robot.drive.teleopInit();
 		Robot.arm.teleopInit();

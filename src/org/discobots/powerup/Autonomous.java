@@ -1,5 +1,6 @@
 package org.discobots.powerup;
 
+import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
@@ -31,8 +32,11 @@ public class Autonomous {
 	public static CommandGroup cmdGroup;
 	
 	public static void init() {
-		while(gameData.length() < 1 && Timer.getMatchTime() >= 10) {
+		int count = 0;
+		while(gameData.length() < 3 && count < 3) {
 			gameData = DriverStation.getInstance().getGameSpecificMessage();
+			Timer.delay(0.5);
+			count++;
 		}
 		
 		
@@ -43,7 +47,7 @@ public class Autonomous {
 		}
 
 		Dashboard.autoInit();
-		Robot.pos = Dashboard.positionChooser.getSelected();
+		//Robot.pos = Dashboard.positionChooser.getSelected();
 		
 		
 		//int position =  DriverStation.getInstance().getLocation();
@@ -54,7 +58,7 @@ public class Autonomous {
 		
 		//cmdGroup.start();
 		
-		autonCommand = Dashboard.autonChooser.getSelected();
+		autonCommand = new AutonArcadeDriveTimed(0.7,0,2000);
 		autonCommand.start();
 	}
 	

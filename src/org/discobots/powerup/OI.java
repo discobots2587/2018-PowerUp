@@ -118,10 +118,10 @@ public class OI {
 		p_btn_RT.whenPressed(new IntakeSet(1));
 		p_btn_RT.whenReleased(new IntakeSet(0));
 		
-		/*p_btn_LB.whenPressed(new ArmSet(0.75));
+		/*p_btn_LB.whenPressed(new ArmSet(-0.75));
 		p_btn_LB.whenReleased(new ArmSet(0));
 		
-		p_btn_LT.whenPressed(new ArmSet(-0.75));
+		p_btn_LT.whenPressed(new ArmSet(0.75));
 		p_btn_LT.whenReleased(new ArmSet(0));*/
 		
 		p_btn_LB.whenPressed(new Command() {
@@ -169,7 +169,9 @@ public class OI {
 //			}
 //		});
 		
-		s_btn_L1.whenPressed(new Test(true, 5));
-		s_btn_L2.whenPressed(new Test(true, -5));
+		s_btn_L1.whenPressed(new LaunchWaitChange(true, 5));
+		s_btn_L2.whenPressed(new LaunchWaitChange(true, -5));
+		
+		s_btn_X.whenPressed(new ArmPIDReset());
 	}
 }

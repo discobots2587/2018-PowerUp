@@ -26,8 +26,7 @@ public class Launcher extends Subsystem {
 	static Compressor compressor;
 	
 	//Analog input for pressure sensor
-	public AnalogInput launcherPressure;
-	public AnalogInput supplyPressure;
+	public AnalogInput pressureSensor;
 	
 	private double targetTime;
 	
@@ -42,8 +41,7 @@ public class Launcher extends Subsystem {
 		init();
 		
 		//initialize timer to make sure that it will be false after the cooldown
-		launcherPressure = new AnalogInput(HW.launcherPressure);
-		supplyPressure = new AnalogInput(HW.supplyPressure);
+		pressureSensor = new AnalogInput(HW.pressureSensor);
 		timer = new Timer();
 		this.startCooldown(0);
 		

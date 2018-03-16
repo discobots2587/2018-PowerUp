@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class Test extends Command {
+public class LaunchWaitChange extends Command {
 	
 	int num;
 	boolean bool;
 	
-	public Test(boolean inputb, int input) {
+	public LaunchWaitChange(boolean inputb, int input) {
 		num = input;
 		bool = inputb;
 	}

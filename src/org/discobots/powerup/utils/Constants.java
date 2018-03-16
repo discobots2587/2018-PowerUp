@@ -14,7 +14,7 @@ public class Constants {
 	public static long kSwitchWait = 45;
 	
 	//kIntakeWait - the delay between setting the intake to open and launching the cube
-	public static long kIntakeWait = 150;
+	public static long kIntakeWait = 250;
 	
 	//kLaunchCooldown - waits this period of time (milliseconds) after launching 
 	public static long kLaunchCooldown = 1000;
