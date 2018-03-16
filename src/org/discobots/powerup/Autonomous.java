@@ -60,6 +60,7 @@ public class Autonomous {
 		//cmdGroup.start();
 		
 		autonCommand = Dashboard.autonChooser.getSelected();
+		//autonCommand = new 
 		autonCommand.start();
 	}
 	

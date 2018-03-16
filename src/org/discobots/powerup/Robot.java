@@ -73,13 +73,13 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		Dashboard.init();
 		
-		CameraServer.getInstance().startAutomaticCapture();
-		/*Thread camthread = new Thread(() -> {
-			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
+		//CameraServer.getInstance().startAutomaticCapture();
+		Thread camthread = new Thread(() -> {
+			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
             camera.setResolution(320, 240);
             camera.setFPS(30);
 		});
-		camthread.start();*/
+		camthread.start();
 	}
 
 	/**

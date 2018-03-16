@@ -23,19 +23,20 @@ public class TimedSwitch extends CommandGroup {
 			addSequential(new AutonArcadeDriveTimed(0.7,0,1000));
 			addSequential(new Launch(Launch.type.SWITCH));
 		} else if(pos.equals(Robot.position.CENTER)) {
-			addSequential(new AutonArcadeDriveTimed(0.7, 0, 100));
+			addSequential(new AutonArcadeDriveTimed(0.7, 0, 700));
 			if(Autonomous.scoreSide[0]) {
-				addSequential(new AutonArcadeDriveTimed(0, -0.5, 300));
+				addSequential(new AutonArcadeDriveTimed(0, -0.5, 800));
 			} else {
-				addSequential(new AutonArcadeDriveTimed(0, 0.5, 300));
+				addSequential(new AutonArcadeDriveTimed(0, 0.5, 800));
 			}
-			addSequential(new AutonArcadeDriveTimed(0.7, 0, 1000));
+			addSequential(new AutonArcadeDriveTimed(0.7, 0, 1300));
+			addSequential(new AutonArcadeDriveTimed(0,0,400));
 			if(Autonomous.scoreSide[0]) {
-				addSequential(new AutonArcadeDriveTimed(0, 0.5, 300));
+				addSequential(new AutonArcadeDriveTimed(0, 0.5, 800));
 			} else {
-				addSequential(new AutonArcadeDriveTimed(0, -0.5, 300));
+				addSequential(new AutonArcadeDriveTimed(0, -0.5, 800));
 			}
-			addSequential(new AutonArcadeDriveTimed(0.7, 0, 100));
+			addSequential(new AutonArcadeDriveTimed(0.7, 0, 1500));
 			//addSequential(new Launch(Launch.type.SWITCH));
 		}
 	}

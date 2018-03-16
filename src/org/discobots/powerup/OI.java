@@ -169,9 +169,28 @@ public class OI {
 //			}
 //		});
 		
-		s_btn_L1.whenPressed(new LaunchWaitChange(true, 5));
-		s_btn_L2.whenPressed(new LaunchWaitChange(true, -5));
+		s_btn_R1.whenPressed(new LaunchWaitChange(true, 5));
+		s_btn_R2.whenPressed(new LaunchWaitChange(true, -5));
+		
+		s_btn_R1.whenPressed(new IntakeSet(-1));
+		s_btn_R1.whenReleased(new IntakeSet(0));
+		
+		s_btn_R2.whenPressed(new IntakeSet(1));
+		s_btn_R2.whenReleased(new IntakeSet(0));
 		
 		s_btn_X.whenPressed(new ArmPIDReset());
+		s_btn_Y.whenPressed(new IntakeToggle());
+		
+		s_btn_B.whenPressed(new Command() {
+			@Override
+			public void initialize() {
+				Robot.arm.setIndex(1);
+			}
+			
+			@Override
+			protected boolean isFinished() {
+				return true;
+			}
+		});
 	}
 }

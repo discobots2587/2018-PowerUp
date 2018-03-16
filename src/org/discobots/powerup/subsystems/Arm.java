@@ -108,4 +108,9 @@ public class Arm extends PIDSubsystem {
 	public int index() {
 		return this.index;
 	}
+	
+	public void setIndex(int input) {
+		this.index = input;
+		this.setPos(this.index);
+	}
 }

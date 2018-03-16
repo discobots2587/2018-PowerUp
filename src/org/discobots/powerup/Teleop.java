@@ -2,9 +2,12 @@ package org.discobots.powerup;
 
 import org.discobots.powerup.commands.ArcadeDrive;
 import org.discobots.powerup.commands.ArmManual;
+import org.discobots.powerup.commands.GearShift;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
+import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.utils.Debugger;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Teleop {
@@ -38,8 +41,6 @@ public class Teleop {
 		
 		Robot.drive.teleopInit();
 		Robot.arm.teleopInit();
-		
-		
 	}
 	
 	public static void periodic() {

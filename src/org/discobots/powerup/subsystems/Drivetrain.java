@@ -77,7 +77,7 @@ public class Drivetrain extends Subsystem {
 		pigeon.getGeneralStatus(genStatus);
 		Debugger.getInstance().log(genStatus.toString(), "Pigeon IMU");
 		
-		drive.setSafetyEnabled(false);
+		drive.setExpiration(0.5);
 	}
 	
 	public void initDefaultCommand() {

@@ -11,13 +11,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TimedScale extends CommandGroup {
 	public TimedScale(Robot.position pos) {
 		if(pos.equals(Robot.position.RIGHT)) {
-			addSequential(new AutonArcadeDriveTimed(0.7,0,3700));
-			addSequential(new AutonArcadeDriveTimed(0,-0.5,300));
+			addSequential(new AutonArcadeDriveTimed(0.7,0.1,3700));
+			//addSequential(new AutonArcadeDriveTimed(0,0.5,300));
 			addSequential(new AutonArcadeDriveTimed(0,0,400));
+			//addSequential(new AutonArcadeDriveTimed(0.7,0,1000));
 			//addSequential(new Launch(Launch.type.SCALE));
 		} else if(pos.equals(Robot.position.LEFT)) {
-			addSequential(new AutonArcadeDriveTimed(0.7,0,3700));
-			addSequential(new AutonArcadeDriveTimed(0,0.5,300));
+			addSequential(new AutonArcadeDriveTimed(0.7,0.1,3700));
+			//addSequential(new AutonArcadeDriveTimed(0,0.5,300));
 			addSequential(new AutonArcadeDriveTimed(0,0,400));
 			//addSequential(new Launch(Launch.type.SCALE));
 		} else if(pos.equals(Robot.position.CENTER)) {

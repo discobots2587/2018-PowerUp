@@ -24,7 +24,7 @@ public class TimedChooser extends Command {
 			left();
 			break;
 		case CENTER:
-			autonCommand = new Nothing();
+			center();
 			break;
 		case RIGHT:
 			right();
