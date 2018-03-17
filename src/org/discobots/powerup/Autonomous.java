@@ -2,7 +2,7 @@ package org.discobots.powerup;
 
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderChooser;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitch;
 import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
@@ -48,6 +48,9 @@ public class Autonomous {
 		}
 
 		Dashboard.autoInit();
+		
+		Robot.drive.m_right_encoder.reset();
+		Robot.drive.m_left_encoder.reset();
 		//Robot.pos = Dashboard.positionChooser.getSelected();
 		
 		
@@ -59,8 +62,12 @@ public class Autonomous {
 		
 		//cmdGroup.start();
 		
+		Robot.intake.open();
+		
+		Robot.arm.init();
+		
 		autonCommand = Dashboard.autonChooser.getSelected();
-		//autonCommand = new 
+		//autonCommand = new EncoderDriveDistanceTurningComp(6*Math.PI,1,1,.01,.01);
 		autonCommand.start();
 	}
 	

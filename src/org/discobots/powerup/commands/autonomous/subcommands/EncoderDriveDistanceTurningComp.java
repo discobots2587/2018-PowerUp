@@ -100,11 +100,11 @@ public class EncoderDriveDistanceTurningComp extends Command {
 		
 		distanceEncoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
 		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 31.0);
-		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
+		/*Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("PID turning output: " + output, "PID-OUTPUT");
 		Debugger.getInstance().log("Error Turning Comp: " + distanceEncoderError, "PID-ERROR");
-		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
+		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");*/
 		Timer.delay(0.004);
 		
 	}

@@ -6,7 +6,7 @@ import org.discobots.powerup.commands.ArcadeDrive;
 import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderChooser;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitch;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
@@ -53,6 +53,7 @@ public class Dashboard {
 		autonChooser.addObject("Dead Reckoning", new TimedChooser());
 		
 		autonChooser.addObject("Cross Line Only", new EncoderCrossLine());
+		autonChooser.addObject("Encoder Switch/Scale", new EncoderChooser());
 		//autonChooser.addObject("Cross Line or Switch (1/3 Only)", new EncoderSwitchScorePosition1and3());
 		//autonChooser.addObject("Cross Line & Scale", new EncoderCrossLineScale());
 		//autonChooser.addObject("Middle", new EncoderDumbMiddle());
@@ -114,6 +115,8 @@ public class Dashboard {
 		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
 		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.getDistance());
 		SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.getDistance());
+		
+		SmartDashboard.putBoolean("Arm PID Enabled?", Robot.arm.getPIDController().isEnabled());
 		
 		
 		SmartDashboard.putBoolean("ArmPos 0", (Robot.arm.index() == 0));

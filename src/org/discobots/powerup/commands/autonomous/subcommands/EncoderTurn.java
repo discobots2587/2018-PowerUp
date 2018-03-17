@@ -43,6 +43,9 @@ public class EncoderTurn extends Command {
 		left = Robot.drive.m_left_encoder;
 		right = Robot.drive.m_right_encoder;
 		
+		//distanceEncoderPID = new PIDController(kP,kI,kD,avgEncoderPIDSource,distanceEncoderPIDOutput);
+		
+		
 		this.turnSetpoint = turnSetpoint;
 		this.threshold = threshold;
 		this.right_turn = right_turn;
@@ -66,9 +69,9 @@ public class EncoderTurn extends Command {
 	
 	@Override
 	protected void execute() {
-		if(!distanceEncoderPID.isEnabled()) {
+		/*if(!distanceEncoderPID.isEnabled()) {
 			distanceEncoderPID.enable();
-		}
+		}*/
 		
 		this.integral = this.integral + (turningEncoderError * 0.004);
 		   // determine the amount of change from the last time checked
@@ -79,10 +82,15 @@ public class EncoderTurn extends Command {
 		   // remember the error for the next time around.
 		preError = turningEncoderError; 
 		
+		if(output > 0.2)
+			output = 0.2;
+		if(output < -0.2)
+			output = -0.2;
+		
 		if(right_turn)
-			Robot.drive.arcadeDrive(0.0, 0.9);
+			Robot.drive.arcadeDrive(0.0, output);
 		else
-			Robot.drive.arcadeDrive(0.0, -0.9);
+			Robot.drive.arcadeDrive(0.0, -output);
 		this.turningEncoderError = turnSetpoint - ( (right.getDistance() - left.getDistance()) / 31.0);
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
@@ -96,7 +104,7 @@ public class EncoderTurn extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (turningEncoderError < threshold);
+		return (turningEncoderError < 0.1);
 	}
 	
 	// Called once after isFinished returns true
