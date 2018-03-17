@@ -73,12 +73,13 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		Dashboard.init();
 		
-		/*Thread camthread = new Thread(() -> {
-			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(0);
+		//CameraServer.getInstance().startAutomaticCapture();
+		Thread camthread = new Thread(() -> {
+			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
             camera.setResolution(320, 240);
             camera.setFPS(30);
 		});
-		camthread.start();*/
+		camthread.start();
 	}
 
 	/**
@@ -94,10 +95,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		/*if(Timer.getMatchTime() < 0) {
-			Dashboard.updatePreMatch();
-		}*/
-		Dashboard.updatePreMatch();
 	}
 
 	/**

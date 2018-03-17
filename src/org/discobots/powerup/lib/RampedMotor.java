@@ -51,8 +51,10 @@ public class RampedMotor implements SpeedController {
 			//if not, just set it to the input
 			result = input;
 		}
-		motor.set(result*this.scaleConstant);
-		this.previousOutput = result*this.scaleConstant;
+		
+		result*=this.scaleConstant;
+		motor.set(result);
+		this.previousOutput = result;
 	}
 
 	@Override

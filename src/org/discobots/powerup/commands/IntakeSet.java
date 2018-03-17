@@ -10,6 +10,7 @@ public class IntakeSet extends Command {
 	
 	public IntakeSet(double inputVal) {
 		value = inputVal;
+		requires(Robot.intake);
 	}
 	
 	@Override

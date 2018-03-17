@@ -54,7 +54,7 @@ public class GyroTurn extends Command{
 	
 	@Override
 	protected void execute() {
-		new AutonArcadeDriveTimed(turningGyroPIDOutput.getOutput(), 0.0, 10); //small amount of time
+		Robot.drive.arcadeDrive(0, turningGyroPIDOutput.getOutput());
 		turningEncoderError = Math.abs(turningSetPoint - turningGyroPIDOutput.getOutput());
 		System.out.println("GyroTurn PID output: " + turningGyroPIDOutput.getOutput());
 		System.out.println("GyroTurn Error: " + distanceEncoderError);

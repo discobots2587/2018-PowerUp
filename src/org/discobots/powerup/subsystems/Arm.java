@@ -29,20 +29,20 @@ public class Arm extends PIDSubsystem {
 	public double target = 0;
 	
 	public Arm() {
-		super("Arm",1,0,0);
-		this.getPIDController().setOutputRange(-1,1);
+		super("Arm",1,0,0.01);
+		this.getPIDController().setOutputRange(-.75,.75);
 		setAbsoluteTolerance(0.01*scaleFactor);
 		armMotor.setInverted(true);
 	}
 	
-	public void teleopInit() {
+	public void init() {
 		this.index = 2;
 		zeroPoint = armPot.get();
 		this.setPos(index);
 		this.enable();
 		//this.disable();
 	}
-
+	
 	public double getPos() {
 		return armPot.get()-zeroPoint;
 	}
@@ -56,23 +56,24 @@ public class Arm extends PIDSubsystem {
 		switch(pos) {
 		case 0:
 			//intake parallel to ground
-			this.setSetpoint(zeroPoint+0.228*scaleFactor);
-			this.target = (zeroPoint+0.228*scaleFactor);
+			this.setSetpoint(zeroPoint+0.25*scaleFactor);
+			this.target = (zeroPoint+0.25*scaleFactor);
 			break;
 		case 1:
 			//intake ready to unload to switch
-			this.setSetpoint(zeroPoint+.085*scaleFactor);
-			this.target = (zeroPoint+.085*scaleFactor);
+			this.setSetpoint(zeroPoint+.07*scaleFactor);
+			this.target = (zeroPoint+.07*scaleFactor);
 			break;
 		case 2:
 			//intake holding cube above catapult
-			this.setSetpoint(zeroPoint+0.03*scaleFactor);
-			this.target = (zeroPoint+0.03*scaleFactor);
+			this.setSetpoint(zeroPoint+0.02*scaleFactor);
+			this.target = (zeroPoint+0.02*scaleFactor);
 			break;
 		default:
 			this.setSetpoint(0);
 			break;
 		}
+		this.index = pos;
 	}
 	
 	public void up() {
@@ -91,15 +92,25 @@ public class Arm extends PIDSubsystem {
 	
 	public void usePIDOutput(double output) {
 		this.set(output);
-		//this.output = output;
+		this.output = output;
 	}
 	
 	public void set(double output) {
-		/*if(switch_bottom.get()) {
-			armMotor.set(0.0);
+		/*if(!switch_top.get()) {
+			armMotor.set(Math.min(output, 0));
 		} else {
 			armMotor.set(output);
 		}*/
 		armMotor.set(output);
+		this.output = output;
+	}
+	
+	public int index() {
+		return this.index;
+	}
+	
+	public void setIndex(int input) {
+		this.index = input;
+		this.setPos(this.index);
 	}
 }

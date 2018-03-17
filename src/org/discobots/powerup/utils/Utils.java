@@ -13,4 +13,14 @@ public class Utils {
 			return String.format("%02d:%02d", sec/60, sec%60);
 		}
 		
+		public static double encoderAvg(double left, double right) {
+			double error = 1;
+			if(Math.abs(left)<error) {
+				return right;
+			} else if(Math.abs(right)<error) {
+				return left;
+			} else {
+				return (left+right)/2;
+			}
+		}
 }

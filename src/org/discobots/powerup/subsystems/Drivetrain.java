@@ -64,8 +64,8 @@ public class Drivetrain extends Subsystem {
 		
 		drive.setDeadband(Constants.kDeadband);
 		
-		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2, false, CounterBase.EncodingType.k4X);
-		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, true, CounterBase.EncodingType.k4X);
+		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2, true, CounterBase.EncodingType.k4X);
+		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, false, CounterBase.EncodingType.k4X);
 		
 		m_left_encoder.setDistancePerPulse(Constants.kInchPerTick);
 		m_right_encoder.setDistancePerPulse(Constants.kInchPerTick);
@@ -76,6 +76,8 @@ public class Drivetrain extends Subsystem {
 		PigeonIMU.GeneralStatus genStatus = new PigeonIMU.GeneralStatus();
 		pigeon.getGeneralStatus(genStatus);
 		Debugger.getInstance().log(genStatus.toString(), "Pigeon IMU");
+		
+		drive.setExpiration(0.5);
 	}
 	
 	public void initDefaultCommand() {

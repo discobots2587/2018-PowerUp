@@ -4,6 +4,7 @@ import org.discobots.powerup.Robot;
 import org.discobots.powerup.lib.AverageEncoderPIDSource;
 import org.discobots.powerup.lib.DummyPIDOutput;
 import org.discobots.powerup.utils.Debugger;
+import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
@@ -48,29 +49,25 @@ public class EncoderDriveDistance extends Command {
 		right.reset();
 		distanceEncoderPID.setSetpoint(encoderSetpoint);
 		distanceEncoderPID.enable();
-		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
+		encoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
 	}
 	
 	@Override
 	protected void execute() {
-		if(!distanceEncoderPID.isEnabled()) {
-			distanceEncoderPID.enable();
-		}
-
-		new AutonArcadeDriveTimed(0, distanceEncoderPIDOutput.getOutput(), 10); //small amount of time
-		encoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
-		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
+		Robot.drive.arcadeDrive(0.7, 0);
+		encoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
+		/*Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("PID output: " + distanceEncoderPIDOutput.getOutput(), "PID-OUTPUT");
-		Debugger.getInstance().log( "Error: " + encoderError, "PID-ERROR");
-		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
+		Debugger.getInstance().log( "Error Encoder Drive Distance: " + encoderError, "PID-ERROR");
+		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");*/
 	
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (encoderError > threshold);
+		return (encoderError < threshold);
 	}
 	
 	// Called once after isFinished returns true
