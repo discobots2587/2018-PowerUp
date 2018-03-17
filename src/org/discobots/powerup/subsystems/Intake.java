@@ -19,7 +19,7 @@ public class Intake extends Subsystem {
 	
 	public DoubleSolenoid claw;
 	
-	//Ultrasonic ultrasonic;
+	public Ultrasonic ultrasonic;
 	
 	public void initDefaultCommand() {
 		
@@ -36,7 +36,7 @@ public class Intake extends Subsystem {
 		
 		claw = new DoubleSolenoid(HW.pcm24v, HW.claw1, HW.claw2);
 		
-		//ultrasonic = new Ultrasonic();
+		ultrasonic = new Ultrasonic(HW.ultrasonic1, HW.ultrasonic2);
 	}
 	
 	//close - closes the claw

@@ -1,42 +1,12 @@
 package org.discobots.powerup.commands.autonomous.timed;
 
-import org.discobots.powerup.Autonomous;
-import org.discobots.powerup.Dashboard;
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
+import org.discobots.powerup.lib.AutonChooser;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-public class TimedChooser extends Command {
-	
-	Robot.position pos;
-	boolean[] scoreSide;
-	Command autonCommand;
+public class TimedChooser extends AutonChooser {
 	
 	@Override
-	protected void initialize() {
-		pos = Dashboard.positionChooser.getSelected();
-		scoreSide = Autonomous.scoreSide;
-		
-		switch(pos) {
-		case LEFT:
-			left();
-			break;
-		case CENTER:
-			center();
-			break;
-		case RIGHT:
-			right();
-			break;
-		default:
-			autonCommand = new Nothing();
-			break;
-		}
-		
-		autonCommand.start();
-	}
-	
 	protected void left() {
 		if(scoreSide[0]) {
 			autonCommand = new TimedSwitch(Robot.position.LEFT);
@@ -47,6 +17,7 @@ public class TimedChooser extends Command {
 		}
 	}
 	
+	@Override
 	protected void right() {
 		if(!scoreSide[0]) {
 			autonCommand = new TimedSwitch(Robot.position.RIGHT);
@@ -57,12 +28,8 @@ public class TimedChooser extends Command {
 		}
 	}
 	
+	@Override
 	protected void center() {
 		autonCommand = new TimedSwitch(Robot.position.CENTER);
-	}
-	
-	@Override
-	protected boolean isFinished() {
-		return true;
 	}
 }
