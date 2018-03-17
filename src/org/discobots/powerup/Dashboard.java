@@ -8,7 +8,7 @@ import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLineScale;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitchScorePosition1and3;
+import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitch;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.subcommands.GyroEncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.timed.TimedChooser;

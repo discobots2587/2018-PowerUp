@@ -21,6 +21,7 @@ public class EncoderCrossLineScale extends CommandGroup {
 		addSequential(new AutonTankDriveEncoder(0.7,20,20));
 	}
 	
+	@Override
 	public void initialize() {
 		Robot.pos = Dashboard.positionChooser.getSelected();
 		switch(Robot.pos) {
