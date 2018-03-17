@@ -112,7 +112,10 @@ public class Dashboard {
 		
 		SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
 		
+		SmartDashboard.putNumber("Ultrasonic Distance", Robot.intake.ultrasonic.getRangeInches());
+		
 		SmartDashboard.putNumber("Potentiometer Value", Robot.arm.getPos());
+		
 		SmartDashboard.putNumber("Left Encoder Value", Robot.drive.m_left_encoder.getDistance());
 		SmartDashboard.putNumber("Right Encoder Value", Robot.drive.m_right_encoder.getDistance());
 		

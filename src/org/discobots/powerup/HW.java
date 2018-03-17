@@ -50,7 +50,7 @@ public class HW {
 	public static int left_encoder2     = 3; //b
 	
 	public static int ultrasonic1       = 4;
-	public static int utlrasonic2       = 5;
+	public static int ultrasonic2       = 5;
 	public static int arm_switch_top    = 8;
 	public static int arm_switch_bottom = 9;
 	
