@@ -36,8 +36,8 @@ public class Teleop {
 		}
 		
 		//activate manual arm
-		/*ArmManual armManual = new ArmManual();
-		armManual.start();*/
+		ArmManual armManual = new ArmManual();
+		armManual.start();
 		
 		Robot.drive.teleopInit();
 		Robot.arm.init();

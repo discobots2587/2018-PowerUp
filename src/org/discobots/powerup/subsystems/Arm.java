@@ -39,8 +39,8 @@ public class Arm extends PIDSubsystem {
 		this.index = 2;
 		zeroPoint = armPot.get();
 		this.setPos(index);
-		//this.enable();
-		this.disable();
+		this.enable();
+		//this.disable();
 	}
 	
 	public double getPos() {

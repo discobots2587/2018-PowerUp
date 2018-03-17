@@ -1,7 +1,9 @@
 package org.discobots.powerup.commands.autonomous.encoder;
 
 import org.discobots.powerup.Robot;
+import org.discobots.powerup.commands.Launch;
 import org.discobots.powerup.commands.autonomous.Nothing;
+import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistanceTurningComp;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderTurn;
 
@@ -13,19 +15,19 @@ public class EncoderSwitch extends CommandGroup {
 		if(pos.equals(Robot.position.RIGHT)) {
 			addSequential(new EncoderDriveDistanceTurningComp(141,0));
 			Timer.delay(0.3);
-			this.addSequential(new EncoderTurn(90,2,1.0,0.0,0.0, false));
+			this.addSequential(new AutonArcadeDriveTimed(0,-0.7,575));
 			Timer.delay(0.3);
-			addSequential(new EncoderDriveDistanceTurningComp(20,0));
+			addSequential(new AutonArcadeDriveTimed(0.7,0,1000));
 			Timer.delay(0.3);
-			//addSequential(new Launch(Launch.type.SWITCH));
+			addSequential(new Launch(Launch.type.SWITCH));
 		} else if(pos.equals(Robot.position.LEFT)) {
 			addSequential(new EncoderDriveDistanceTurningComp(141,0));
 			Timer.delay(0.3);
-			this.addSequential(new EncoderTurn(90,2,1.0,0.0,0.0, true));
+			this.addSequential(new AutonArcadeDriveTimed(0,0.7,575));
 			Timer.delay(0.3);
-			addSequential(new EncoderDriveDistanceTurningComp(20,0));
+			addSequential(new AutonArcadeDriveTimed(0.7,0,1000));
 			Timer.delay(0.3);
-			//addSequential(new Launch(Launch.type.SWITCH));
+			addSequential(new Launch(Launch.type.SWITCH));
 		} else if(pos.equals(Robot.position.CENTER)) {
 			addSequential(new Nothing());
 		}

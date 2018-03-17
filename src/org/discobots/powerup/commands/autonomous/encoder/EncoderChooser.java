@@ -49,9 +49,7 @@ public class EncoderChooser extends Command {
 	
 	public void right() {
 		//check if the right switch is ours
-		if(!scoreSide[0]) {
-			autonCommand = new EncoderSwitch(Robot.position.RIGHT);
-		} else if(!scoreSide[1]){ //check the scale
+		if(!scoreSide[1]){ //check the scale
 			autonCommand = new EncoderScale(Robot.position.RIGHT);
 		} else { //if neither, aim for the switch
 			autonCommand = new EncoderDriveDistanceTurningComp(180,0);
@@ -64,9 +62,7 @@ public class EncoderChooser extends Command {
 	
 	public void left() {
 		//check if the right switch is ours
-		if(!scoreSide[0]) {
-			autonCommand = new EncoderSwitch(Robot.position.LEFT);
-		} else if(!scoreSide[1]){ //check the scale
+		if(scoreSide[1]){ //check the scale
 			autonCommand = new EncoderScale(Robot.position.LEFT);
 		} else { //if neither, aim for the switch
 			autonCommand = new EncoderDriveDistanceTurningComp(180,0);

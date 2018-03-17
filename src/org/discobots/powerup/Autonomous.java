@@ -8,6 +8,7 @@ import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitch;
 import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
 import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistanceTurningComp;
+import org.discobots.powerup.commands.autonomous.subcommands.EncoderTurn;
 import org.discobots.powerup.commands.autonomous.timed.TimedChooser;
 import org.discobots.powerup.commands.autonomous.timed.TimedScale;
 import org.discobots.powerup.commands.autonomous.timed.TimedSwitch;
@@ -67,7 +68,8 @@ public class Autonomous {
 		Robot.arm.init();
 		
 		autonCommand = Dashboard.autonChooser.getSelected();
-		//autonCommand = new EncoderDriveDistanceTurningComp(6*Math.PI,1,1,.01,.01);
+		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
+		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);
 		autonCommand.start();
 	}
 	

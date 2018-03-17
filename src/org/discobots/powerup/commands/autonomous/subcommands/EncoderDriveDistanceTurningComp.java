@@ -78,7 +78,7 @@ public class EncoderDriveDistanceTurningComp extends Command {
 //		turningEncoderPID.enable();
 		
 		distanceEncoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
-		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 31.0);
+		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 1.0);
 	}
 	
 	@Override
@@ -96,15 +96,15 @@ public class EncoderDriveDistanceTurningComp extends Command {
 			output = 0.2;
 		if(output < -0.2)
 			output = -0.2;
-		Robot.drive.arcadeDrive(0.7, output);
+		Robot.drive.arcadeDrive(0.7, -output);
 		
 		distanceEncoderError = encoderSetpoint - Utils.encoderAvg(left.getDistance(), right.getDistance());
-		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 31.0);
-		/*Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
-		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
+		this.turningEncoderError = 0.0 - ( (right.getDistance() - left.getDistance()) / 1.0);
+		//Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
+		//Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("PID turning output: " + output, "PID-OUTPUT");
-		Debugger.getInstance().log("Error Turning Comp: " + distanceEncoderError, "PID-ERROR");
-		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");*/
+		Debugger.getInstance().log("Error Turning Comp: " + turningEncoderError, "PID-ERROR");
+		//Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
 		Timer.delay(0.004);
 		
 	}

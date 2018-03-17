@@ -4,6 +4,7 @@ import org.discobots.powerup.Robot;
 import org.discobots.powerup.lib.AverageEncoderPIDSource;
 import org.discobots.powerup.lib.DummyPIDOutput;
 import org.discobots.powerup.lib.TurningEncoderPIDSource;
+import org.discobots.powerup.utils.Constants;
 import org.discobots.powerup.utils.Debugger;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -63,7 +64,7 @@ public class EncoderTurn extends Command {
 		left.reset();
 		right.reset();
 		
-		this.turningEncoderError = turnSetpoint - ( (right.getDistance() - left.getDistance()) / 31.0);
+		this.turningEncoderError = turnSetpoint - ( (right.getDistance() - left.getDistance()) / Constants.kEncoderTurningFactor);
 
 	}
 	
@@ -82,16 +83,12 @@ public class EncoderTurn extends Command {
 		   // remember the error for the next time around.
 		preError = turningEncoderError; 
 		
-		if(output > 0.2)
-			output = 0.2;
-		if(output < -0.2)
-			output = -0.2;
 		
 		if(right_turn)
-			Robot.drive.arcadeDrive(0.0, output);
+			Robot.drive.arcadeDrive(0.0, -0.9);
 		else
-			Robot.drive.arcadeDrive(0.0, -output);
-		this.turningEncoderError = turnSetpoint - ( (right.getDistance() - left.getDistance()) / 31.0);
+			Robot.drive.arcadeDrive(0.0, 0.9);
+		this.turningEncoderError = turnSetpoint - ( (right.getDistance() - left.getDistance()) / Constants.kEncoderTurningFactor);
 		Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 		Debugger.getInstance().log("PID output: " + output, "PID-OUTPUT");

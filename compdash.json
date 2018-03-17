@@ -1,0 +1,382 @@
+{
+  "dividerPosition": 0.22631578947368422,
+  "tabPane": [
+    {
+      "title": "SmartDashboard",
+      "autoPopulate": true,
+      "autoPopulatePrefix": "SmartDashboard/",
+      "widgetPane": {
+        "gridSize": 64.0,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "4,4": {
+            "size": [
+              3,
+              2
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Autonomous",
+              "_title": "Autonomous"
+            }
+          },
+          "0,0": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Launcher Ready?",
+              "_title": "Launcher Ready?",
+              "colorWhenTrue": "#7CFC00FF",
+              "colorWhenFalse": "#8B0000FF"
+            }
+          },
+          "2,7": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Switch Delay",
+              "_title": "Switch Delay"
+            }
+          },
+          "0,7": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Scale Delay",
+              "_title": "Scale Delay"
+            }
+          },
+          "4,2": {
+            "size": [
+              3,
+              2
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Position",
+              "_title": "Position"
+            }
+          },
+          "4,0": {
+            "size": [
+              3,
+              2
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Drive",
+              "_title": "Drive"
+            }
+          },
+          "13,8": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Logging",
+              "_title": "Logging",
+              "colorWhenTrue": "#7CFC00FF",
+              "colorWhenFalse": "#8B0000FF"
+            }
+          },
+          "13,9": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Logger File Name: ",
+              "_title": "Logger File Name: "
+            }
+          },
+          "6,7": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Left Encoder Value",
+              "_title": "Left Encoder Value"
+            }
+          },
+          "4,7": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Right Encoder Value",
+              "_title": "Right Encoder Value"
+            }
+          },
+          "2,0": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Pressure",
+              "_title": "Pressure"
+            }
+          },
+          "0,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Left Side",
+              "_children": [
+                {
+                  "_type": "Boolean Box",
+                  "_title": "2",
+                  "colorWhenTrue": "#334DB3FF",
+                  "colorWhenFalse": "#CC3333FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_title": "1",
+                  "colorWhenTrue": "#334DB3FF",
+                  "colorWhenFalse": "#CC3333FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_title": "0",
+                  "colorWhenTrue": "#334DB3FF",
+                  "colorWhenFalse": "#CC3333FF"
+                }
+              ]
+            }
+          },
+          "2,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Right Side",
+              "_children": [
+                {
+                  "_type": "Boolean Box",
+                  "_title": "3",
+                  "colorWhenTrue": "#334DB3FF",
+                  "colorWhenFalse": "#CC6633FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_title": "4",
+                  "colorWhenTrue": "#334DB3FF",
+                  "colorWhenFalse": "#CC3333FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_title": "5",
+                  "colorWhenTrue": "#334DB3FF",
+                  "colorWhenFalse": "#CC3333FF"
+                }
+              ]
+            }
+          },
+          "16,2": {
+            "size": [
+              2,
+              5
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Arm Position",
+              "_children": [
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/ArmPos 2",
+                  "_title": "ArmPos 2",
+                  "colorWhenTrue": "#FFFF66FF",
+                  "colorWhenFalse": "#003333FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/ArmPos 1",
+                  "_title": "ArmPos 1",
+                  "colorWhenTrue": "#FFFF66FF",
+                  "colorWhenFalse": "#003333FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/ArmPos 0",
+                  "_title": "ArmPos 0",
+                  "colorWhenTrue": "#FFFF66FF",
+                  "colorWhenFalse": "#003333FF"
+                }
+              ]
+            }
+          },
+          "15,8": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Arm at Top?",
+              "_title": "Arm at Top?",
+              "colorWhenTrue": "#7CFC00FF",
+              "colorWhenFalse": "#8B0000FF"
+            }
+          },
+          "9,7": {
+            "size": [
+              1,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Potentiometer Value",
+              "_title": "Potentiometer Value"
+            }
+          },
+          "8,7": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/PID arm",
+              "_title": "PID arm"
+            }
+          },
+          "0,3": {
+            "size": [
+              2,
+              4
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "List",
+              "_children": [
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/2",
+                  "_title": "2",
+                  "colorWhenTrue": "#7CFC00FF",
+                  "colorWhenFalse": "#8B0000FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/1",
+                  "_title": "1",
+                  "colorWhenTrue": "#7CFC00FF",
+                  "colorWhenFalse": "#8B0000FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/0",
+                  "_title": "0",
+                  "colorWhenTrue": "#7CFC00FF",
+                  "colorWhenFalse": "#8B0000FF"
+                }
+              ]
+            }
+          },
+          "2,3": {
+            "size": [
+              2,
+              4
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "List",
+              "_children": [
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/3",
+                  "_title": "3",
+                  "colorWhenTrue": "#7CFC00FF",
+                  "colorWhenFalse": "#8B0000FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/4",
+                  "_title": "4",
+                  "colorWhenTrue": "#7CFC00FF",
+                  "colorWhenFalse": "#8B0000FF"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/5",
+                  "_title": "5",
+                  "colorWhenTrue": "#7CFC00FF",
+                  "colorWhenFalse": "#8B0000FF"
+                }
+              ]
+            }
+          },
+          "10,7": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Seconds Left",
+              "_title": "Seconds Left"
+            }
+          },
+          "11,7": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Yaw",
+              "_title": "Yaw"
+            }
+          },
+          "7,0": {
+            "size": [
+              9,
+              7
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://USB Camera 0",
+              "_title": "USB Camera 0"
+            }
+          },
+          "16,0": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Arm PID Enabled?",
+              "_title": "Arm PID Enabled?",
+              "colorWhenTrue": "#7CFC00FF",
+              "colorWhenFalse": "#8B0000FF"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

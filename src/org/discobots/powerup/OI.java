@@ -118,13 +118,13 @@ public class OI {
 		p_btn_RT.whenPressed(new IntakeSet(1));
 		p_btn_RT.whenReleased(new IntakeSet(0));
 		
-		p_btn_LB.whenPressed(new ArmSet(-1));
-		p_btn_LB.whenReleased(new ArmSet(0));
+		//p_btn_LB.whenPressed(new ArmSet(-1));
+		//p_btn_LB.whenReleased(new ArmSet(0));
 		
-		p_btn_LT.whenPressed(new ArmSet(1));
-		p_btn_LT.whenReleased(new ArmSet(0));
+		//p_btn_LT.whenPressed(new ArmSet(1));
+		//p_btn_LT.whenReleased(new ArmSet(0));
 		
-		/*p_btn_LB.whenPressed(new Command() {
+		p_btn_LB.whenPressed(new Command() {
 			@Override
 			
 			public void initialize() {
@@ -147,7 +147,7 @@ public class OI {
 			protected boolean isFinished() {
 				return true;
 			}
-		});*/
+		});
 		
 		//s_btn_B.toggleWhenPressed(new WinchSet(1)); WINCH
 		
@@ -169,8 +169,8 @@ public class OI {
 //			}
 //		});
 		
-		s_btn_R1.whenPressed(new LaunchWaitChange(true, 5));
-		s_btn_R2.whenPressed(new LaunchWaitChange(true, -5));
+		s_btn_L1.whenPressed(new LaunchWaitChange(true, 5));
+		s_btn_L2.whenPressed(new LaunchWaitChange(true, -5));
 		
 		s_btn_R1.whenPressed(new IntakeSet(-1));
 		s_btn_R1.whenReleased(new IntakeSet(0));
@@ -178,10 +178,6 @@ public class OI {
 		s_btn_R2.whenPressed(new IntakeSet(1));
 		s_btn_R2.whenReleased(new IntakeSet(0));
 		
-		s_dpad_up.whenPressed(new ArmSet(1));
-		s_dpad_down.whenPressed(new ArmSet(-1));
-		s_dpad_up.whenReleased(new ArmSet(0));
-		s_dpad_down.whenReleased(new ArmSet(0));
 		s_btn_A.whenPressed(new ArmPIDToggle());
 		
 		s_btn_X.whenPressed(new ArmPIDReset());
