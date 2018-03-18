@@ -20,8 +20,7 @@ public class Utils {
 	 * @return Returns a formatted string 
 	 */
 	public static String secToMinAndSec(double sec) {
-		sec = (int)sec;
-		return String.format("%02d:%02d", sec/60, sec%60);
+		return String.format("%02d:%02d", (int)(sec)/60, (int)(sec)%60);
 	}
 	
 	
