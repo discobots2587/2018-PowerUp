@@ -1,8 +1,8 @@
 package org.discobots.powerup.commands;
 
 import org.discobots.powerup.Robot;
-import edu.wpi.first.wpilibj.command.Command;
 
+import edu.wpi.first.wpilibj.command.Command;
 
 //TankDrive - drives the robot via a classic tank drive
 public class TankDrive extends Command {

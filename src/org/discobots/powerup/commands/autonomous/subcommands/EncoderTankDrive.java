@@ -5,7 +5,7 @@ import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class AutonTankDriveEncoder extends Command {
+public class EncoderTankDrive extends Command {
 	//time = drive duration in milliseconds
 	//endTime = when the system reaches this time, it will stop driving
 	//finished = will become true when the time is reached
@@ -16,7 +16,7 @@ public class AutonTankDriveEncoder extends Command {
 	private double maxDistance;
 	
 	//speed is forward speed, rotation is y rotation, distance is in ticks(?)
-	public AutonTankDriveEncoder(double speed, double leftDistance, double rightDistance) {
+	public EncoderTankDrive(double speed, double leftDistance, double rightDistance) {
 		requires(Robot.drive);
 		this.speed = speed;
 		this.leftDistance = leftDistance;

@@ -1,7 +1,5 @@
 package org.discobots.powerup.commands.autonomous.gyro;
 
-import org.discobots.powerup.Robot;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitch;
 import org.discobots.powerup.lib.AutonChooser;
 
 public class GyroChooser extends AutonChooser {

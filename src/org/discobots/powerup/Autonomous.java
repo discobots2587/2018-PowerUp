@@ -1,25 +1,10 @@
 package org.discobots.powerup;
 
-import org.discobots.powerup.commands.autonomous.Nothing;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderChooser;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderDumbMiddle;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitch;
-import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
-import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
-import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistanceTurningComp;
-import org.discobots.powerup.commands.autonomous.subcommands.EncoderTurn;
-import org.discobots.powerup.commands.autonomous.timed.TimedChooser;
-import org.discobots.powerup.commands.autonomous.timed.TimedScale;
-import org.discobots.powerup.commands.autonomous.timed.TimedSwitch;
-
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 
 public class Autonomous {
 
@@ -40,7 +25,6 @@ public class Autonomous {
 			Timer.delay(0.5);
 			count++;
 		}
-		
 		
 		//set up scoreSide array
 		for(int k = 0; k < 3; k++) {

@@ -1,35 +1,34 @@
 package org.discobots.powerup.commands;
 
-import org.discobots.powerup.Robot;
-import org.discobots.powerup.subsystems.Drivetrain;
-import org.discobots.powerup.utils.*;
+import org.discobots.powerup.utils.Constants;
+import org.discobots.powerup.utils.Debugger;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
-
 
 public class LaunchWaitChange extends Command {
 	
 	int num;
-	boolean bool;
+	Launch.type type;
 	
-	public LaunchWaitChange(boolean inputb, int input) {
-		num = input;
-		bool = inputb;
+	public LaunchWaitChange(Launch.type type, int input) {
+		this.type = type;
+		this.num = input;
 	}
 	
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		if(bool)
-		{
-			Constants.kScaleWait+=num;
-			System.out.println("Scale: "+Constants.kScaleWait);
-		}
-		else
-		{
-			Constants.kSwitchWait+=num;
-			System.out.println("Switch: "+Constants.kSwitchWait);
+		switch(this.type) {
+			case SWITCH:
+				Constants.kScaleWait += num;
+				Debugger.getInstance().log(Constants.kScaleWait, "Scale");
+				break;
+			case SCALE:
+				Constants.kSwitchWait += num;
+				Debugger.getInstance().log(Constants.kSwitchWait, "Switch");
+				break;
+			default:
+				break;
 		}
 	}
 

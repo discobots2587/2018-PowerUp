@@ -6,16 +6,16 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
-public class AverageEncoderPIDSource implements PIDSource {
+public class PIDSourceAverageEncoder implements PIDSource {
 
 	private Encoder left, right;
 	private PIDSourceType pidSource;
 	
-	public AverageEncoderPIDSource() {
+	public PIDSourceAverageEncoder() {
 		
 	}
 	
-	public AverageEncoderPIDSource(Encoder left, Encoder right) {
+	public PIDSourceAverageEncoder(Encoder left, Encoder right) {
 		System.out.println("AverageEncoderPIDSource");
 		this.left = left;
 		this.right = right;

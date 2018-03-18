@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
-public class GyroPIDSource implements PIDSource {
+public class PIDSourceGyro implements PIDSource {
 
 	
-	public GyroPIDSource() {
+	public PIDSourceGyro() {
 
 	}
 	

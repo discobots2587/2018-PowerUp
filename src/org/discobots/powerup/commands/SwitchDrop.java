@@ -1,7 +1,6 @@
 package org.discobots.powerup.commands;
 
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.subsystems.Drivetrain;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;

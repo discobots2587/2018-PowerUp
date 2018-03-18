@@ -1,16 +1,16 @@
 package org.discobots.powerup.commands.autonomous.subcommands;
 
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.lib.AverageEncoderPIDSource;
+import org.discobots.powerup.lib.PIDSourceAverageEncoder;
 import org.discobots.powerup.lib.DummyPIDOutput;
-import org.discobots.powerup.lib.GyroPIDSource;
-import org.discobots.powerup.lib.TurningEncoderPIDSource;
+import org.discobots.powerup.lib.PIDSourceGyro;
+import org.discobots.powerup.lib.PIDSourceTurningEncoder;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class GyroTurn extends Command{
+public class ArcadeGyroTurn extends Command{
 	private Encoder left;
 	private Encoder right;
 
@@ -23,10 +23,10 @@ public class GyroTurn extends Command{
 
 	private DummyPIDOutput turningGyroPIDOutput;
 	private PIDController turningGyroPID;
-	private GyroPIDSource turningGyroPIDSource;
+	private PIDSourceGyro turningGyroPIDSource;
 
 	
-	public GyroTurn(double turningSetPoint, double turningThreshold, double tP, double tI, double tD) {
+	public ArcadeGyroTurn(double turningSetPoint, double turningThreshold, double tP, double tI, double tD) {
 		System.out.println("GyroEncoderDriveDistance Starting");
 		left = Robot.drive.m_left_encoder;
 		right = Robot.drive.m_right_encoder;
@@ -36,7 +36,7 @@ public class GyroTurn extends Command{
 		
 		turningGyroPIDOutput = new DummyPIDOutput();
 
-		turningGyroPIDSource =  new GyroPIDSource();
+		turningGyroPIDSource =  new PIDSourceGyro();
 		turningGyroPID = new PIDController(tP, tI, tD, turningGyroPIDSource, turningGyroPIDOutput);
 		turningGyroPID.setOutputRange(-0.3, 0.3);
 	}

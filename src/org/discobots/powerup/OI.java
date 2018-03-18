@@ -14,20 +14,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 //importing all the commands
 import org.discobots.powerup.commands.*;
-//import org.discobots.powerup.commands.autonomous.subcommands.*;555'''''?
 import org.discobots.powerup.lib.AXISButton;
-import org.discobots.powerup.lib.AverageEncoderPIDSource;
 import org.discobots.powerup.lib.DPADButton;
 import org.discobots.powerup.lib.Gamepad;
 import org.discobots.powerup.lib.DPADButton.POV;
 import org.discobots.powerup.lib.Fightstick;
-//importing all the subsystems
-import org.discobots.powerup.subsystems.Drivetrain;
-import org.discobots.powerup.subsystems.Launcher;
-import org.discobots.powerup.commands.Launch.type;
-import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
-import org.discobots.powerup.commands.autonomous.subcommands.EncoderDriveDistance;
-import org.discobots.powerup.utils.Constants;
 
 //import org.discobots.steamworks.utils.Gamepad.DPadButton;
 
@@ -151,26 +142,8 @@ public class OI {
 		
 		//s_btn_B.toggleWhenPressed(new WinchSet(1)); WINCH
 		
-		//s_btn_Y.whenPressed(new EncoderDriveDistance(20.0, 5.0, 1.0, 0.0, 0.0));
-		//s_btn_Y.whenPressed(new AutonArcadeDriveTimed(0.5,0,500));
-		//p_btn_Y.whenPressed(new TestCommand());
-//		p_btn_Y.whenPressed(new Command() {
-//			@Override
-//			public void initialize() {
-//
-//				Robot.drive.m_right_encoder.reset();
-//				AverageEncoderPIDSource avgEncoderPIDSource = new AverageEncoderPIDSource();
-//				System.out.println(avgEncoderPIDSource.pidGet());
-//			}
-//			
-//			@Override
-//			protected boolean isFinished() {
-//				return true;
-//			}
-//		});
-		
-		s_btn_L1.whenPressed(new LaunchWaitChange(true, 5));
-		s_btn_L2.whenPressed(new LaunchWaitChange(true, -5));
+		s_btn_L1.whenPressed(new LaunchWaitChange(Launch.type.SCALE, 5));
+		s_btn_L2.whenPressed(new LaunchWaitChange(Launch.type.SCALE, -5));
 		
 		s_btn_R1.whenPressed(new IntakeSet(-1));
 		s_btn_R1.whenReleased(new IntakeSet(0));

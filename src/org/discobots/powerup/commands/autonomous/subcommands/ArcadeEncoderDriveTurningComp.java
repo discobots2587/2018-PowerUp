@@ -1,9 +1,9 @@
 package org.discobots.powerup.commands.autonomous.subcommands;
 
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.lib.AverageEncoderPIDSource;
+import org.discobots.powerup.lib.PIDSourceAverageEncoder;
 import org.discobots.powerup.lib.DummyPIDOutput;
-import org.discobots.powerup.lib.TurningEncoderPIDSource;
+import org.discobots.powerup.lib.PIDSourceTurningEncoder;
 import org.discobots.powerup.utils.Debugger;
 import org.discobots.powerup.utils.Utils;
 
@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class EncoderDriveDistanceTurningComp extends Command {
+public class ArcadeEncoderDriveTurningComp extends Command {
 
 	private Encoder left;
 	private Encoder right;
@@ -37,12 +37,12 @@ public class EncoderDriveDistanceTurningComp extends Command {
 	
 	double integral;
 	
-	public EncoderDriveDistanceTurningComp(double encoderSetpoint, double threshold) {
+	public ArcadeEncoderDriveTurningComp(double encoderSetpoint, double threshold) {
 		this(encoderSetpoint, threshold, 1, 0, 0);
 		
 	}
 	
-	public EncoderDriveDistanceTurningComp(double encoderSetpoint, double threshold, double kP, double kI, double kD) {
+	public ArcadeEncoderDriveTurningComp(double encoderSetpoint, double threshold, double kP, double kI, double kD) {
 		System.out.println("EncoderDriveDistanceTurningComp Starting");
 		left = Robot.drive.m_left_encoder;
 		right = Robot.drive.m_right_encoder;

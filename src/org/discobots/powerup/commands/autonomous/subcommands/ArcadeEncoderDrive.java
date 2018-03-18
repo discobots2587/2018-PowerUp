@@ -1,7 +1,7 @@
 package org.discobots.powerup.commands.autonomous.subcommands;
 
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.lib.AverageEncoderPIDSource;
+import org.discobots.powerup.lib.PIDSourceAverageEncoder;
 import org.discobots.powerup.lib.DummyPIDOutput;
 import org.discobots.powerup.utils.Debugger;
 import org.discobots.powerup.utils.Utils;
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class EncoderDriveDistance extends Command {
+public class ArcadeEncoderDrive extends Command {
 
 	private Encoder left;
 	private Encoder right;
@@ -21,14 +21,14 @@ public class EncoderDriveDistance extends Command {
 	
 	private DummyPIDOutput distanceEncoderPIDOutput;
 	private PIDController distanceEncoderPID;
-	private AverageEncoderPIDSource avgEncoderPIDSource;
+	private PIDSourceAverageEncoder avgEncoderPIDSource;
 	
-	public EncoderDriveDistance(double encoderSetpoint, double threshold) {
+	public ArcadeEncoderDrive(double encoderSetpoint, double threshold) {
 		this(encoderSetpoint, threshold, 1.0, 0.0, 0.0);
 		
 	}
 	
-	public EncoderDriveDistance(double encoderSetpoint, double threshold, double kP, double kI, double kD) {
+	public ArcadeEncoderDrive(double encoderSetpoint, double threshold, double kP, double kI, double kD) {
 		System.out.println("EncoderDriveDistance Starting");
 		left = Robot.drive.m_left_encoder;
 		right = Robot.drive.m_right_encoder;
@@ -38,7 +38,7 @@ public class EncoderDriveDistance extends Command {
 		
 		distanceEncoderPIDOutput = new DummyPIDOutput();
 		
-		avgEncoderPIDSource = new AverageEncoderPIDSource(left, right);
+		avgEncoderPIDSource = new PIDSourceAverageEncoder(left, right);
 		distanceEncoderPID = new PIDController(kP, kI, kD, Robot.drive.m_right_encoder, distanceEncoderPIDOutput);
 		distanceEncoderPID.setOutputRange(-0.3,0.3);
 	}

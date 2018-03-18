@@ -1,16 +1,16 @@
 package org.discobots.powerup.commands.autonomous.subcommands;
 
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.lib.AverageEncoderPIDSource;
+import org.discobots.powerup.lib.PIDSourceAverageEncoder;
 import org.discobots.powerup.lib.DummyPIDOutput;
-import org.discobots.powerup.lib.GyroPIDSource;
-import org.discobots.powerup.lib.TurningEncoderPIDSource;
+import org.discobots.powerup.lib.PIDSourceGyro;
+import org.discobots.powerup.lib.PIDSourceTurningEncoder;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class GyroEncoderDriveDistance extends Command{
+public class ArcadeGyroEncoderDrive extends Command{
 	private Encoder left;
 	private Encoder right;
 
@@ -25,11 +25,11 @@ public class GyroEncoderDriveDistance extends Command{
 	private PIDController distanceEncoderPID;
 	private DummyPIDOutput turningGyroPIDOutput;
 	private PIDController turningGyroPID;
-	private AverageEncoderPIDSource avgEncoderPIDSource;
-	private GyroPIDSource turningGyroPIDSource;
+	private PIDSourceAverageEncoder avgEncoderPIDSource;
+	private PIDSourceGyro turningGyroPIDSource;
 
 	
-	public GyroEncoderDriveDistance(double encoderSetpoint, double threshold, double kP, double kI, double kD, double turningThreshold, double tP, double tI, double tD) {
+	public ArcadeGyroEncoderDrive(double encoderSetpoint, double threshold, double kP, double kI, double kD, double turningThreshold, double tP, double tI, double tD) {
 		System.out.println("GyroEncoderDriveDistance Starting");
 		left = Robot.drive.m_left_encoder;
 		right = Robot.drive.m_right_encoder;
@@ -41,11 +41,11 @@ public class GyroEncoderDriveDistance extends Command{
 		distanceEncoderPIDOutput = new DummyPIDOutput();
 		turningGyroPIDOutput = new DummyPIDOutput();
 		
-		avgEncoderPIDSource = new AverageEncoderPIDSource(left, right);
+		avgEncoderPIDSource = new PIDSourceAverageEncoder(left, right);
 		distanceEncoderPID = new PIDController(kP, kI, kD, avgEncoderPIDSource, distanceEncoderPIDOutput);
 		distanceEncoderPID.setOutputRange(-0.3,0.3);
 		
-		turningGyroPIDSource =  new GyroPIDSource();
+		turningGyroPIDSource =  new PIDSourceGyro();
 		turningGyroPID = new PIDController(tP, tI, tD, turningGyroPIDSource, turningGyroPIDOutput);
 		turningGyroPID.setOutputRange(-0.3, 0.3);
 	}

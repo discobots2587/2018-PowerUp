@@ -4,12 +4,12 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
-public class TurningEncoderPIDSource implements PIDSource {
+public class PIDSourceTurningEncoder implements PIDSource {
 
 	private Encoder left;
 	private Encoder right;
 	
-	public TurningEncoderPIDSource(Encoder left, Encoder right) {
+	public PIDSourceTurningEncoder(Encoder left, Encoder right) {
 		this.left = left;
 		this.right = right;
 	}
