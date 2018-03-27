@@ -101,7 +101,7 @@ public class ArcadeEncoderTurn extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (turningEncoderError < 0.1);
+		return (turningEncoderError < this.threshold);
 	}
 	
 	// Called once after isFinished returns true
