@@ -23,7 +23,7 @@ public class HW {
 	public static int winch		  = 5;
 	
 	//CAN ports
-	public static int talonsrx_pigeon = 35; //CAN id
+	public static int talonsrx_pigeon = 1; //CAN id
 	
 	//PCM (12V) ports
 	public static int pcm12v    = 0; //CAN id

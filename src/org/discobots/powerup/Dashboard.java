@@ -93,6 +93,8 @@ public class Dashboard {
 		SmartDashboard.putNumber("Scale Delay", Constants.kScaleWait);
 		
 		SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
+		SmartDashboard.putNumber("Pitch",Robot.drive.ypr[1]);
+		SmartDashboard.putNumber("Roll", Robot.drive.ypr[2]);
 		
 		SmartDashboard.putNumber("Ultrasonic Distance", Robot.intake.ultrasonic.getRangeInches());
 		
@@ -111,6 +113,7 @@ public class Dashboard {
 		//SmartDashboard.putNumber("Zeropoint", Robot.arm.zeroPoint);
 		//SmartDashboard.putNumber("Potentiometer TRUE value", Robot.arm.armPot.get());
 		//SmartDashboard.putNumber("Target", Robot.arm.target);
+		
 		
 		SmartDashboard.putBoolean("Arm at Top?",Robot.arm.switch_top.get());
 	}
