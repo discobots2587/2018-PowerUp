@@ -156,7 +156,9 @@ public class OI {
 		s_btn_X.whenPressed(new ArmPIDReset());
 		s_btn_Y.whenPressed(new IntakeToggle());
 		
-		s_btn_B.whenPressed(new Command() {
+		s_btn_B.whenPressed(new SwitchDrop());
+		
+		/*s_btn_B.whenPressed(new Command() {
 			@Override
 			public void initialize() {
 				Robot.arm.setIndex(1);
@@ -166,6 +168,6 @@ public class OI {
 			protected boolean isFinished() {
 				return true;
 			}
-		});
+		});*/
 	}
 }
