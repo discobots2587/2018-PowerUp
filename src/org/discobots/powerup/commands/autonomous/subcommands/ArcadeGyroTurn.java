@@ -25,8 +25,14 @@ public class ArcadeGyroTurn extends Command{
 	private PIDController turningGyroPID;
 	private PIDSourceGyro turningGyroPIDSource;
 
+	private double kP;
+	private double kI;
+	private double kD;
+	private double preError;
+
+	double integral;
 	
-	public ArcadeGyroTurn(double turningSetPoint, double turningThreshold, double tP, double tI, double tD) {
+	public ArcadeGyroTurn(double turningSetPoint, double turningThreshold, double kP, double kI, double kD) {
 		System.out.println("GyroEncoderDriveDistance Starting");
 		left = Robot.drive.m_left_encoder;
 		right = Robot.drive.m_right_encoder;
@@ -34,11 +40,16 @@ public class ArcadeGyroTurn extends Command{
 		this.turningSetPoint = turningSetPoint;
 		this.turningThreshold = turningThreshold;
 		
-		turningGyroPIDOutput = new DummyPIDOutput();
+		this.kP = kP;
+		this.kI = kI;
+		this.kD = kD;
+		this.integral = 0;
+		
+		//turningGyroPIDOutput = new DummyPIDOutput();
 
-		turningGyroPIDSource =  new PIDSourceGyro();
-		turningGyroPID = new PIDController(tP, tI, tD, turningGyroPIDSource, turningGyroPIDOutput);
-		turningGyroPID.setOutputRange(-0.3, 0.3);
+		//turningGyroPIDSource =  new PIDSourceGyro();
+		//turningGyroPID = new PIDController(tP, tI, tD, turningGyroPIDSource, turningGyroPIDOutput);
+		//turningGyroPID.setOutputRange(-0.3, 0.3);
 	}
 	
 	@Override
@@ -46,17 +57,24 @@ public class ArcadeGyroTurn extends Command{
 		System.out.println("Init GyroEncoderDriveDistance");
 		left.reset();
 		right.reset();
-		turningGyroPID.setSetpoint(turningSetPoint);
-		turningGyroPID.enable();
+		//turningGyroPID.setSetpoint(turningSetPoint);
+		//turningGyroPID.enable();
 		
-		turningEncoderError = Math.abs(turningSetPoint - turningGyroPIDOutput.getOutput());
+		turningEncoderError = Math.abs(turningSetPoint - Robot.drive.getYaw());
 	}
 	
 	@Override
 	protected void execute() {
-		Robot.drive.arcadeDrive(0, turningGyroPIDOutput.getOutput());
-		turningEncoderError = Math.abs(turningSetPoint - turningGyroPIDOutput.getOutput());
-		System.out.println("GyroTurn PID output: " + turningGyroPIDOutput.getOutput());
+		this.integral = this.integral + (turningEncoderError * 0.004);
+		   // determine the amount of change from the last time checked
+	    double derivative = (turningEncoderError - preError) / 0.004; 
+		   // calculate how much to drive the output in order to get to the 
+		   // desired setpoint. 
+		double output = (this.kP * turningEncoderError) + (this.kI * integral) + (this.kD * derivative);
+		turningEncoderError = Math.abs(turningSetPoint - Robot.drive.getYaw());
+		
+		Robot.drive.arcadeDrive(0, output);
+		System.out.println("GyroTurn PID output: " + Robot.drive.getYaw());
 		System.out.println("GyroTurn Error: " + distanceEncoderError);
 		System.out.println("GyroTurn Setpoint: "  + turningSetPoint);
 	}
