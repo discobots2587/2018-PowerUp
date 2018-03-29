@@ -13,11 +13,6 @@ public class EncoderCrossLine extends CommandGroup {
 	boolean[] scoreSide;
 	
 	public EncoderCrossLine() {
-		
-	}
-	
-	@Override
-	public void initialize() {
 		Robot.pos = Dashboard.positionChooser.getSelected();
 		this.scoreSide = Autonomous.scoreSide;
 		switch(Robot.pos) {
@@ -33,6 +28,11 @@ public class EncoderCrossLine extends CommandGroup {
 		default:
 			break;
 		}
+	}
+	
+	@Override
+	public void initialize() {
+		
 	}
 	
 	public void right() {

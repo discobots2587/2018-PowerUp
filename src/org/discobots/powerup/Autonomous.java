@@ -1,5 +1,7 @@
 package org.discobots.powerup;
 
+import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroTurn;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -51,9 +53,11 @@ public class Autonomous {
 		
 		Robot.arm.init();
 		
-		autonCommand = Dashboard.autonChooser.getSelected();
+		//autonCommand = Dashboard.autonChooser.getSelected();
 		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
 		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);
+		double target = Robot.drive.getYaw()+30;
+		autonCommand = new ArcadeGyroTurn(target,1,1,0.2,0.1);
 		autonCommand.start();
 	}
 	

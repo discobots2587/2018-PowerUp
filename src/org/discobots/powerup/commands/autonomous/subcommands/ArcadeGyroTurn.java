@@ -73,22 +73,28 @@ public class ArcadeGyroTurn extends Command{
 		double output = (this.kP * turningEncoderError) + (this.kI * integral) + (this.kD * derivative);
 		turningEncoderError = Math.abs(turningSetPoint - Robot.drive.getYaw());
 		
+		if(output > 0.5)
+			output = 0.5;
+		if(output < -0.5)
+			output = -0.5;
+		
+		
+		
 		Robot.drive.arcadeDrive(0, output);
-		System.out.println("GyroTurn PID output: " + Robot.drive.getYaw());
-		System.out.println("GyroTurn Error: " + distanceEncoderError);
+		System.out.println("GyroTurn PID output: " + output);
+		System.out.println("GyroTurn Error: " + turningEncoderError);
 		System.out.println("GyroTurn Setpoint: "  + turningSetPoint);
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return 	(turningEncoderError > turningThreshold);
+		return 	(turningEncoderError < Math.abs(turningThreshold));
 	}
 	
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		turningGyroPID.disable();
 		Robot.drive.arcadeDrive(0, 0);
 	}
 		

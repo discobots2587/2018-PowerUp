@@ -25,13 +25,13 @@ public class Utils {
 	
 	
 	public static double encoderAvg(double left, double right) {
-		double error = 1;
+		/*double error = 1;
 		if(Math.abs(left)<error) {
 			return right;
 		} else if(Math.abs(right)<error) {
 			return left;
-		} else {
+		} else {*/
 			return (left+right)/2;
-		}
+		//}
 	}
 }

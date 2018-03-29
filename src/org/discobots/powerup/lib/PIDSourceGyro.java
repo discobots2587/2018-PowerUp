@@ -27,7 +27,7 @@ public class PIDSourceGyro implements PIDSource {
 
 	@Override
 	public double pidGet() {
-		return Robot.drive.ypr[0];
+		return Robot.drive.getYaw();
 	}
 
 }
