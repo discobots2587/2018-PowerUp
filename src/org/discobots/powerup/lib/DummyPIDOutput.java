@@ -21,6 +21,7 @@ public class DummyPIDOutput implements PIDOutput{
     }
 
     public void pidWrite(double output) {
+    	//Debugger.getInstance().log("Output: "+output,"PID-OUTPUT");
         this.output = output;
     }
 

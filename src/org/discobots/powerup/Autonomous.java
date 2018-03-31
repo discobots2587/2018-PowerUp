@@ -1,6 +1,9 @@
 package org.discobots.powerup;
 
+import org.discobots.powerup.commands.autonomous.subcommands.ArcadeEncoderDriveTurningComp;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroTurn;
+import org.discobots.powerup.commands.autonomous.subcommands.GyroTurn;
+import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
@@ -56,9 +59,22 @@ public class Autonomous {
 		//autonCommand = Dashboard.autonChooser.getSelected();
 		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
 		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);
+//		double target = Robot.drive.getYaw()+30;
+//		autonCommand = new ArcadeGyroTurn(target,1,0.25,0,0);
+		//autonCommand = new GyroTurn(80, 1, 1.0, 0.0, 0.01);
+		CommandGroup group = new CommandGroup();
+		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
 		double target = Robot.drive.getYaw()+30;
-		autonCommand = new ArcadeGyroTurn(target,1,1,0.2,0.1);
-		autonCommand.start();
+		autonCommand = new ArcadeGyroTurn(target,1,0.25,0,0);
+		group.addSequential(new ArcadeEncoderDriveTurningComp(-60,0.5));
+		double target1 = Robot.drive.getYaw()-30;
+		autonCommand = new ArcadeGyroTurn(target1,1,0.25,0,0);
+		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
+
+
+
+		
+		group.start();
 	}
 	
 	public static void periodic() {

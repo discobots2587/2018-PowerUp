@@ -17,29 +17,63 @@ public class ArcadeGyroTurn extends Command {
 	private PIDController turningGyroPID;
 	private PIDSourceGyro turningGyroPIDSource;
 	
+	private double kP;
+	private double kI;
+	private double kD;
+	private double preError;
+	private double error;
+	double integral;
+	
 	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD) {
-		this(turningSetpoint, turningThreshold, kP, kI, kD, 50.0);
+		this(turningSetpoint, turningThreshold, kP, kI, kD, 50.0, false);
 	}
 	
 	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, double period) {
-		this.turningSetpoint = turningSetpoint;
+		this(turningSetpoint, turningThreshold, kP, kI, kD, period, false);
+	}
+	
+	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, double period, boolean relative) {
+		if(relative) {
+			this.turningSetpoint = Robot.drive.getYaw()+turningSetpoint;
+		} else {
+			this.turningSetpoint = turningSetpoint;
+		}
 		turningGyroPIDOutput = new DummyPIDOutput();
 		turningGyroPIDSource =  new PIDSourceGyro();
 		turningGyroPID = new PIDController(kP, kI, kD, turningGyroPIDSource, turningGyroPIDOutput, period);
-		turningGyroPID.setOutputRange(-0.3, 0.3);
+		turningGyroPID.setOutputRange(-0.7, 0.7);
+		this.error = 0.0;
+		this.kP = kP;
+		this.kI = kI;
+		this.kD = kD;
+		this.integral = 0;
+		this.preError = 0;
+		
 	}
 	
 	@Override
 	protected void initialize() {
-		turningGyroPID.setSetpoint(turningSetpoint);
 		turningGyroPID.enable();
+		turningGyroPID.setSetpoint(turningSetpoint);
 	}
 	
 	@Override
 	protected void execute() {
-		Robot.drive.arcadeDrive(0, turningGyroPID.get());
+		error = Math.abs(turningSetpoint - Robot.drive.getYaw());
 		
-		Debugger.getInstance().log("PID output: " + turningGyroPID.get(), "PID-OUTPUT");
+		this.integral = this.integral + (error * 0.004);
+		   // determine the amount of change from the last time checked
+	    double derivative = (error - preError) / 0.004; 
+		   // calculate how much to drive the output in order to get to the 
+		   // desired setpoint. 
+		double output = (this.kP * error) + (this.kI * integral) + (this.kD * derivative);
+		   // remember the error for the next time around.
+		preError = error; 
+		
+		Robot.drive.arcadeDrive(0, output);
+		
+		
+		Debugger.getInstance().log("PID output: " + output, "PID-OUTPUT");
 		Debugger.getInstance().log("Error TURNING: " + turningGyroPID.getError(), "PID-ERROR");
 		Debugger.getInstance().log("Setpoint: "  + turningSetpoint, "PID-SETPOINT");
 	}

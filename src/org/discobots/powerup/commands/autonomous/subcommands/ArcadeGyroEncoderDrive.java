@@ -60,7 +60,7 @@ public class ArcadeGyroEncoderDrive extends Command{
 		distanceEncoderPID.enable();
 		turningGyroPID.enable();
 		
-		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance());
+		distanceEncoderError = encoderSetpoint - (left.getDistance() + right.getDistance())/2;
 		turningEncoderError = Math.abs(0 - turningGyroPIDOutput.getOutput());
 	}
 	

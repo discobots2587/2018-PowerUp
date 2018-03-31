@@ -1,6 +1,7 @@
 package org.discobots.powerup.lib;
 
 import org.discobots.powerup.Robot;
+import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
@@ -37,8 +38,9 @@ public class PIDSourceAverageEncoder implements PIDSource {
 	public double pidGet() {
 		// TODO Auto-generated method stub
 		//System.out.println("right get distance " + right.getDistance());
-		return Robot.drive.m_right_encoder.getDistance();
+		//return Robot.drive.m_right_encoder.getDistance();
 		//return (left.getDistance() + right.getDistance()) / 2;
+		return Utils.encoderAvg(left.getDistance(), right.getDistance());
 	}
 
 }
