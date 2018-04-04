@@ -1,6 +1,7 @@
 package org.discobots.powerup;
 
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeEncoderDriveTurningComp;
+import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroDriveTurningComp;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroTurn;
 import org.discobots.powerup.commands.autonomous.subcommands.GyroTurn;
 import org.discobots.powerup.utils.Constants;
@@ -56,7 +57,22 @@ public class Autonomous {
 		
 		Robot.arm.init();
 		
-		autonCommand = Dashboard.autonChooser.getSelected();
+//		autonCommand = Dashboard.autonChooser.getSelected();
+		
+		//STEP 1 Test ArcadeGyroDriveTurningComp forward
+		autonCommand = new ArcadeGyroDriveTurningComp(150,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005);
+		
+//		
+//		//STEP 2 Test ArcadeGyroDriveTurningComp backwards
+//		autonCommand = new ArcadeGyroDriveTurningComp(150,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005);
+//		
+//		
+//		//STEP 3 Test ArcadeGyroTurn right turn. Assuming forward is the way we would face a power cube to intake from floor
+//		autonCommand = new  ArcadeGyroTurn(90,1,0.25,0,0,50,"R");
+//		
+//		//STEP 4 Test ArcadeGyroTurn left turn. Assuming forward is the way we would face a power cube to intake from floor
+//		autonCommand = new  ArcadeGyroTurn(90,1,0.25,0,0,50,"L");
+				
 		autonCommand.start();
 //		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
 //		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);
@@ -72,6 +88,8 @@ public class Autonomous {
 //		autonCommand = new ArcadeGyroTurn(target1,1,0.25,0,0);
 //		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
 		//group.start();
+		
+		
 	}
 	
 	public static void periodic() {
