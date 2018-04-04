@@ -4,56 +4,113 @@ import org.discobots.powerup.Robot;
 import org.discobots.powerup.lib.DummyPIDOutput;
 import org.discobots.powerup.lib.PIDSourceAverageEncoder;
 import org.discobots.powerup.lib.PIDSourceGyro;
+import org.discobots.powerup.utils.Debugger;
+import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ArcadeGyroDriveTurningComp extends Command {
 	private double encoderThreshold;
 	private double encoderSetpoint;
-	
 	private double turningThreshold;
-	
-	private DummyPIDOutput turningGyroPIDOutput;
-	private PIDController turningGyroPID;
-	private PIDSourceGyro turningGyroPIDSource;
-	
-	private DummyPIDOutput encoderPIDOutput;
-	private PIDController encoderPID;
-	private PIDSourceAverageEncoder encoderPIDSource;
-	
+	private double threshold;
 	private Encoder left,right;
 	
-	public ArcadeGyroDriveTurningComp(double encoderSetpoint)
-	{
-		this(encoderSetpoint, 1, 1, 0.01, 0.01, 0, 1, 0.01, 0.01);
-	}
 	
-	public ArcadeGyroDriveTurningComp(double encoderSetpoint, double encoderThreshold, double kP, double kI, double kD)
-	{
-		this(encoderSetpoint, encoderThreshold, kP, kI, kD, 0, 1, 0.01, 0.01);
-	}
+	private double kP;
+	private double kI;
+	private double kD;
+	private double preError;
 	
-	//you'll probably never need the full constructor
-	public ArcadeGyroDriveTurningComp(double encoderSetpoint, double encoderThreshold, double kP, double kI, double kD, double turningThreshold, double tP, double tI, double tD)
+	double integral;
+	
+	private double tP;
+	private double tI;
+	private double tD;
+	private double turningPreError;
+	
+	double turningIntegral;
+	
+	private double turningGyroError;
+	private double distanceEncoderError;
+	private double turningGyroSetpoint;
+	
+	public ArcadeGyroDriveTurningComp(double encoderSetpoint, double encoderThreshold, double kP, double kI, double kD, double tP, double tI, double tD)
 	{
-		turningGyroPIDOutput = new DummyPIDOutput();
-		turningGyroPIDSource =  new PIDSourceGyro();
-		turningGyroPID = new PIDController(tP, tI, tD, turningGyroPIDSource, turningGyroPIDOutput, 50.0);
-		turningGyroPID.setOutputRange(-0.3, 0.3);
+		System.out.println("EncoderDriveDistanceTurningComp Starting");
+		this.left = Robot.drive.m_left_encoder;
+		this.right = Robot.drive.m_right_encoder;
 		
-		encoderPIDOutput = new DummyPIDOutput();
-		encoderPIDSource = new PIDSourceAverageEncoder(Robot.drive.m_left_encoder,Robot.drive.m_right_encoder);
-		encoderPID = new PIDController(kP,kI,kD,encoderPIDSource,encoderPIDOutput,50.0);
-		encoderPID.setOutputRange(-0.7, 0.7);
+		this.encoderSetpoint = encoderSetpoint;
+		this.threshold = encoderThreshold;
+		this.turningGyroSetpoint = Robot.drive.getYaw();
+		this.kP = kP;
+		this.kI = kI;
+		this.kD = kD;
+		this.integral = 0;
+		this.preError = 0;
 	}
 	
 	@Override
 	protected void initialize() {
-		
+		this.left.reset();
+		this.right.reset();
+		distanceEncoderError = Math.abs(encoderSetpoint) - Utils.encoderAvg(Math.abs(left.getDistance()), Math.abs(right.getDistance()));
+		turningGyroError = 0.0;
+
 	}
 	
+	@Override
+	protected void execute() {
+		
+		distanceEncoderError = Math.abs(encoderSetpoint) - Utils.encoderAvg(Math.abs(left.getDistance()), Math.abs(right.getDistance()));
+		turningGyroError = Math.abs(turningGyroSetpoint - Robot.drive.getYaw());
+	
+		this.turningIntegral = this.turningIntegral + (turningGyroError * 0.004);
+		   // determine the amount of change from the last time checked
+	    double turningDerivative = (turningGyroError - turningPreError) / 0.004; 
+		   // calculate how much to drive the output in order to get to the 
+		   // desired setpoint. 
+		double turningOutput = (this.tP * turningGyroError) + (this.tI * turningIntegral) + (this.tD * turningDerivative);
+		   // remember the error for the next time around.
+		turningPreError = turningGyroError; 
+		
+		this.integral = this.integral + (distanceEncoderError * 0.004);
+		   // determine the amount of change from the last time checked
+	    double derivate = (distanceEncoderError - preError) / 0.004; 
+		   // calculate how much to drive the output in order to get to the 
+		   // desired setpoint. 
+		double output = (this.kP * distanceEncoderError) + (this.kI * integral) + (this.kD * derivate);
+		   // remember the error for the next time around.
+		turningPreError = distanceEncoderError; 
+		
+		
+		if(turningOutput > 0.2)
+			turningOutput = 0.2;
+		if(turningOutput < -0.2)
+			turningOutput = -0.2;
+
+		if(encoderSetpoint<0) {
+			Robot.drive.arcadeDrive(output*-1, turningOutput);
+		} else {
+			Robot.drive.arcadeDrive(output, turningOutput);
+		}
+		
+		
+		Debugger.getInstance().log("Distance Remaining: "+distanceEncoderError,"PID-ERROR");
+		Debugger.getInstance().log("Encoder PID output: "+output,"PID-OUTPUT");
+		Debugger.getInstance().log("Heading Error: " + turningGyroError,"PID-ERROR");
+		Debugger.getInstance().log("Turning output: " + turningOutput,"PID-OUTPUT");
+	//	Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
+	//	Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
+	//	Debugger.getInstance().log("PID turning output: " + output, "PID-OUTPUT");
+	//	Debugger.getInstance().log("Error Turning: " + turningEncoderError, "PID-ERROR");
+	//	Debugger.getInstance().log("Error Distance: " + distanceEncoderError, "PID-ERROR");
+		Timer.delay(0.004);
+	}
 	@Override
 	protected boolean isFinished() {
 		return true;
