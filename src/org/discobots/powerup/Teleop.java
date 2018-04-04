@@ -27,8 +27,10 @@ public class Teleop {
 		
 		//disable rampband
 		if(Robot.drive.leftDrive != null) {
-			Robot.drive.leftDrive.setRampband(2.0);
-			Robot.drive.rightDrive.setRampband(2.0);
+//			Robot.drive.leftDrive.setRampband(2.0);
+//			Robot.drive.rightDrive.setRampband(2.0);
+			Robot.drive.leftDrive.setRampband(0.5);
+			Robot.drive.rightDrive.setRampband(0.5);
 		}
 		
 		//activate manual arm

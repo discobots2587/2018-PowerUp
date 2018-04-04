@@ -50,7 +50,10 @@ public class GyroChooser extends AutonChooser {
 	@Override
 	protected void center() {
 		// TODO Auto-generated method stub
-		autonCommand = new GyroMiddle();
+		if(Autonomous.gameData.charAt(1) == 'L')
+			autonCommand = new GyroMiddle("L");
+		else 
+			autonCommand = new GyroMiddle("R");
 	}
 
 }

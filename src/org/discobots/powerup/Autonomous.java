@@ -56,25 +56,22 @@ public class Autonomous {
 		
 		Robot.arm.init();
 		
-		//autonCommand = Dashboard.autonChooser.getSelected();
-		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
-		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);
+		autonCommand = Dashboard.autonChooser.getSelected();
+		autonCommand.start();
+//		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
+//		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);
+////		double target = Robot.drive.getYaw()+30;
+////		autonCommand = new ArcadeGyroTurn(target,1,0.25,0,0);
+//		//autonCommand = new GyroTurn(80, 1, 1.0, 0.0, 0.01);
+//		CommandGroup group = new CommandGroup();
+//		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
 //		double target = Robot.drive.getYaw()+30;
 //		autonCommand = new ArcadeGyroTurn(target,1,0.25,0,0);
-		//autonCommand = new GyroTurn(80, 1, 1.0, 0.0, 0.01);
-		CommandGroup group = new CommandGroup();
-		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
-		double target = Robot.drive.getYaw()+30;
-		autonCommand = new ArcadeGyroTurn(target,1,0.25,0,0);
-		group.addSequential(new ArcadeEncoderDriveTurningComp(-60,0.5));
-		double target1 = Robot.drive.getYaw()-30;
-		autonCommand = new ArcadeGyroTurn(target1,1,0.25,0,0);
-		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
-
-
-
-		
-		group.start();
+//		group.addSequential(new ArcadeEncoderDriveTurningComp(-60,0.5));
+//		double target1 = Robot.drive.getYaw()-30;
+//		autonCommand = new ArcadeGyroTurn(target1,1,0.25,0,0);
+//		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
+		//group.start();
 	}
 	
 	public static void periodic() {

@@ -24,20 +24,17 @@ public class ArcadeGyroTurn extends Command {
 	private double error;
 	double integral;
 	
-	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD) {
-		this(turningSetpoint, turningThreshold, kP, kI, kD, 50.0, false);
-	}
+
 	
-	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, double period) {
-		this(turningSetpoint, turningThreshold, kP, kI, kD, period, false);
-	}
-	
-	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, double period, boolean relative) {
-		if(relative) {
+	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, double period, String turn) {
+		if(turn.equals("R")) {
 			this.turningSetpoint = Robot.drive.getYaw()+turningSetpoint;
 		} else {
-			this.turningSetpoint = turningSetpoint;
+			this.turningSetpoint = Robot.drive.getYaw()-turningSetpoint;
 		}
+		
+		
+		
 		turningGyroPIDOutput = new DummyPIDOutput();
 		turningGyroPIDSource =  new PIDSourceGyro();
 		turningGyroPID = new PIDController(kP, kI, kD, turningGyroPIDSource, turningGyroPIDOutput, period);
@@ -51,6 +48,7 @@ public class ArcadeGyroTurn extends Command {
 		
 	}
 	
+
 	@Override
 	protected void initialize() {
 		turningGyroPID.enable();
@@ -59,6 +57,7 @@ public class ArcadeGyroTurn extends Command {
 	
 	@Override
 	protected void execute() {
+		
 		error = Math.abs(turningSetpoint - Robot.drive.getYaw());
 		
 		this.integral = this.integral + (error * 0.004);
@@ -70,8 +69,12 @@ public class ArcadeGyroTurn extends Command {
 		   // remember the error for the next time around.
 		preError = error; 
 		
-		Robot.drive.arcadeDrive(0, output);
-		
+		if (Robot.drive.getYaw() > turningSetpoint) {
+			output = output * (-1);
+			Robot.drive.arcadeDrive(0, output);
+		}
+		else
+			Robot.drive.arcadeDrive(0, output);
 		
 		Debugger.getInstance().log("PID output: " + output, "PID-OUTPUT");
 		Debugger.getInstance().log("Error TURNING: " + turningGyroPID.getError(), "PID-ERROR");
