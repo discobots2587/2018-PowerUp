@@ -1,12 +1,10 @@
 package org.discobots.powerup.commands;
 
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.Robot;
 import org.discobots.powerup.utils.Debugger;
 import org.discobots.powerup.utils.Logger;
 
 import edu.wpi.first.wpilibj.command.Command;
-
 
 public class CurvatureDrive extends Command{
 
