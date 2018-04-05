@@ -20,8 +20,8 @@ public class Constants {
 	public static long kLaunchCooldown = 1000;
 	
 	//kInchPerTick - the distance (in inches) per drive encoder tick
-	//public static double kInchPerTick = (20.0)/(1900.0)*(100.0/140.0)*(112.0/150.0);
-	public static double kInchPerTick = 0.01043502*(4.0)/(6.0);
+	public static double kInchPerTick = (20.0)/(1900.0)*(100.0/140.0)*(112.0/150.0);
+	//public static double kInchPerTick = 0.01043502*(4.0)/(6.0);
 	public static double kTickPerInch = 1.0/(kInchPerTick);
 	
 	//kEncoderTuringFactor - the number to divide the encoder diff. by in order to get accurate encoder turns
