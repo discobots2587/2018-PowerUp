@@ -1,7 +1,7 @@
 package org.discobots.powerup.commands.autonomous.timed;
 
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.commands.autonomous.subcommands.AutonArcadeDriveTimed;
+import org.discobots.powerup.commands.autonomous.subcommands.ArcadeTimedDrive;
 import org.discobots.powerup.lib.AutonChooser;
 
 public class TimedChooser extends AutonChooser {
@@ -13,7 +13,7 @@ public class TimedChooser extends AutonChooser {
 		} else if(scoreSide[1]) {
 			autonCommand = new TimedScale(Robot.position.LEFT);
 		} else {
-			autonCommand = new AutonArcadeDriveTimed(0.7,0,2000);
+			autonCommand = new ArcadeTimedDrive(0.7,0,2000);
 		}
 	}
 	
@@ -24,7 +24,7 @@ public class TimedChooser extends AutonChooser {
 		} else if(!scoreSide[1]) {
 			autonCommand = new TimedScale(Robot.position.RIGHT);
 		} else {
-			autonCommand = new AutonArcadeDriveTimed(0.7,0,2000);
+			autonCommand = new ArcadeTimedDrive(0.7,0,2000);
 		}
 	}
 	

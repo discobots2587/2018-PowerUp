@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ArmSet extends Command {
 
-	double value;
+	private double value;
 	
 	public ArmSet(double inputVal) {
 		value = inputVal;

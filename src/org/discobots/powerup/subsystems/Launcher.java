@@ -1,15 +1,13 @@
 package org.discobots.powerup.subsystems;
 
+import org.discobots.powerup.HW;
+import org.discobots.powerup.utils.Debugger;
+import org.discobots.powerup.utils.Utils;
+
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-
-import org.discobots.powerup.HW;
-import org.discobots.powerup.utils.Constants;
-import org.discobots.powerup.utils.Debugger;
-import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 

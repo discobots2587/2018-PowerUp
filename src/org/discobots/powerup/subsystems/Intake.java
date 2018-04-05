@@ -3,16 +3,11 @@ package org.discobots.powerup.subsystems;
 import org.discobots.powerup.HW;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Intake extends Subsystem {
-	
-	//Spark leftIntake;
-	//Spark rightIntake;
 	
 	Talon leftIntake;
 	Talon rightIntake;
