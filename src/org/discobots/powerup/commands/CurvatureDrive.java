@@ -22,7 +22,7 @@ public class CurvatureDrive extends Command{
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.arcadeDrive(Robot.oi.p_gp.getLY(), Robot.oi.p_gp.getRX());
+		Robot.drive.curvatureDrive(Robot.oi.p_gp.getLY(), Robot.oi.p_gp.getRX());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -34,7 +34,7 @@ public class CurvatureDrive extends Command{
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.drive.arcadeDrive(0, 0);
+		Robot.drive.curvatureDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
