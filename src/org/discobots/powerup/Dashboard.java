@@ -3,6 +3,7 @@ package org.discobots.powerup;
 import java.text.DecimalFormat;
 
 import org.discobots.powerup.commands.ArcadeDrive;
+import org.discobots.powerup.commands.CurvatureDrive;
 import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
@@ -60,6 +61,7 @@ public class Dashboard {
 		
 		driveChooser.addDefault("Arcade Drive", new ArcadeDrive());
 		driveChooser.addObject("Tank Drive", new TankDrive());
+		driveChooser.addObject("Cheesy Drive", new CurvatureDrive());
 		
 		SmartDashboard.putData("Position", positionChooser);
 		//SmartDashboard.putData("Auton Type",typeChooser);

@@ -95,6 +95,10 @@ public class Drivetrain extends Subsystem {
 	public void tankDrive(double left, double right) {
 		drive.tankDrive(left, right, true); //forward = positive; decrease sensitivity at low speed is TRUE
 	}
+	
+	public void curvatureDrive(double xSpeed, double zRotation) {
+		drive.curvatureDrive(xSpeed, zRotation, true); 
+	}
 
 	public void shift(Drivetrain.shift s) {
 		switch (s) {
