@@ -1,13 +1,16 @@
 package org.discobots.powerup.commands;
 
 import org.discobots.powerup.Robot;
+import org.discobots.powerup.Robot;
+import org.discobots.powerup.utils.Debugger;
+import org.discobots.powerup.utils.Logger;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-//TankDrive - drives the robot via a classic tank drive
-public class TankDrive extends Command {
-	
-	public TankDrive() {
+
+public class CurvatureDrive extends Command{
+
+	public CurvatureDrive() {
 		requires(Robot.drive);
 	}
 	
@@ -19,7 +22,7 @@ public class TankDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.tankDrive(Robot.oi.p_gp.getLY(), Robot.oi.p_gp.getRY());
+		Robot.drive.arcadeDrive(Robot.oi.p_gp.getLY(), Robot.oi.p_gp.getRX());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -31,7 +34,7 @@ public class TankDrive extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.drive.tankDrive(0, 0);
+		Robot.drive.arcadeDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same

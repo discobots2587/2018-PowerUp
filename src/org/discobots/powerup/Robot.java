@@ -7,7 +7,6 @@
 
 package org.discobots.powerup;
 
-import org.discobots.powerup.commands.*;
 import org.discobots.powerup.subsystems.Arm;
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.subsystems.Intake;
@@ -18,12 +17,9 @@ import org.discobots.powerup.utils.Logger;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -48,10 +44,6 @@ public class Robot extends TimedRobot {
 		LEFT, RIGHT, CENTER
 	}
 	
-	public static enum autonType {
-		TIMED, ENCODER, GYRO
-	}
-	
 	public static position pos;
 	
 	public static Logger logger = Logger.getInstance();
@@ -73,13 +65,11 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		Dashboard.init();
 		
-		//CameraServer.getInstance().startAutomaticCapture();
-		Thread camthread = new Thread(() -> {
+		new Thread(() -> {
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
             camera.setResolution(320, 240);
             camera.setFPS(30);
-		});
-		camthread.start();
+		}).start();
 	}
 
 	/**

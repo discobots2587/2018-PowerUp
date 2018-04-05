@@ -1,7 +1,5 @@
 package org.discobots.powerup.commands.autonomous.gyro;
 
-import org.discobots.powerup.Robot;
-import org.discobots.powerup.commands.autonomous.encoder.EncoderSwitch;
 import org.discobots.powerup.lib.AutonChooser;
 
 public class GyroChooser extends AutonChooser {
@@ -14,13 +12,16 @@ public class GyroChooser extends AutonChooser {
 	@Override
 	protected void right() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	protected void center() {
 		// TODO Auto-generated method stub
-		
+		if(scoreSide[0]) {
+			autonCommand = new GyroMiddle("L");
+		} else {
+			autonCommand = new GyroMiddle("R");
+		}
 	}
 
 }
