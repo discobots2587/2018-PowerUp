@@ -10,20 +10,24 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class EncoderScale extends CommandGroup {
 	public EncoderScale(Robot.position pos) {
-		if(pos.equals(Robot.position.RIGHT)) {
-			this.addSequential(new ArcadeEncoderDriveTurningComp(273,0));
-			this.addSequential(new ArcadeTimedDrive(0,-0.7,425));
-			this.addSequential(new ArcadeTimedDrive(-0.7,0,1000));
-			this.addSequential(new ArcadeTimedDrive(0,0,750));
-			addSequential(new Launch(Launch.type.SCALE));
-		} else if(pos.equals(Robot.position.LEFT)) {
-			this.addSequential(new ArcadeEncoderDriveTurningComp(273,0));
-			this.addSequential(new ArcadeTimedDrive(0,0.7,425));
-			this.addSequential(new ArcadeTimedDrive(-0.7,0,1000));
-			this.addSequential(new ArcadeTimedDrive(0,0,750));
-			addSequential(new Launch(Launch.type.SCALE));
-		} else if(pos.equals(Robot.position.CENTER)) {
-			addSequential(new Nothing());
+		switch(pos) {
+			case RIGHT:
+				this.addSequential(new ArcadeEncoderDriveTurningComp(273,0));
+				this.addSequential(new ArcadeTimedDrive(0,-0.7,425));
+				this.addSequential(new ArcadeTimedDrive(-0.7,0,1000));
+				this.addSequential(new ArcadeTimedDrive(0,0,750));
+				this.addSequential(new Launch(Launch.type.SCALE));
+				break;
+			case LEFT:
+				this.addSequential(new ArcadeEncoderDriveTurningComp(273,0));
+				this.addSequential(new ArcadeTimedDrive(0,0.7,425));
+				this.addSequential(new ArcadeTimedDrive(-0.7,0,1000));
+				this.addSequential(new ArcadeTimedDrive(0,0,750));
+				this.addSequential(new Launch(Launch.type.SCALE));
+				break;
+			case CENTER:
+				addSequential(new Nothing());
+				break;
 		}
 	}
 }

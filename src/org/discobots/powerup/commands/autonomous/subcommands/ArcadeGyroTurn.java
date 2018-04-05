@@ -22,22 +22,22 @@ public class ArcadeGyroTurn extends Command {
 	private double kD;
 	private double preError;
 	private double error;
-	double integral;
+	private double integral;
 	
-
-	
-	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, double period, String turn) {
-		if(turn.equals("R")) {
-			this.turningSetpoint = Robot.drive.getYaw()+turningSetpoint;
-		} else {
-			this.turningSetpoint = Robot.drive.getYaw()-turningSetpoint;
-		}
-		
-		
+	/**
+	 * 
+	 * @param turningSetpoint Target angle (left is negative, right is positive)
+	 * @param turningThreshold Error threshold
+	 * @param kP Proportional value
+	 * @param kI Integral value
+	 * @param kD Derivative value
+	 */
+	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD) {
+		this.turningSetpoint = Robot.drive.getYaw() + turningSetpoint;
 		
 		turningGyroPIDOutput = new DummyPIDOutput();
 		turningGyroPIDSource =  new PIDSourceGyro();
-		turningGyroPID = new PIDController(kP, kI, kD, turningGyroPIDSource, turningGyroPIDOutput, period);
+		turningGyroPID = new PIDController(kP, kI, kD, turningGyroPIDSource, turningGyroPIDOutput);
 		turningGyroPID.setOutputRange(-0.7, 0.7);
 		this.error = 0.0;
 		this.kP = kP;
@@ -45,9 +45,7 @@ public class ArcadeGyroTurn extends Command {
 		this.kD = kD;
 		this.integral = 0;
 		this.preError = 0;
-		
 	}
-	
 
 	@Override
 	protected void initialize() {
@@ -70,11 +68,10 @@ public class ArcadeGyroTurn extends Command {
 		preError = error; 
 		
 		if (Robot.drive.getYaw() > turningSetpoint) {
-			output = output * (-1);
+			Robot.drive.arcadeDrive(0, -output);
+		} else {
 			Robot.drive.arcadeDrive(0, output);
 		}
-		else
-			Robot.drive.arcadeDrive(0, output);
 		
 		Debugger.getInstance().log("PID output: " + output, "PID-OUTPUT");
 		Debugger.getInstance().log("Error TURNING: " + turningGyroPID.getError(), "PID-ERROR");
@@ -84,7 +81,7 @@ public class ArcadeGyroTurn extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return 	(turningGyroPID.getError() < Math.abs(turningThreshold));
+		return 	(turningGyroPID.getError() < Math.abs(turningThreshold)) || (error < Math.abs(turningThreshold));
 	}
 	
 	// Called once after isFinished returns true
