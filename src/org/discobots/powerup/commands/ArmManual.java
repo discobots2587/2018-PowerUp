@@ -24,8 +24,9 @@ public class ArmManual extends Command {
 		} else {
 			if(!Robot.arm.getPIDController().isEnabled()) {
 				Robot.arm.getPIDController().setSetpoint(Robot.arm.armPot.get());
+				Robot.arm.getPIDController().enable();
 			}
-			Robot.arm.getPIDController().enable();
+			
 		}
 		
 		/*if(!Robot.arm.getPIDController().isEnabled()) {

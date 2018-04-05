@@ -19,11 +19,11 @@ public class LaunchWaitChange extends Command {
 	@Override
 	protected void initialize() {
 		switch(this.type) {
-			case SWITCH:
+			case SCALE:
 				Constants.kScaleWait += num;
 				Debugger.getInstance().log(Constants.kScaleWait, "Scale");
 				break;
-			case SCALE:
+			case SWITCH:
 				Constants.kSwitchWait += num;
 				Debugger.getInstance().log(Constants.kSwitchWait, "Switch");
 				break;

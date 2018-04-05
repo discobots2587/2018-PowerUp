@@ -151,12 +151,12 @@ public class OI {
 		s_btn_R2.whenPressed(new IntakeSet(1));
 		s_btn_R2.whenReleased(new IntakeSet(0));
 		
-		s_btn_A.whenPressed(new ArmPIDToggle());
+		s_btn_L3.whenPressed(new ArmPIDToggle());
 		
-		s_btn_X.whenPressed(new ArmPIDReset());
+		s_btn_R3.whenPressed(new ArmPIDReset());
 		s_btn_Y.whenPressed(new IntakeToggle());
 		
-		s_btn_B.whenPressed(new SwitchDrop());
+		//s_btn_B.whenPressed(new SwitchDrop());
 		
 		/*s_btn_B.whenPressed(new Command() {
 			@Override
