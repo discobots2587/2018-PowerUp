@@ -24,27 +24,17 @@ public class ArcadeGyroTurn extends Command {
 	private double error;
 	private double integral;
 	
-	/**
-	 * 
-	 * @param turningSetpoint Target angle (left is negative, right is positive)
-	 * @param turningThreshold Error threshold
-	 * @param kP Proportional value
-	 * @param kI Integral value
-	 * @param kD Derivative value
-	 */
-	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD) {
-		this.turningSetpoint = Robot.drive.getYaw() + turningSetpoint;
-		
-		turningGyroPIDOutput = new DummyPIDOutput();
-		turningGyroPIDSource =  new PIDSourceGyro();
-		turningGyroPID = new PIDController(kP, kI, kD, turningGyroPIDSource, turningGyroPIDOutput);
-		turningGyroPID.setOutputRange(-0.7, 0.7);
-		this.error = 0.0;
-		this.kP = kP;
-		this.kI = kI;
-		this.kD = kD;
-		this.integral = 0;
-		this.preError = 0;
+	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, String turn) { 
+	    if(turn.equals("R")) { 
+	      this.turningSetpoint = Robot.drive.getYaw()+turningSetpoint; 
+	    } else { 
+	      this.turningSetpoint = Robot.drive.getYaw()-turningSetpoint; 
+	    }
+	    this.error = 0.0; 
+	    this.kP = kP;
+	    this.kD = kD; 
+	    this.integral = 0; 
+	    this.preError = 0; 
 	}
 
 	@Override
@@ -84,7 +74,7 @@ public class ArcadeGyroTurn extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return 	error < Math.abs(turningThreshold);
+		return error < Math.abs(turningThreshold);
 	}
 	
 	// Called once after isFinished returns true
