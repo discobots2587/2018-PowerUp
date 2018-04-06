@@ -171,5 +171,30 @@ public class OI {
 				return true;
 			}
 		});*/
+		
+		s_btn_X.whenPressed(new Command() {
+			@Override
+			
+			public void initialize() {
+				Robot.arm.up();
+			}
+			
+			@Override
+			protected boolean isFinished() {
+				return true;
+			}
+		});
+		s_btn_A.whenPressed(new Command() {
+			@Override
+			
+			public void initialize() {
+				Robot.arm.down();
+			}
+			
+			@Override
+			protected boolean isFinished() {
+				return true;
+			}
+		});
 	}
 }

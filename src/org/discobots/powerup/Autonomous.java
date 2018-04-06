@@ -6,6 +6,7 @@ import org.discobots.powerup.commands.autonomous.subcommands.ArcadeEncoderDriveT
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroDriveTurningComp;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroTurn;
 import org.discobots.powerup.commands.autonomous.subcommands.GyroTurn;
+import org.discobots.powerup.commands.autonomous.subcommands.TestGyroTurn;
 import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -59,10 +60,12 @@ public class Autonomous {
 		
 		Robot.arm.init();
 		
-		autonCommand = Dashboard.autonChooser.getSelected();
+		//autonCommand = Dashboard.autonChooser.getSelected();
+		
+		autonCommand = new  ArcadeGyroTurn(30,1,0.25,0,0,50,false);
 		
 		//STEP 1 Test ArcadeGyroDriveTurningComp forward
-		//autonCommand = new ArcadeGyroDriveTurningComp(20,0.1, 0.7, 0.15, 0.0, 0.15, 0.00, 0.005);
+		//autonCommand = new ArcadeGyroDriveTurningComp(150,0.1, 0.7, 0.15, 0.0, 0.15, 0.00, 0.005);
 		
 //		
 //		//STEP 2 Test ArcadeGyroDriveTurningComp backwards

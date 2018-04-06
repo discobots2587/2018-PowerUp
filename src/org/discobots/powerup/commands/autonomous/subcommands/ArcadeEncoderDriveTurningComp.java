@@ -124,7 +124,7 @@ public class ArcadeEncoderDriveTurningComp extends Command {
 	//	Debugger.getInstance().log("Left: " + left.getDistance(), "PID-ENCODER");
 	//	Debugger.getInstance().log("Right: " + right.getDistance(), "PID-ENCODER");
 	//	Debugger.getInstance().log("PID turning output: " + output, "PID-OUTPUT");
-	//	Debugger.getInstance().log("Error Turning: " + turningEncoderError, "PID-ERROR");
+		Debugger.getInstance().log("Error Turning: " + turningEncoderError, "PID-ERROR");
 	//	Debugger.getInstance().log("Error Distance: " + distanceEncoderError, "PID-ERROR");
 		Debugger.getInstance().log("Setpoint: "  + encoderSetpoint, "PID-SETPOINT");
 		Timer.delay(0.004);

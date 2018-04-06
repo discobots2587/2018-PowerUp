@@ -24,14 +24,14 @@ public class GyroMiddleDouble extends CommandGroup {
 		// TODO Auto-generated method stub
 		this.addSequential(new ArcadeGyroDriveTurningComp(-12,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
 		
-		
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
-		
-
-
-		this.addSequential(new ArcadeGyroDriveTurningComp(-70,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
-
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
+//		
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
+//		
+//
+//
+//		this.addSequential(new ArcadeGyroDriveTurningComp(-70,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
+//
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
 		
 
 

@@ -18,9 +18,9 @@ public class GyroChooser extends AutonChooser {
 	protected void center() {
 		// TODO Auto-generated method stub
 		if(scoreSide[0]) {
-			autonCommand = new GyroMiddle("L");
+			autonCommand = new GyroMiddle();
 		} else {
-			autonCommand = new GyroMiddle("R");
+			autonCommand = new GyroMiddle();
 		}
 	}
 

@@ -1,4 +1,5 @@
 package org.discobots.powerup.commands.autonomous.gyro;
+import org.discobots.powerup.Autonomous;
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.commands.SwitchDrop;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeEncoderDriveTurningComp;
@@ -10,8 +11,8 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GyroMiddle extends CommandGroup {
-	public GyroMiddle(String side) {
-		if(side.equals("L"))
+	public GyroMiddle() {
+		if(Autonomous.scoreSide[0])
 			leftGyroMiddle();
 		else
 			rightGyroMiddle();
@@ -26,11 +27,11 @@ public class GyroMiddle extends CommandGroup {
 		this.addSequential(new ArcadeEncoderDriveTurningComp(-6,0));
 		
 
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
-
-		this.addSequential(new ArcadeEncoderDriveTurningComp(-30,0));
-
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
+//
+//		this.addSequential(new ArcadeEncoderDriveTurningComp(-30,0));
+//
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
 
 		//this.addSequential(new ArcadeEncoderDriveTurningComp(-10,0));
 		this.addParallel(new ArcadeTimedDrive(0.5, 0, 3000));
@@ -53,13 +54,13 @@ public class GyroMiddle extends CommandGroup {
 	}
 	
 	public void leftGyroMiddle() {
-		this.addSequential(new ArcadeEncoderDriveTurningComp(-6,0));
-		
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
-
-		this.addSequential(new ArcadeEncoderDriveTurningComp(-30,0));
-
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
+//		this.addSequential(new ArcadeEncoderDriveTurningComp(-6,0));
+//		
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
+//
+//		this.addSequential(new ArcadeEncoderDriveTurningComp(-30,0));
+//
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
 
 		//this.addSequential(new ArcadeEncoderDriveTurningComp(-10,0));
 		this.addParallel(new ArcadeTimedDrive(0.5, 0, 3000));

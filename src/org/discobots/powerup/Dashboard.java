@@ -50,6 +50,10 @@ public class Dashboard {
 		SmartDashboard.putData("Position", positionChooser);
 		SmartDashboard.putData("Autonomous", autonChooser);
 		SmartDashboard.putData("Drive", driveChooser);
+		
+		SmartDashboard.putNumber("Scale (LOW) Timing", 60);
+		SmartDashboard.putNumber("Scale (MED) Timing", 150);
+		SmartDashboard.putNumber("Scale (HIGH) Timing", 200);
 	}
 	
 	public static void autoInit() {

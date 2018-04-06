@@ -29,7 +29,7 @@ public class Arm extends PIDSubsystem {
 	
 	public Arm() {
 		super("Arm",1,0,0.01);
-		this.getPIDController().setOutputRange(-.75,.75);
+		this.getPIDController().setOutputRange(-.85,.85);
 		setAbsoluteTolerance(0.01*scaleFactor);
 		armMotor.setInverted(true);
 	}
@@ -38,8 +38,13 @@ public class Arm extends PIDSubsystem {
 		this.index = 2;
 		zeroPoint = armPot.get();
 		this.setPos(index);
-		this.enable();
-		//this.disable();
+		/*if(armPot.get() != 0) {
+			this.enable();
+		} else {
+			this.disable();
+		}*/
+		this.disable();
+		//this.enable();
 	}
 	
 	public double getPos() {

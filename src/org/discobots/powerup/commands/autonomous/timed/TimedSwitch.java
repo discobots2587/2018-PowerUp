@@ -13,14 +13,14 @@ public class TimedSwitch extends CommandGroup {
 	public TimedSwitch(Robot.position pos) {
 		switch(pos) {
 			case RIGHT:
-				addSequential(new ArcadeTimedDrive(0.7,0,2000));
+				addSequential(new ArcadeTimedDrive(0.7,0,1000));
 				addSequential(new ArcadeTimedDrive(0,-0.5,300));
 				addSequential(new ArcadeTimedDrive(0,0,400));
 				addSequential(new ArcadeTimedDrive(0.7,0,1500));
 				addSequential(new Launch(Launch.type.SWITCH));
 				break;
 			case LEFT:
-				addSequential(new ArcadeTimedDrive(0.7,0,2000));
+				addSequential(new ArcadeTimedDrive(0.7,0,1000));
 				addSequential(new ArcadeTimedDrive(0,0.5,300));
 				addSequential(new ArcadeTimedDrive(0,0,400));
 				addSequential(new ArcadeTimedDrive(0.7,0,1500));

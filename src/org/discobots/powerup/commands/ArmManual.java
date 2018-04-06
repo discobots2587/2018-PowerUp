@@ -20,7 +20,7 @@ public class ArmManual extends Command {
 		//don't set it when the joystick is low, so we won't freeze the arm
 		if(Math.abs(Robot.oi.s_fs.getLY())>0.1) {
 			Robot.arm.getPIDController().disable();
-			Robot.arm.set(Robot.oi.s_fs.getLY()*0.5);
+			Robot.arm.set(Robot.oi.s_fs.getLY()*0.75);
 		} else {
 			if(!Robot.arm.getPIDController().isEnabled()) {
 				Robot.arm.getPIDController().setSetpoint(Robot.arm.armPot.get());

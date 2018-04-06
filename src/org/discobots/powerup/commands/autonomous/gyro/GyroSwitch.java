@@ -14,12 +14,12 @@ public class GyroSwitch extends CommandGroup {
 		switch(pos) {
 			case RIGHT:
 				addSequential(new ArcadeGyroDriveTurningComp(140.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0));
-				addSequential(new ArcadeGyroTurn(90.0, 1.0, 0.0, 0.0, 0.0, "L"));
+//				addSequential(new ArcadeGyroTurn(90.0, 1.0, 0.0, 0.0, 0.0, "L"));
 				addSequential(new ArcadeTimedDrive(-0.7, 0.0, 500));
 				addSequential(new SwitchDrop());
 			case LEFT:
 				addSequential(new ArcadeGyroDriveTurningComp(140.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0));
-				addSequential(new ArcadeGyroTurn(90.0, 1.0, 0.0, 0.0, 0.0, "R"));
+//				addSequential(new ArcadeGyroTurn(90.0, 1.0, 0.0, 0.0, 0.0, "R"));
 				addSequential(new ArcadeTimedDrive(-0.7, 0.0, 500));
 				addSequential(new SwitchDrop());
 				break;
