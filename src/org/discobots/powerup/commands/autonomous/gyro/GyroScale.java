@@ -9,9 +9,9 @@ import org.discobots.powerup.commands.autonomous.subcommands.ArcadeTimedDrive;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class GryoScale extends CommandGroup{
+public class GyroScale extends CommandGroup{
 
-	public GryoScale() {
+	public GyroScale() {
 		// TODO Auto-generated constructor stub
 		
 		

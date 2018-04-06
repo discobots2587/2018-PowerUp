@@ -6,6 +6,10 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 
 public class TestGyroTurn extends PIDCommand {
 
+	public TestGyroTurn(double setpoint) {
+		this(setpoint, 1.0, 0.0, 0.0);
+	}
+	
 	public TestGyroTurn(double setpoint, double p, double i, double d) {
 		this(setpoint, p, i, d, 0.05);
 	}
@@ -13,11 +17,11 @@ public class TestGyroTurn extends PIDCommand {
 	public TestGyroTurn(double setpoint, double p, double i, double d, double period) {
 		super(p, i, d, period);
 		setSetpoint(setpoint);
+		getPIDController().setPercentTolerance(5.0);
 	}
 
 	@Override
 	protected double returnPIDInput() {
-		// TODO Auto-generated method stub
 		return Robot.drive.getYaw();
 	}
 
@@ -29,6 +33,11 @@ public class TestGyroTurn extends PIDCommand {
 	@Override
 	protected boolean isFinished() {
 		return getPIDController().onTarget();
+	}
+	
+	@Override
+	protected void end() {
+		Robot.drive.arcadeDrive(0.0, 0.0);
 	}
 
 }
