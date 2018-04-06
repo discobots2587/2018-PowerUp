@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class GyroTurn extends Command{
+public class GyroTurn extends Command {
 	private Encoder left;
 	private Encoder right;
 
@@ -19,12 +19,10 @@ public class GyroTurn extends Command{
 	private double distanceEncoderError;
 	private double turningEncoderError;
 	
-
 	private DummyPIDOutput turningGyroPIDOutput;
 	private PIDController turningGyroPID;
 	private PIDSourceGyro turningGyroPIDSource;
 
-	
 	public GyroTurn(double turningSetPoint, double turningThreshold, double tP, double tI, double tD) {
 		System.out.println("GyroEncoderDriveDistance Starting");
 		left = Robot.drive.m_left_encoder;

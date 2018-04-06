@@ -24,6 +24,15 @@ public class ArcadeGyroTurn extends Command {
 	private double error;
 	private double integral;
 	
+	/**
+	 * 
+	 * @param turningSetpoint Turning setpoint in degrees
+	 * @param turningThreshold Error threshold
+	 * @param kP Proportional value
+	 * @param kI Integral value
+	 * @param kD Derivative value
+	 * @param turn "L" = Left, "R" = Right
+	 */
 	public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, String turn) { 
 	    if(turn.equals("R")) { 
 	      this.turningSetpoint = Robot.drive.getYaw()+turningSetpoint; 

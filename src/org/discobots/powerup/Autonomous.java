@@ -59,10 +59,9 @@ public class Autonomous {
 		
 		Robot.arm.init();
 		
-		//autonCommand = Dashboard.autonChooser.getSelected();
+		autonCommand = Dashboard.autonChooser.getSelected();
 		
 		//STEP 1 Test ArcadeGyroDriveTurningComp forward
-		Robot.drive.m_right_encoder.reset();
 		//autonCommand = new ArcadeGyroDriveTurningComp(20,0.1, 0.7, 0.15, 0.0, 0.15, 0.00, 0.005);
 		
 //		
@@ -81,7 +80,7 @@ public class Autonomous {
 	
 		//autonCommand = new GyroMiddleDouble("R");
 	//autonCommand = new SwitchDrop();
-		autonCommand = new  ArcadeGyroTurn(30,0.5,25,0,0, "R");
+//		autonCommand = new  ArcadeGyroTurn(30,0.5,25,0,0, "R");
 		autonCommand.start();
 //		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
 //		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);

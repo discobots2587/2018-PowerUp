@@ -39,6 +39,15 @@ public class ArcadeEncoderTurn extends Command {
 	
 	double integral;
 	
+	/**
+	 * 
+	 * @param turnSetpoint Turning setpoint in degrees
+	 * @param threshold Error threshold
+	 * @param kP Proportional value
+	 * @param kI Integral value
+	 * @param kD Derivative value
+	 * @param right_turn right = true, left = false
+	 */
 	public ArcadeEncoderTurn(double turnSetpoint, double threshold, double kP, double kI, double kD, boolean right_turn) {
 		System.out.println("EncoderDriveDistanceTurningComp Starting");
 		left = Robot.drive.m_left_encoder;
@@ -55,8 +64,6 @@ public class ArcadeEncoderTurn extends Command {
 		this.kD = kD;
 		this.integral = 0;
 		this.preError = 0;
-		
-
 	}
 	
 	@Override

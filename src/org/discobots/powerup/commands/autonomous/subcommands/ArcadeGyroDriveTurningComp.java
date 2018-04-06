@@ -38,6 +38,17 @@ public class ArcadeGyroDriveTurningComp extends Command {
 	private double distanceEncoderError;
 	private double turningGyroSetpoint;
 	
+	/**
+	 * 
+	 * @param encoderSetpoint Distance setpoint in inches
+	 * @param encoderThreshold Distance error threshold
+	 * @param kP Distance proportional value
+	 * @param kI Distance integral value
+	 * @param kD Distance derivative value
+	 * @param tP Turning proportional value
+	 * @param tI Turning integral value
+	 * @param tD Turning derivative value
+	 */
 	public ArcadeGyroDriveTurningComp(double encoderSetpoint, double encoderThreshold, double kP, double kI, double kD, double tP, double tI, double tD)
 	{
 		this.left = Robot.drive.m_left_encoder;

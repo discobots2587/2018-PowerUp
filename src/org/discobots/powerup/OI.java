@@ -99,42 +99,6 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
-		p_btn_start.whenPressed(new Command() {
-
-			@Override
-			protected void initialize() {
-				Robot.launcher.sol3.set(true);
-				//Timer.delay(0.75);
-				//Robot.launcher.sol2.set(true);
-				//Timer.delay(0.75);
-				//Robot.launcher.sol1.set(true);
-				//Timer.delay(0.75);
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				// TODO Auto-generated method stub
-				return true;
-			}
-			
-		});
-		p_btn_back.whenPressed(new Command() {
-
-			@Override
-			protected void initialize() {
-				//Robot.launcher.sol1.set(false);
-				//Timer.delay(0.75);
-				//Robot.launcher.sol2.set(false);
-				//Timer.delay(0.75);
-				Robot.launcher.sol3.set(false);
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				// TODO Auto-generated method stub
-				return true;
-			}
-		});
 		
 		p_btn_B.whenPressed(new Launch(Launch.type.SCALE));
 		p_btn_X.whenPressed(new Launch(Launch.type.SWITCH));

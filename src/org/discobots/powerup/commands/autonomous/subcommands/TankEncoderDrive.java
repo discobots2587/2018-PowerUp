@@ -16,6 +16,12 @@ public class TankEncoderDrive extends Command {
 	private double maxDistance;
 	
 	//speed is forward speed, rotation is y rotation, distance is in ticks(?)
+	/**
+	 * 
+	 * @param speed Forward speed
+	 * @param leftDistance Distance in inches for the left side
+	 * @param rightDistance Distance in inches for the right side
+	 */
 	public TankEncoderDrive(double speed, double leftDistance, double rightDistance) {
 		requires(Robot.drive);
 		this.speed = speed;

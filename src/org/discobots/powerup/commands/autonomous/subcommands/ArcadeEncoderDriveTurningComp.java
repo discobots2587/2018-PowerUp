@@ -37,11 +37,24 @@ public class ArcadeEncoderDriveTurningComp extends Command {
 	
 	double integral;
 	
+	/**
+	 * P = 1, I = 0, D = 0
+	 * 
+	 * @param encoderSetpoint Distance setpoint in inches
+	 * @param threshold Error threshold
+	 */
 	public ArcadeEncoderDriveTurningComp(double encoderSetpoint, double threshold) {
-		this(encoderSetpoint, threshold, 1, 0, 0);
-		
+		this(encoderSetpoint, threshold, 1.0, 0.0, 0.0);
 	}
 	
+	/**
+	 * 
+	 * @param encoderSetpoint Distance setpoint in inches
+	 * @param threshold Error threshold
+	 * @param kP Proportional value
+	 * @param kI Integral value
+	 * @param kD Derivative value
+	 */
 	public ArcadeEncoderDriveTurningComp(double encoderSetpoint, double threshold, double kP, double kI, double kD) {
 		System.out.println("EncoderDriveDistanceTurningComp Starting");
 		left = Robot.drive.m_left_encoder;
