@@ -16,9 +16,9 @@ public class Launcher extends Subsystem {
 	public boolean initSuccessful = true;
 	
 	//Solenoids - all three are used for both launching distances
-	Solenoid sol1;
-	Solenoid sol2;
-	Solenoid sol3;
+	public Solenoid sol1;
+	public Solenoid sol2;
+	public Solenoid sol3;
 	
 	//Compressor, so we can get readings off of it
 	static Compressor compressor;

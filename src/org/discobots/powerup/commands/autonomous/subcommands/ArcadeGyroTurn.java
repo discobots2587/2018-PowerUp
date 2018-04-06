@@ -66,7 +66,10 @@ public class ArcadeGyroTurn extends Command {
 		double output = (this.kP * error) + (this.kI * integral) + (this.kD * derivative);
 		   // remember the error for the next time around.
 		preError = error; 
-		
+		if(output > 0.7)
+			output = 0.7;
+		if(output < -0.7)
+			output = -0.7;
 		if (Robot.drive.getYaw() > turningSetpoint) {
 			Robot.drive.arcadeDrive(0, -output);
 		} else {
@@ -74,14 +77,14 @@ public class ArcadeGyroTurn extends Command {
 		}
 		
 		Debugger.getInstance().log("PID output: " + output, "PID-OUTPUT");
-		Debugger.getInstance().log("Error TURNING: " + turningGyroPID.getError(), "PID-ERROR");
+		Debugger.getInstance().log("Error TURNING: " + error, "PID-ERROR");
 		Debugger.getInstance().log("Setpoint: "  + turningSetpoint, "PID-SETPOINT");
 	}
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return 	(turningGyroPID.getError() < Math.abs(turningThreshold)) || (error < Math.abs(turningThreshold));
+		return 	error < Math.abs(turningThreshold);
 	}
 	
 	// Called once after isFinished returns true

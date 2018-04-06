@@ -29,7 +29,7 @@ public class HW {
 	public static int pcm12v    = 0; //CAN id
 	public static int launcher1 = 0;
 	public static int launcher2 = 1;
-	public static int launcher3 = 2;
+	public static int launcher3 = 3;
 	
 	/*public static int claw1 = 3;
 	public static int claw2 = 4;

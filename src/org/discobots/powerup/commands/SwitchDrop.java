@@ -13,7 +13,13 @@ public class SwitchDrop extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		Robot.intake.close();
+		Timer.delay(0.25);
 		Robot.arm.setPos(1);
+		Timer.delay(1);
+		Robot.intake.set(-1);
+		Timer.delay(0.5);
+		Robot.intake.set(0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -26,15 +32,12 @@ public class SwitchDrop extends Command {
 	@Override
 	protected boolean isFinished() {
 		//checks if the arm is within its margin of error
-		return (Math.abs(Robot.arm.getPos() - Robot.arm.target) < (0.01*Robot.arm.scaleFactor));
+		return true;
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		Robot.intake.set(-1);
-		Timer.delay(0.5);
-		Robot.intake.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
