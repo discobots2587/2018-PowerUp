@@ -19,7 +19,7 @@ public class Drivetrain extends Subsystem {
 
 	public DifferentialDrive drive;
 	
-	public DoubleSolenoid gearShifter = new DoubleSolenoid(HW.shifter1, HW.shifter2);
+	public DoubleSolenoid gearShifter = new DoubleSolenoid(HW.pcm24v, HW.shifter1, HW.shifter2);
 	
 	public Spark m_left;
 	public Spark m_right;
@@ -38,7 +38,7 @@ public class Drivetrain extends Subsystem {
 	public double[] accel_xyz = new double[3];
 	
 	public enum shift {
-		OFF,HIGH,LOW;
+		OFF, HIGH, LOW;
 	}
 	
 	public Drivetrain() {
@@ -112,6 +112,10 @@ public class Drivetrain extends Subsystem {
 			break;
 		}	
 	}
+	
+	public boolean isHighGear() {
+		return this.gearShifter.get().equals(DoubleSolenoid.Value.kForward);
+	};
 	
 	public double getYaw() {
         pigeon.getYawPitchRoll(ypr);

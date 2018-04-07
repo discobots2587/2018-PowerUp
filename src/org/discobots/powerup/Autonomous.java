@@ -1,12 +1,15 @@
 package org.discobots.powerup;
 
+import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.commands.SwitchDrop;
 import org.discobots.powerup.commands.autonomous.gyro.GyroMiddleDouble;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeEncoderDriveTurningComp;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroDriveTurningComp;
+import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroEncoderDrive;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroTurn;
 import org.discobots.powerup.commands.autonomous.subcommands.GyroTurn;
 import org.discobots.powerup.commands.autonomous.subcommands.TestGyroTurn;
+import org.discobots.powerup.commands.autonomous.subcommands.TimedDrop;
 import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -47,6 +50,7 @@ public class Autonomous {
 		Robot.drive.m_left_encoder.reset();
 		Robot.pos = Dashboard.positionChooser.getSelected();
 		
+		Robot.drive.shift(Drivetrain.shift.HIGH);
 		
 		//int position =  DriverStation.getInstance().getLocation();
 		// if (position == 2)
@@ -60,13 +64,14 @@ public class Autonomous {
 		
 		Robot.arm.init();
 		
-		//autonCommand = Dashboard.autonChooser.getSelected();
+		autonCommand = Dashboard.autonChooser.getSelected();
 		
-		autonCommand = new  ArcadeGyroTurn(30,1,0.25,0,0,50,false);
+	//	autonCommand = new  ArcadeGyroTurn(90,1,0.25,0,0,50,true);
+		//autonCommand = new TimedDrop();
 		
 		//STEP 1 Test ArcadeGyroDriveTurningComp forward
-		//autonCommand = new ArcadeGyroDriveTurningComp(150,0.1, 0.7, 0.15, 0.0, 0.15, 0.00, 0.005);
-		
+		//autonCommand = new ArcadeGyroDriveTurningComp(273,0.1, 0.7, 0.15, 0.0, 0.15, 0.00, 0.005);
+		//autonCommand = new ArcadeEncoderDriveTurningComp(273,0);
 //		
 //		//STEP 2 Test ArcadeGyroDriveTurningComp backwards
 	//	autonCommand = new ArcadeGyroDriveTurningComp(-20,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005);
@@ -84,6 +89,7 @@ public class Autonomous {
 		//autonCommand = new GyroMiddleDouble("R");
 	//autonCommand = new SwitchDrop();
 //		autonCommand = new  ArcadeGyroTurn(30,0.5,25,0,0, "R");
+		//autonCommand = new ArcadeGyroDriveTurningComp(140, 0, 1, 0, 0, 0, 1, 0);
 		autonCommand.start();
 //		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
 //		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);

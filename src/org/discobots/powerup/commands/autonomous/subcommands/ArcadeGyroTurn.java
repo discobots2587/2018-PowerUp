@@ -25,8 +25,8 @@ public class ArcadeGyroTurn extends Command {
   double integral;
   boolean right;
   
-  public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD) {
-    this(turningSetpoint, turningThreshold, kP, kI, kD, 50.0, false);
+  public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, boolean right) {
+    this(turningSetpoint, turningThreshold, kP, kI, kD, 50.0, right);
   }
 
   public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, double period) {

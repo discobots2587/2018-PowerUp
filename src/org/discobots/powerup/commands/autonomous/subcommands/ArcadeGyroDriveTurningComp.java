@@ -103,10 +103,10 @@ public class ArcadeGyroDriveTurningComp extends Command {
 		turningPreError = distanceEncoderError; 
 		
 		
-		if(turningOutput > 0.2)
-			turningOutput = 0.2;
-		if(turningOutput < -0.2)
-			turningOutput = -0.2;
+		if(turningOutput > 0.05)
+			turningOutput = 0.05;
+		if(turningOutput < -0.05)
+			turningOutput = -0.05;
 		
 		if(output > 0.7)
 			output = 0.7;
@@ -114,11 +114,11 @@ public class ArcadeGyroDriveTurningComp extends Command {
 			output = -0.7;
 
 		if(encoderSetpoint<0) {
-			Robot.drive.arcadeDrive(output*-1, turningOutput);
+			Robot.drive.arcadeDrive(output*-1, -turningOutput);
 			Debugger.getInstance().log("encoderSetpoint<0: "+ " true","PID-ERROR");
 
 		} else {
-			Robot.drive.arcadeDrive(output, turningOutput);
+			Robot.drive.arcadeDrive(output, -turningOutput);
 		}
 		
 		

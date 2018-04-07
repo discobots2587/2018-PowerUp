@@ -2,6 +2,7 @@ package org.discobots.powerup.commands.autonomous.gyro;
 
 import org.discobots.powerup.Autonomous;
 import org.discobots.powerup.Robot;
+import org.discobots.powerup.Robot.position;
 import org.discobots.powerup.commands.Launch;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroDriveTurningComp;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroTurn;
@@ -11,9 +12,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GyroScale extends CommandGroup{
 
-	public GyroScale() {
+	public GyroScale(Robot.position pos) {
 		// TODO Auto-generated constructor stub
-		
+		switch(pos) {
+			case RIGHT:
+			case LEFT:
+			case CENTER:
+		}
 		
 		//ASSUMING  robot is facing "forward" (this is the way we'd face a cube to pick it up)s
 		

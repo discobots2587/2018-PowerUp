@@ -47,6 +47,7 @@ public class Dashboard {
 		driveChooser.addObject("Tank Drive", new TankDrive());
 		driveChooser.addObject("Cheesy Drive", new CurvatureDrive());
 		
+		SmartDashboard.putNumber("Auton Delay", 0);
 		SmartDashboard.putData("Position", positionChooser);
 		SmartDashboard.putData("Autonomous", autonChooser);
 		SmartDashboard.putData("Drive", driveChooser);
@@ -92,6 +93,8 @@ public class Dashboard {
 	
 	public static void updateLong() {
 		//SmartDashboard.putString("Time Left", (Timer.getMatchTime() >= 0.0) ? Utils.secToMinAndSec(Timer.getMatchTime()) : "-1");
+		
+		SmartDashboard.putBoolean("HIGH GEAR?", Robot.drive.isHighGear());
 		
 		SmartDashboard.putNumber("Seconds Left", Timer.getMatchTime());
 		
