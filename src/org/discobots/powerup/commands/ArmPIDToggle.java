@@ -9,9 +9,9 @@ public class ArmPIDToggle extends Command {
 	@Override
 	protected void initialize() {
 		if(Robot.arm.getPIDController().isEnabled())
-			Robot.arm.getPIDController().disable();
+			Robot.arm.disable();
 		else
-			Robot.arm.getPIDController().enable();
+			Robot.arm.enable();
 	}
 	
 	@Override

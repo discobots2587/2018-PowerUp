@@ -19,7 +19,7 @@ public class Drivetrain extends Subsystem {
 
 	public DifferentialDrive drive;
 	
-	public DoubleSolenoid gearShifter = new DoubleSolenoid(HW.shifter1, HW.shifter2);
+	public DoubleSolenoid gearShifter = new DoubleSolenoid(HW.pcm24v, HW.shifter1, HW.shifter2);
 	
 	public Spark m_left;
 	public Spark m_right;
@@ -33,12 +33,12 @@ public class Drivetrain extends Subsystem {
 	public PigeonIMU pigeon;
 	public TalonSRX talon_pigeon;
 
-	public double[] gyro_xyz  = new double[3];
-	public double[] ypr       = new double[3];
-	public double[] accel_xyz = new double[3];
+	public double[] gyro_xyz     = new double[3];
+	public double[] yawPitchRoll = new double[3];
+	public double[] accel_xyz    = new double[3];
 	
 	public enum shift {
-		OFF,HIGH,LOW;
+		OFF, HIGH, LOW;
 	}
 	
 	public Drivetrain() {
@@ -61,8 +61,8 @@ public class Drivetrain extends Subsystem {
 		
 		drive.setDeadband(Constants.kDeadband);
 		
-		m_left_encoder = new Encoder(HW.left_encoder1, HW.left_encoder2, false, CounterBase.EncodingType.k4X);
-		m_right_encoder = new Encoder(HW.right_encoder1, HW.right_encoder2, true, CounterBase.EncodingType.k4X);
+		m_left_encoder = new Encoder(HW.left_encoderA, HW.left_encoderB, false, CounterBase.EncodingType.k4X);
+		m_right_encoder = new Encoder(HW.right_encoderA, HW.right_encoderB, false, CounterBase.EncodingType.k4X);
 		
 		m_left_encoder.setDistancePerPulse(Constants.kInchPerTick);
 		m_right_encoder.setDistancePerPulse(Constants.kInchPerTick);
@@ -113,8 +113,37 @@ public class Drivetrain extends Subsystem {
 		}	
 	}
 	
+	public boolean isHighGear() {
+		return this.gearShifter.get().equals(DoubleSolenoid.Value.kForward);
+	};
+	
 	public double getYaw() {
-        pigeon.getYawPitchRoll(ypr);
-        return -ypr[0];
+		try {
+			pigeon.getYawPitchRoll(yawPitchRoll);
+			return yawPitchRoll[0];
+		} catch(NullPointerException npe) {
+			npe.printStackTrace();
+		}
+		return 0.0;
     }
+	
+	public double getPitch() {
+		try {
+			pigeon.getYawPitchRoll(yawPitchRoll);
+			return yawPitchRoll[1];
+		} catch(NullPointerException npe) {
+			npe.printStackTrace();
+		}
+		return 0.0;
+	}
+	
+	public double getRoll() {
+		try {
+			pigeon.getYawPitchRoll(yawPitchRoll);
+			return yawPitchRoll[2];
+		} catch(NullPointerException npe) {
+			npe.printStackTrace();
+		}
+		return 0.0;
+	}
 }

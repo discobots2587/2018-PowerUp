@@ -1,9 +1,15 @@
 package org.discobots.powerup;
 
+import org.discobots.powerup.subsystems.Drivetrain;
+import org.discobots.powerup.commands.SwitchDrop;
+import org.discobots.powerup.commands.autonomous.gyro.GyroMiddleDouble;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeEncoderDriveTurningComp;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroDriveTurningComp;
+import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroEncoderDrive;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroTurn;
 import org.discobots.powerup.commands.autonomous.subcommands.GyroTurn;
+import org.discobots.powerup.commands.autonomous.subcommands.TestGyroTurn;
+import org.discobots.powerup.commands.autonomous.subcommands.TimedDrop;
 import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -11,6 +17,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Autonomous {
 
@@ -42,8 +49,9 @@ public class Autonomous {
 		
 		Robot.drive.m_right_encoder.reset();
 		Robot.drive.m_left_encoder.reset();
-		//Robot.pos = Dashboard.positionChooser.getSelected();
+		Robot.pos = Dashboard.positionChooser.getSelected();
 		
+		Robot.drive.shift(Drivetrain.shift.HIGH);
 		
 		//int position =  DriverStation.getInstance().getLocation();
 		// if (position == 2)
@@ -57,28 +65,37 @@ public class Autonomous {
 		
 		Robot.arm.init();
 		
-//		autonCommand = Dashboard.autonChooser.getSelected();
+		autonCommand = Dashboard.autonChooser.getSelected();
+		
+	//	autonCommand = new  ArcadeGyroTurn(90,1,0.25,0,0,50,true);
+		//autonCommand = new TimedDrop();
 		
 		//STEP 1 Test ArcadeGyroDriveTurningComp forward
-		autonCommand = new ArcadeGyroDriveTurningComp(150,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005);
-		
+		//autonCommand = new ArcadeGyroDriveTurningComp(273,0.1, 0.7, 0.15, 0.0, 0.15, 0.00, 0.005);
+		//autonCommand = new ArcadeEncoderDriveTurningComp(273,0);
 //		
 //		//STEP 2 Test ArcadeGyroDriveTurningComp backwards
-//		autonCommand = new ArcadeGyroDriveTurningComp(150,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005);
+	//	autonCommand = new ArcadeGyroDriveTurningComp(-20,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005);
 //		
 //		
 //		//STEP 3 Test ArcadeGyroTurn right turn. Assuming forward is the way we would face a power cube to intake from floor
-//		autonCommand = new  ArcadeGyroTurn(90,1,0.25,0,0,50,"R");
+		//autonCommand = new  ArcadeGyroTurn(90,1,0.25,0,0);
 //		
 //		//STEP 4 Test ArcadeGyroTurn left turn. Assuming forward is the way we would face a power cube to intake from floor
 //		autonCommand = new  ArcadeGyroTurn(90,1,0.25,0,0,50,"L");
-				
-		autonCommand.start();
+	
+		
+		
+	
+		//autonCommand = new GyroMiddleDouble("R");
+	//autonCommand = new SwitchDrop();
+//		autonCommand = new  ArcadeGyroTurn(30,0.5,25,0,0, "R");
+		//autonCommand = new ArcadeGyroDriveTurningComp(140, 0, 1, 0, 0, 0, 1, 0);
+		//autonCommand = new ArcadeGyroTurn(90.0, 0.5, 1.0, 0.05, 0.0, true);
 //		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
 //		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);
 ////		double target = Robot.drive.getYaw()+30;
 ////		autonCommand = new ArcadeGyroTurn(target,1,0.25,0,0);
-//		//autonCommand = new GyroTurn(80, 1, 1.0, 0.0, 0.01);
 //		CommandGroup group = new CommandGroup();
 //		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
 //		double target = Robot.drive.getYaw()+30;
@@ -89,13 +106,14 @@ public class Autonomous {
 //		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
 		//group.start();
 		
-		
+		Timer.delay(SmartDashboard.getNumber("Auton Delay", 0.0));
+		autonCommand.start();
 	}
 	
 	public static void periodic() {
 		//Robot.drive.pigeon.getRawGyro(Robot.drive.gyro_xyz);
 		//Robot.drive.pigeon.getAccelerometerAngles(Robot.drive.accel_xyz);
-		//Robot.drive.pigeon.getYawPitchRoll(Robot.drive.ypr);
+		Robot.drive.pigeon.getYawPitchRoll(Robot.drive.yawPitchRoll);
 		Scheduler.getInstance().run();
 		Dashboard.update();
 	}

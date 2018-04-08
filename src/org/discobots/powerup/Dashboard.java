@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 import org.discobots.powerup.commands.ArcadeDrive;
 import org.discobots.powerup.commands.CurvatureDrive;
+import org.discobots.powerup.commands.Launch;
 import org.discobots.powerup.commands.TankDrive;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderCrossLine;
@@ -28,6 +29,7 @@ public class Dashboard {
 	
 	public static SendableChooser<Command> autonChooser = new SendableChooser<>();
 	public static SendableChooser<Robot.position> positionChooser = new SendableChooser<>();
+	public static SendableChooser<Launch.type> priorityChooser = new SendableChooser();
 	
 	public static SendableChooser<Command> driveChooser = new SendableChooser<>();
 	
@@ -43,13 +45,21 @@ public class Dashboard {
 		autonChooser.addObject("Cross Line Only (Gyro)", new GyroCrossLine());
 		autonChooser.addObject("Gyro+Encoder Switch/Scale", new GyroChooser());
 		
+		priorityChooser.addObject("Scale", Launch.type.SCALE);
+		priorityChooser.addObject("Switch", Launch.type.SWITCH);
+		
 		driveChooser.addDefault("Arcade Drive", new ArcadeDrive());
 		driveChooser.addObject("Tank Drive", new TankDrive());
 		driveChooser.addObject("Cheesy Drive", new CurvatureDrive());
 		
+		SmartDashboard.putNumber("Auton Delay", 0);
 		SmartDashboard.putData("Position", positionChooser);
 		SmartDashboard.putData("Autonomous", autonChooser);
 		SmartDashboard.putData("Drive", driveChooser);
+		
+		SmartDashboard.putNumber("Scale (LOW) Timing", 60);
+		SmartDashboard.putNumber("Scale (MED) Timing", 150);
+		SmartDashboard.putNumber("Scale (HIGH) Timing", 200);
 	}
 	
 	public static void autoInit() {
@@ -89,14 +99,16 @@ public class Dashboard {
 	public static void updateLong() {
 		//SmartDashboard.putString("Time Left", (Timer.getMatchTime() >= 0.0) ? Utils.secToMinAndSec(Timer.getMatchTime()) : "-1");
 		
+		SmartDashboard.putBoolean("HIGH GEAR?", Robot.drive.isHighGear());
+		
 		SmartDashboard.putNumber("Seconds Left", Timer.getMatchTime());
 		
 		SmartDashboard.putNumber("Switch Delay", Constants.kSwitchWait);
 		SmartDashboard.putNumber("Scale Delay", Constants.kScaleWait);
 		
 		SmartDashboard.putNumber("Yaw", Robot.drive.getYaw());
-		SmartDashboard.putNumber("Pitch",Robot.drive.ypr[1]);
-		SmartDashboard.putNumber("Roll", Robot.drive.ypr[2]);
+		SmartDashboard.putNumber("Pitch", Robot.drive.getPitch());
+		SmartDashboard.putNumber("Roll", Robot.drive.getRoll());
 		
 		SmartDashboard.putNumber("Ultrasonic Distance", Robot.intake.ultrasonic.getRangeInches());
 		
@@ -111,13 +123,13 @@ public class Dashboard {
 		SmartDashboard.putBoolean("ArmPos 0", (Robot.arm.index() == 0));
 		SmartDashboard.putBoolean("ArmPos 1", (Robot.arm.index() == 1));
 		SmartDashboard.putBoolean("ArmPos 2", (Robot.arm.index() == 2));
-		SmartDashboard.putNumber("PID arm",Robot.arm.output);
+		SmartDashboard.putNumber("PID arm", Robot.arm.output);
 		//SmartDashboard.putNumber("Zeropoint", Robot.arm.zeroPoint);
 		//SmartDashboard.putNumber("Potentiometer TRUE value", Robot.arm.armPot.get());
 		//SmartDashboard.putNumber("Target", Robot.arm.target);
 		
 		
-		SmartDashboard.putBoolean("Arm at Top?",Robot.arm.switch_top.get());
+		SmartDashboard.putBoolean("Arm at Top?", Robot.arm.switch_top.get());
 	}
 }
 

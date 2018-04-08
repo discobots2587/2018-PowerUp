@@ -9,6 +9,7 @@ import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -38,9 +39,19 @@ public class ArcadeGyroDriveTurningComp extends Command {
 	private double distanceEncoderError;
 	private double turningGyroSetpoint;
 	
+	/**
+	 * 
+	 * @param encoderSetpoint Distance setpoint in inches
+	 * @param encoderThreshold Distance error threshold
+	 * @param kP Distance proportional value
+	 * @param kI Distance integral value
+	 * @param kD Distance derivative value
+	 * @param tP Turning proportional value
+	 * @param tI Turning integral value
+	 * @param tD Turning derivative value
+	 */
 	public ArcadeGyroDriveTurningComp(double encoderSetpoint, double encoderThreshold, double kP, double kI, double kD, double tP, double tI, double tD)
 	{
-		System.out.println("EncoderDriveDistanceTurningComp Starting");
 		this.left = Robot.drive.m_left_encoder;
 		this.right = Robot.drive.m_right_encoder;
 		
@@ -50,6 +61,9 @@ public class ArcadeGyroDriveTurningComp extends Command {
 		this.kP = kP;
 		this.kI = kI;
 		this.kD = kD;
+		this.tP = tP;
+		this.tI = tI;
+		this.tD = tD;
 		this.integral = 0;
 		this.preError = 0;
 	}
@@ -58,7 +72,9 @@ public class ArcadeGyroDriveTurningComp extends Command {
 	protected void initialize() {
 		this.left.reset();
 		this.right.reset();
-		distanceEncoderError = Math.abs(encoderSetpoint) - Utils.encoderAvg(Math.abs(left.getDistance()), Math.abs(right.getDistance()));
+		//distanceEncoderError = Math.abs(encoderSetpoint) - Utils.encoderAvg(Math.abs(left.getDistance()), Math.abs(right.getDistance()));
+		distanceEncoderError = Math.abs(encoderSetpoint) - Math.abs(right.getDistance());
+
 		turningGyroError = 0.0;
 
 	}
@@ -66,7 +82,7 @@ public class ArcadeGyroDriveTurningComp extends Command {
 	@Override
 	protected void execute() {
 		
-		distanceEncoderError = Math.abs(encoderSetpoint) - Utils.encoderAvg(Math.abs(left.getDistance()), Math.abs(right.getDistance()));
+		distanceEncoderError = Math.abs(encoderSetpoint) - Math.abs(right.getDistance());
 		turningGyroError = Math.abs(turningGyroSetpoint - Robot.drive.getYaw());
 	
 		this.turningIntegral = this.turningIntegral + (turningGyroError * 0.004);
@@ -88,15 +104,22 @@ public class ArcadeGyroDriveTurningComp extends Command {
 		turningPreError = distanceEncoderError; 
 		
 		
-		if(turningOutput > 0.2)
-			turningOutput = 0.2;
-		if(turningOutput < -0.2)
-			turningOutput = -0.2;
+		if(turningOutput > 0.05)
+			turningOutput = 0.05;
+		if(turningOutput < -0.05)
+			turningOutput = -0.05;
+		
+		if(output > 0.7)
+			output = 0.7;
+		if(output < -0.7)
+			output = -0.7;
 
 		if(encoderSetpoint<0) {
-			Robot.drive.arcadeDrive(output*-1, turningOutput);
+			Robot.drive.arcadeDrive(output*-1, -turningOutput);
+			Debugger.getInstance().log("encoderSetpoint<0: "+ " true","PID-ERROR");
+
 		} else {
-			Robot.drive.arcadeDrive(output, turningOutput);
+			Robot.drive.arcadeDrive(output, -turningOutput);
 		}
 		
 		
@@ -113,7 +136,7 @@ public class ArcadeGyroDriveTurningComp extends Command {
 	}
 	@Override
 	protected boolean isFinished() {
-		return true;
+		return distanceEncoderError < threshold;
 	}
 	
 

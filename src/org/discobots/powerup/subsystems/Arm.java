@@ -12,7 +12,7 @@ public class Arm extends PIDSubsystem {
 	//scale factor for everything in the PID - higher values make for faster and less accurate
 	public double scaleFactor = 50;
 	
-	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer,scaleFactor);
+	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer1, scaleFactor);
 	
 	public double zeroPoint = 0;
 	
@@ -29,7 +29,7 @@ public class Arm extends PIDSubsystem {
 	
 	public Arm() {
 		super("Arm",1,0,0.01);
-		this.getPIDController().setOutputRange(-.75,.75);
+		this.getPIDController().setOutputRange(-.85,.85);
 		setAbsoluteTolerance(0.01*scaleFactor);
 		armMotor.setInverted(true);
 	}
@@ -38,8 +38,13 @@ public class Arm extends PIDSubsystem {
 		this.index = 2;
 		zeroPoint = armPot.get();
 		this.setPos(index);
-		this.enable();
-		//this.disable();
+		/*if(armPot.get() != 0) {
+			this.enable();
+		} else {
+			this.disable();
+		}*/
+		this.disable();
+		//this.enable();
 	}
 	
 	public double getPos() {
@@ -60,8 +65,8 @@ public class Arm extends PIDSubsystem {
 			break;
 		case 1:
 			//intake ready to unload to switch
-			this.setSetpoint(zeroPoint+.07*scaleFactor);
-			this.target = (zeroPoint+.07*scaleFactor);
+			this.setSetpoint(zeroPoint+.055*scaleFactor);
+			this.target = (zeroPoint+.055*scaleFactor);
 			break;
 		case 2:
 			//intake holding cube above catapult

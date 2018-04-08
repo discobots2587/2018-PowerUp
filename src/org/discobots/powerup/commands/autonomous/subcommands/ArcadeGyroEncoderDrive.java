@@ -28,7 +28,18 @@ public class ArcadeGyroEncoderDrive extends Command{
 	private PIDSourceAverageEncoder avgEncoderPIDSource;
 	private PIDSourceGyro turningGyroPIDSource;
 
-	
+	/**
+	 * 
+	 * @param encoderSetpoint Distance setpoint in inches
+	 * @param threshold Distance error threshold
+	 * @param kP Distance proportional value
+	 * @param kI Distance integral value
+	 * @param kD Distance derivative value
+	 * @param turningThreshold Turning error threshold
+	 * @param tP Turning proportional value
+	 * @param tI Turning integral value
+	 * @param tD Turning derivative value
+	 */
 	public ArcadeGyroEncoderDrive(double encoderSetpoint, double threshold, double kP, double kI, double kD, double turningThreshold, double tP, double tI, double tD) {
 		System.out.println("GyroEncoderDriveDistance Starting");
 		left = Robot.drive.m_left_encoder;

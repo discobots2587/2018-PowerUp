@@ -3,6 +3,7 @@ package org.discobots.powerup;
 import org.discobots.powerup.commands.ArcadeDrive;
 import org.discobots.powerup.commands.ArmManual;
 import org.discobots.powerup.utils.Debugger;
+import org.discobots.powerup.utils.Logger;
 
 import edu.wpi.first.wpilibj.command.Scheduler;
 
@@ -43,7 +44,7 @@ public class Teleop {
 	public static void periodic() {
 		//Robot.drive.pigeon.getRawGyro(Robot.drive.gyro_xyz);
 		//Robot.drive.pigeon.getAccelerometerAngles(Robot.drive.accel_xyz);
-		Robot.drive.pigeon.getYawPitchRoll(Robot.drive.ypr);
+		Robot.drive.pigeon.getYawPitchRoll(Robot.drive.yawPitchRoll);
 		Scheduler.getInstance().run();
 		Dashboard.update();
 	}

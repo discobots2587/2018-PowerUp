@@ -1,27 +1,31 @@
 package org.discobots.powerup.commands.autonomous.gyro;
 
+import org.discobots.powerup.Robot.position;
 import org.discobots.powerup.lib.AutonChooser;
 
 public class GyroChooser extends AutonChooser {
 
 	@Override
 	protected void left() {
-		// TODO Auto-generated method stub
+		if(scalePriority) { //if scalePriority is true, we go for the scale ONLY
+			autonCommand = new GyroScale(position.LEFT, scoreSide[1]);
+		} else { //if not, we try for our switch, otherwise, go for the scale
+			autonCommand = new GyroSwitch(position.LEFT, scoreSide[0]);
+		}
 	}
 
 	@Override
 	protected void right() {
-		// TODO Auto-generated method stub
+		if(scalePriority) { //if scalePriority is true, we go for the scale ONLY
+			autonCommand = new GyroScale(position.RIGHT, scoreSide[1]);
+		} else { //if not, we try for our switch, otherwise, go for the scale
+			autonCommand = new GyroSwitch(position.RIGHT, scoreSide[0]);
+		}
 	}
 
 	@Override
 	protected void center() {
-		// TODO Auto-generated method stub
-		if(scoreSide[0]) {
-			autonCommand = new GyroMiddle("L");
-		} else {
-			autonCommand = new GyroMiddle("R");
-		}
+		autonCommand = new GyroSwitch(position.CENTER, scoreSide[0]);
 	}
 
 }

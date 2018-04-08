@@ -8,6 +8,7 @@
 package org.discobots.powerup;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,6 +18,7 @@ import org.discobots.powerup.commands.*;
 import org.discobots.powerup.lib.AXISButton;
 import org.discobots.powerup.lib.DPADButton;
 import org.discobots.powerup.lib.Gamepad;
+import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.lib.DPADButton.POV;
 import org.discobots.powerup.lib.Fightstick;
 
@@ -98,6 +100,7 @@ public class OI {
 	
 	//in here, give the buttons commands
 	public OI() {
+		
 		p_btn_B.whenPressed(new Launch(Launch.type.SCALE));
 		p_btn_X.whenPressed(new Launch(Launch.type.SWITCH));
 		
@@ -109,41 +112,23 @@ public class OI {
 		p_btn_RT.whenPressed(new IntakeSet(1));
 		p_btn_RT.whenReleased(new IntakeSet(0));
 		
+		p_btn_start.whenPressed(new GearShift(Drivetrain.shift.LOW));
+		p_btn_back.whenPressed(new GearShift(Drivetrain.shift.HIGH));
+		
 		//p_btn_LB.whenPressed(new ArmSet(-1));
 		//p_btn_LB.whenReleased(new ArmSet(0));
 		
 		//p_btn_LT.whenPressed(new ArmSet(1));
 		//p_btn_LT.whenReleased(new ArmSet(0));
 		
-		p_btn_LB.whenPressed(new Command() {
-			@Override
-			
-			public void initialize() {
-				Robot.arm.up();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-		});
+		p_btn_LB.whenPressed(new ArmMove(true));
 		
-		p_btn_LT.whenPressed(new Command() {
-			@Override
-			public void initialize() {
-				Robot.arm.down();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-		});
+		p_btn_LT.whenPressed(new ArmMove(false));
 		
 		//s_btn_B.toggleWhenPressed(new WinchSet(1)); WINCH
 		
-		s_btn_L1.whenPressed(new LaunchWaitChange(Launch.type.SCALE, 5));
-		s_btn_L2.whenPressed(new LaunchWaitChange(Launch.type.SCALE, -5));
+		s_btn_L1.whenPressed(new ArmMove(true));
+		s_btn_L2.whenPressed(new ArmMove(false));
 		
 		s_btn_R1.whenPressed(new IntakeSet(-1));
 		s_btn_R1.whenReleased(new IntakeSet(0));
@@ -151,12 +136,12 @@ public class OI {
 		s_btn_R2.whenPressed(new IntakeSet(1));
 		s_btn_R2.whenReleased(new IntakeSet(0));
 		
-		s_btn_A.whenPressed(new ArmPIDToggle());
+		s_btn_L3.whenPressed(new ArmPIDToggle());
 		
-		s_btn_X.whenPressed(new ArmPIDReset());
+		s_btn_R3.whenPressed(new ArmPIDReset());
 		s_btn_Y.whenPressed(new IntakeToggle());
 		
-		s_btn_B.whenPressed(new SwitchDrop());
+		//s_btn_B.whenPressed(new SwitchDrop());
 		
 		/*s_btn_B.whenPressed(new Command() {
 			@Override
@@ -169,5 +154,8 @@ public class OI {
 				return true;
 			}
 		});*/
+		
+		s_btn_X.whenPressed(new LaunchWaitChange(Launch.type.SCALE, 5));
+		s_btn_A.whenPressed(new LaunchWaitChange(Launch.type.SCALE, -5));
 	}
 }

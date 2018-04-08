@@ -23,7 +23,12 @@ public class Utils {
 		return String.format("%02d:%02d", (int)(sec)/60, (int)(sec)%60);
 	}
 	
-	
+	/**
+	 * 
+	 * @param left Left encoder distance value
+	 * @param right Right encoder distance value
+	 * @return Average distance
+	 */
 	public static double encoderAvg(double left, double right) {
 		double error = 1;
 		if(Math.abs(left)<error) {

@@ -1,6 +1,7 @@
 package org.discobots.powerup.commands.autonomous.gyro;
 
 import org.discobots.powerup.commands.IntakeToggle;
+import org.discobots.powerup.commands.Launch;
 import org.discobots.powerup.commands.SwitchDrop;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeEncoderDriveTurningComp;
 import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroDriveTurningComp;
@@ -21,18 +22,21 @@ public class GyroMiddleDouble extends CommandGroup {
 
 	private void rightGyroMiddleDouble() {
 		// TODO Auto-generated method stub
-		this.addSequential(new ArcadeGyroDriveTurningComp(-6,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
+		this.addSequential(new ArcadeGyroDriveTurningComp(-12,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
+		
+//		
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
+//		
+//
+//
+//		this.addSequential(new ArcadeGyroDriveTurningComp(-70,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
+//
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0, "L"));
 		
 
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0));
 
-		this.addSequential(new ArcadeGyroDriveTurningComp(-40,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
-
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0));
-
-		//this.addSequential(new ArcadeEncoderDriveTurningComp(-10,0));
-		this.addParallel(new ArcadeTimedDrive(0.5, 0, 3000));
-		this.addParallel(new SwitchDrop());
+		this.addSequential(new ArcadeEncoderDriveTurningComp(-10,0));
+		this.addSequential(new SwitchDrop());
 		
 		//////////////////////////////////////////////////////////////////
 //		
@@ -96,17 +100,17 @@ public class GyroMiddleDouble extends CommandGroup {
 
 	private void leftGyroMiddleDouble() {
 		// TODO Auto-generated method stub
-		this.addSequential(new ArcadeGyroDriveTurningComp(-6,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
-		
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0));
-
-		this.addSequential(new ArcadeGyroDriveTurningComp(-40,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
-
-		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0));
-
-		//this.addSequential(new ArcadeEncoderDriveTurningComp(-10,0));
-		this.addParallel(new ArcadeTimedDrive(0.5, 0, 3000));
-		this.addParallel(new SwitchDrop());
+//		this.addSequential(new ArcadeGyroDriveTurningComp(-6,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
+//		
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0));
+//
+//		this.addSequential(new ArcadeGyroDriveTurningComp(-40,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
+//
+//		this.addSequential(new  ArcadeGyroTurn(30,1,0.25,0,0));
+//
+//		//this.addSequential(new ArcadeEncoderDriveTurningComp(-10,0));
+//		this.addParallel(new ArcadeTimedDrive(0.5, 0, 3000));
+//		this.addParallel(new SwitchDrop());
 		
 		/////////////////////////////////////////////////////////
 		

@@ -13,7 +13,12 @@ public class ArcadeTimedDrive extends Command {
 	private double endTime;
 	private double speed, rotation;
 	
-	//speed is forward speed, rotation is y rotation, time is in milliseconds
+	/**
+	 * 
+	 * @param speed Forward speed
+	 * @param rotation Rotation speed
+	 * @param time Time in milliseconds
+	 */
 	public ArcadeTimedDrive(double speed, double rotation, int time) {
 		//requires(Robot.drive);
 		this.speed = speed;

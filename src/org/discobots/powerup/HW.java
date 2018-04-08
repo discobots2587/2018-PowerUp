@@ -29,7 +29,7 @@ public class HW {
 	public static int pcm12v    = 0; //CAN id
 	public static int launcher1 = 0;
 	public static int launcher2 = 1;
-	public static int launcher3 = 2;
+	public static int launcher3 = 3;
 	
 	/*public static int claw1 = 3;
 	public static int claw2 = 4;
@@ -46,10 +46,10 @@ public class HW {
 	public static int shifter2 = 7;
 	
 	//DIO ports
-	public static int right_encoder1    = 0; //a
-	public static int right_encoder2    = 1; //b
-	public static int left_encoder1     = 2; //a
-	public static int left_encoder2     = 3; //b
+	public static int right_encoderA    = 0;
+	public static int right_encoderB    = 1;
+	public static int left_encoderA     = 2;
+	public static int left_encoderB     = 3;
 	
 	public static int ultrasonic1       = 4;
 	public static int ultrasonic2       = 5;
@@ -57,6 +57,6 @@ public class HW {
 	public static int arm_switch_bottom = 9;
 	
 	//Analog ports
-	public static int pressureSensor	 = 2;
-	public static int potentiometer  	 = 3;
+	public static int lowPressureSensor = 2;
+	public static int potentiometer1    = 3;
 }
