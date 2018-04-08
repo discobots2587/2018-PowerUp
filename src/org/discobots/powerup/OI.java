@@ -121,56 +121,14 @@ public class OI {
 		//p_btn_LT.whenPressed(new ArmSet(1));
 		//p_btn_LT.whenReleased(new ArmSet(0));
 		
-		p_btn_LB.whenPressed(new Command() {
-			@Override
-			
-			public void initialize() {
-				Robot.arm.up();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-		});
+		p_btn_LB.whenPressed(new ArmMove(true));
 		
-		p_btn_LT.whenPressed(new Command() {
-			@Override
-			public void initialize() {
-				Robot.arm.down();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-		});
+		p_btn_LT.whenPressed(new ArmMove(false));
 		
 		//s_btn_B.toggleWhenPressed(new WinchSet(1)); WINCH
 		
-		s_btn_L1.whenPressed(new Command() {
-			@Override
-			
-			public void initialize() {
-				Robot.arm.up();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-		});
-		s_btn_L2.whenPressed(new Command() {
-			@Override
-			public void initialize() {
-				Robot.arm.down();
-			}
-			
-			@Override
-			protected boolean isFinished() {
-				return true;
-			}
-		});
+		s_btn_L1.whenPressed(new ArmMove(true));
+		s_btn_L2.whenPressed(new ArmMove(false));
 		
 		s_btn_R1.whenPressed(new IntakeSet(-1));
 		s_btn_R1.whenReleased(new IntakeSet(0));
