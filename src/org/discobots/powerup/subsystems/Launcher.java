@@ -39,7 +39,7 @@ public class Launcher extends Subsystem {
 		init();
 		
 		//initialize timer to make sure that it will be false after the cooldown
-		pressureSensor = new AnalogInput(HW.pressureSensor);
+		pressureSensor = new AnalogInput(HW.lowPressureSensor);
 		timer = new Timer();
 		this.startCooldown(0);
 		

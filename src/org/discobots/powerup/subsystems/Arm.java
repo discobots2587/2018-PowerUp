@@ -12,7 +12,7 @@ public class Arm extends PIDSubsystem {
 	//scale factor for everything in the PID - higher values make for faster and less accurate
 	public double scaleFactor = 50;
 	
-	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer,scaleFactor);
+	public AnalogPotentiometer armPot = new AnalogPotentiometer(HW.potentiometer1, scaleFactor);
 	
 	public double zeroPoint = 0;
 	

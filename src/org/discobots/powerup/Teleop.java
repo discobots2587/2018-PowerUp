@@ -44,7 +44,7 @@ public class Teleop {
 	public static void periodic() {
 		//Robot.drive.pigeon.getRawGyro(Robot.drive.gyro_xyz);
 		//Robot.drive.pigeon.getAccelerometerAngles(Robot.drive.accel_xyz);
-		Robot.drive.pigeon.getYawPitchRoll(Robot.drive.ypr);
+		Robot.drive.pigeon.getYawPitchRoll(Robot.drive.yawPitchRoll);
 		Scheduler.getInstance().run();
 		Dashboard.update();
 	}

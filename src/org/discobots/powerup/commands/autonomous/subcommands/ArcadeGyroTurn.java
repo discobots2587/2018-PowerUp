@@ -28,7 +28,7 @@ public class ArcadeGyroTurn extends Command {
   public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, boolean right) {
     this(turningSetpoint, turningThreshold, kP, kI, kD, 50.0, right);
   }
-
+  
   public ArcadeGyroTurn(double turningSetpoint, double turningThreshold, double kP, double kI, double kD, double period) {
     this(turningSetpoint, turningThreshold, kP, kI, kD, period, false);
   }
@@ -71,6 +71,12 @@ public class ArcadeGyroTurn extends Command {
     double output = (this.kP * error) + (this.kI * integral) + (this.kD * derivative);
        // remember the error for the next time around.
     preError = error; 
+    
+    /*if(output > 0.5) {
+    	output = 0.5;
+    } else if (output < -0.5) {
+    	output = -0.5;
+    }*/
     
     if(right)
     	Robot.drive.arcadeDrive(0, output);

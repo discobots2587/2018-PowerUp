@@ -55,7 +55,7 @@ public class RobotCoordinate2D extends Coordinate2D {
 	public void updatePosition() {
 		this.g_xyz = Robot.drive.gyro_xyz;
 		this.a_xyz = Robot.drive.accel_xyz;
-		this.ypr   = Robot.drive.ypr;
+		this.ypr   = Robot.drive.yawPitchRoll;
 		
 		xAccel = a_xyz[0];
 		yAccel = a_xyz[1];

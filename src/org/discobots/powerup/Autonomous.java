@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Autonomous {
 
@@ -90,7 +91,7 @@ public class Autonomous {
 	//autonCommand = new SwitchDrop();
 //		autonCommand = new  ArcadeGyroTurn(30,0.5,25,0,0, "R");
 		//autonCommand = new ArcadeGyroDriveTurningComp(140, 0, 1, 0, 0, 0, 1, 0);
-		autonCommand.start();
+		//autonCommand = new ArcadeGyroTurn(90.0, 0.5, 1.0, 0.05, 0.0, true);
 //		//autonCommand = new EncoderDriveDistanceTurningComp(40,1,1,.01,.01);
 //		//autonCommand = new AutonArcadeDriveTimed(0,0.7,625);
 ////		double target = Robot.drive.getYaw()+30;
@@ -105,13 +106,14 @@ public class Autonomous {
 //		group.addSequential(new ArcadeEncoderDriveTurningComp(-9,0.5));
 		//group.start();
 		
-		
+		Timer.delay(SmartDashboard.getNumber("Auton Delay", 0.0));
+		autonCommand.start();
 	}
 	
 	public static void periodic() {
 		//Robot.drive.pigeon.getRawGyro(Robot.drive.gyro_xyz);
 		//Robot.drive.pigeon.getAccelerometerAngles(Robot.drive.accel_xyz);
-		Robot.drive.pigeon.getYawPitchRoll(Robot.drive.ypr);
+		Robot.drive.pigeon.getYawPitchRoll(Robot.drive.yawPitchRoll);
 		Scheduler.getInstance().run();
 		Dashboard.update();
 	}
