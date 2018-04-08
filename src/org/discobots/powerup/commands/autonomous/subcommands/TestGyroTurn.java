@@ -10,7 +10,7 @@ public class TestGyroTurn extends PIDCommand {
 	private double oldYaw;
 	
 	public TestGyroTurn(double setpoint) {
-		this(setpoint, 1.0, 0.0, 0.25);
+		this(setpoint, 1.0, 0.0, 0.0);
 	}
 	
 	public TestGyroTurn(double setpoint, double p, double i, double d) {
@@ -19,11 +19,12 @@ public class TestGyroTurn extends PIDCommand {
 	
 	public TestGyroTurn(double setpoint, double p, double i, double d, double period) {
 		super(p, i, d, period);
-		setSetpoint(setpoint);
-		getPIDController().setPercentTolerance(0.0);
-		getPIDController().setOutputRange(-0.7, 0.7);
 		this.setpoint = setpoint;
 		this.oldYaw = Robot.drive.getYaw();
+		setSetpoint(oldYaw+setpoint);
+		getPIDController().setPercentTolerance(0.0);
+		getPIDController().setOutputRange(-0.7, 0.7);
+		getPIDController().enable();
 	}
 
 	@Override
@@ -41,12 +42,13 @@ public class TestGyroTurn extends PIDCommand {
 
 	@Override
 	protected boolean isFinished() {
-		if(setpoint < 0) {
+		/*if(setpoint < 0) {
 			return Robot.drive.getYaw() < oldYaw + setpoint;
 		} else if (setpoint > 0) {
 			return Robot.drive.getYaw() > oldYaw + setpoint;
 		}
-		return true;
+		return true;*/
+		return getPIDController().onTarget();
 	}
 	
 	@Override

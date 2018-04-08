@@ -7,11 +7,8 @@
 
 package org.discobots.powerup;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
 
 //importing all the commands
 import org.discobots.powerup.commands.*;

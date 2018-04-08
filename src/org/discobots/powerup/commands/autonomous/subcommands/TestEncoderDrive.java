@@ -19,13 +19,14 @@ public class TestEncoderDrive extends PIDCommand {
 	
 	public TestEncoderDrive(double setpoint, double p, double i, double d, double period) {
 		super(p, i, d, period);
-		setSetpoint(setpoint);
 		this.setpoint = setpoint;
+		setSetpoint(setpoint);
+		Robot.drive.resetBothEncoders();
 	}
 
 	@Override
 	protected double returnPIDInput() {
-		return Utils.encoderAvg(Robot.drive.m_left_encoder.getDistance(), Robot.drive.m_right_encoder.getDistance());
+		return Utils.encoderAvg(Robot.drive.getLeftDistance(), Robot.drive.getRightDistance());
 	}
 
 	@Override
@@ -42,4 +43,9 @@ public class TestEncoderDrive extends PIDCommand {
 		return getPIDController().onTarget();
 	}
 
+	@Override
+	protected void end() {
+		getPIDController().disable();
+		Robot.drive.arcadeDrive(0.0, 0.0);
+	}
 }

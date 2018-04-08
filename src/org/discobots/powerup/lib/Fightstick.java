@@ -28,16 +28,27 @@ public class Fightstick extends Joystick {
 	public static int BTN_L3 = 9;
 	public static int BTN_R3 = 10;
 	
-
+	/**
+	 * Creates a fightstick with name "Fightstick" in USB port <i>port</i>
+	 * @param port USB port
+	 */
 	public Fightstick(int port) {
 		super(port);
 	}
 	
+	/**
+	 * Creates a fightstick with name <i>name</i> in USB port <i>port</i>
+	 * @param port USB port
+	 * @param name Fightstick name
+	 */
 	public Fightstick(int port,String name) {
 		super(port);
 		this.name = name;
 	}
 	
+	/**
+	 * Creates a fightstick with name "Fightstick" in USB port 1
+	 */
 	public Fightstick() {
 		super(DEFAULT_USB_PORT);
 	}

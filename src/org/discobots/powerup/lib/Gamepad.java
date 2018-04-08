@@ -1,15 +1,12 @@
 package org.discobots.powerup.lib;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
-import org.discobots.powerup.utils.Constants;
 
 public class Gamepad extends Joystick {
 
 	//Use 'D' not 'X'
 	private static final int DEFAULT_USB_PORT = 0;
+	
 	public String name = "Gamepad";
 	
 	public static int AXIS_LX = 0;
@@ -30,14 +27,26 @@ public class Gamepad extends Joystick {
 	public static int BTN_BACK = 9;
 	public static int BTN_START = 10;
 	
+	/**
+	 * Creates a gamepad with name "Gamepad" in USB port 0
+	 */
 	public Gamepad() {
 		super(DEFAULT_USB_PORT);
 	}
 	
+	/**
+	 * Creates a gamepad with name "Gamepad" in USB port <i>port</i>
+	 * @param port USB port
+	 */
 	public Gamepad(int port) {
 		super(port);
 	}
 	
+	/**
+	 * Creates a gamepad with name <i>name</i> in USB port <i>port</i>
+	 * @param port USB port
+	 * @param name Gamepad name
+	 */
 	public Gamepad(int port, String name) {
 		super(port);
 		this.name = name;

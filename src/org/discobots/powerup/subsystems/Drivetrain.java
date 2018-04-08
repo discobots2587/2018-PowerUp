@@ -46,7 +46,7 @@ public class Drivetrain extends Subsystem {
 		
 		//SpeedControllerGroup left = new SpeedControllerGroup(m_left);
 		//left.setInverted(true);
-		leftDrive = new RampedMotor(m_left,Constants.kRampband);
+		leftDrive = new RampedMotor(m_left, Constants.kRampband);
 		leftDrive.setInverted(true);
 
 		m_right = new Spark(HW.rightDrive);  //set all three right ports to what is configured in the HW
@@ -117,6 +117,27 @@ public class Drivetrain extends Subsystem {
 		return this.gearShifter.get().equals(DoubleSolenoid.Value.kForward);
 	};
 	
+	public Encoder getLeftEncoder() {
+		return m_left_encoder;
+	}
+	
+	public Encoder getRightEncoder() {
+		return m_right_encoder;
+	}
+	
+	public double getLeftDistance() {
+		return m_left_encoder.getDistance();
+	}
+	
+	public double getRightDistance() {
+		return m_right_encoder.getDistance();
+	}
+	
+	public void resetBothEncoders() {
+		m_left_encoder.reset();
+		m_right_encoder.reset();
+	}
+	
 	public double getYaw() {
 		try {
 			pigeon.getYawPitchRoll(yawPitchRoll);
@@ -141,6 +162,36 @@ public class Drivetrain extends Subsystem {
 		try {
 			pigeon.getYawPitchRoll(yawPitchRoll);
 			return yawPitchRoll[2];
+		} catch(NullPointerException npe) {
+			npe.printStackTrace();
+		}
+		return 0.0;
+	}
+	
+	public double getAccelX() {
+		try {
+			pigeon.getAccelerometerAngles(accel_xyz);
+			return accel_xyz[0];
+		} catch(NullPointerException npe) {
+			npe.printStackTrace();
+		}
+		return 0.0;
+	}
+	
+	public double getAccelY() {
+		try {
+			pigeon.getAccelerometerAngles(accel_xyz);
+			return accel_xyz[1];
+		} catch(NullPointerException npe) {
+			npe.printStackTrace();
+		}
+		return 0.0;
+	}
+	
+	public double getAccelZ() {
+		try {
+			pigeon.getAccelerometerAngles(accel_xyz);
+			return accel_xyz[2];
 		} catch(NullPointerException npe) {
 			npe.printStackTrace();
 		}

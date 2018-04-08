@@ -1,6 +1,5 @@
 package org.discobots.powerup.commands.autonomous.timed;
 
-import org.discobots.powerup.Robot;
 import org.discobots.powerup.Robot.position;
 import org.discobots.powerup.lib.AutonChooser;
 
@@ -26,6 +25,6 @@ public class TimedChooser extends AutonChooser {
 	
 	@Override
 	protected void center() {
-		autonCommand = new TimedSwitch(Robot.position.CENTER, scoreSide[0]);
+		autonCommand = new TimedSwitch(position.CENTER, scoreSide[0]);
 	}
 }

@@ -5,6 +5,7 @@ import org.discobots.powerup.Dashboard;
 import org.discobots.powerup.Robot.position;
 import org.discobots.powerup.commands.Launch.type;
 import org.discobots.powerup.commands.autonomous.Nothing;
+import org.discobots.powerup.utils.Debugger;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -32,6 +33,7 @@ public abstract class AutonChooser extends Command {
 				right();
 				break;
 			default:
+				Debugger.getInstance().log("Robot position was not selected!", "Auton");
 				autonCommand = new Nothing();
 				break;
 		}
