@@ -71,6 +71,11 @@ public class Robot extends TimedRobot {
             camera.setFPS(30);
 		}).start();
 	}
+	
+	@Override
+	public void robotPeriodic() {
+		
+	}
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
