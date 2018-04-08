@@ -14,7 +14,7 @@ public class EncoderSwitch extends CommandGroup {
 	public EncoderSwitch(position pos, boolean left) {
 		switch(pos) {
 			case RIGHT:
-				if(!left) {
+				if(!left) { //if the switch is ours, we go for it
 					addSequential(new ArcadeEncoderDriveTurningComp(141,0));
 					Timer.delay(0.3);
 					addSequential(new ArcadeTimedDrive(0,-0.7,575));
@@ -22,12 +22,12 @@ public class EncoderSwitch extends CommandGroup {
 					addSequential(new ArcadeTimedDrive(0.7,0,1000));
 					Timer.delay(0.3);
 					addSequential(new Launch(Launch.type.SWITCH));
-				} else {
+				} else { //otherwise we cross the line
 					addSequential(new EncoderCrossLine(pos));
 				}
 				break;
 			case LEFT:
-				if(left) {
+				if(left) { //if the switch is ours, we for go for it
 					this.addSequential(new ArcadeEncoderDriveTurningComp(141,0));
 					Timer.delay(0.3);
 					this.addSequential(new ArcadeTimedDrive(0,0.7,575));
@@ -35,7 +35,7 @@ public class EncoderSwitch extends CommandGroup {
 					this.addSequential(new ArcadeTimedDrive(0.7,0,1000));
 					Timer.delay(0.3);
 					this.addSequential(new Launch(Launch.type.SWITCH));
-				} else {
+				} else { //otherwise we cross the line
 					addSequential(new EncoderCrossLine(pos));
 				}
 				break;

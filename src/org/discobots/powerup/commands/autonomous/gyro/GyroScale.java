@@ -13,7 +13,7 @@ public class GyroScale extends CommandGroup{
 	public GyroScale(position pos, boolean left) {
 		switch(pos) {
 			case RIGHT:
-				if(!left) { //same side
+				if(!left) { //if the scale is on our side
 					addSequential(new ArcadeGyroDriveTurningComp(400,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
 					//turn towards scale 
 					addSequential(new ArcadeGyroDriveTurningComp(90,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
@@ -21,7 +21,7 @@ public class GyroScale extends CommandGroup{
 					addSequential(new ArcadeGyroDriveTurningComp(-17,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
 					//score
 					addSequential(new Launch(Launch.type.SCALE));
-				} else {
+				} else { //if the scale is not on our side
 					//approach middle
 					addSequential(new ArcadeGyroDriveTurningComp(250,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
 					//turn towards away from opposite, 
@@ -41,7 +41,7 @@ public class GyroScale extends CommandGroup{
 				}
 				break;
 			case LEFT:
-				if(left) { //same side
+				if(left) { //if the scale is on our side
 					//approach scale
 					addSequential(new ArcadeGyroDriveTurningComp(400,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
 					//turn towards scale 
@@ -50,7 +50,7 @@ public class GyroScale extends CommandGroup{
 					addSequential(new ArcadeGyroDriveTurningComp(-17,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
 					//score
 					addSequential(new Launch(Launch.type.SCALE));
-				} else {
+				} else { //if the scale is not on our side
 					//approach middle
 					addSequential(new ArcadeGyroDriveTurningComp(250,0.1, 0.7, 0.0, 0.0, 0.15, 0.00, 0.005));
 					//turn towards away from opposite, 
@@ -69,7 +69,7 @@ public class GyroScale extends CommandGroup{
 //					this.addSequential(new Launch(Launch.type.SWITCH));
 				}
 				break;
-			case CENTER:
+			case CENTER: //go for the switch
 				addSequential(new GyroSwitch(pos, left));
 				break;
 		}
