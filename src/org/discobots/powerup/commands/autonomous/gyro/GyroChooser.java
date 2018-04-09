@@ -1,9 +1,9 @@
 package org.discobots.powerup.commands.autonomous.gyro;
 
 import org.discobots.powerup.Robot.position;
-import org.discobots.powerup.lib.AutonChooser;
+import org.discobots.powerup.lib.PowerUpAutonChooser;
 
-public class GyroChooser extends AutonChooser {
+public class GyroChooser extends PowerUpAutonChooser {
 
 	@Override
 	protected void left() {

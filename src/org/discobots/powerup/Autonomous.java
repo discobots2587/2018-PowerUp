@@ -1,16 +1,6 @@
 package org.discobots.powerup;
 
-import org.discobots.powerup.subsystems.Drivetrain;
-import org.discobots.powerup.commands.SwitchDrop;
-import org.discobots.powerup.commands.autonomous.gyro.GyroMiddleDouble;
-import org.discobots.powerup.commands.autonomous.subcommands.ArcadeEncoderDriveTurningComp;
-import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroDriveTurningComp;
-import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroEncoderDrive;
-import org.discobots.powerup.commands.autonomous.subcommands.ArcadeGyroTurn;
-import org.discobots.powerup.commands.autonomous.subcommands.GyroTurn;
-import org.discobots.powerup.commands.autonomous.subcommands.TestGyroTurn;
-import org.discobots.powerup.commands.autonomous.subcommands.TimedDrop;
-import org.discobots.powerup.utils.Constants;
+import org.discobots.powerup.subsystems.Drivetrain.shift;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
@@ -51,7 +41,7 @@ public class Autonomous {
 		Robot.drive.m_left_encoder.reset();
 		Robot.pos = Dashboard.positionChooser.getSelected();
 		
-		Robot.drive.shift(Drivetrain.shift.HIGH);
+		Robot.drive.shift(shift.HIGH);
 		
 		//int position =  DriverStation.getInstance().getLocation();
 		// if (position == 2)

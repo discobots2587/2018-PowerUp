@@ -1,7 +1,6 @@
 package org.discobots.powerup.commands.autonomous.subcommands;
 
 import org.discobots.powerup.Robot;
-import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 

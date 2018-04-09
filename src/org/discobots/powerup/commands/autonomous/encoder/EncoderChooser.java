@@ -1,9 +1,9 @@
 package org.discobots.powerup.commands.autonomous.encoder;
 
 import org.discobots.powerup.Robot.position;
-import org.discobots.powerup.lib.AutonChooser;
+import org.discobots.powerup.lib.PowerUpAutonChooser;
 
-public class EncoderChooser extends AutonChooser {
+public class EncoderChooser extends PowerUpAutonChooser {
 	
 	@Override
 	protected void left() {

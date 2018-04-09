@@ -2,7 +2,6 @@ package org.discobots.powerup.lib;
 
 import org.discobots.powerup.Robot;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 

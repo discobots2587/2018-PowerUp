@@ -29,7 +29,7 @@ public class Dashboard {
 	
 	public static SendableChooser<Command> autonChooser = new SendableChooser<>();
 	public static SendableChooser<Robot.position> positionChooser = new SendableChooser<>();
-	public static SendableChooser<Launch.type> priorityChooser = new SendableChooser();
+	public static SendableChooser<Launch.type> priorityChooser = new SendableChooser<>();
 	
 	public static SendableChooser<Command> driveChooser = new SendableChooser<>();
 	

@@ -3,8 +3,6 @@ package org.discobots.powerup.lib.map;
 import org.discobots.powerup.Robot;
 import org.discobots.powerup.Robot.position;
 
-import com.ctre.phoenix.sensors.PigeonIMU;
-
 public class RobotCoordinate2D extends Coordinate2D {
 
 	private Coordinate2D robot_tl; //robot top left corner

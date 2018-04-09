@@ -7,12 +7,7 @@
 
 package org.discobots.powerup;
 
-import org.discobots.powerup.subsystems.Arm;
-import org.discobots.powerup.subsystems.Drivetrain;
-import org.discobots.powerup.subsystems.Intake;
-import org.discobots.powerup.subsystems.Launcher;
-import org.discobots.powerup.subsystems.Winch;
-import org.discobots.powerup.utils.Debugger;
+import org.discobots.powerup.subsystems.*;
 import org.discobots.powerup.utils.Logger;
 
 import edu.wpi.cscore.UsbCamera;
@@ -35,6 +30,7 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Launcher launcher;
 	public static Winch winch;
+	public static Electrical electrical;
 	
 	public static Command driveCommand;
 			
@@ -60,6 +56,7 @@ public class Robot extends TimedRobot {
 		intake = new Intake();
 		launcher = new Launcher();
 		winch = new Winch();
+		electrical = new Electrical();
 		
 		//OI and dashboard initialization
 		oi = new OI();

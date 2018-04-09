@@ -1,6 +1,5 @@
 package org.discobots.powerup.lib;
 
-import org.discobots.powerup.Robot;
 import org.discobots.powerup.utils.Utils;
 
 import edu.wpi.first.wpilibj.Encoder;

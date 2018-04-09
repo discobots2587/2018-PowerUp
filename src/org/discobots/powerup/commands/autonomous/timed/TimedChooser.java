@@ -1,9 +1,9 @@
 package org.discobots.powerup.commands.autonomous.timed;
 
 import org.discobots.powerup.Robot.position;
-import org.discobots.powerup.lib.AutonChooser;
+import org.discobots.powerup.lib.PowerUpAutonChooser;
 
-public class TimedChooser extends AutonChooser {
+public class TimedChooser extends PowerUpAutonChooser {
 	
 	@Override
 	protected void left() {

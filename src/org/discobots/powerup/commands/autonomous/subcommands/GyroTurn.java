@@ -16,7 +16,6 @@ public class GyroTurn extends Command {
 	private double turningThreshold;
 	private double turningSetPoint;
 	
-	private double distanceEncoderError;
 	private double turningEncoderError;
 	
 	private DummyPIDOutput turningGyroPIDOutput;
