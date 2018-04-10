@@ -1,6 +1,5 @@
 package org.discobots.powerup.lib;
 
-import org.discobots.powerup.Dashboard;
 import org.discobots.powerup.Robot.position;
 import org.discobots.powerup.commands.autonomous.Nothing;
 import org.discobots.powerup.utils.Debugger;
@@ -9,15 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public abstract class AutonChooser extends Command {
 
-	protected position pos;
 	protected Command autonCommand;
 	
 	@Override
 	protected void initialize() {
-	    pos = Dashboard.positionChooser.getSelected();
 		gameSpecificInit();
 		
-		switch(pos) {
+		switch(getPosition()) {
 			case LEFT:
 				left();
 				break;
@@ -42,6 +39,7 @@ public abstract class AutonChooser extends Command {
 	}
 	
 	protected abstract void gameSpecificInit();
+	protected abstract position getPosition();
 	
 	protected abstract void left();
 	protected abstract void right();

@@ -2,6 +2,7 @@ package org.discobots.powerup.lib;
 
 import org.discobots.powerup.Autonomous;
 import org.discobots.powerup.Dashboard;
+import org.discobots.powerup.Robot.position;
 import org.discobots.powerup.commands.Launch.type;
 
 public abstract class PowerUpAutonChooser extends AutonChooser {
@@ -13,5 +14,10 @@ public abstract class PowerUpAutonChooser extends AutonChooser {
 	protected void gameSpecificInit() {
 		scoreSide = Autonomous.scoreSide;
 		scalePriority = Dashboard.priorityChooser.getSelected().equals(type.SCALE);
+	}
+	
+	@Override
+	protected position getPosition() {
+	    return Dashboard.positionChooser.getSelected();
 	}
 }
