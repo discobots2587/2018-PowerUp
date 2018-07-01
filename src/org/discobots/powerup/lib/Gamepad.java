@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 public class Gamepad extends Joystick {
 
 	//Use 'D' not 'X'
-	private static final int DEFAULT_USB_PORT = 0;
+	protected static final int DEFAULT_USB_PORT = 0;
 	
 	public String name = "Gamepad";
 	

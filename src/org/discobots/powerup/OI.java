@@ -7,6 +7,7 @@
 
 package org.discobots.powerup;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -15,6 +16,7 @@ import org.discobots.powerup.commands.*;
 import org.discobots.powerup.lib.AXISButton;
 import org.discobots.powerup.lib.DPADButton;
 import org.discobots.powerup.lib.Gamepad;
+import org.discobots.powerup.lib.Xbox;
 import org.discobots.powerup.subsystems.Drivetrain;
 import org.discobots.powerup.lib.DPADButton.POV;
 import org.discobots.powerup.lib.Fightstick;
@@ -58,6 +60,11 @@ public class OI {
 	 
 	 //pov = dpad
 	 //axis = joystick
+	
+	public static enum controller {
+		XBOX, DUALSHOCK
+	}
+	
 	public Gamepad p_gp = new Gamepad(0, "Primary"); //primary driver
 	public Fightstick s_fs = new Fightstick(1, "Secondary"); //secondary driver
 	
@@ -72,10 +79,10 @@ public class OI {
 	private Button p_btn_X = new JoystickButton(p_gp, Gamepad.BTN_X);
 	private Button p_btn_B = new JoystickButton(p_gp, Gamepad.BTN_B);
 	private Button p_btn_Y = new JoystickButton(p_gp, Gamepad.BTN_Y);
-	private DPADButton p_dpad_up = new DPADButton(p_gp, POV.UP);
-	private DPADButton p_dpad_down = new DPADButton(p_gp, POV.DOWN);
-	private DPADButton p_dpad_right = new DPADButton(p_gp, POV.RIGHT);
-	private DPADButton p_dpad_left = new DPADButton(p_gp, POV.LEFT);
+	private Button p_dpad_up = new DPADButton(p_gp, POV.UP);
+	private Button p_dpad_down = new DPADButton(p_gp, POV.DOWN);
+	private Button p_dpad_right = new DPADButton(p_gp, POV.RIGHT);
+	private Button p_dpad_left = new DPADButton(p_gp, POV.LEFT);
 	
 	//create all the buttons for secondary controller
 	private Button s_btn_R1 = new JoystickButton(s_fs, Fightstick.BTN_R1);
@@ -88,16 +95,26 @@ public class OI {
 	private Button s_btn_X = new JoystickButton(s_fs, Fightstick.BTN_X);
 	private Button s_btn_B = new JoystickButton(s_fs, Fightstick.BTN_B);
 	private Button s_btn_Y = new JoystickButton(s_fs, Fightstick.BTN_Y);
-	private DPADButton s_dpad_up = new DPADButton(s_fs, POV.UP);
-	private DPADButton s_dpad_down = new DPADButton(s_fs, POV.DOWN);
-	private DPADButton s_dpad_right = new DPADButton(s_fs, POV.RIGHT);
-	private DPADButton s_dpad_left = new DPADButton(s_fs, POV.LEFT);
-	private AXISButton s_btn_L2 = new AXISButton(s_fs, Fightstick.AXIS_L2);
-	private AXISButton s_btn_R2 = new AXISButton(s_fs, Fightstick.AXIS_R2);
+	private Button s_dpad_up = new DPADButton(s_fs, POV.UP);
+	private Button s_dpad_down = new DPADButton(s_fs, POV.DOWN);
+	private Button s_dpad_right = new DPADButton(s_fs, POV.RIGHT);
+	private Button s_dpad_left = new DPADButton(s_fs, POV.LEFT);
+	private Button s_btn_L2 = new AXISButton(s_fs, Fightstick.AXIS_L2);
+	private Button s_btn_R2 = new AXISButton(s_fs, Fightstick.AXIS_R2);
 	
 	//in here, give the buttons commands
 	public OI() {
 		
+		switch(Dashboard.controllerChooser.getSelected()) {
+			case XBOX:
+				p_gp = new Xbox(0, "Primary");
+				p_btn_RT = new AXISButton(p_gp, Gamepad.BTN_RT);
+				p_btn_LT = new AXISButton(p_gp, Gamepad.BTN_LT);
+				break;
+			case DUALSHOCK:
+				break;
+		}
+
 		p_btn_B.whenPressed(new Launch(Launch.type.SCALE));
 		p_btn_X.whenPressed(new Launch(Launch.type.SWITCH));
 		
@@ -121,8 +138,6 @@ public class OI {
 		p_btn_LB.whenPressed(new ArmMove(true));
 		
 		p_btn_LT.whenPressed(new ArmMove(false));
-		
-		//s_btn_B.toggleWhenPressed(new WinchSet(1)); WINCH
 		
 		s_btn_L1.whenPressed(new ArmMove(true));
 		s_btn_L2.whenPressed(new ArmMove(false));

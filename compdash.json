@@ -360,7 +360,14 @@
             "content": {
               "_type": "Camera Stream",
               "_source0": "camera_server://USB Camera 0",
-              "_title": "USB Camera 0"
+              "_title": "USB Camera 0",
+              "showControls": true,
+              "showCrosshair": true,
+              "crosshairColor": "#FFFFFFFF",
+              "compression": 0.0,
+              "fps": -1,
+              "imageWidth": -1,
+              "imageHeight": -1
             }
           },
           "16,0": {
@@ -407,6 +414,85 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Roll",
               "_title": "Roll"
+            }
+          },
+          "18,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Scale (LOW) Timing",
+              "_title": "Scale (LOW) Timing"
+            }
+          },
+          "20,1": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Scale (HIGH) Timing",
+              "_title": "Scale (HIGH) Timing"
+            }
+          },
+          "19,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Auton Delay",
+              "_title": "Auton Delay"
+            }
+          },
+          "20,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Scale (MED) Timing",
+              "_title": "Scale (MED) Timing"
+            }
+          },
+          "18,1": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/HIGH GEAR?",
+              "_title": "HIGH GEAR?",
+              "colorWhenTrue": "#7CFC00FF",
+              "colorWhenFalse": "#8B0000FF"
+            }
+          },
+          "22,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Priority",
+              "_title": "Priority"
+            }
+          },
+          "19,5": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Controller",
+              "_title": "Controller"
             }
           }
         }

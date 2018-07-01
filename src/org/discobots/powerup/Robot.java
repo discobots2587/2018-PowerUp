@@ -29,7 +29,6 @@ public class Robot extends TimedRobot {
 	public static Drivetrain drive;
 	public static Intake intake;
 	public static Launcher launcher;
-	public static Winch winch;
 	public static Electrical electrical;
 	
 	public static Command driveCommand;
@@ -55,12 +54,11 @@ public class Robot extends TimedRobot {
 		drive = new Drivetrain();
 		intake = new Intake();
 		launcher = new Launcher();
-		winch = new Winch();
 		electrical = new Electrical();
 		
 		//OI and dashboard initialization
-		oi = new OI();
 		Dashboard.init();
+		oi = new OI();
 		
 		new Thread(() -> {
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -71,7 +69,9 @@ public class Robot extends TimedRobot {
 	
 	@Override
 	public void robotPeriodic() {
-		
+		Robot.drive.pigeon.getYawPitchRoll(Robot.drive.yawPitchRoll);
+		Robot.drive.pigeon.getAccelerometerAngles(Robot.drive.accel_xyz);
+		Dashboard.update();
 	}
 
 	/**

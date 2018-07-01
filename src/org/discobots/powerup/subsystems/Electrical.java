@@ -21,13 +21,13 @@ public class Electrical extends Subsystem {
 		
 		pdpCurrents = new PDPChannel[8];
 		pdpCurrents[0] = new PDPChannel(0, Robot.drive.m_left, "Drivetrain", 100);
-		pdpCurrents[1] = new PDPChannel(1, Robot.drive.m_right, "Drivetrain", 100);
-		pdpCurrents[2] = new PDPChannel(13, Robot.drive.m_left, "Drivetrain", 100);
-		pdpCurrents[3] = new PDPChannel(14, Robot.drive.m_left, "Drivetrain", 100);
-		pdpCurrents[4] = new PDPChannel(2, Robot.drive.m_left, "Drivetrain", 100);
+		pdpCurrents[1] = new PDPChannel(1, Robot.drive.m_left, "Drivetrain", 100);
+		pdpCurrents[2] = new PDPChannel(13, Robot.drive.m_right, "Drivetrain", 100);
+		pdpCurrents[3] = new PDPChannel(14, Robot.drive.m_right, "Drivetrain", 100);
+		pdpCurrents[4] = new PDPChannel(2, Robot.arm.armMotor, "Arm", 100);
 		pdpCurrents[5] = new PDPChannel(7, Robot.drive.m_left, "Drivetrain", 100);
-		pdpCurrents[6] = new PDPChannel(8, Robot.drive.m_left, "Drivetrain", 100);
-		pdpCurrents[7] = new PDPChannel(9, Robot.drive.m_left, "Drivetrain", 100);
+		pdpCurrents[6] = new PDPChannel(8, Robot.intake.leftIntake, "Intake", 100);
+		pdpCurrents[7] = new PDPChannel(9, Robot.intake.rightIntake, "Intake", 100);
 	}
 	
 	public double getPDPTotalCurrent() {

@@ -12,6 +12,7 @@ import org.discobots.powerup.commands.autonomous.gyro.GyroChooser;
 import org.discobots.powerup.commands.autonomous.gyro.GyroCrossLine;
 import org.discobots.powerup.commands.autonomous.encoder.EncoderChooser;
 import org.discobots.powerup.commands.autonomous.timed.TimedChooser;
+import org.discobots.powerup.lib.Gamepad;
 import org.discobots.powerup.utils.Constants;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -33,6 +34,8 @@ public class Dashboard {
 	
 	public static SendableChooser<Command> driveChooser = new SendableChooser<>();
 	
+	public static SendableChooser<OI.controller> controllerChooser = new SendableChooser<>();
+	
 	public static void init() {
 		positionChooser.addDefault("Left", Robot.position.LEFT);
 		positionChooser.addObject("Center", Robot.position.CENTER);
@@ -46,16 +49,21 @@ public class Dashboard {
 		autonChooser.addObject("Gyro+Encoder Switch/Scale", new GyroChooser());
 		
 		priorityChooser.addObject("Scale", Launch.type.SCALE);
-		priorityChooser.addObject("Switch", Launch.type.SWITCH);
+		priorityChooser.addDefault("Switch", Launch.type.SWITCH);
 		
 		driveChooser.addDefault("Arcade Drive", new ArcadeDrive());
 		driveChooser.addObject("Tank Drive", new TankDrive());
 		driveChooser.addObject("Cheesy Drive", new CurvatureDrive());
+
+		controllerChooser.addObject("Playstation", OI.controller.DUALSHOCK);
+		controllerChooser.addDefault("Xbox", OI.controller.XBOX);
 		
 		SmartDashboard.putNumber("Auton Delay", 0);
 		SmartDashboard.putData("Position", positionChooser);
 		SmartDashboard.putData("Autonomous", autonChooser);
 		SmartDashboard.putData("Drive", driveChooser);
+		SmartDashboard.putData("Priority", priorityChooser);
+		SmartDashboard.putData("Controller", controllerChooser);
 		
 		SmartDashboard.putNumber("Scale (LOW) Timing", 60);
 		SmartDashboard.putNumber("Scale (MED) Timing", 150);

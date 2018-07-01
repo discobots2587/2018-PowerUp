@@ -11,7 +11,7 @@ public class TimedSwitch extends CommandGroup {
 		switch(pos) {
 			case RIGHT:
 				if(!left) {
-					addSequential(new ArcadeTimedDrive(0.7,0,1000));
+					addSequential(new ArcadeTimedDrive(0.7,0,1500));
 					addSequential(new ArcadeTimedDrive(0,-0.5,500));
 					addSequential(new ArcadeTimedDrive(0,0,400));
 					addSequential(new ArcadeTimedDrive(0.7,0,1500));
@@ -22,7 +22,7 @@ public class TimedSwitch extends CommandGroup {
 				break;
 			case LEFT:
 				if(left) {
-					addSequential(new ArcadeTimedDrive(0.7,0,1000));
+					addSequential(new ArcadeTimedDrive(0.7,0,1500));
 					addSequential(new ArcadeTimedDrive(0,0.5,500));
 					addSequential(new ArcadeTimedDrive(0,0,400));
 					addSequential(new ArcadeTimedDrive(0.7,0,1500));
@@ -34,16 +34,16 @@ public class TimedSwitch extends CommandGroup {
 			case CENTER:
 				if(left) {
 					addSequential(new ArcadeTimedDrive(0.7, 0, 500));
-					addSequential(new ArcadeTimedDrive(0, -0.5, 2100));
-					addSequential(new ArcadeTimedDrive(0.7, 0, 2300));
-					addSequential(new ArcadeTimedDrive(0, 0.5, 2100));
+					addSequential(new ArcadeTimedDrive(0, -0.5, 2500));
+					addSequential(new ArcadeTimedDrive(0.7, 0, 3000));
+					addSequential(new ArcadeTimedDrive(0, 0.5, 2500));
 					addSequential(new ArcadeTimedDrive(0.7, 0, 1500));
 					addSequential(new Launch(Launch.type.SWITCH));
 				} else {
 					addSequential(new ArcadeTimedDrive(0.7, 0, 500));
-					addSequential(new ArcadeTimedDrive(0, 0.5, 2100));
-					addSequential(new ArcadeTimedDrive(0.7, 0, 2300));
-					addSequential(new ArcadeTimedDrive(0, -0.5, 2100));
+					addSequential(new ArcadeTimedDrive(0, 0.5, 2500));
+					addSequential(new ArcadeTimedDrive(0.7, 0, 3000));
+					addSequential(new ArcadeTimedDrive(0, -0.5, 2500));
 					addSequential(new ArcadeTimedDrive(0.7, 0, 1500));
 					addSequential(new Launch(Launch.type.SWITCH));
 				}
